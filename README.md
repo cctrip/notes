@@ -59,7 +59,7 @@
 
 * [Shell]()
 
-* [Python]()
+* [Python](development/Python)
 
 * [GoLang]()
 
