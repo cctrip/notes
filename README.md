@@ -22,7 +22,7 @@
 
 	* [运维命令]()
 		
-	![image](operation-command.png)
+	![image](operation/operation-command.png)
 
 
 ***
