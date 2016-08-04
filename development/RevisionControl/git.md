@@ -18,5 +18,17 @@
 
 * [提交历史](git/commithistory.md)
 
+* [撤销操作](git/undo.md)
+
+* [远程仓库](git/remote.md)
+
+* [标签](git/tag.md)
+
+* [别名](git/alias.md)
+
+***
+
+## Git分支
+
 ***
 
