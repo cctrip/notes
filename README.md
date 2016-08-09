@@ -2,13 +2,25 @@
 
 ## 运维
 
-* [计算机基础](operation/computerbasic.md)
+* 计算机基础
+
+	* [计算机组成](operation/basic/constitute.md)
+
+	* [操作系统](operation/basic/opreatingsystem.md)
+
+	* [文件系统](operation/basic/filesystem.md)
 
 * Linux系统
 
-	* [文件系统]()
-
 	* [Linux基本操作]()
+
+		* [启动]()
+
+		* [文件操作]()
+
+		* [权限操作]()
+
+		* [网络操作]()
 
 	* [基础服务]()
 
