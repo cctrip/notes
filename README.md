@@ -2,7 +2,7 @@
 
 ## 运维
 
-* [计算机基础]()
+* [计算机基础](operation/computerbasic.md)
 
 * Linux系统
 
