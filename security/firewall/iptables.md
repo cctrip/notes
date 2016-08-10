@@ -145,10 +145,10 @@ parameter            | match           | 描述
 
 -m：extend matches，这个选项用于提供更多的匹配参数，如：
 
-	-m state –state ESTABLISHED,RELATED
-	-m tcp –dport 22
-	-m multiport –dports 80,8080
-	-m icmp –icmp-type 8
+	-m state –-state ESTABLISHED,RELATED
+	-m tcp –-dport 22
+	-m multiport –-dports 80,8080
+	-m icmp –-icmp-type 8
 
 
 ***
