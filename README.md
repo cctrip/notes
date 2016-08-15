@@ -24,7 +24,7 @@
 
 	* [基础服务]()
 
-		* [web架构之lnmp]()
+		* [web架构之lnmp](operation/linux/lnmp/README.md)
 
 		* [web之tomcat]()
 
@@ -89,7 +89,7 @@
 
 * [firewall](security/firewall/README.md)
 
-* [Snort]()
+* [Snort](security/snort/snort.md)
 
 * [Ossec]()
 
