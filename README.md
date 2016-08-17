@@ -89,9 +89,13 @@
 
 * [firewall](security/firewall/README.md)
 
-* [Snort](security/snort/snort.md)
+* [IDS](security/IDS/README.md)
+	
+	* [Snort](security/IDS/snort/snort.md)
 
-* [Ossec]()
+	* [Ossec]()
+
+	* [tripware]()
 
 ***
 
