@@ -85,7 +85,7 @@
 
 * [编程进阶]()
 
-	* [设计模式](development/Advanced/designREADME.md)
+	* [设计模式](development/Advanced/design/README.md)
 
 	* [重构](development/Advanced/review.md)
 
