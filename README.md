@@ -77,7 +77,7 @@
 
 * [Shell]()
 
-* [Python](development/Python)
+* [Python](development/Python/README.md)
 
 * [GoLang]()
 
@@ -109,6 +109,8 @@
 
 * [ansible]()
 
+* [SaltStack]()
+
 ***
 
 ## 工具
@@ -125,11 +127,13 @@
 
 * [LeetCode解题](https://github.com/Code-CC/leetcode)
 
-* [这些年碰到的问题]()
+* [这些年碰到的问题](solution/README.md)
 
 * [运维心得]()
 
 * [我的博客](http://codecc.xyz)
+
+* [读书笔记]()
 
 ***
 
