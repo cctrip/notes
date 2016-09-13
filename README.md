@@ -127,9 +127,11 @@
 
 * [LeetCode解题](https://github.com/Code-CC/leetcode)
 
-* [这些年碰到的问题](solution/README.md)
+* [这些年碰到的问题](other/solution/README.md)
 
 * [运维心得]()
+
+* [学习方法](other/learnMethod.md)
 
 * [我的博客](http://codecc.xyz)
 
