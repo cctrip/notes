@@ -14,7 +14,7 @@
 
 	* [Linux基本操作]()
 
-		* [启动]()
+		* [启动](operation/linux/start.md)
 
 		* [文件操作]()
 
