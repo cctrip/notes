@@ -20,4 +20,4 @@
 
 	具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。
 
-![](simpleFactory.jpg)
+![](simple-factory.jpg)

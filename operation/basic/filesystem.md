@@ -83,7 +83,7 @@ inode是ext2文件系统的基本构建块，每个文件和目录都有唯一�
 
 	三间接指向
 
-![](ext2_inode.gif)
+![](ext2-inode.gif)
 
 
 ***

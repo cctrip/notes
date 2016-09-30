@@ -16,13 +16,13 @@
 
 图示：
 
-![](Operating_system_architecture.svg.png)
+![](Operating-system-architecture.svg.png)
 
 ***
 
 Linux系统架构：
 
-![](Linux_architecture.png)
+![](Linux-architecture.png)
 
 ***
 

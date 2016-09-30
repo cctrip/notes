@@ -16,4 +16,4 @@
 
 * ConcreteFactory：具体工厂
 
-![](factoryMethod.jpg)
+![](factory-method.jpg)

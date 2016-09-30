@@ -2,7 +2,7 @@
 
 整个过程基本可以分为POST–>BIOS–>MBR(GRUB)–>Kernel–>Init–>Runlevel。
 
-![](linuxstart.png)
+![](linux-start.png)
 
 
 ***
