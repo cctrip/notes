@@ -14,6 +14,8 @@
 
 	* [Linux基本操作]()
 
+		* [内核编译](operation/Linux/kernel.md)
+
 		* [启动](operation/Linux/start.md)
 
 		* [文件操作]()
@@ -93,7 +95,7 @@
 
 ## 安全
 
-* [firewall](security/Firewall/README.md)
+* [Firewall](security/Firewall/README.md)
 
 * [IDS](security/IDS/README.md)
 	
@@ -107,15 +109,15 @@
 
 ## 自动化
 
-* [ansible]()
+* [Ansible](automation/Ansible)
 
-* [SaltStack]()
+* [SaltStack](automation/SaltStack)
 
 ***
 
 ## 虚拟化
 
-* [docker]()
+* [Docker](virtualization/Docker/README.md)
 
 ***
 
