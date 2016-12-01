@@ -1,0 +1,85 @@
+" Use Vim settings, rather then Vi settings. This setting must be as early as
+" possible, as it has side effects.
+set nocompatible
+
+" Highlight current line
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+
+" Leader
+let mapleader = ";"
+
+set backspace=2   " Backspace deletes like most programs in insert mode
+set laststatus=2  " Always display the status line
+set tabstop=2
+set shiftwidth=2
+set nobackup
+set nowritebackup
+set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
+set history=50
+set ruler         " show the cursor position all the time
+set showcmd       " display incomplete commands
+set incsearch     " do incremental searching
+set autowrite     " Automatically :write before running commands
+set confirm       " Need confrimation while exit
+set hlsearch
+set fileencodings=utf-8,gb18030,gbk,big5
+set shiftround
+set expandtab
+
+"缩进指示线"
+let g:indentLine_char = '┆'
+let g:indentLine_enabled = 1
+
+" Pathogen
+execute pathogen#infect()
+
+" Color scheme
+syntax enable
+syntax on
+set background=dark
+colorscheme solarized
+let g:Airline_colorscheme='solarized256'
+
+" Numbers
+set number
+set numberwidth=5
+
+" Nerd Tree
+let NERDChristmasTree=0
+let NERDTreeWinSize=40
+let NERDTreeChDirMode=2
+let NERDTreeIgnore=['\~$', '\.pyc$', '\.swp$']
+let NERDTreeShowBookmarks=1
+let NERDTreeWinPos="left"
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
+autocmd vimenter * if !argc() | NERDTree | endif " Automatically open a NERDTree if no files where specified
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif " Close vim if the only window left open is a NERDTree
+nmap <leader>lt :NERDTreeToggle<cr>
+
+" Markdown config
+let g:vim_markdown_folding_disabled = 1
+let g:instant_markdown_allow_external_content = 0
+
+" Run config
+map <leader>r :call RunCommand() <cr>
+func! RunCommand()
+  if &filetype == 'go'
+    exec "w !time go run %"
+  elseif &filetype == 'python'
+    exec "w !time python % "
+  elseif &filetype == 'sh'
+    exec "w !time bash % "
+  endif
+endfunc
+
+if &filetype == 'python'
+  source ~/.vimrc.dev
+endif
+
+" Local config
+if filereadable(expand("~/.vimrc.bundles"))
+  source ~/.vimrc.bundles
+endif

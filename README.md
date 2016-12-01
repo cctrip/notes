@@ -135,6 +135,8 @@
 
 * [LeetCode解题](https://github.com/Code-CC/leetcode)
 
+* [我的环境配置](other/MyConfig/config.md)
+
 * [这些年碰到的问题](other/Solution/README.md)
 
 * [运维心得]()
