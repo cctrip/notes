@@ -18,26 +18,17 @@
 
 		* [启动](operation/Linux/start.md)
 
-		* [文件操作]()
+		* [命令操作]()
 
-		* [权限操作]()
+	* [应用服务]()
 
-		* [网络操作]()
+		* [基础应用]()
 
-	* [基础服务]()
-
-		* [web架构之lnmp](operation/Linux/Lnmp/README.md)
-
-		* [web之tomcat]()
+		* [web应用]()
 
 		* [高可用]()
 
 		* [监控报警]()
-
-	* [运维命令]()
-		
-	![image](operation/operation-command.png)
-
 
 ***
 
