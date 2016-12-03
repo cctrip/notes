@@ -18,6 +18,8 @@
 
 		* [启动](operation/Linux/start.md)
 
+    * [Linux目录结构](operation/Linux/dirctoryStructure.md)
+
 		* [命令操作](operation/Linux/Command/operation.md)
 
 	* [应用服务]()
