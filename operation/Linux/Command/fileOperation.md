@@ -50,11 +50,11 @@
 
     * 创建空目录
 
-              mkdir [option] /PATH
-              option
-                -p:若父目录不存在，则自动创建
-                -v:列出过程详细信息
-                -m:指定目录权限
+            mkdir [option] /PATH
+            option
+              -p:若父目录不存在，则自动创建
+              -v:列出过程详细信息
+              -m:指定目录权限
 
     * 删除空目录
 
