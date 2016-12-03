@@ -14,13 +14,13 @@
 
 	* [Linux基本操作]()
 
-		* [内核编译](operation/Linux/kernel.md)
+      * [内核编译](operation/Linux/kernel.md)
 
-		* [启动](operation/Linux/start.md)
+      * [启动](operation/Linux/start.md)
 
-    * [Linux目录结构](operation/Linux/dirctoryStructure.md)
+      * [Linux目录结构](operation/Linux/directoryStructure.md)
 
-		* [命令操作](operation/Linux/Command/operation.md)
+      * [命令操作](operation/Linux/Command/operation.md)
 
 	* [应用服务]()
 
