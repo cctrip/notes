@@ -72,56 +72,57 @@
 
 * 添加用户
 
-      useradd [options] USERNAME
-      option
-      -u：UID
-      -g：groupname 指定基本组
-      -G：groupname,... 指定附加组
-      -c："COMMENT"
-      -d：指定家目录
-      -s：指定SHELL路径
-      -m -k：若家目录不存在，则自动创建
-      -r：添加系统用户
+        useradd [options] USERNAME
+        option
+        -u：UID
+        -g：groupname 指定基本组
+        -G：groupname,... 指定附加组
+        -c："COMMENT"
+        -d：指定家目录
+        -s：指定SHELL路径
+        -m -k：若家目录不存在，则自动创建
+        -r：添加系统用户
 
 * 删除用户
 
-      userdel [options] USERNAME
-      option
-      -r：同时删除用户的家目录
+        userdel [options] USERNAME
+        option
+        -r：同时删除用户的家目录
 
 * 查看用户的帐号属性信息
 
-      id [options] USERNAME
-      option
-      -u：查看UID
-      -g：查看GID
-      -G: 查看所有的GID
-      -n：查看组名
+        id [options] USERNAME
+        option
+        -u：查看UID
+        -g：查看GID
+        -G: 查看所有的GID
+        -n：查看组名
                                                                                           
-      finger USERNAME
+        finger USERNAME
 
 
 * 修改用户帐号属性
 
-      usermod [options] USERNAME
-      -u：UID
-      -g：GID
-      -a -g GID：不使用-a选项，会覆盖此前的附加组
-      -d -m：指定新的家目录，并把之前家目录的文件拷贝到新的家目录中
-      -c：
-      -s：指定SHELL路径
-      -L：锁定帐号
-      -U：解锁帐号
+        usermod [options] USERNAME
+        option
+        -u：UID
+        -g：GID
+        -a -g GID：不使用-a选项，会覆盖此前的附加组
+        -d -m：指定新的家目录，并把之前家目录的文件拷贝到新的家目录中
+        -c：
+        -s：指定SHELL路径
+        -L：锁定帐号
+        -U：解锁帐号
 
 * 密码管理
 
-      passwd [USERNAME]
-      --stdin：标准输入
-      -d：删除用户密码
+        passwd [USERNAME]
+        --stdin：标准输入
+        -d：删除用户密码
 
 * 检查用户帐号完整性
 
-      pwck
+        pwck
 
 ***
 
@@ -129,23 +130,23 @@
 
 * 创建用户组：
 
-      groupadd [option] GROUPNAME
-      -g：GID
-      -r：添加为系统组                                                                                                                                                                                
+        groupadd [option] GROUPNAME
+        -g：GID
+        -r：添加为系统组                                                                                                                                                                                
 
 * 修改组的相关属性
 
-      groupmod [option] GROUPNAME
-      -g：GID
-      -n：GRPNAME
+        groupmod [option] GROUPNAME
+        -g：GID
+        -n：GRPNAME
 
 * 删除组
 
-      groupdel GROUPNAME                                                                                                                                                                                            
+        groupdel GROUPNAME                                                                                                                                                                                            
 
 * 更改组密码
 
-      gpasswd GROUPNAME
+        gpasswd GROUPNAME
 
 ***
 
@@ -153,19 +154,21 @@
 
 * 改变文件属主
 
-      chown USERNAME file,...
-      -R：修改目录及其内部文件的属主
-      --reference=/path/to/somefile file,...  指定属主与该文件相同
-      chown USERNAME:GROUPNAME file 
-      chown USERNAME.GROUPNAME file
+        chown USERNAME file,...
+        -R：修改目录及其内部文件的属主
+        --reference=/path/to/somefile file,...  指定属主与该文件相同
+        chown USERNAME:GROUPNAME file 
+        chown USERNAME.GROUPNAME file
 
 * 改变属组
 
+        chgrp GROUPNAME file,...
+
 * 修改文件的权限
 
-      chmod MODE file,...
-      -R：
-      --reference=/path/to/somefile
-      修改单个用户的权限：u,g,o,a
-      chmod 用户类别+|-MODE file,...
+        chmod MODE file,...
+        -R：
+        --reference=/path/to/somefile
+        修改单个用户的权限：u,g,o,a
+        chmod 用户类别+|-MODE file,...
 ***
