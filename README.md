@@ -140,7 +140,7 @@
 
 * [我的博客](http://codecc.xyz)
 
-* [读书笔记]()
+* [读书笔记](other/BookNotes/bookNotes.md)
 
 ***
 
