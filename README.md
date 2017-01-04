@@ -12,27 +12,29 @@
 
 * Linux系统
 
-	* [Linux基本操作]()
+  * [内核编译](operation/Linux/kernel.md)
 
-      * [内核编译](operation/Linux/kernel.md)
+  * [启动](operation/Linux/start.md)
 
-      * [启动](operation/Linux/start.md)
+  * [Linux目录结构](operation/Linux/directoryStructure.md)
 
-      * [Linux目录结构](operation/Linux/directoryStructure.md)
+  * [命令操作](operation/Linux/Command/operation.md)
 
-      * [命令操作](operation/Linux/Command/operation.md)
+* 应用服务
 
-	* [应用服务]()
+  * [Ssh]()
 
-		* [基础应用]()
+  * [Nginx](operation/Application/nginx.md)
 
-		* [web应用]()
+  * [Tomcat]()
 
-		* [高可用]()
+  * [Haproxy]()
 
-		* [监控报警]()
+  * [Keepalive]()
 
-* 运维进阶
+  * [Zabbix]()
+
+  * [Nagios]()
 
 ***
 
@@ -59,6 +61,8 @@
 * [PostgreSQL]()
 
 * [MySQL]()
+
+* [Redis]()
 
 ***
 
