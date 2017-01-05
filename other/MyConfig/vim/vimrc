@@ -10,10 +10,10 @@ set cursorline cursorcolumn
 " Leader
 let mapleader = ";"
 
-set backspace=2   " Backspace deletes like most programs in insert mode
-set laststatus=2  " Always display the status line
-set tabstop=2
-set shiftwidth=2
+set backspace=4   " Backspace deletes like most programs in insert mode
+set laststatus=4  " Always display the status line
+set tabstop=4
+set shiftwidth=4
 set nobackup
 set nowritebackup
 set noswapfile    " http://robots.thoughtbot.com/post/18739402579/global-gitignore#comment-458413287
