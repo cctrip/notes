@@ -4,7 +4,7 @@
 
 * 计算机基础
 
-	* [计算机组成](operation/Basic/constitute.md)
+    * [计算机组成](operation/Basic/constitute.md)
 
 	* [操作系统](operation/Basic/opreatingSystem.md)
 
@@ -12,29 +12,29 @@
 
 * Linux系统
 
-  * [内核编译](operation/Linux/kernel.md)
+    * [内核编译](operation/Linux/kernel.md)
 
-  * [启动](operation/Linux/start.md)
+    * [启动](operation/Linux/start.md)
 
-  * [Linux目录结构](operation/Linux/directoryStructure.md)
+    * [Linux目录结构](operation/Linux/directoryStructure.md)
 
-  * [命令操作](operation/Linux/Command/operation.md)
+    * [命令操作](operation/Linux/Command/operation.md)
 
 * 应用服务
 
-  * [Ssh]()
+	* [Ssh]()
 
-  * [Nginx](operation/Application/nginx.md)
+	* [Nginx](operation/Application/nginx.md)
 
-  * [Tomcat]()
+	* [Tomcat]()
 
-  * [Haproxy]()
+	* [Haproxy]()
 
-  * [Keepalive]()
+	* [Keepalive]()
 
-  * [Zabbix]()
+	* [Zabbix]()
 
-  * [Nagios]()
+	* [Nagios]()
 
 ***
 
