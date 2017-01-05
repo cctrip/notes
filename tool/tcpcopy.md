@@ -60,7 +60,7 @@ assistant server：辅助机器
 		
 	启动：
 
-		$ /usr/local/intercept/sbin/intercept -i eth0 -F tcp and src host TARGET_IP and src port 8087 -d
+		$ /usr/local/intercept/sbin/intercept -i eth0 -F tcp and src host TARGET_IP and src port TARGET_PORT -d
 
 3. 在online server安装tcpcopy服务
 
@@ -69,7 +69,7 @@ assistant server：辅助机器
 	安装：
 
 		$ cd tcpcopy
-		$ ./configure --prefix=/usr/local/intercept
+		$ ./configure --prefix=/usr/local/tcpcopy
 		$ make && make install
 
 	启动
