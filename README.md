@@ -126,6 +126,8 @@
 
 * [TCPCopy](tool/tcpcopy.md)
 
+* [Script](tool/Script/script.md)
+
 ***
 
 ## 架构之路
@@ -144,7 +146,7 @@
 
 * [学习方法](other/learnMethod.md)
 
-* [我的博客](http://codecc.xyz)
+* [我的博客](http://codecc.me)
 
 * [读书笔记](other/BookNotes/bookNotes.md)
 
