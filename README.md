@@ -64,7 +64,7 @@
 
 * [MySQL]()
 
-* [Redis](datebase/Redis/redis.md)
+* [Redis](database/Redis/redis.md)
 
 ***
 
