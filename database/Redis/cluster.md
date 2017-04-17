@@ -69,4 +69,14 @@
 ### 集群优化
 
 * 配置文件优化
+
 * 集群配置密码
+    
+        #redis.conf配置文件
+        requirepass 123456
+        masterauth 123456
+
+        #集群管理客户端
+        #/usr/local/lib/ruby/gems/2.4.0/gems/redis-3.3.3/lib/redis/client.rb
+        password => "123456"
+
