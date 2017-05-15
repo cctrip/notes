@@ -136,3 +136,103 @@ Flask 提供了 url_for() 辅助函数，它可以使用程序 URL 映射中保�
 
 ### WEB表单
 
+示例
+
+    pip install flask-wtf
+    from flask.ext.wtf import Form
+    from wtforms import StringField, SubmitField
+    from wtforms.validators import Required
+    class NameForm(Form):
+        name = StringField('What is your name?', validators=[Required()])
+        submit = SubmitField('Submit')
+
+表单渲染
+
+    {% import "bootstrap/wtf.html" as wtf %}
+    {{ wtf.quick_form(form) }}
+
+视图处理表单：
+
+    form = NameForm()
+    return render_template('index.html', form=form)
+
+***
+
+### 数据库
+
+初始化
+
+    pip install flask-sqlalchemy
+
+    from flask.ext.sqlalchemy import SQLAlchemy
+    basedir = os.path.abspath(os.path.dirname(__file__))
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] =\
+    'sqlite:///' + os.path.join(basedir, 'data.sqlite')
+    app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
+    db = SQLAlchemy(app)
+
+模型定义
+
+    class Role(db.Model):
+        __tablename__ = 'roles'
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(64), unique=True)
+        def __repr__(self):
+            return '<Role %r>' % self.name
+
+创建表
+
+    db.create_all()
+
+插入行
+
+    from hello import Role
+    admin_role = Role(name='Admin')
+    db.session.add(admin_role)
+    db.session.commit()
+
+***
+
+### 电子邮件
+
+    pip install flask-mail
+
+***
+
+### 项目结构
+
+多文件 Flask 程序的基本结构
+
+flasky
+
+* app/
+    * templates/
+    * static/
+    * main/
+        * __init__.py
+        * errors.py
+        * forms.py
+        * views.py
+    * __init__.py
+    * email.py
+    * models.py
+ * migrations/
+ * tests/
+    * __init__.py
+    * test*.py
+ * venv/
+ * requirements.txt
+ * config.py
+ * manage.py
+
+
+这种结构有 4 个顶级文件夹：
+* Flask 程序一般都保存在名为 app 的包中；
+* 和之前一样，migrations 文件夹包含数据库迁移脚本；
+* 单元测试编写在 tests 包中；
+* 和之前一样，venv 文件夹包含 Python 虚拟环境。
+同时还创建了一些新文件：
+* requirements.txt 列出了所有依赖包，便于在其他电脑中重新生成相同的虚拟环境；
+* config.py 存储配置；
+* manage.py 用于启动程序以及其他的程序任务。
