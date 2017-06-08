@@ -30,3 +30,5 @@
 * [tcp端口测试](tcptest.py)
 
 * [ssh登录测试](ssh.py)
+
+* [生成随机日志](log_output.py)
