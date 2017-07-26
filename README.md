@@ -26,43 +26,43 @@
 
 	* [Nginx](operation/Application/nginx.md)
 
-	* [Tomcat](operation/Application/tomcat.md)
+	* Tomcat
 
-	* [Haproxy]()
+	* Haproxy
 
-	* [Keepalive]()
+	* Keepalive
 
-	* [Zabbix]()
+	* Zabbix
 
-	* [Nagios]()
+	* Nagios
 
 ***
 
 ## 网络
 
-* [网络基础]()
+* 网络基础
 
 * [网络协议]()
 
-	* [TCP](network/Protocol/tcp.md)
+	* TCP
 
-	* [HTTP](network/Protocol/http.md)
+	* HTTP
 
-	* [DNS]()
+	* DNS
 
-	* [TLS]()
+	* TLS
 
-* [路由交换]()
+* 路由交换
 
 ***
 
 ## 数据库
 
-* [数据库基础]()
+* 数据库基础
 
 * [PostgreSQL](database/PostgreSQL/postgresql.md)
 
-* [MySQL]()
+* MySQL
 
 * [Redis](database/Redis/redis.md)
 
@@ -76,21 +76,17 @@
 
 	* [Git](development/RevisionControl/git.md)
 
-	* [svn](development/RevisionControl/svn.md)
-
 * [Shell](development/Shell/README.md)
 
 * [Python](development/Python/README.md)
 
-* [GoLang]()
+* GoLang
 
-* [Java]()
+* Java
 
 * [编程进阶]()
 
 	* [设计模式](development/Advanced/Design/README.md)
-
-	* [重构](development/Advanced/review.md)
 
 ***
 
@@ -102,17 +98,15 @@
 	
 	* [Snort](security/IDS/Snort/snort.md)
 
-	* [Ossec]()
+	* Ossec
 
-	* [tripware]()
+	* tripware
 
 ***
 
 ## 自动化
 
 * [Ansible](automation/Ansible/ansible.md)
-
-* [SaltStack](automation/SaltStack/saltStack.md)
 
 ***
 
@@ -127,10 +121,6 @@
 * [TCPCopy](tool/tcpcopy.md)
 
 * [Script](tool/Script/script.md)
-
-***
-
-## 架构之路
 
 ***
 
