@@ -129,12 +129,12 @@
 
 	实现，[详细代码](10.py)
 
-	>>> seen = set()
-	>>> for item in [1,3,5,9,1]:
-	...     if item not in seen:
-	...         seen.add(item)
-	>>> list(seen)
-	[1, 3, 5, 9]
+		>>> seen = set()
+		>>> for item in [1,3,5,9,1]:
+		...     if item not in seen:
+		...         seen.add(item)
+		>>> list(seen)
+		[1, 3, 5, 9]
 
 11. 命名一个分片
 
@@ -142,12 +142,12 @@
 
 	实现，[详细代码](11.py)
 
-	>>> record = '....................100          .......513.25     ..........'
-	>>> SHARES = slice(20,32)
-	>>> PRICE = slice(40,48)
-	>>> cost = int(record[SHARES]) * float(record[PRICE])
-	>>> print(cost)
-	51325.0
+		>>> record = '....................100          .......513.25     ..........'
+		>>> SHARES = slice(20,32)
+		>>> PRICE = slice(40,48)
+		>>> cost = int(record[SHARES]) * float(record[PRICE])
+		>>> print(cost)
+		51325.0
 
 12. 查找队列中最常出现的item
 
@@ -155,12 +155,12 @@
 
 	实现，[详细代码](12.py)
 
-	>>> from collections import Counter
-	>>> words = ['look', 'into', 'my', 'eyes', 'look', 'into', 'my', 'eyes','look', 'into', 'my', 'eyes', 'look', 'into', 'my', 'eyes',]
-	>>> word_counts = Counter(words)
-	>>> top_two = word_counts.most_common(2)
-	>>> print(top_two)
-	[('look', 4), ('into', 4)]
+		>>> from collections import Counter
+		>>> words = ['look', 'into', 'my', 'eyes', 'look', 'into', 'my', 'eyes','look', 'into', 'my', 'eyes', 'look', 'into', 'my', 'eyes',]
+		>>> word_counts = Counter(words)
+		>>> top_two = word_counts.most_common(2)
+		>>> print(top_two)
+		[('look', 4), ('into', 4)]
 
 13. 根据公共的key排序字典列表
 
@@ -168,13 +168,13 @@
 
 	实现，[详细代码](13.py)
 
-	>>> rows = [ {'fname':'Brain','uid':1003},
-	... {'fname':'Jhon','uid':1002},
-	... {'fname':'Alin','uid':1005}]
-	>>> from operator import itemgetter
-	>>> rows_by_uid = sorted(rows,key=itemgetter('uid'))
-	>>> print(rows_by_uid)
-	[{'fname': 'Jhon', 'uid': 1002}, {'fname': 'Brain', 'uid': 1003}, {'fname': 'Alin', 'uid': 1005}]
+		>>> rows = [ {'fname':'Brain','uid':1003},
+		... {'fname':'Jhon','uid':1002},
+		... {'fname':'Alin','uid':1005}]
+		>>> from operator import itemgetter
+		>>> rows_by_uid = sorted(rows,key=itemgetter('uid'))
+		>>> print(rows_by_uid)
+		[{'fname': 'Jhon', 'uid': 1002}, {'fname': 'Brain', 'uid': 1003}, {'fname': 'Alin', 'uid': 1005}]
 
 14. 排序不支持比较的对象
 
@@ -194,9 +194,9 @@
 
 	实现，[详细代码](16.py)
 
-	>>> mylist = [1, 4, 3, -2, 5, 0]
-	>>> [n for n in mylist if n > 0]
-	[1, 4, 3, 5]
+		>>> mylist = [1, 4, 3, -2, 5, 0]
+		>>> [n for n in mylist if n > 0]
+		[1, 4, 3, 5]
 
 17. 提取字典的子集
 
@@ -210,25 +210,25 @@
 
 	实现，[详细代码](18.py)
 
-	>>> from collections import namedtuple
-	>>> Subscriber = namedtuple('Subscriber', ['addr', 'joined'])
-	>>> sub = Subscriber('test@examole.com', '2017-07-31')
-	>>> sub
-	Subscriber(addr='test@examole.com', joined='2017-07-31')
-	>>> sub.addr
-	'test@examole.com'
-	>>> sub.joined
-	'2017-07-31'
+		>>> from collections import namedtuple
+		>>> Subscriber = namedtuple('Subscriber', ['addr', 'joined'])
+		>>> sub = Subscriber('test@examole.com', '2017-07-31')
+		>>> sub
+		Subscriber(addr='test@examole.com', joined='2017-07-31')
+		>>> sub.addr
+		'test@examole.com'
+		>>> sub.joined
+		'2017-07-31'
 
 19. 同时转换和减少数据
 
 	问题，您需要执行缩减功能(例如sum(),min(),max()),但首先需要转换或过滤数据.
 
 	实现，[详细代码](19.py)
-	>>> nums = [1,2,3,4,5]
-	>>> s = sum(x*x for x in nums)
-	>>> print(s)
-	55
+		>>> nums = [1,2,3,4,5]
+		>>> s = sum(x*x for x in nums)
+		>>> print(s)
+		55
 
 20. 将多个映射组合成单个映射
 
@@ -236,9 +236,9 @@
 
 	实现，[详细代码](20.py)
 
-	>>> a = {'x': 1, 'z': 3 }
-	>>> b = {'y': 2, 'z': 4 }
-	>>> from collections import ChainMap
-	>>> c = ChainMap(a,b)
-	>>> c
-	ChainMap({'x': 1, 'z': 3}, {'y': 2, 'z': 4})
+		>>> a = {'x': 1, 'z': 3 }
+		>>> b = {'y': 2, 'z': 4 }
+		>>> from collections import ChainMap
+		>>> c = ChainMap(a,b)
+		>>> c
+		ChainMap({'x': 1, 'z': 3}, {'y': 2, 'z': 4})
