@@ -22,6 +22,8 @@
 
 1. [数据和算法](CookBook/DataStructuresAndAlgorithms/README.md)
 
+2. [字符串和文本](CookBook/StringsAndText/README.md)
+
 ***
 
 ### 框架
