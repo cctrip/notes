@@ -86,6 +86,8 @@
 
 * [编程进阶]()
 
+	* [算法](development/Advanced/Algorithm/algorithm.md)
+
 	* [设计模式](development/Advanced/Design/README.md)
 
 ***
