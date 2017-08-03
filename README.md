@@ -82,8 +82,6 @@
 
 * GoLang
 
-* Java
-
 * [编程进阶]()
 
 	* [算法](development/Advanced/Algorithm/algorithm.md)
@@ -106,15 +104,13 @@
 
 ***
 
-## 自动化
+## 智能化
 
-* [Ansible](automation/Ansible/ansible.md)
+* [Ansible](intelligent/Ansible/ansible.md)
 
-***
+* [Docker](intelligent/Docker/docker.md)
 
-## 虚拟化
-
-* [Docker](virtualization/Docker/docker.md)
+* [kubernetes](intelligent/Kubernetes/kubernetes.md)
 
 ***
 
@@ -132,9 +128,7 @@
 
 * [我的环境配置](other/MyConfig/config.md)
 
-* [这些年碰到的问题](other/Solution/README.md)
-
-* [运维心得]()
+* [问题集锦](other/Solution/README.md)
 
 * [学习方法](other/learnMethod.md)
 
