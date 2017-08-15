@@ -4,7 +4,7 @@
 
 * Redis安装
 
-        wget http://download.redis.io/releases/redis-4.0.1.tar.gz
+      wget http://download.redis.io/releases/redis-4.0.1.tar.gz
 
 * 基础配置
 
