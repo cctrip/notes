@@ -4,12 +4,15 @@
 
 * 安装ansible
 
+      pip install ansible
+
 * 测试
     
-    echo "127.0.0.1" > ~/ansible_hosts
-    export ANSIBLE_INVENTORY=~/ansible_hosts
+      echo "127.0.0.1" > ~/ansible_hosts
 
-    ansible all -m ping --ask-pass
+      export ANSIBLE_INVENTORY=~/ansible_hosts
+
+      ansible all -m ping --ask-pass
 
 ### Inventory
 
@@ -17,33 +20,33 @@
 
     ansible_hosts 文件
 
-        [group1]
-        host1 
-        host2
+      [group1]
+      host1 
+      host2
 
-        [group2]
-        host3
-        host4
+      [group2]
+      host3
+      host4
 
-        ssh选项
-        ansible_port=5555(默认22)
-        ansible_host=172.16.0.101 
-        ansible_user=root(默认root)
-        ansible_connection=ssh(默认ssh)
-        ansible_ssh_pass=
+      ssh选项
+      ansible_port=5555(默认22)
+      ansible_host=172.16.0.101 
+      ansible_user=root(默认root)
+      ansible_connection=ssh(默认ssh)
+      ansible_ssh_pass=
 
-        host变量
-        http_port=80 
-        maxRequestsPerChild=808
+      host变量
+      http_port=80 
+      maxRequestsPerChild=808
 
-        group变量
-        [group1:vars]
-        ansible_port=33
+      group变量
+      [group1:vars]
+      ansible_port=33
 
-        group包含group
-        [group3:children]
-        group1
-        group2
+      group包含group
+      [group3:children]
+      group1
+      group2
 
 ***
 
