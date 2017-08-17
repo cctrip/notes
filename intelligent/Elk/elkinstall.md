@@ -60,17 +60,17 @@
 
 ### 配置
 
-1. 配置hosts
+* 配置hosts
 
-       #vim /etc/hosts
-       192.168.19.26 elk.cctest.com
+      #vim /etc/hosts
+      192.168.19.26 elk.cctest.com
 
-2. 生成SSL证书
+* 生成SSL证书
 
       cd /etc/pki/tls
       openssl req -subj '/CN=elk.cctest.com/' -x509 -days 3650 -batch -nodes -newkey rsa:2048 -keyout private/logstash-forwarder.key -out certs/logstash-forwarder.crt
 
-3. logstash配置
+* logstash配置
 
       #vim /etc/logstash/conf.d/02-beats-input.conf
       input {
@@ -102,7 +102,7 @@
       #重启logstash
       /bin/systemctl restart logstash.service
 
-4. filebeat配置
+* filebeat配置
 
       #vim /etc/filebeat/filebeat.yml
       filebeat:
@@ -125,13 +125,13 @@
       #
       systemctl start filebeat
 
-5. elasticsearch配置支持加载filebeat数据
+* elasticsearch配置支持加载filebeat数据
 
       curl -O https://gist.githubusercontent.com/thisismitch/3429023e8438cc25b86c/raw/d8c479e2a1adcea8b1fe86570e42abab0f10f364/filebeat-index-template.json
 
       curl -XPUT 'http://localhost:9200/_template/filebeat?pretty' -d@filebeat-index-template.json
 
-6. 浏览器打开kibana
+* 浏览器打开kibana
 
       http://localhost:5601/
 
