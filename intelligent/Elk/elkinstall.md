@@ -62,8 +62,8 @@
 
 1. 配置hosts
 
-      #vim /etc/hosts
-      192.168.19.26 elk.cctest.com
+        #vim /etc/hosts
+        192.168.19.26 elk.cctest.com
 
 2. 生成SSL证书
 
