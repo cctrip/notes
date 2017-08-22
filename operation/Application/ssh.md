@@ -4,7 +4,7 @@
 
 安全Shell（SSH）是一种加密网络协议，用于通过无安全网络安全地运行网络服务。
 
-### SSH协议
+#### SSH协议
 
 * 认证
 
@@ -12,7 +12,7 @@
 
 * 完整性
 
-### SSH属性
+#### SSH属性
 
 * 安全远程登录(Secure Remote Login )
 
@@ -26,17 +26,22 @@
 
 * 端口转发(Port Forwarding)
 
+#### 架构
+
+![arch](ssh-architecture.png)
+
+
 ***
 
 ### 基础操作
 
 1. 远程登录
 
-    ssh -l USERNAME HOST -p PORT
+      ssh -l USERNAME HOST -p PORT
 
 2. 文件传输
 
-    scp SOURCE DESTINATION
+      scp SOURCE DESTINATION
 
 3. 已知主机(known hosts)
 
@@ -49,7 +54,7 @@
     也可以自行进行更改，使用-e选项，ssh -e "#" HOST
 
 
-### 加密密钥认证(Authentication by Cryptographic Key)
+#### 加密密钥认证(Authentication by Cryptographic Key)
 
 密码认证方式的缺陷：
     
@@ -81,7 +86,21 @@ SSH身份使用一对密钥，一个私有密钥和一个公有密钥。私钥�
     * 使用ssh-copy-id 
         ssh-copy-id -i id_rsa.pub [user@]server_name
 
+***
 
+### SSH深入
+
+* 加密
+
+* 完整性
+
+* 认证
+
+* 授权
+
+* 转发
+
+#### 密码学入门
 
 
 
