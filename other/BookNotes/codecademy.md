@@ -55,7 +55,7 @@
 
 * 链接
 
-    link, href属性，属性提供更多元素内容的有关信息,在元素的开头标签中，由名称和值组成
+    链接, href属性，属性提供更多元素内容的有关信息,在元素的开头标签中，由名称和值组成
 
         <a href="https://example.com" target="_blank">content</a>
 
@@ -84,7 +84,28 @@
 
 ### CSS
 
+CSS是网页开发人员用来在网页上设计HTML内容的语言.
 
+在html文件中编写css代码
+
+在head元素中加入style元素
+
+        <head>
+          <style>
+            h2 {
+              font-family: Arial;
+            }
+          </style>
+        </head>
+
+在css文件中编写css代码
+在html文件链接css文件，放在html文件开头
+使用link元素 
+    * href属性 css文件地址
+    * type属性 描述文件类型
+    * rel属性  描述css和html文件的关系
+
+        link href="https://www.codecademy.com/stylesheets/style.css" type="text/css" rel="stylesheet">
 
 
 
