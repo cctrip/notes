@@ -42,12 +42,17 @@ Docker安装
     options
     * -v <local_dir>:<container_dir>
     * -p <local_port>:<container_port>
-    * -i
-    * -d
+    * -i 交互模式
+    * -d 后台运行
+    * -t 使用tty
 
 * docker ps 查看容器
 
 * docker images  查看镜像
+
+* docker inspect container_name  查看容器配置
+
+* docker build -t tag -f /PATH/Dockerfile   通过Dockerfile文件构建镜像
 
 ***
 
@@ -62,6 +67,8 @@ Dockerfile编写
     RUN command                  #执行命令
 
     COPY <local_file> <container_path> #拷贝本地文件到容器
+
+    ENTRYPOINT                   #执行启动命令
 
     CMD
 
