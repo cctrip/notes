@@ -107,6 +107,42 @@ CSS是网页开发人员用来在网页上设计HTML内容的语言.
 
         link href="https://www.codecademy.com/stylesheets/style.css" type="text/css" rel="stylesheet">
 
+#### color
+
+* foregroud
+
+    前景色是元素出现的颜色，color属性表示前景色 \
+
+* background
+
+    background-color表示背景色。
+
+* named colors
+
+    [147 named colors](http://www.colors.commutercreative.com/grid/)
+
+    color: named colors
+
+* RGB colors
+
+    RGB(Red,Green,Blue)
+    color: rgb(123,20.233)
+
+* Hex colors
+
+    color: #09AA34
+
+* HSL colors
+
+    HSL(Hue, Saturation, Lightness)
+    color: hsl(182, 20%, 50%)
+
+#### font
+
+
+
+
+
 
 
 
