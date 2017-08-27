@@ -139,6 +139,47 @@ CSS是网页开发人员用来在网页上设计HTML内容的语言.
 
 #### font
 
+* font-family
+
+    更改字体系列，font-family: "Courier New";
+
+* fallback fonts
+
+    当指定的字体不存在时，使用系统预先安装的字体，font-family: fonts-name, serif;
+
+* font-size
+
+    更改字体大小，font-size: 18px; 三种大小单位：px, em, %;
+
+* line height
+
+    更改行高，font-height: 1.5em;
+
+* word spacing
+
+    字间距，word-spacing: 0.3em;
+
+* letter spacing
+
+    字母间距：letter-spacing: 0.3em;
+
+* font weight
+
+    更改字体粗细，font-weight: bold;
+
+* font style
+
+    字体风格，font-style: italic;
+
+* text transformation
+
+    内容转型: text-transform: uppercase;
+
+* text alignment
+
+    文本对齐: text-align: right;
+
+***
 
 
 
