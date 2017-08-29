@@ -41,3 +41,39 @@ k8s是一个开源系统，它可以被用于自动部署，扩展和管理容�
     基于kubernetes安装包部署kubernetes集群环境。
 
 
+***
+
+### Objects
+
+
+#### basic objects
+
+* Pod
+
+* Service
+
+* Volume
+
+* Namespace
+
+#### controllers
+
+基于basic objects，提供额外的功能。
+
+* ReplicaSet
+
+* Deployment
+
+* StatefulSet
+
+* DaemonSet
+
+* Job
+
+***
+
+### Control Plane
+
+* Kubernetes Master
+
+* Kubernetes Nodes
