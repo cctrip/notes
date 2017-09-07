@@ -3,6 +3,8 @@
 
 ### vim
 
+  * [配置指南](vim/vimconf.md)
+
   * [基础配置](vim/vimrc)
       
   * [插件配置](vim/vimrc.bundles)
