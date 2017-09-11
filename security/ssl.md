@@ -225,7 +225,7 @@ OpenSSL是一个通用的命令行工具，可用于与公钥基础设施（PKI�
 
 ***
 
-### 生成私钥
+#### 生成私钥
 
     #创建私钥文件
     openssl genrsa -des3 -out domain.key 2048
@@ -234,3 +234,23 @@ OpenSSL是一个通用的命令行工具，可用于与公钥基础设施（PKI�
     openssl rsa -check -in domain.key
 
 ***
+
+#### 证书格式转换
+
+    #PEM转DER
+    openssl x509 -in domain.crt -outform der -out domain.der
+
+    #DER转PEM
+    openssl x509 -inform der -in domain.der -out domain.crt
+
+    #PEM转PKCS7
+    openssl crl2pkcs7 -nocrl -certfile domain.crt -certfile ca-chain.crt -out domain.p7b
+
+    #PKCS7转PEM
+    openssl pkcs7 -in domain.p7b -print_certs -out domain.crt
+
+    #PEM转PKCS12
+    openssl pkcs12 -inkey domain.key -in domain.crt -export -out domain.pfx
+
+    #PKCS12转PEM
+    openssl pkcs12 -in domain.pfx -nodes -out domain.combined.crt
