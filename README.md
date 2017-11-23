@@ -56,7 +56,7 @@
 
 * [PostgreSQL](database/PostgreSQL/postgresql.md)
 
-* MySQL
+* [MySQL](database/Mysql/mysql.md)
 
 * [Redis](database/Redis/redis.md)
 
