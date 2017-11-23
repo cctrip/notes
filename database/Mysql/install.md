@@ -47,7 +47,7 @@
 
 * 数据初始化
 
-    * /etc/my.cnf文件配置
+/etc/my.cnf文件配置
 
         [client]
         port=3306
@@ -61,7 +61,7 @@
         log-error=/cache1/mysql/log/mysqld.log
         pid-file=/cache1/mysql/log/mysqld.pid
 
-    * 数据初始化
+数据初始化
 
         shell> cd /cache1/mysql
         shell> mkdir data log
