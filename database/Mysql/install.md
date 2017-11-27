@@ -49,31 +49,31 @@
 
 /etc/my.cnf文件配置
 
-      [client]
-      port=3306
-      socket=/tmp/mysql.sock
+    [client]
+    port=3306
+    socket=/tmp/mysql.sock
 
-      [mysqld]
-      port=3306
-      socket=/tmp/mysql.sock
-      datadir=/cache1/mysql/data
-      symbolic-links=0
-      log-error=/cache1/mysql/log/mysqld.log
-      pid-file=/cache1/mysql/log/mysqld.pid
+    [mysqld]
+    port=3306
+    socket=/tmp/mysql.sock
+    datadir=/cache1/mysql/data
+    symbolic-links=0
+    log-error=/cache1/mysql/log/mysqld.log
+    pid-file=/cache1/mysql/log/mysqld.pid
 
 数据初始化
 
-      shell> cd /cache1/mysql
-      shell> mkdir data log
-      shell> chown -R mysql:mysql data
-      shell> chown -R mysql:mysql log
-      shell> bin/mysqld --initialize --user=mysql
-      shell> cp support-files/mysql.service /etc/init.d/mysqld
-      shell> /etc/init.d/mysqld start
-      shell> mysql -uroot -p
+    shell> cd /cache1/mysql
+    shell> mkdir data log
+    shell> chown -R mysql:mysql data
+    shell> chown -R mysql:mysql log
+    shell> bin/mysqld --initialize --user=mysql
+    shell> cp support-files/mysql.service /etc/init.d/mysqld
+    shell> /etc/init.d/mysqld start
+    shell> mysql -uroot -p
 
-      mysql> ALTER USER user IDENTIFIED BY 'new_password';
-      mysql> SELECT User, Host, HEX(authentication_string) FROM mysql.user;
+    mysql> ALTER USER user IDENTIFIED BY 'new_password';
+    mysql> SELECT User, Host, HEX(authentication_string) FROM mysql.user;
 
 
 
