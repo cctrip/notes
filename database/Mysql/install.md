@@ -54,6 +54,7 @@
     socket=/tmp/mysql.sock
 
     [mysqld]
+    bind-address=0.0.0.0
     port=3306
     socket=/tmp/mysql.sock
     datadir=/cache1/mysql/data
@@ -72,7 +73,8 @@
     shell> /etc/init.d/mysqld start
     shell> mysql -uroot -p
 
-    mysql> ALTER USER user IDENTIFIED BY 'new_password';
+    mysql> ALTER USER 'root'@'localhost' IDENTIFIED BY 'new_password';
+    mysql> SET PASSWORD = PASSWORD('your_new_password');
     mysql> SELECT User, Host, HEX(authentication_string) FROM mysql.user;
 
 
