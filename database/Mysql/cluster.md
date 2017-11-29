@@ -57,6 +57,11 @@ Replication 帐号创建
     mysql> START SLAVE;
     mysql> SHOW SLAVE STATUS\G;
 
+从库切换成主库
+
+    mysql> SHOW PROCESSLIST;
+    mysql> RESET MASTER;
+
 ***
 
 ### Master-Master
