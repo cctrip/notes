@@ -1,0 +1,23 @@
+---
+#file: tomcat jdk.yml
+- name: Check java directory exists
+  stat: path=/usr/java
+  register: jpd
+
+- name: Create directory when java directory not exists
+  file: path=/usr/java state=directory mode=0755
+  when: jpd.stat.exists == false
+
+- name: uncompress jdk{{ java_version }} file to remote server
+  unarchive: src=jdk{{ java_version }}.tar.gz dest=/usr/java/
+
+- name: Create link file to jdk directory
+  file: src=/usr/java/jdk{{ java_version }} dest=/usr/java/latest state=link
+
+- name: Add Java Environment variable to /etc/profile
+  lineinfile: path=/etc/profile line={{ item }}
+  with_items:
+  - '#Java Environment'
+  - export JAVA_HOME=/usr/java/latest
+  - export JRE_HOME=$JAVA_HOME/jre
+  - export PATH=$JAVA_HOME/bin:$JRE_HOME/bin:$PATH

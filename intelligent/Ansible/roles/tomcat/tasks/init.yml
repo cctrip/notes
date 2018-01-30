@@ -1,0 +1,75 @@
+---
+#file: tomcat init.yml
+- name: Check {{ tomcat_dir }} directory exists
+  stat: path={{ tomcat_dir }}
+  register: td
+
+- name: Create directory when {{ tomcat_dir }} directory not exists
+  file: path={{ tomcat_dir }} state=directory mode=0755
+  when: td.stat.exists == false
+
+- name: Check cronolog file exists
+  stat: path=/usr/local/sbin/cronolog
+  register: cf
+
+- name: Copy cronolog source file to remote server
+  copy: src=cronolog.tar.gz dest=/usr/local/src
+  when: cf.stat.exists == false
+
+- name: Uncompress cronolog.tar.gz
+  unarchive: src=/usr/local/src/cronolog.tar.gz dest=/usr/local/src/ remote_src=yes
+  when: cf.stat.exists == false
+
+- name: configure cronolog source file
+  command: ./configure
+  args:
+    chdir: /usr/local/src/cronolog
+  when: cf.stat.exists == false
+
+- name: Compile cronolog source file
+  make: chdir=/usr/local/src/cronolog target=install
+  when: cf.stat.exists == false
+
+- name: Copy tomcat container file to remote server
+  unarchive: src=apache-tomcat-{{ tomcat_version }}.tar.gz dest={{ tomcat_dir }}
+
+- name: Rename tomcat directory
+  command: mv {{ tomcat_dir }}/apache-tomcat-{{ tomcat_version }} {{ tomcat_dir }}/{{ product }}-{{ project }}
+
+- name: Clear all tomcat project
+  file: path={{ tomcat_dir }}/{{ product }}-{{ project }}/webapps/ state=absent
+
+- name: Create webapps directory
+  file: path={{ tomcat_dir }}/{{ product }}-{{ project }}/webapps/ state=directory
+
+- name: Generate online package
+  local_action: shell /cache1/ansible/test/generate_package.sh {{ product }} {{ project }}
+
+- name: Copy file to remote server
+  copy: src=/cache1/ansible/test/packages/{{ product }}/{{ project }}.tar.gz dest=/usr/local/src/
+
+- name: Uncompress {{ project }} file and copy to remote server
+  unarchive: src=/usr/local/src/{{ project }}.tar.gz dest={{ tomcat_dir }}/{{ product }}-{{ project }}/webapps/ remote_src=yes
+
+- name: Generate catalina.sh
+  template: src=catalina-{{ tomcat_version }}.j2 dest={{ tomcat_dir }}/{{ product }}-{{ project }}/bin/catalina.sh
+
+- name: Generate server.xml
+  template: src=server-{{ tomcat_version }}.j2 dest={{ tomcat_dir }}/{{ product }}-{{ project }}/conf/server.xml
+
+- name: Change owner for {{ project }} file
+  file: path={{ tomcat_dir }}/{{ product }}-{{ project }} owner=webrunner group=webrunner recurse=yes
+
+- name: Check tomcat-service scripts file exists
+  stat: path=/etc/init.d/tomcat-service
+  register: ts
+
+- name: Copy tomcat-service scripts to remote server when tomcat-service scripts not exists
+  copy: src=tomcat-service dest=/etc/init.d/tomcat-service mode=0755
+  when: ts.stat.exists == false
+
+#- name: Start {{ project }} service on remote server
+#  shell: /etc/init.d/tomcat-service {{ product }}-{{ project }} start
+
+- name: Delete source package from remote server
+  file: path=/usr/local/src/{{ project }}.tar.gz state=absent

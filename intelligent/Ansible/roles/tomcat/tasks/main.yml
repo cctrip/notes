@@ -1,0 +1,14 @@
+---
+#file: tomcat main.yml
+- include_tasks: init.yml
+  tags:
+    - init
+- include_tasks: deploy.yml
+  tags:
+    - deploy
+- include_tasks: jdk.yml
+  tags:
+    - jdk
+- include_tasks: restore.yml
+  tags:
+    - restore
