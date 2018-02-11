@@ -15,9 +15,9 @@
       rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch
 
       #vim /etc/yum.repo.d/elk.repo
-      [elasticsearch-5.x]
-      name=Elasticsearch repository for 5.x packages
-      baseurl=https://artifacts.elastic.co/packages/5.x/yum
+      [elasticsearch-6.x]
+      name=Elasticsearch repository for 6.x packages
+      baseurl=https://artifacts.elastic.co/packages/6.x/yum
       gpgcheck=1
       gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch
       enabled=1
@@ -105,31 +105,26 @@
 * filebeat配置
 
       #vim /etc/filebeat/filebeat.yml
-      filebeat:
-        prosepctors:
-          path:
-            - /usr/local/nginx/logs/*.log
+      filebeat.prospectors:
+      - type: log
+      enabled: true
+      paths:
+        - /var/log/messages*
 
-          input_type: log
+      filebeat.config.modules:
+        path: ${path.config}/modules.d/*.yml
+        reload.enabled: false
 
-      output:
-        #注释掉elasticsearch相关
-        logstash:
-          hosts: ["elk.cctest.com:5044"]
+      setup.template.settings:
+        index.number_of_shards: 3
 
-          bulk_max_size: 1024
-
-          tls:
-            certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
+      output.logstash:
+        hosts: ["elk.cctest.com:5044"]
+        ssl.certificate_authorities: ["/etc/pki/tls/certs/logstash-forwarder.crt"]
 
       #
       systemctl start filebeat
 
-* elasticsearch配置支持加载filebeat数据
-
-      curl -O https://gist.githubusercontent.com/thisismitch/3429023e8438cc25b86c/raw/d8c479e2a1adcea8b1fe86570e42abab0f10f364/filebeat-index-template.json
-
-      curl -XPUT 'http://localhost:9200/_template/filebeat?pretty' -d@filebeat-index-template.json
 
 * 浏览器打开kibana
 
