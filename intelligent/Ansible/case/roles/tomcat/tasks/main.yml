@@ -12,3 +12,7 @@
 - include_tasks: restore.yml
   tags:
     - restore
+
+- include_tasks: update.yml
+  tags:
+    - update
