@@ -1,0 +1,70 @@
+---
+#file: cluster.yml
+- name: Check ruby command exists
+  stat: path=/usr/local/bin/ruby
+  register: rc
+
+- name: Copy ruby-{{ ruby_version }} source file to remote server
+  copy: src=ruby-{{ ruby_version }}.tar.gz dest=/usr/local/src
+  when: rc.stat.exists == false
+
+- name: Uncompress ruby-{{ ruby_version }}.tar.gz
+  unarchive: src=/usr/local/src/ruby-{{ ruby_version }}.tar.gz dest=/usr/local/src/ remote_src=yes
+  when: rc.stat.exists == false
+
+- name: configure ruby-{{ ruby_version }} source file
+  command: ./configure
+  args:
+    chdir: /usr/local/src/ruby-{{ ruby_version }}
+  when: rc.stat.exists == false
+
+- name: Compile ruby-{{ ruby_version }} source file
+  make: chdir=/usr/local/src/ruby-{{ ruby_version }} target=install
+  when: rc.stat.exists == false
+
+- name: Delete ruby-{{ ruby_version }} source file
+  file: path={{ item }} state=absent
+  with_items:
+  - /usr/local/src/ruby-{{ ruby_version }}.tar.gz
+  - /usr/local/src/ruby-{{ ruby_version }}
+  when: rc.stat.exists == false
+
+- name: Check gem command exists
+  stat: path=/usr/local/bin/ruby
+  register: gc
+
+- name: Copy rubygems-{{ rubygems_version }} source file to remote server
+  copy: src=rubygems-{{ rubygems_version }}.tgz dest=/usr/local/src
+  when: gc.stat.exists == false
+
+- name: Uncompress rubygems-{{ rubygems_version }}.tgz
+  unarchive: src=/usr/local/src/rubygems-{{ rubygems_version }}.tgz dest=/usr/local/src/ remote_src=yes
+  when: gc.stat.exists == false
+
+- name: Delete rubygems-{{ rubygems_version }} source file
+  file: path={{ item }} state=absent
+  with_items:
+  - /usr/local/src/rubygems-{{ rubygems_version }}.tgz
+  - /usr/local/src/rubygems-{{ rubygems_version }}
+  when: gc.stat.exists == false
+
+- name: Install gem
+  command: ruby setup.rb --no-rdoc --no-ri
+  args:
+    chdir: /usr/local/src/rubygems-{{ rubygems_version }}
+  when: gc.stat.exists == false
+
+- name: Install redisgem
+  command: gem install redis
+
+- name: Copy redis-trib.rb file to remote server
+  copy: src=redis-trib.rb dest=/usr/local/src mode=0755
+
+- name: Copy redis cluster create script file to remote server
+  template: src=cluster.j2 dest=/usr/local/src/cluster.exp
+
+- name: Alter ruby redis client password
+  command: sed -i 's#:password => nil#:password => "{{ PASSWORD }}"#g' /usr/local/lib/ruby/gems/{{ ruby_version }}/gems/redis-{{ redisgems_version }}/lib/redis/client.rb
+
+- name: create redis cluster
+  command: expect /usr/local/src/cluster.exp
