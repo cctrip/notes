@@ -1,0 +1,91 @@
+---
+#file: init.yml
+- name: Check zabbix command exists
+  stat: path={{ zabbix_dir }}/sbin/zabbix_server
+  register: zc
+
+- name: Copy zabbix compress file to remote server
+  copy: src=zabbix-{{ zabbix_version }}.tar.gz dest=/usr/local/src
+  when: zc.stat.exists == false
+
+- name: Uncompress zabbix-{{ zabbix_version }}.tar.gz
+  unarchive: src=/usr/local/src/zabbix-{{ zabbix_version }}.tar.gz dest=/usr/local/src/ remote_src=yes
+  when: zc.stat.exists == false
+
+- name: Install required packages of zabbix
+  yum: state=latest name={{ item }}
+  with_items:
+  - make
+  - gcc 
+  - gcc-c++
+  - net-snmp 
+  - net-snmp-devel
+  - curl-devel
+  when: zc.stat.exists == false
+
+- name: Create the group zabbix
+  group: name=zabbix state=present
+  when: zc.stat.exists == false
+
+- name: Create the user zabbix
+  user: name=zabbix group=zabbix
+  when: zc.stat.exists == false
+
+- name: configure zabbix source file
+  command: ./configure --prefix={{ zabbix_dir }} --enable-server --enable-proxy --enable-agent --enable-java --with-mysql={{ mysql_dir }}/bin/mysql_config --with-net-snmp --with-libcurl
+  args:
+    chdir: /usr/local/src/zabbix-{{ zabbix_version }}
+  when: zc.stat.exists == false
+
+- name: Compile zabbix source file
+  make: chdir=/usr/local/src/zabbix-{{ zabbix_version }} target=install
+  when: zc.stat.exists == false
+
+- name: Create zabbix database
+  command: ./mysql -e "create database zabbix default charset utf8;"
+  args:
+    chdir: "{{ mysql_dir }}/bin"
+
+- name: Add zabbix user for database
+  command: ./mysql -e "grant all on zabbix.* to zabbix@localhost identified by 'zabbix';"
+  args:
+    chdir: "{{ mysql_dir }}/bin"
+
+- name: Excute schema sql
+  command: ./mysql -uroot zabbix -e "source /usr/local/src/zabbix-{{ zabbix_version }}/database/mysql/schema.sql"
+  args:
+    chdir: "{{ mysql_dir }}/bin"
+
+- name: Excute images sql
+  command: ./mysql -uroot zabbix -e "source /usr/local/src/zabbix-{{ zabbix_version }}/database/mysql/images.sql"
+  args:
+    chdir: "{{ mysql_dir }}/bin"
+
+- name: Excute images sql
+  command: ./mysql -uroot zabbix -e "source /usr/local/src/zabbix-{{ zabbix_version }}/database/mysql/data.sql"
+  args:
+    chdir: "{{ mysql_dir }}/bin"
+
+- name: Generate zabbix_server.conf
+  template: src=zabbix_server.conf.j2 dest={{ zabbix_dir }}/etc/zabbix_server.conf
+
+- name: Generate zabbix_server
+  template: src=zabbix_server.j2 dest=/etc/init.d/zabbix_server mode=0755
+
+- name: Check site directory exists
+  stat: path=/var/www
+  register: sd
+
+- name: Create site directory
+  file: path=/var/www state=directory mode=0755
+  when: sd.stat.exists == false
+
+- name: Copy site file to remote server
+  command: cp -a /usr/local/src/zabbix-{{ zabbix_version }}/frontends/php /var/www/zabbix
+
+- name: Delete zabbix source file
+  file: path={{ item }} state=absent
+  with_items:
+  - /usr/local/src/zabbix-{{ zabbix_version }}
+  - /usr/local/src/zabbix-{{ zabbix_version }}.tar.gz
+  when: zc.stat.exists == false
