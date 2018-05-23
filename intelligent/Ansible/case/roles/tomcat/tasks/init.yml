@@ -23,6 +23,14 @@
 - name: Check cronolog file exists
   stat: path=/usr/local/sbin/cronolog
   register: cf
+  
+- name: Install required packages of cronolog
+  yum: state=latest name={{ item }}
+  with_items:
+  - make
+  - gcc
+  - gcc-c++
+  when: cf.stat.exists == false
 
 - name: Copy cronolog source file to remote server
   copy: src=cronolog.tar.gz dest=/usr/local/src
