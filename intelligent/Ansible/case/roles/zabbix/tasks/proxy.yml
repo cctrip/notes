@@ -56,6 +56,9 @@
   args:
     chdir: "{{ mysql_dir }}/bin"
 
+- name: Greate zabbix log directory
+  file: path={{ zabbix_dir }}/log state=directory mode=0755 owner=zabbix group=zabbix
+
 - name: Generate zabbix_proxy.conf
   template: src=zabbix_proxy.conf.j2 dest={{ zabbix_dir }}/etc/zabbix_proxy.conf
 
