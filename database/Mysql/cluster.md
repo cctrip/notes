@@ -70,7 +70,7 @@ Replication 帐号创建
 /etc/my.cnf 增加配置
     
     [mysqld]
-    server-id=1
+    server-id=1 (Master2配置成2)
     log-bin=/cache1/mysql/log/mysql-bin.log
     #忽略系统库
     binlog-ignore-db=mysql
