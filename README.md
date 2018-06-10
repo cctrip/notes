@@ -28,7 +28,6 @@
 
 	* [Tomcat](operation/Application/tomcat.md)
 
-    * [Zookeeper](operation/Application/zookeeper.md)
 
 ***
 
@@ -99,6 +98,14 @@
 	* Ossec
 
 	* tripware
+
+***
+
+## 大数据
+
+* 基础概念
+
+* [Zookeeper](bigdata/Zookeeper/zookeeper.md)
 
 ***
 
