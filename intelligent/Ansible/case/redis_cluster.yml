@@ -1,15 +1,15 @@
 ---
 #file: redis.yml
 - name: Install Redis Environment
-  hosts: test-31
+  hosts: test-198
   vars:
     redis_version: 4.0.8
     ruby_version: 2.5.0
     rubygems_version: 2.7.6
     redisgems_version: 4.0.1
     PASSWORD: test@2018
-    master_ip: 192.168.31.14
-    slave_ip: 192.168.31.16
+    master_ip: 192.168.10.27
+    slave_ip: 192.168.10.28
 
   roles: 
     - redis

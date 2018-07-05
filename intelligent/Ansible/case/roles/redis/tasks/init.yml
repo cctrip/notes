@@ -39,7 +39,7 @@
   when: dt.stat.exists == false
 
 - name: Generate redis.conf
-  template: src=redis.j2 dest={{ redis_dir }}/{{ RUN_PORT }}/redis.conf
+  template: src=redis_{{ redis_mode }}.j2 dest={{ redis_dir }}/{{ RUN_PORT }}/redis.conf
 
 - name: Change owner for {{ RUN_PORT }} file
   file: path={{ redis_dir }}/{{ RUN_PORT }} owner=nobody group=nobody recurse=yes
