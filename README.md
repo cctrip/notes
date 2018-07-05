@@ -18,7 +18,7 @@
 
     * [Linux目录结构](operation/Linux/directoryStructure.md)
 
-    * [命令操作](operation/Linux/Command/operation.md)
+    * [Linux操作指南](operation/Linux/GuideBook/operation.md)
 
 * 应用服务
 
