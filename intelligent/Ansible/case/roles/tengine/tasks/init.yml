@@ -29,6 +29,8 @@
   - zlib 
   - zlib-devel
   - pcre-devel
+  - perl
+  - perl-devel
   when: nc.stat.exists == false
 
 - name: configure tengine source file

@@ -21,7 +21,7 @@ do
 	if [ ! -z ${PIDS} ];then
 		echo "The service ${pro} is started"
 	else
-		su -l webrunner -c "$WEBPATH/${pro}/bin/startup.sh" 2>&1 > /dev/null
+		su -l webrunner -c "$WEBPATH/${pro}/bin/startup.sh" > /dev/null 2>&1
 		RETVAL=$?
 		if [ $RETVAL -eq 0 ];then
 			log_success_msg "Starting ${pro}"
