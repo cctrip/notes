@@ -4,7 +4,7 @@
 ### 环境初始化
 
 	python3 install virtualenv
-	cd ccops
+	cd demosite
 	mkdir py3env
 	virtualenv ./py3env/
 	source py3env/bin/activate
@@ -14,16 +14,27 @@
 
 ### 项目初始化
 
-	django-admin startproject ccops
+	django-admin startproject demosite
 	python manage.py runserver
+	python manage.py startapp polls
 
 
 ### 项目结构
 
-	ccops/
+	demosite/
 		manage.py
-		ccops/
+		demosite/
 			__init__.py
 			settings.py
 			urls.py
 			wsgi.py
+		polls/
+			__init__.py
+			admin.py
+			apps.py
+			migrations/
+				__init__.py
+			models.py
+			tests.py
+			views.py
+

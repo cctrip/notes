@@ -143,5 +143,7 @@
 
 * [读书笔记](other/BookNotes/bookNotes.md)
 
+* [翻译](other/Translate/translate.md)
+
 ***
 
