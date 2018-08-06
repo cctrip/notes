@@ -1,0 +1,9 @@
+zk_version: 3.4.12
+work_dir: /cache1
+zk_port: 2181
+
+dirs:
+  zookeeper:
+    - '/var/lib/zookeeper'
+    - '/etc/zookeeper'
+    - '/var/log/zookeeper'
