@@ -107,7 +107,7 @@
 
 * [基础概念](bigdata/Basic/README.md)
 
-* [Zookeeper](bigdata/Zookeeper/zookeeper.md)
+* [Zookeeper](bigdata/Zookeeper/README.md)
 
 ***
 
