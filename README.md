@@ -109,6 +109,8 @@
 
 * [Zookeeper](bigdata/Zookeeper/README.md)
 
+* [Kafka](bigdata/Kafka/README.md)
+
 ***
 
 ## 智能化
