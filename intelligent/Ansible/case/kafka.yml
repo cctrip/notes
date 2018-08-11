@@ -1,0 +1,6 @@
+---
+- hosts: kafka
+  gather_facts: True
+
+  roles:
+    - { role: roles/kafka }
