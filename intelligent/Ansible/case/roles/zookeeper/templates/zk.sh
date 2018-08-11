@@ -2,12 +2,11 @@
 source /etc/profile
 
 zkServer={{ work_dir }}/zookeeper-{{ zk_version }}/bin/zkServer.sh
-zkCfg=/etc/zookeeper/zoo.cfg
+zkCfg={{ dirs['conf_dir'][0] }}/zoo.cfg
 
 function start(){
 	PID=$(jps | grep -i QuorumPeerMain | awk '{print $1}')
-	jps | grep -i QuorumPeerMain >/dev/null
-	if [ $? -ne 0 ];then
+	if [ -z "${PID}" ];then
 		${zkServer} start ${zkCfg} &
 	else
 		echo "Zookeeper is running (pid $PID)"

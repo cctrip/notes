@@ -35,7 +35,9 @@
 - name: Create zookeeper data directory
   file: path={{ item }} state=directory mode=0755
   with_items:
-    - "{{ dirs['zookeeper'] }}"
+    - "{{ dirs['data_dir'] }}"
+    - "{{ dirs['conf_dir'] }}"
+    - "{{ dirs['log_dir'] }}"
 
 - name: Generate zookeepr configuration file
   template: src={{ item }} dest=/etc/zookeeper/
@@ -61,7 +63,9 @@
 - name: Change owner for zookeeper data directory
   file: path={{ item }} owner=zookeeper group=zookeeper recurse=yes
   with_items:
-    - "{{ dirs['zookeeper'] }}"
+    - "{{ dirs['data_dir'] }}"
+    - "{{ dirs['conf_dir'] }}"
+    - "{{ dirs['log_dir'] }}"
 
 - name: Start zookeeper service
   shell: /etc/init.d/zk.sh start
