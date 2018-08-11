@@ -91,10 +91,16 @@ Playbook是Ansible的配置，部署和编排语言，他们可以描述您希�
 
 ### roles
 
+
+
 ***
 
 ### 案例
 
-* tomcat
+* [tomcat](case/tomcat-project.yml)
 
-* docker
+* [tengine](case/tengine.yml)
+
+* [zookeeper](case/zookeeper.yml)
+
+* [kafka](case/kafka.yml)
