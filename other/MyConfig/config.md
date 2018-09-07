@@ -16,3 +16,9 @@
 ### tmux
 
   * [基础配置](tmux/tmux.conf)
+
+***
+
+### xshell
+
+  * [颜色配置](xshell/color.xcs)
