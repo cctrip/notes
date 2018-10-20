@@ -1,5 +1,41 @@
 # 技术知识点
 
+## 硬件
+
+### 1. 机器型号
+
+```markdown
+dmidecode | awk -F':' '/Product Name/{print $2}'
+```
+
+### 2. CPU信息
+
+```
+#获取逻辑CPU数
+awk -F':' '/name/{print $2}' /proc/cpuinfo | wc -l
+#获取CPU型号
+awk -F':' '/name/{print $2}' /proc/cpuinfo | uniq
+#获取物理cpu数
+grep "physical id" /proc/cpuinfo | sort | uniq | wc -l
+```
+
+### 3. 内存信息
+
+```
+#获取内存大小
+free -h
+#内存物理信息
+dmidecode -t memory
+```
+
+### 4. 磁盘信息
+
+```
+
+```
+
+
+
 ## 系统
 
 ***
