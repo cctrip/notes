@@ -92,7 +92,85 @@ dmidecode -t memory
 
 ***
 
-### WEB
+## WEB
+
+### 1. CDN
+
+```
+1. client请求www.cctest.com
+2. www.cctest.com CNAME 到 cctest.cdncache.com
+3. CDN内部根据源IP得到离源IP最近的Cache服务器IP，并返回给client
+4. client向Cache服务器发起请求
+5. 请求内容存在，直接返回给client
+6. 请求内容不存在，Cache服务器向RealServer请求内容
+7. Cache服务器缓存RealServer的内容，并将内容返回给client
+```
+
+### 2.Lvs
+
+四层负载均衡
+
+```
+1. client向LVS发起请求
+2. LVS根据路由模式和调度算法分配realserver
+3. client向realserver发起请求
+```
+
+路由模式:
+
+* NAT
+
+  ```
+  1. client request load balance
+  2. load balance 选择一台 realserver
+  3. 更改packet的dest ip port 为realserver的ip port
+  4. realserver接收并返回请求
+  5. load balance 更改packet的source ip port 为 loadbalance的ip port
+  ```
+
+* DR
+
+  ```
+  1. client request load balance
+  2. load balance 选择一台 realserver
+  3. 更改目的mac地址，转发到realserver
+  4. realserver接受请求，返回给client
+  ```
+
+* TUN
+
+  ```
+  1. client request load balance
+  2. load balance 选择一台 realserver
+  3. 通过tunnel将请求转发给realserver
+  4. realserver接受请求，返回给client
+  ```
+
+
+调度算法：
+
+```
+1. rr
+2. wrr
+3. lc
+4. wlc
+5. lblc
+6. lblcr
+7. dh
+8. sh
+9. sed
+10. nq
+```
+
+
+
+### 3.Nginx
+
+WEB服务器，七层负载，反向代理
+
+### 4.Tomcat
+
+
 
 ***
 
