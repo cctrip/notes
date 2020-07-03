@@ -3,59 +3,59 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://cctrip.github.io/notes/zh/categories/</loc>
+    <loc>https://cctrip.github.io/zh/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://cctrip.github.io/notes/categories/"
+                href="https://cctrip.github.io/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://cctrip.github.io/notes/ru/categories/"
+                href="https://cctrip.github.io/ru/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://cctrip.github.io/notes/zh/categories/"
+                href="https://cctrip.github.io/zh/categories/"
                 />
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/zh/</loc>
+    <loc>https://cctrip.github.io/zh/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://cctrip.github.io/notes/"
+                href="https://cctrip.github.io/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://cctrip.github.io/notes/ru/"
+                href="https://cctrip.github.io/ru/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://cctrip.github.io/notes/zh/"
+                href="https://cctrip.github.io/zh/"
                 />
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/zh/tags/</loc>
+    <loc>https://cctrip.github.io/zh/tags/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="https://cctrip.github.io/notes/tags/"
+                href="https://cctrip.github.io/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="ru"
-                href="https://cctrip.github.io/notes/ru/tags/"
+                href="https://cctrip.github.io/ru/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="https://cctrip.github.io/notes/zh/tags/"
+                href="https://cctrip.github.io/zh/tags/"
                 />
   </url>
   
