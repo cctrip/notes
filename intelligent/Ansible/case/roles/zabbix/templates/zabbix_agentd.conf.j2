@@ -1,8 +1,0 @@
-LogFile={{ zabbix_dir }}/log/zabbix_agentd.log
-PidFile={{ zabbix_dir }}/log/zabbix_agentd.pid
-Server={{ server_ip }}
-ServerActive={{ server_ip }}:{{ server_port }}
-Hostname={{ ansible_eth0.ipv4.address }}
-ListenIP=0.0.0.0
-ListenPort={{ agent_port }}
-UserParameter=redismem,/usr/local/bin/zabbix_redis.sh mem
