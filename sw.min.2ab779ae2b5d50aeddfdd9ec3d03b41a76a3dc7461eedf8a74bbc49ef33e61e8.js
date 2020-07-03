@@ -1,0 +1,1 @@
+if(navigator.serviceWorker){navigator.serviceWorker.register("/notes/sw.js",{scope:"/notes/"});}
