@@ -27,4 +27,4 @@ git push origin gh-pages
 cd ..
 git add .
 git commit -m "$msg"
-git push
+git push origin master
