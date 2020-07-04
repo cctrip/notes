@@ -1,0 +1,10 @@
+---
+#file: tengine.yml
+- name: Install php environment
+  hosts: test-32
+  vars:
+    php_dir: /usr/local/php
+    php_version: 7.2.4
+
+  roles: 
+    - php

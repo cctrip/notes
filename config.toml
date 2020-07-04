@@ -1,8 +1,9 @@
 # hugo server --minify --themesDir ... --baseURL=http://0.0.0.0:1313/theme/hugo-book/
 
-baseURL = 'https://example.com/'
+baseURL = 'https://cctrip.github.io/notes'
 title = 'Hugo Book'
 theme = 'book'
+#relativeURLs = true
 
 # Book configuration
 disablePathToLower = true
@@ -26,27 +27,32 @@ enableGitInfo = true
   contentDir = 'content'
   weight = 1
 
-[languages.ru]
-  languageName = 'Russian'
-  contentDir = 'content.ru'
-  weight = 2
-
-[languages.zh]
-  languageName = 'Chinese'
-  contentDir = 'content.zh'
-  weight = 3
+#[languages.ru]
+#  languageName = 'Russian'
+#  contentDir = 'content.ru'
+#  weight = 2
+#
+#[languages.zh]
+#  languageName = 'Chinese'
+#  contentDir = 'content.zh'
+#  weight = 3
 
 [menu]
 # [[menu.before]]
 [[menu.after]]
-  name = "Github"
-  url = "https://github.com/alex-shpak/hugo-book"
+  name = "Blog"
+  url = "https://cctrip.github.io/posts"
   weight = 10
+
+[[menu.after]]
+  name = "Github"
+  url = "https://github.com/cctrip/notes"
+  weight = 20
 
 [[menu.after]]
   name = "Hugo Themes"
   url = "https://themes.gohugo.io/hugo-book/"
-  weight = 20
+  weight = 30
 
 [params]
   # (Optional, default true) Controls table of contents visibility on right side of pages.
@@ -60,7 +66,7 @@ enableGitInfo = true
 
   # (Optional, default none) Set leaf bundle to render as side menu
   # When not specified file structure and weights will be used
-  # BookMenuBundle = '/menu'
+  #BookMenuBundle = '/menu'
 
   # (Optional, default docs) Specify root page to render child pages as menu.
   # Page is resoled by .GetPage function: https://gohugo.io/functions/getpage/

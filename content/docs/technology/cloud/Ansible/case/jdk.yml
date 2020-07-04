@@ -1,0 +1,9 @@
+---
+#file: jdk.yml
+- name: Install Java Environment
+  hosts: test-32
+  vars:
+    java_version: 1.8.0_161
+
+  roles: 
+    - tomcat
