@@ -8,6 +8,10 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Docker/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/Kernel/kernel/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
@@ -149,11 +153,6 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/Ansible/ansible/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Docker/docker/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
