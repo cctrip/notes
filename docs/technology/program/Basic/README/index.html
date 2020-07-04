@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="编程基础 #  编程语言 #    解释型语言
+ 程序由解释器读取并执行 SoucreCode --&gt; Interpreter --&gt; Output    编译型语言
+ 程序被编译器翻译成机器语言后再执行 SourceCode --&gt; Compliler --&gt; ObjectCode --&gt; Executor --&gt; Output     什么是程序？ #  程序是指定如何执行计算的指令序列。
+不同的编程语言具有一些共同的基础特性：
+ input：从键盘，文件或者其他输入设备中获取数据。 output：在屏幕显示数据，或者将数据发送给文件或者输出设备。 math：执行基本的数学运算，比如加法和乘法。 conditional execution：检查条件并执行相应的代码。 repetition：反复执行一些操作。  编程可以视为将大型的复杂任务打破成更小和更小的子任务，直到子任务简单到足以执行上述的基本操作的过程。
+ 调试(debugging) #  编程容易出错。编程错误被称为错误，并且跟踪它们的过程称为调试。
+ Syntax errors：语法错误(语法是指程序的结构和关于该结构的规则)。 Runtime errors(exceptions)：运行时错误(异常)。 Semantic errors：语义错误，做的不是你想要让它做的事情。  调试是通过更改程序去发现和解决错误。
+ 数据类型(type) #   interger：整数，例如1,2 string: 字符串，例如&rsquo;Hello&rsquo;   变量(variables) #  变量是引用值的名称，编程语言最强大的功能之一就是操纵变量的能力。">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="编程基础 #  编程语言 #    解释型语言
+ 程序由解释器读取并执行 SoucreCode --&gt; Interpreter --&gt; Output    编译型语言
+ 程序被编译器翻译成机器语言后再执行 SourceCode --&gt; Compliler --&gt; ObjectCode --&gt; Executor --&gt; Output     什么是程序？ #  程序是指定如何执行计算的指令序列。
+不同的编程语言具有一些共同的基础特性：
+ input：从键盘，文件或者其他输入设备中获取数据。 output：在屏幕显示数据，或者将数据发送给文件或者输出设备。 math：执行基本的数学运算，比如加法和乘法。 conditional execution：检查条件并执行相应的代码。 repetition：反复执行一些操作。  编程可以视为将大型的复杂任务打破成更小和更小的子任务，直到子任务简单到足以执行上述的基本操作的过程。
+ 调试(debugging) #  编程容易出错。编程错误被称为错误，并且跟踪它们的过程称为调试。
+ Syntax errors：语法错误(语法是指程序的结构和关于该结构的规则)。 Runtime errors(exceptions)：运行时错误(异常)。 Semantic errors：语义错误，做的不是你想要让它做的事情。  调试是通过更改程序去发现和解决错误。
+ 数据类型(type) #   interger：整数，例如1,2 string: 字符串，例如&rsquo;Hello&rsquo;   变量(variables) #  变量是引用值的名称，编程语言最强大的功能之一就是操纵变量的能力。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/program/Basic/README/" />
+
+<title>R E a D M E | Hugo Book</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.050acee8186cae8057b1a4980b05a8f0180d26621ac9ae7e01c0c4006a4d3fa3.js" integrity="sha256-BQrO6BhsroBXsaSYCwWo8BgNJmIaya5&#43;AcDEAGpNP6M="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><span>Hugo Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">DevOps笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Advanced/Algorithm/algorithm/" class="">Algorithm</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Advanced/DataStructure/datastructure/" class="">Datastructure</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Advanced/Design/factoryMethod/" class="">Factory Method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Advanced/Design/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Advanced/Design/simpleFactory/" class="">Simple Factory</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Basic/README/" class="active">R E a D M E</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Python/CookBook/DataStructuresAndAlgorithms/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Python/CookBook/StringsAndText/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Python/Framework/Django/django/" class="">Django</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Python/Framework/Flask/flask/" class="">Flask</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Python/Framework/Scrapy/scrapy/" class="">Scrapy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Python/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/git/" class="">Git</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/alias/" class="">Alias</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/commitHistory/" class="">Commit History</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/configuration/" class="">Configuration</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/createNew/" class="">Create New</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/install/" class="">Install</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/introduce/" class="">Introduce</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/record/" class="">Record</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/remote/" class="">Remote</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/tag/" class="">Tag</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/Git/undo/" class="">Undo</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/RevisionControl/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Shell/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://themes.gohugo.io/hugo-book/" target="_blank" rel="noopener">
+        Hugo Themes
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>R E a D M E</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#编程基础">编程基础</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#编程语言">编程语言</a></li>
+            <li><a href="#什么是程序">什么是程序？</a></li>
+            <li><a href="#调试debugging">调试(debugging)</a></li>
+            <li><a href="#数据类型type">数据类型(type)</a></li>
+            <li><a href="#变量variables">变量(variables)</a></li>
+            <li><a href="#运算符operators和操作数operands">运算符(operators)和操作数(operands)</a></li>
+            <li><a href="#表达式expressions和语句statements">表达式(expressions)和语句(statements)</a></li>
+            <li><a href="#注释comments">注释(comments)</a></li>
+            <li><a href="#流程控制control-flow">流程控制(control flow)</a></li>
+            <li><a href="#函数functions">函数(functions)</a></li>
+            <li><a href="#模块modules">模块(Modules)</a></li>
+            <li><a href="#接口interface">接口(interface)</a></li>
+            <li><a href="#类classes和对象objects">类(classes)和对象(objects)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="编程基础">
+  编程基础
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e5%9f%ba%e7%a1%80">#</a>
+</h1>
+<h3 id="编程语言">
+  编程语言
+  <a class="anchor" href="#%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80">#</a>
+</h3>
+<ul>
+<li>
+<p>解释型语言</p>
+<pre><code>  程序由解释器读取并执行
+  SoucreCode --&gt; Interpreter --&gt; Output
+</code></pre>
+</li>
+<li>
+<p>编译型语言</p>
+<pre><code>  程序被编译器翻译成机器语言后再执行
+  SourceCode --&gt; Compliler --&gt; ObjectCode --&gt; Executor --&gt; Output
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="什么是程序">
+  什么是程序？
+  <a class="anchor" href="#%e4%bb%80%e4%b9%88%e6%98%af%e7%a8%8b%e5%ba%8f">#</a>
+</h3>
+<p>程序是指定如何执行计算的指令序列。</p>
+<p>不同的编程语言具有一些共同的基础特性：</p>
+<ul>
+<li>input：从键盘，文件或者其他输入设备中获取数据。</li>
+<li>output：在屏幕显示数据，或者将数据发送给文件或者输出设备。</li>
+<li>math：执行基本的数学运算，比如加法和乘法。</li>
+<li>conditional execution：检查条件并执行相应的代码。</li>
+<li>repetition：反复执行一些操作。</li>
+</ul>
+<p>编程可以视为将大型的复杂任务打破成更小和更小的子任务，直到子任务简单到足以执行上述的基本操作的过程。</p>
+<hr>
+<h3 id="调试debugging">
+  调试(debugging)
+  <a class="anchor" href="#%e8%b0%83%e8%af%95debugging">#</a>
+</h3>
+<p>编程容易出错。编程错误被称为错误，并且跟踪它们的过程称为调试。</p>
+<ul>
+<li>Syntax errors：语法错误(语法是指程序的结构和关于该结构的规则)。</li>
+<li>Runtime errors(exceptions)：运行时错误(异常)。</li>
+<li>Semantic errors：语义错误，做的不是你想要让它做的事情。</li>
+</ul>
+<p>调试是通过更改程序去发现和解决错误。</p>
+<hr>
+<h3 id="数据类型type">
+  数据类型(type)
+  <a class="anchor" href="#%e6%95%b0%e6%8d%ae%e7%b1%bb%e5%9e%8btype">#</a>
+</h3>
+<ul>
+<li>interger：整数，例如1,2</li>
+<li>string: 字符串，例如&rsquo;Hello&rsquo;</li>
+</ul>
+<hr>
+<h3 id="变量variables">
+  变量(variables)
+  <a class="anchor" href="#%e5%8f%98%e9%87%8fvariables">#</a>
+</h3>
+<p>变量是引用值的名称，编程语言最强大的功能之一就是操纵变量的能力。</p>
+<ul>
+<li>variable：变量名，由字母开头并由字母或数字组成。最好由小写字母开头。</li>
+<li>keyword：关键字，用于识别程序的结构，它们不能用作变量名称。例如,if,for,while</li>
+</ul>
+<hr>
+<h3 id="运算符operators和操作数operands">
+  运算符(operators)和操作数(operands)
+  <a class="anchor" href="#%e8%bf%90%e7%ae%97%e7%ac%a6operators%e5%92%8c%e6%93%8d%e4%bd%9c%e6%95%b0operands">#</a>
+</h3>
+<ul>
+<li>operators：运算符，表示计算的特殊符号，例如+,-,*</li>
+<li>operands：操作数</li>
+</ul>
+<hr>
+<h3 id="表达式expressions和语句statements">
+  表达式(expressions)和语句(statements)
+  <a class="anchor" href="#%e8%a1%a8%e8%be%be%e5%bc%8fexpressions%e5%92%8c%e8%af%ad%e5%8f%a5statements">#</a>
+</h3>
+<ul>
+<li>expression：表达式，是值、变量和运算符的组合。</li>
+<li>statement：语句是可执行的代码单元。</li>
+</ul>
+<hr>
+<h3 id="注释comments">
+  注释(comments)
+  <a class="anchor" href="#%e6%b3%a8%e9%87%8acomments">#</a>
+</h3>
+<p>在程序中添加笔记，用于解释程序正在做什么</p>
+<hr>
+<h3 id="流程控制control-flow">
+  流程控制(control flow)
+  <a class="anchor" href="#%e6%b5%81%e7%a8%8b%e6%8e%a7%e5%88%b6control-flow">#</a>
+</h3>
+<p>在程序运行时，控制个别的指令运行的顺序。</p>
+<p>控制结构：控制结构开始时多半都会有特定的关键字，以标明使用哪一种控制结构</p>
+<ul>
+<li>choice：选择结构
+<ul>
+<li>if-then-else：</li>
+<li>switch</li>
+<li>case</li>
+</ul>
+</li>
+<li>loop：循环结构
+<ul>
+<li>for</li>
+<li>while</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="函数functions">
+  函数(functions)
+  <a class="anchor" href="#%e5%87%bd%e6%95%b0functions">#</a>
+</h3>
+<p>函数是组织好的，可重复使用的，用于实现单一或相关联功能的代码段。</p>
+<ul>
+<li>function call：函数调用，一些语言一般由很多内置的函数可供调用。例如，type(32)</li>
+<li>function definition：定义函数，例如，def hello(): print(&lsquo;Hello,World!')</li>
+<li>flow of execution：执行流程，程序总是从第一行开始按序执行语句，函数内部的语句并不会被执行，直到函数被调用。</li>
+<li>parameter：参数，函数中用于供外部传入值的变量名。</li>
+<li>why function?：
+<ul>
+<li>便于程序阅读</li>
+<li>消除重复代码</li>
+<li>便于调式功能</li>
+<li>便于重用</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="模块modules">
+  模块(Modules)
+  <a class="anchor" href="#%e6%a8%a1%e5%9d%97modules">#</a>
+</h3>
+<hr>
+<h3 id="接口interface">
+  接口(interface)
+  <a class="anchor" href="#%e6%8e%a5%e5%8f%a3interface">#</a>
+</h3>
+<hr>
+<h3 id="类classes和对象objects">
+  类(classes)和对象(objects)
+  <a class="anchor" href="#%e7%b1%bbclasses%e5%92%8c%e5%af%b9%e8%b1%a1objects">#</a>
+</h3>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs/technology/program/Basic/README.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#编程基础">编程基础</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#编程语言">编程语言</a></li>
+            <li><a href="#什么是程序">什么是程序？</a></li>
+            <li><a href="#调试debugging">调试(debugging)</a></li>
+            <li><a href="#数据类型type">数据类型(type)</a></li>
+            <li><a href="#变量variables">变量(variables)</a></li>
+            <li><a href="#运算符operators和操作数operands">运算符(operators)和操作数(operands)</a></li>
+            <li><a href="#表达式expressions和语句statements">表达式(expressions)和语句(statements)</a></li>
+            <li><a href="#注释comments">注释(comments)</a></li>
+            <li><a href="#流程控制control-flow">流程控制(control flow)</a></li>
+            <li><a href="#函数functions">函数(functions)</a></li>
+            <li><a href="#模块modules">模块(Modules)</a></li>
+            <li><a href="#接口interface">接口(interface)</a></li>
+            <li><a href="#类classes和对象objects">类(classes)和对象(objects)</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

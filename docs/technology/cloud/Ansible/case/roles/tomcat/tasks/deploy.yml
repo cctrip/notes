@@ -1,0 +1,54 @@
+---
+#file: tomcat deploy.yml
+- name: Generate {{ project }} online package
+  local_action: shell /cache1/ansible/test/generate_package.sh {{ product }} {{ project }}
+
+- name: Copy {{ project }} file to remote server
+  copy: src=/cache1/ansible/test/packages/{{ product }}/{{ project }}.tar.gz dest=/usr/local/src/
+
+- name: Check temporary directory exists
+  stat: path={{ tomcat_dir }}/tmp
+  register: tmp
+
+- name: Create directory when temporary directory not exists
+  file: path={{ tomcat_dir }}/tmp state=directory mode=0755
+  when: tmp.stat.exists == false
+
+- name: Check backups directory exists
+  stat: path={{ tomcat_dir }}/appbak
+  register: bak
+
+- name: Create directory when backups directory not exists
+  file: path={{ tomcat_dir }}/appbak state=directory mode=0755
+  when: bak.stat.exists == false
+
+- name: Check {{ project}} old backup files exists
+  stat: path={{ tomcat_dir }}/tmp/{{ project }}
+  register: obf
+
+- name: Delete {{ project }} old backup file
+  command: mv {{ tomcat_dir }}/tmp/{{ project }} {{ tomcat_dir }}/appbak/{{ project }}-{{ ansible_date_time.epoch }}
+  when: obf.stat.exists == true
+
+- name: Stop {{ project }} service on remote server
+  shell: /etc/init.d/tomcat-service {{ product }}-{{ project }} stop
+
+- name: Check {{ project}} files exists
+  stat: path={{ tomcat_dir }}/{{ product }}-{{ project }}/webapps/{{ project }}
+  register: pf
+
+- name: Backup {{ project }} file
+  command: mv {{ tomcat_dir }}/{{ product }}-{{ project }}/webapps/{{ project }} {{ tomcat_dir }}/tmp/{{ project }}
+  when: pf.stat.exists == true
+
+- name: Uncompress {{ project }} file on remote server
+  unarchive: src=/usr/local/src/{{ project }}.tar.gz dest={{ tomcat_dir }}/{{ product }}-{{ project }}/webapps/ remote_src=yes
+
+- name: Change owner for {{ project }} file
+  file: path={{ tomcat_dir }}/{{ product }}-{{ project }}/webapps/{{ project }} owner=webrunner group=webrunner recurse=yes
+
+- name: Start {{ project }} service on remote server
+  shell: /etc/init.d/tomcat-service {{ product }}-{{ project }} start
+
+- name: Delete source package from remote server
+  file: path=/usr/local/src/{{ project }}.tar.gz state=absent

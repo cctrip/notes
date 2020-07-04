@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Linux目录结构 #    /boot
+系统启动相关的文件，如内核、initrd，以及grub(bootloader)
+  /dev
+设备文件
+块设备：随机访问，数据块
+字符设备：线性访问，按字符为单位
+设备号：主设备号(major)和次设备号(minor)
+  /etc
+配置文件
+  /home
+用户的家目录，每一个用户的家目录通常默认为/home/USERNAME
+  /root
+管理员的家目录
+  /lib
+库文件
+静态库，.a
+动态库，.dll，.so（shared object）
+  /lib/modules
+内核模块文件
+  /media
+挂载点目录，移动设备
+  /mnt
+挂载点目录，额外的临时文件系统
+  /opt
+可选目录，第三方程序的安装目录
+  /proc
+伪文件系统，内核映射文件
+  /sys
+伪文件系统，跟硬件设备相关的属性映射文件
+  /tmp
+临时文件，/var/tmp
+  /var
+可变化的文件
+  /bin
+可执行文件，用户命令
+  /sbin">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Linux目录结构" />
+<meta property="og:description" content="Linux目录结构 #    /boot
+系统启动相关的文件，如内核、initrd，以及grub(bootloader)
+  /dev
+设备文件
+块设备：随机访问，数据块
+字符设备：线性访问，按字符为单位
+设备号：主设备号(major)和次设备号(minor)
+  /etc
+配置文件
+  /home
+用户的家目录，每一个用户的家目录通常默认为/home/USERNAME
+  /root
+管理员的家目录
+  /lib
+库文件
+静态库，.a
+动态库，.dll，.so（shared object）
+  /lib/modules
+内核模块文件
+  /media
+挂载点目录，移动设备
+  /mnt
+挂载点目录，额外的临时文件系统
+  /opt
+可选目录，第三方程序的安装目录
+  /proc
+伪文件系统，内核映射文件
+  /sys
+伪文件系统，跟硬件设备相关的属性映射文件
+  /tmp
+临时文件，/var/tmp
+  /var
+可变化的文件
+  /bin
+可执行文件，用户命令
+  /sbin" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/system/Linux/Directory/directoryStructure/" />
+
+<title>Linux目录结构 | Hugo Book</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.050acee8186cae8057b1a4980b05a8f0180d26621ac9ae7e01c0c4006a4d3fa3.js" integrity="sha256-BQrO6BhsroBXsaSYCwWo8BgNJmIaya5&#43;AcDEAGpNP6M="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><span>Hugo Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">DevOps笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/" class="collapsed ">计算机基础</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/" class="collapsed ">Linux系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/Kernel/kernel/" class="">内核编译</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/Directory/directoryStructure/" class="active">Linux目录结构</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/Start/start/" class="">启动</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/GuideBook/" class="">操作指南</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/GuideBook/fileOperation/" class="">File Operation</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/GuideBook/permissionsOperation/" class="">Permissions Operation</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/Lnmp/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/" class="collapsed ">应用</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://themes.gohugo.io/hugo-book/" target="_blank" rel="noopener">
+        Hugo Themes
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Linux目录结构</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux目录结构">Linux目录结构</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="linux目录结构">
+  Linux目录结构
+  <a class="anchor" href="#linux%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84">#</a>
+</h1>
+<ul>
+<li>
+<p>/boot</p>
+<p>系统启动相关的文件，如内核、initrd，以及grub(bootloader)</p>
+</li>
+<li>
+<p>/dev</p>
+<p>设备文件</p>
+<p>块设备：随机访问，数据块</p>
+<p>字符设备：线性访问，按字符为单位</p>
+<p>设备号：主设备号(major)和次设备号(minor)</p>
+</li>
+<li>
+<p>/etc</p>
+<p>配置文件</p>
+</li>
+<li>
+<p>/home</p>
+<p>用户的家目录，每一个用户的家目录通常默认为/home/USERNAME</p>
+</li>
+<li>
+<p>/root</p>
+<p>管理员的家目录</p>
+</li>
+<li>
+<p>/lib</p>
+<p>库文件</p>
+<p>静态库，.a</p>
+<p>动态库，.dll，.so（shared object）</p>
+</li>
+<li>
+<p>/lib/modules</p>
+<p>内核模块文件</p>
+</li>
+<li>
+<p>/media</p>
+<p>挂载点目录，移动设备</p>
+</li>
+<li>
+<p>/mnt</p>
+<p>挂载点目录，额外的临时文件系统</p>
+</li>
+<li>
+<p>/opt</p>
+<p>可选目录，第三方程序的安装目录</p>
+</li>
+<li>
+<p>/proc</p>
+<p>伪文件系统，内核映射文件</p>
+</li>
+<li>
+<p>/sys</p>
+<p>伪文件系统，跟硬件设备相关的属性映射文件</p>
+</li>
+<li>
+<p>/tmp</p>
+<p>临时文件，/var/tmp</p>
+</li>
+<li>
+<p>/var</p>
+<p>可变化的文件</p>
+</li>
+<li>
+<p>/bin</p>
+<p>可执行文件，用户命令</p>
+</li>
+<li>
+<p>/sbin</p>
+<p>可执行文件，管理命令</p>
+</li>
+<li>
+<p>/usr</p>
+<p>shared，read-only</p>
+<p>/usr/bin</p>
+<p>/usr/sbin</p>
+<p>/usr/lib</p>
+</li>
+<li>
+<p>/usr/local</p>
+<p>第三方软件</p>
+<p>/usr/local/bin</p>
+<p>/usr/local/sbin</p>
+<p>/usr/local/lib</p>
+</li>
+</ul>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs/technology/system/Linux/Directory/directoryStructure.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#linux目录结构">Linux目录结构</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="文件系统 #  文件系统是一套实现了数据的存储、分级组织、访问和获取等操作的抽象数据类型（Abstract data type）。
+概念 #  文件系统是一种用于向用户提供底层数据访问的机制。它将设备中的空间划分为特定大小的块（或者称为簇），一般每块512字节。数据存储在这些块中，大小被修正为占用整数个块。由文件系统软件来负责将这些块组织为文件和目录，并记录哪些块被分配给了哪个文件，以及哪些块没有被使用。
+ EXT2文件系统 #  EXT2文件系统是Linux底下最常用的文件系统。其结构如下：
+  Boot Sector
+启动扇区，这个启动扇区可以安装启动管理程序， 这是个非常重要的设计，因为如此一来我们就能够将不同的启动管理程序安装到个别的文件系统最前端，而不用覆盖整颗硬盘唯一的MBR.
+  Block Group
+  Super Block
+记录整个filesystem相关信息
+  Group Descriptions
+描述每个 block group 的开始与结束的 block 号码，以及说明每个区段 (superblock, bitmap, inodemap, data block) 分别介于哪一个 block 号码之间
+  Block Bitmap
+记录使用和未使用的block号码
+  Inode Bitmap
+记录使用和未使用的inode号码
+  Inode Table
+  Data Blocks
+数据块，实际存储数据的地方
+      Inode Table #  inode是ext2文件系统的基本构建块，每个文件和目录都有唯一一个inode。其机构如下：">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="文件系统" />
+<meta property="og:description" content="文件系统 #  文件系统是一套实现了数据的存储、分级组织、访问和获取等操作的抽象数据类型（Abstract data type）。
+概念 #  文件系统是一种用于向用户提供底层数据访问的机制。它将设备中的空间划分为特定大小的块（或者称为簇），一般每块512字节。数据存储在这些块中，大小被修正为占用整数个块。由文件系统软件来负责将这些块组织为文件和目录，并记录哪些块被分配给了哪个文件，以及哪些块没有被使用。
+ EXT2文件系统 #  EXT2文件系统是Linux底下最常用的文件系统。其结构如下：
+  Boot Sector
+启动扇区，这个启动扇区可以安装启动管理程序， 这是个非常重要的设计，因为如此一来我们就能够将不同的启动管理程序安装到个别的文件系统最前端，而不用覆盖整颗硬盘唯一的MBR.
+  Block Group
+  Super Block
+记录整个filesystem相关信息
+  Group Descriptions
+描述每个 block group 的开始与结束的 block 号码，以及说明每个区段 (superblock, bitmap, inodemap, data block) 分别介于哪一个 block 号码之间
+  Block Bitmap
+记录使用和未使用的block号码
+  Inode Bitmap
+记录使用和未使用的inode号码
+  Inode Table
+  Data Blocks
+数据块，实际存储数据的地方
+      Inode Table #  inode是ext2文件系统的基本构建块，每个文件和目录都有唯一一个inode。其机构如下：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/system/Basic/fileSystem/" />
+
+<title>文件系统 | Hugo Book</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.050acee8186cae8057b1a4980b05a8f0180d26621ac9ae7e01c0c4006a4d3fa3.js" integrity="sha256-BQrO6BhsroBXsaSYCwWo8BgNJmIaya5&#43;AcDEAGpNP6M="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><span>Hugo Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">DevOps笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/" class="collapsed ">计算机基础</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/constitute/" class="">计算机组成</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/fileSystem/" class="active">文件系统</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/opreatingSystem/" class="">操作系统</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/" class="collapsed ">Linux系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/" class="collapsed ">应用</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://themes.gohugo.io/hugo-book/" target="_blank" rel="noopener">
+        Hugo Themes
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>文件系统</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#文件系统">文件系统</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#概念">概念</a></li>
+            <li><a href="#ext2文件系统">EXT2文件系统</a></li>
+            <li><a href="#inode-table">Inode Table</a></li>
+            <li><a href="#super-block">Super Block</a></li>
+            <li><a href="#目录和文件">目录和文件</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="文件系统">
+  文件系统
+  <a class="anchor" href="#%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f">#</a>
+</h1>
+<p>文件系统是一套实现了数据的存储、分级组织、访问和获取等操作的抽象数据类型（Abstract data type）。</p>
+<h3 id="概念">
+  概念
+  <a class="anchor" href="#%e6%a6%82%e5%bf%b5">#</a>
+</h3>
+<p>文件系统是一种用于向用户提供底层数据访问的机制。它将设备中的空间划分为特定大小的块（或者称为簇），一般每块512字节。数据存储在这些块中，大小被修正为占用整数个块。由文件系统软件来负责将这些块组织为文件和目录，并记录哪些块被分配给了哪个文件，以及哪些块没有被使用。</p>
+<hr>
+<h3 id="ext2文件系统">
+  EXT2文件系统
+  <a class="anchor" href="#ext2%e6%96%87%e4%bb%b6%e7%b3%bb%e7%bb%9f">#</a>
+</h3>
+<p>EXT2文件系统是Linux底下最常用的文件系统。其结构如下：</p>
+<ul>
+<li>
+<p>Boot Sector</p>
+<p>启动扇区，这个启动扇区可以安装启动管理程序， 这是个非常重要的设计，因为如此一来我们就能够将不同的启动管理程序安装到个别的文件系统最前端，而不用覆盖整颗硬盘唯一的MBR.</p>
+</li>
+<li>
+<p>Block Group</p>
+<ul>
+<li>
+<p>Super Block</p>
+<p>记录整个filesystem相关信息</p>
+</li>
+<li>
+<p>Group Descriptions</p>
+<p>描述每个 block group 的开始与结束的 block 号码，以及说明每个区段 (superblock, bitmap, inodemap, data block) 分别介于哪一个 block 号码之间</p>
+</li>
+<li>
+<p>Block Bitmap</p>
+<p>记录使用和未使用的block号码</p>
+</li>
+<li>
+<p>Inode Bitmap</p>
+<p>记录使用和未使用的inode号码</p>
+</li>
+<li>
+<p>Inode Table</p>
+</li>
+<li>
+<p>Data Blocks</p>
+<p>数据块，实际存储数据的地方</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>
+  <img src="ext2.gif" alt="" /></p>
+<hr>
+<h3 id="inode-table">
+  Inode Table
+  <a class="anchor" href="#inode-table">#</a>
+</h3>
+<p>inode是ext2文件系统的基本构建块，每个文件和目录都有唯一一个inode。其机构如下：</p>
+<ul>
+<li>
+<p>Mode</p>
+<p>存取模式信息(read/write/excute)</p>
+</li>
+<li>
+<p>Owner info</p>
+<p>拥有者与群组信息</p>
+</li>
+<li>
+<p>Size</p>
+<p>文件的容量</p>
+</li>
+<li>
+<p>Timestamps</p>
+<ul>
+<li>
+<p>创建或状态改变的时间(ctime)</p>
+</li>
+<li>
+<p>最近一次的读取时间(atime)</p>
+</li>
+<li>
+<p>最近修改的时间(mtime)</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Direct Blocks</p>
+<p>12个直接指向block号码</p>
+</li>
+<li>
+<p>Indirect Blocks</p>
+<p>间接指向，记录block号码的记录区</p>
+</li>
+<li>
+<p>Double Indirect</p>
+<p>双间接指向</p>
+</li>
+<li>
+<p>Triple Indirect</p>
+<p>三间接指向</p>
+</li>
+</ul>
+<p>
+  <img src="ext2-inode.gif" alt="" /></p>
+<hr>
+<h3 id="super-block">
+  Super Block
+  <a class="anchor" href="#super-block">#</a>
+</h3>
+<p>Super Block是记录整个filesystem相关信息的地方，包括以下：</p>
+<ul>
+<li>
+<p>Magic Number</p>
+</li>
+<li>
+<p>Revision Level</p>
+</li>
+<li>
+<p>Mount Count and Maximum Mount Count</p>
+</li>
+<li>
+<p>Block Group Number</p>
+</li>
+<li>
+<p>Block Size</p>
+</li>
+<li>
+<p>Blocks per Group</p>
+</li>
+<li>
+<p>Free Blocks</p>
+</li>
+<li>
+<p>Free Inodes</p>
+</li>
+<li>
+<p>First Inode</p>
+</li>
+</ul>
+<hr>
+<h3 id="目录和文件">
+  目录和文件
+  <a class="anchor" href="#%e7%9b%ae%e5%bd%95%e5%92%8c%e6%96%87%e4%bb%b6">#</a>
+</h3>
+<ul>
+<li>
+<p>目录</p>
+<p>当我们在 Linux 下的 ext2 文件系统创建一个目录时， ext2 会分配一个 inode 与至少一块 block 给该目录。其中，inode 记录该目录的相关权限与属性，并可记录分配到的那块 block 号码； 而 block 则是记录在这个目录下的文件名与该文件名占用的 inode 号码数据。</p>
+</li>
+<li>
+<p>文件</p>
+<p>我们在 Linux 下的 ext2 创建一个一般文件时， ext2 会分配一个 inode 与相对于该文件大小的 block 数量给该文件。</p>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs/technology/system/Basic/fileSystem.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#文件系统">文件系统</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#概念">概念</a></li>
+            <li><a href="#ext2文件系统">EXT2文件系统</a></li>
+            <li><a href="#inode-table">Inode Table</a></li>
+            <li><a href="#super-block">Super Block</a></li>
+            <li><a href="#目录和文件">目录和文件</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

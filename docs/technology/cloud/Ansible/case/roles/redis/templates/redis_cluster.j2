@@ -1,0 +1,28 @@
+#common
+port {{ RUN_PORT }}
+bind {{ ansible_eth0.ipv4.address }}
+pidfile {{ redis_dir }}/{{ RUN_PORT }}/redis.pid
+loglevel notice
+logfile {{ redis_dir }}/{{ RUN_PORT }}/redis.log
+dir "{{ redis_dir }}/{{ RUN_PORT }}"
+protected-mode no
+daemonize yes
+
+#rdb
+save 7200 1000
+rdbcompression yes
+rdbchecksum yes
+dbfilename dump.rdb
+
+#aof
+appendonly yes
+appendfilename "appendonly.aof"
+
+#cluster
+cluster-enabled yes
+cluster-config-file nodes.conf
+cluster-node-timeout 5000
+
+#auth
+requirepass {{ PASSWORD }}
+masterauth {{ PASSWORD }}

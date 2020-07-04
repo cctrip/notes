@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="计算机组成 #  计算机组成 #  计算机(computer)：一种利用电子学原理，根据一系列指令来对数据进行处理的工具。
+ 硬件 #    控制器：负责对程序规定的控制信息进行分析,控制并协调输入,输出操作或内存访问。
+  运算器：负责数据的算术运算和逻辑运算即数据的加工处理。
+  存储器：实现记忆功能的部件用来存放计算程序及参与运算的各种数据。
+  输入设备：实现计算程序和原始数据的输入
+  输出设备：实现计算结果输出
+  图示：
+   软件 #    系统软件：负责管理计算机系统中各种独立的硬件，使得它们可以协调工作，提供基本的功能，并为正在运行的应用软件提供平台。
+  应用软件：为了某种特定的用途而被开发的软件。
+   计算机工作过程 #    用户打开程序
+  系统把程序代码段和数据段送入计算机的内存
+  控制器从存储器中取指令
+  控制器分析,执行指令,为取下一条指令做准备
+  取下一条指令,分析执行,如此重复操作,直至执行完程序中全部指令,便可获得全部指令
+  图示：
+  计算机系统结构 #    ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="计算机组成" />
+<meta property="og:description" content="计算机组成 #  计算机组成 #  计算机(computer)：一种利用电子学原理，根据一系列指令来对数据进行处理的工具。
+ 硬件 #    控制器：负责对程序规定的控制信息进行分析,控制并协调输入,输出操作或内存访问。
+  运算器：负责数据的算术运算和逻辑运算即数据的加工处理。
+  存储器：实现记忆功能的部件用来存放计算程序及参与运算的各种数据。
+  输入设备：实现计算程序和原始数据的输入
+  输出设备：实现计算结果输出
+  图示：
+   软件 #    系统软件：负责管理计算机系统中各种独立的硬件，使得它们可以协调工作，提供基本的功能，并为正在运行的应用软件提供平台。
+  应用软件：为了某种特定的用途而被开发的软件。
+   计算机工作过程 #    用户打开程序
+  系统把程序代码段和数据段送入计算机的内存
+  控制器从存储器中取指令
+  控制器分析,执行指令,为取下一条指令做准备
+  取下一条指令,分析执行,如此重复操作,直至执行完程序中全部指令,便可获得全部指令
+  图示：
+  计算机系统结构 #    " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/system/Basic/constitute/" />
+
+<title>计算机组成 | Hugo Book</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.050acee8186cae8057b1a4980b05a8f0180d26621ac9ae7e01c0c4006a4d3fa3.js" integrity="sha256-BQrO6BhsroBXsaSYCwWo8BgNJmIaya5&#43;AcDEAGpNP6M="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><span>Hugo Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">DevOps笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/" class="collapsed ">计算机基础</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/constitute/" class="active">计算机组成</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/fileSystem/" class="">文件系统</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/opreatingSystem/" class="">操作系统</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/" class="collapsed ">Linux系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/" class="collapsed ">应用</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://themes.gohugo.io/hugo-book/" target="_blank" rel="noopener">
+        Hugo Themes
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>计算机组成</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="计算机组成">
+  计算机组成
+  <a class="anchor" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90">#</a>
+</h1>
+<h3 id="计算机组成-1">
+  计算机组成
+  <a class="anchor" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%bb%84%e6%88%90-1">#</a>
+</h3>
+<p>计算机(computer)：一种利用电子学原理，根据一系列指令来对数据进行处理的工具。</p>
+<hr>
+<h4 id="硬件">
+  硬件
+  <a class="anchor" href="#%e7%a1%ac%e4%bb%b6">#</a>
+</h4>
+<ul>
+<li>
+<p>控制器：负责对程序规定的控制信息进行分析,控制并协调输入,输出操作或内存访问。</p>
+</li>
+<li>
+<p>运算器：负责数据的算术运算和逻辑运算即数据的加工处理。</p>
+</li>
+<li>
+<p>存储器：实现记忆功能的部件用来存放计算程序及参与运算的各种数据。</p>
+</li>
+<li>
+<p>输入设备：实现计算程序和原始数据的输入</p>
+</li>
+<li>
+<p>输出设备：实现计算结果输出</p>
+</li>
+</ul>
+<p>图示：</p>
+<p>
+  <img src="organization1.jpg" alt="组成框图1" /></p>
+<p>
+  <img src="organization2.jpg" alt="组成框图2" /></p>
+<hr>
+<h4 id="软件">
+  软件
+  <a class="anchor" href="#%e8%bd%af%e4%bb%b6">#</a>
+</h4>
+<ul>
+<li>
+<p>系统软件：负责管理计算机系统中各种独立的硬件，使得它们可以协调工作，提供基本的功能，并为正在运行的应用软件提供平台。</p>
+</li>
+<li>
+<p>应用软件：为了某种特定的用途而被开发的软件。</p>
+</li>
+</ul>
+<hr>
+<h4 id="计算机工作过程">
+  计算机工作过程
+  <a class="anchor" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e5%b7%a5%e4%bd%9c%e8%bf%87%e7%a8%8b">#</a>
+</h4>
+<ol>
+<li>
+<p>用户打开程序</p>
+</li>
+<li>
+<p>系统把程序代码段和数据段送入计算机的内存</p>
+</li>
+<li>
+<p>控制器从存储器中取指令</p>
+</li>
+<li>
+<p>控制器分析,执行指令,为取下一条指令做准备</p>
+</li>
+<li>
+<p>取下一条指令,分析执行,如此重复操作,直至执行完程序中全部指令,便可获得全部指令</p>
+</li>
+</ol>
+<p>图示：</p>
+<p>
+  <img src="work.jpg" alt="工作过程" /></p>
+<hr>
+<h4 id="计算机系统结构">
+  计算机系统结构
+  <a class="anchor" href="#%e8%ae%a1%e7%ae%97%e6%9c%ba%e7%b3%bb%e7%bb%9f%e7%bb%93%e6%9e%84">#</a>
+</h4>
+<p>
+  <img src="structure.png" alt="体系机构" /></p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs/technology/system/Basic/constitute.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

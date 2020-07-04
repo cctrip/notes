@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux系统 on Hugo Book</title>
+    <link>https://cctrip.github.io/notes/docs/technology/system/Linux/</link>
+    <description>Recent content in Linux系统 on Hugo Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/system/Linux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>内核编译</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Kernel/kernel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Kernel/kernel/</guid>
+      <description>内核编译 #  概念 #  内核指的是一个提供硬件抽象层、磁盘及文件系统控制、多任务等功能的系统软件。
+一般保存在/boot目录中，格式为/boot/vmlinuz-XXX
+ 为什么要编译内核 #    需要新功能支持
+  原核心过于臃肿
+  与硬件搭配的稳定性
+  其他特殊需求
+   编译内核 #    下载源码包， https://www.kernel.org/
+  解压内核包，一般放在/usr/src/kernels目录下
+ tar -Jxf /root/linux-3.16.39.tar.xz -C /usr/src/kernels/    进入内核目录
+ cd /usr/src/kernels/linux-3.16.39    查看内核目录( 目录说明)
+ ls -d ./*/ ./arch/ ./crypto/ ./drivers/ ./fs/ ./init/ ./kernel/ ./mm/ ./samples/ ./security/ ./tools/ ./virt/ .</description>
+    </item>
+    
+    <item>
+      <title>Linux目录结构</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Directory/directoryStructure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Directory/directoryStructure/</guid>
+      <description>Linux目录结构 #    /boot
+系统启动相关的文件，如内核、initrd，以及grub(bootloader)
+  /dev
+设备文件
+块设备：随机访问，数据块
+字符设备：线性访问，按字符为单位
+设备号：主设备号(major)和次设备号(minor)
+  /etc
+配置文件
+  /home
+用户的家目录，每一个用户的家目录通常默认为/home/USERNAME
+  /root
+管理员的家目录
+  /lib
+库文件
+静态库，.a
+动态库，.dll，.so（shared object）
+  /lib/modules
+内核模块文件
+  /media
+挂载点目录，移动设备
+  /mnt
+挂载点目录，额外的临时文件系统
+  /opt
+可选目录，第三方程序的安装目录
+  /proc
+伪文件系统，内核映射文件
+  /sys
+伪文件系统，跟硬件设备相关的属性映射文件
+  /tmp
+临时文件，/var/tmp
+  /var
+可变化的文件
+  /bin
+可执行文件，用户命令
+  /sbin</description>
+    </item>
+    
+    <item>
+      <title>启动</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Start/start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Start/start/</guid>
+      <description>启动过程 #  整个过程基本可以分为POST–&amp;gt;BIOS–&amp;gt;MBR(GRUB)–&amp;gt;Kernel–&amp;gt;Init–&amp;gt;Runlevel。
+  详解 #    BIOS
+BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上。开机时，会最先读取该系统，然后会有一个加电自检过程，若没有异常就开始加载BIOS程序到内存当中。BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。
+  MBR
+MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。
+  GRUB
+GRUB(Grand Unified Bootloader)，多系统启动程序，其执行过程可分为三个步骤：
+  Stage1
+这个其实就是MBR，它的主要工作就是查找并加载第二段Bootloader程序(stage2)，但系统在没启动时，MBR根本找不到文件系统，也就找不到stage2所存放的位置，因此，就有了stage1_5
+  Stage1_5
+该步骤就是为了识别文件系统
+  Stage2
+GRUB程序会根据/boot/grub/grub.conf文件查找Kernel的信息，然后开始加载Kernel程序，当Kernel程序被检测并在加载到内存中，GRUB就将控制权交接给了Kernel程序。
+PS：实际上这个步骤/boot还没被挂载，GRUB直接识别grub所在磁盘的文件系统，所以实际上应该是/grub/grub.conf文件，该配置文件的信息如下：
+grub.conf:
+ #boot=/dev/sda default=0 #设定默认启动的title的编号，从0开始 timeout=5 #等待用户选择的超时时间 splashimage=(hd0,0)/boot/grub/splash.xpm.gz #GRUB的背景图片 hiddenmenu #隐藏菜单 title CentOS (2.6.18-194.el5PAE) #内核标题 root (hd0,0) #内核文件所在的设备 kernel /vmlinuz-2.6.18-194.el5PAE ro root=LABEL=/ #内核文件路径以及传递给内核的参数 initrd /initrd-2.6.18-194.el5PAE.img #ramdisk文件路径      Kernel</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Lnmp/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Lnmp/README/</guid>
+      <description>web经典架构 #  Nginx #   Mysql #   PHP #   </description>
+    </item>
+    
+  </channel>
+</rss>

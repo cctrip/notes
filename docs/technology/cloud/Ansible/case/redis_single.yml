@@ -1,0 +1,13 @@
+---
+#file: redis.yml
+- name: Install Redis Environment
+  hosts: test-61
+  vars:
+    redis_version: 4.0.8
+    redis_dir: /cache1/redis
+    RUN_PORT: 6379
+    PASSWORD: test@2018
+    redis_mode: single
+
+  roles: 
+    - redis

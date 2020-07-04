@@ -1,0 +1,9 @@
+---
+#file: zookeepr main.yml
+- include_tasks: single.yml
+  tags:
+    - single
+
+- include_tasks: cluster.yml
+  tags:
+    - cluster

@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Iptables #  iptables：一个运行在用户空间的应用软件，通过控制Linux内核netfilter模块，来管理网络数据包的流动与转送。
+Netfilter：Linux操作系统核心层内部的一个数据包处理模块，它具有如下功能：
+  网络地址转换(Network Address Translate)
+  数据包内容修改
+  数据包过滤
+  Netfilter的配置表：存放设置的规则的文件，存放在内核内存中。iptables程序通过修改这个规则文件来控制网络数据包流动。 该配置表由表tables、链chains、规则rules组成。
+ Netfilter配置表 #  表(tables) #  用于实现特定的功能
+  raw表
+主要用于决定数据包是否被状态跟踪机制处理。在匹配数据包时，raw表的规则要优先于其他表。包含两条规则链 OUTPUT、PREROUTING。
+iptables中数据包和4种被跟踪连接的4种不同状态：
+ NEW：该包想要开始一个连接（重新连接或将连接重定向） RELATED：该包是属于某个已经建立的连接所建立的新连接。 ESTABLISHED ：只要发送并接到应答，一个数据连接从NEW变为ESTABLISHED,而且该状态会继续匹配这个连接的后续数据包。 INVALID：数据包不能被识别属于哪个连接或没有任何状态比如内存溢出，收到不知属于哪个连接的ICMP错误信息，一般应该DROP这个状态的任何数据。    mangle表
+主要用于修改数据包的TOS（Type Of Service，服务类型）、TTL（Time To Live，生存周期）指以及为数据包设置Mark标记，以实现Qos(Quality Of Service，服务质量)调整以及策略路由等应用，由于需要相应的路由设备支持，因此应用并不广泛。包含五个规则链——PREROUTING，POSTROUTING，INPUT，OUTPUT，FORWARD。
+  nat表
+主要用于修改数据包的IP地址、端口号等信息（网络地址转换，如SNAT、DNAT、MASQUERADE、REDIRECT）。属于一个流的包(因为包 的大小限制导致数据可能会被分成多个数据包)只会经过这个表一次。如果第一个包被允许做NAT或Masqueraded，那么余下的包都会自动地被做相同的操作，也就是说，余下的包不会再通过这个表。
+表对应的内核模块为 iptable_nat，包含三个链：
+ PREROUTING链：作用是在包刚刚到达防火墙时改变它的目的地址 OUTPUT链：改变本地产生的包的目的地址 POSTROUTING链：在包就要离开防火墙之前改变其源地址    filter表
+主要用于对数据包进行过滤，根据具体的规则决定是否放行该数据包（如DROP、ACCEPT、REJECT、LOG）。filter 表对应的内核模块为iptable_filter，包含三个规则链：
+ INPUT链：INPUT针对那些目的地是本地的包 FORWARD链：FORWARD过滤所有不是本地产生的并且目的地不是本地(即本机只是负责转发)的包 OUTPUT链：OUTPUT是用来过滤所有本地生成的包    链(chains) #  在处理各种数据包时，根据防火墙规则的不同介入时机，iptables供涉及5种默认规则链，从应用时间点的角度理解这些链：">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Iptables #  iptables：一个运行在用户空间的应用软件，通过控制Linux内核netfilter模块，来管理网络数据包的流动与转送。
+Netfilter：Linux操作系统核心层内部的一个数据包处理模块，它具有如下功能：
+  网络地址转换(Network Address Translate)
+  数据包内容修改
+  数据包过滤
+  Netfilter的配置表：存放设置的规则的文件，存放在内核内存中。iptables程序通过修改这个规则文件来控制网络数据包流动。 该配置表由表tables、链chains、规则rules组成。
+ Netfilter配置表 #  表(tables) #  用于实现特定的功能
+  raw表
+主要用于决定数据包是否被状态跟踪机制处理。在匹配数据包时，raw表的规则要优先于其他表。包含两条规则链 OUTPUT、PREROUTING。
+iptables中数据包和4种被跟踪连接的4种不同状态：
+ NEW：该包想要开始一个连接（重新连接或将连接重定向） RELATED：该包是属于某个已经建立的连接所建立的新连接。 ESTABLISHED ：只要发送并接到应答，一个数据连接从NEW变为ESTABLISHED,而且该状态会继续匹配这个连接的后续数据包。 INVALID：数据包不能被识别属于哪个连接或没有任何状态比如内存溢出，收到不知属于哪个连接的ICMP错误信息，一般应该DROP这个状态的任何数据。    mangle表
+主要用于修改数据包的TOS（Type Of Service，服务类型）、TTL（Time To Live，生存周期）指以及为数据包设置Mark标记，以实现Qos(Quality Of Service，服务质量)调整以及策略路由等应用，由于需要相应的路由设备支持，因此应用并不广泛。包含五个规则链——PREROUTING，POSTROUTING，INPUT，OUTPUT，FORWARD。
+  nat表
+主要用于修改数据包的IP地址、端口号等信息（网络地址转换，如SNAT、DNAT、MASQUERADE、REDIRECT）。属于一个流的包(因为包 的大小限制导致数据可能会被分成多个数据包)只会经过这个表一次。如果第一个包被允许做NAT或Masqueraded，那么余下的包都会自动地被做相同的操作，也就是说，余下的包不会再通过这个表。
+表对应的内核模块为 iptable_nat，包含三个链：
+ PREROUTING链：作用是在包刚刚到达防火墙时改变它的目的地址 OUTPUT链：改变本地产生的包的目的地址 POSTROUTING链：在包就要离开防火墙之前改变其源地址    filter表
+主要用于对数据包进行过滤，根据具体的规则决定是否放行该数据包（如DROP、ACCEPT、REJECT、LOG）。filter 表对应的内核模块为iptable_filter，包含三个规则链：
+ INPUT链：INPUT针对那些目的地是本地的包 FORWARD链：FORWARD过滤所有不是本地产生的并且目的地不是本地(即本机只是负责转发)的包 OUTPUT链：OUTPUT是用来过滤所有本地生成的包    链(chains) #  在处理各种数据包时，根据防火墙规则的不同介入时机，iptables供涉及5种默认规则链，从应用时间点的角度理解这些链：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/security/Firewall/iptables/" />
+
+<title>Iptables | Hugo Book</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.050acee8186cae8057b1a4980b05a8f0180d26621ac9ae7e01c0c4006a4d3fa3.js" integrity="sha256-BQrO6BhsroBXsaSYCwWo8BgNJmIaya5&#43;AcDEAGpNP6M="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><span>Hugo Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">DevOps笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/Basic/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/Firewall/firewalld/" class="">Firewalld</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/Firewall/iptables/" class="active">Iptables</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/Firewall/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/IDS/README/" class="">R E a D M E</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/IDS/Snort/snort/" class="">Snort</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/TLS/ssl/" class="">Ssl</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://themes.gohugo.io/hugo-book/" target="_blank" rel="noopener">
+        Hugo Themes
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Iptables</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#iptables">Iptables</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#netfilter配置表">Netfilter配置表</a></li>
+            <li><a href="#原理">原理</a></li>
+            <li><a href="#规则编写">规则编写</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="iptables">
+  Iptables
+  <a class="anchor" href="#iptables">#</a>
+</h1>
+<p>iptables：一个运行在用户空间的应用软件，通过控制Linux内核netfilter模块，来管理网络数据包的流动与转送。</p>
+<p>Netfilter：Linux操作系统核心层内部的一个数据包处理模块，它具有如下功能：</p>
+<ul>
+<li>
+<p>网络地址转换(Network Address Translate)</p>
+</li>
+<li>
+<p>数据包内容修改</p>
+</li>
+<li>
+<p>数据包过滤</p>
+</li>
+</ul>
+<p>Netfilter的配置表：存放设置的规则的文件，存放在内核内存中。iptables程序通过修改这个规则文件来控制网络数据包流动。
+该配置表由表tables、链chains、规则rules组成。</p>
+<hr>
+<h3 id="netfilter配置表">
+  Netfilter配置表
+  <a class="anchor" href="#netfilter%e9%85%8d%e7%bd%ae%e8%a1%a8">#</a>
+</h3>
+<h4 id="表tables">
+  表(tables)
+  <a class="anchor" href="#%e8%a1%a8tables">#</a>
+</h4>
+<p>用于实现特定的功能</p>
+<ul>
+<li>
+<p>raw表</p>
+<p>主要用于决定数据包是否被状态跟踪机制处理。在匹配数据包时，raw表的规则要优先于其他表。包含两条规则链 OUTPUT、PREROUTING。</p>
+<p>iptables中数据包和4种被跟踪连接的4种不同状态：</p>
+<ul>
+<li>NEW：该包想要开始一个连接（重新连接或将连接重定向）</li>
+<li>RELATED：该包是属于某个已经建立的连接所建立的新连接。</li>
+<li>ESTABLISHED ：只要发送并接到应答，一个数据连接从NEW变为ESTABLISHED,而且该状态会继续匹配这个连接的后续数据包。</li>
+<li>INVALID：数据包不能被识别属于哪个连接或没有任何状态比如内存溢出，收到不知属于哪个连接的ICMP错误信息，一般应该DROP这个状态的任何数据。</li>
+</ul>
+</li>
+<li>
+<p>mangle表</p>
+<p>主要用于修改数据包的TOS（Type Of Service，服务类型）、TTL（Time To Live，生存周期）指以及为数据包设置Mark标记，以实现Qos(Quality Of Service，服务质量)调整以及策略路由等应用，由于需要相应的路由设备支持，因此应用并不广泛。包含五个规则链——PREROUTING，POSTROUTING，INPUT，OUTPUT，FORWARD。</p>
+</li>
+<li>
+<p>nat表</p>
+<p>主要用于修改数据包的IP地址、端口号等信息（网络地址转换，如SNAT、DNAT、MASQUERADE、REDIRECT）。属于一个流的包(因为包
+的大小限制导致数据可能会被分成多个数据包)只会经过这个表一次。如果第一个包被允许做NAT或Masqueraded，那么余下的包都会自动地被做相同的操作，也就是说，余下的包不会再通过这个表。</p>
+<p>表对应的内核模块为 iptable_nat，包含三个链：</p>
+<ul>
+<li>PREROUTING链：作用是在包刚刚到达防火墙时改变它的目的地址</li>
+<li>OUTPUT链：改变本地产生的包的目的地址</li>
+<li>POSTROUTING链：在包就要离开防火墙之前改变其源地址</li>
+</ul>
+</li>
+<li>
+<p>filter表</p>
+<p>主要用于对数据包进行过滤，根据具体的规则决定是否放行该数据包（如DROP、ACCEPT、REJECT、LOG）。filter 表对应的内核模块为iptable_filter，包含三个规则链：</p>
+<ul>
+<li>INPUT链：INPUT针对那些目的地是本地的包</li>
+<li>FORWARD链：FORWARD过滤所有不是本地产生的并且目的地不是本地(即本机只是负责转发)的包</li>
+<li>OUTPUT链：OUTPUT是用来过滤所有本地生成的包</li>
+</ul>
+</li>
+</ul>
+<h4 id="链chains">
+  链(chains)
+  <a class="anchor" href="#%e9%93%bechains">#</a>
+</h4>
+<p>在处理各种数据包时，根据防火墙规则的不同介入时机，iptables供涉及5种默认规则链，从应用时间点的角度理解这些链：</p>
+<ul>
+<li>
+<p>INPUT链：当接收到防火墙本机地址的数据包（入站）时，应用此链中的规则。</p>
+</li>
+<li>
+<p>OUTPUT链：当防火墙本机向外发送数据包（出站）时，应用此链中的规则。</p>
+</li>
+<li>
+<p>FORWARD链：当接收到需要通过防火墙发送给其他地址的数据包（转发）时，应用此链中的规则。</p>
+</li>
+<li>
+<p>PREROUTING链：在对数据包作路由选择之前，应用此链中的规则，如DNAT。</p>
+</li>
+<li>
+<p>POSTROUTING链：在对数据包作路由选择之后，应用此链中的规则，如SNAT。</p>
+</li>
+</ul>
+<h4 id="规则rules">
+  规则(rules)
+  <a class="anchor" href="#%e8%a7%84%e5%88%99rules">#</a>
+</h4>
+<ul>
+<li>
+<p>ACCEPT：允许数据包通过</p>
+</li>
+<li>
+<p>DROP：直接丢弃数据包，不给任何回应信息</p>
+</li>
+<li>
+<p>REJECT：拒绝数据包通过，必要时会给数据发送端一个响应的信息。</p>
+</li>
+<li>
+<p>SNAT：源地址转换。在进入路由层面的route之前，重新改写源地址，目标地址不变，并在本机建立NAT表项，当数据返回时，根据NAT表将
+目的地址数据改写为数据发送出去时候的源地址，并发送给主机。解决内网用户用同一个公网地址上网的问题。
+MASQUERADE，是SNAT的一种特殊形式，适用于像adsl这种临时会变的ip上</p>
+</li>
+<li>
+<p>DNAT:目标地址转换。和SNAT相反，IP包经过route之后、出本地的网络栈之前，重新修改目标地址，源地址不变，在本机建立NAT表项，当
+数据返回时，根据NAT表将源地址修改为数据发送过来时的目标地址，并发给远程主机。可以隐藏后端服务器的真实地址。
+REDIRECT：是DNAT的一种特殊形式，将网络包转发到本地host上（不管IP头部指定的目标地址是啥），方便在本机做端口转发。</p>
+</li>
+<li>
+<p>LOG：在/var/log/messages文件中记录日志信息，然后将数据包传递给下一条规则</p>
+</li>
+</ul>
+<p>除去最后一个LOG，前3条规则匹配数据包后，该数据包不会再往下继续匹配了，所以编写的规则顺序极其关键。</p>
+<hr>
+<h3 id="原理">
+  原理
+  <a class="anchor" href="#%e5%8e%9f%e7%90%86">#</a>
+</h3>
+<hr>
+<p>
+  <img src="iptables-flowchat.png" alt="工作机制" /></p>
+<hr>
+<p>从上图中，我们可以总结出以下规律：</p>
+<ol>
+<li>
+<p>一个数据包进入网卡时，它首先进入PREROUTING链，内核根据数据包目的IP判断是否需要转发出去。</p>
+</li>
+<li>
+<p>如果数据包就是进入本机的，它就会沿着图向下移动，到达INPUT链。数据包到了INPUT链后，任何进程都会收到它。本机上运行的程序可以发送数据包，这些数据包会经 过OUTPUT链，然后到达POSTROUTING链输出。</p>
+</li>
+<li>
+<p>如果数据包是要转发出去的，且内核允许转发，数据包就会如图所示向右移动，经过 FORWARD链，然后到达POSTROUTING链输出。</p>
+</li>
+</ol>
+<hr>
+<h3 id="规则编写">
+  规则编写
+  <a class="anchor" href="#%e8%a7%84%e5%88%99%e7%bc%96%e5%86%99">#</a>
+</h3>
+<p>命令格式：iptables -t TABLE command CHAIN parameter match -j TARGET</p>
+<p>
+  <img src="iptables-cli.png" alt="command" /></p>
+<table>
+<thead>
+<tr>
+<th>command</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-P  &ndash;policy</td>
+<td>定义默认策略</td>
+</tr>
+<tr>
+<td>-L  &ndash;list</td>
+<td>查看iptables规则列表</td>
+</tr>
+<tr>
+<td>-A  &ndash;append</td>
+<td>在规则列表的最后增加1条规则</td>
+</tr>
+<tr>
+<td>-I  &ndash;insert</td>
+<td>在指定的位置插入1条规则</td>
+</tr>
+<tr>
+<td>-D  &ndash;delete</td>
+<td>从规则列表中删除1条规则</td>
+</tr>
+<tr>
+<td>-R  &ndash;replace</td>
+<td>替换规则列表中的某条规则</td>
+</tr>
+<tr>
+<td>-F  &ndash;flush</td>
+<td>删除表中所有规则</td>
+</tr>
+<tr>
+<td>-Z  &ndash;zero</td>
+<td>将表中数据包计数器和流量计数器归零</td>
+</tr>
+<tr>
+<td>-X  &ndash;delete-chain</td>
+<td>删除自定义链</td>
+</tr>
+<tr>
+<td>-v  &ndash;verbose</td>
+<td>与-L他命令一起使用显示更多更详细的信息</td>
+</tr>
+<tr>
+<td>-nL</td>
+<td>查看当前运行的防火墙规则列表</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>parameter</th>
+<th>match</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-i &ndash;in-interface</td>
+<td>网络接口名&gt;</td>
+<td>指定数据包从哪个网络接口进入，</td>
+</tr>
+<tr>
+<td>-o &ndash;out-interface</td>
+<td>网络接口名&gt;</td>
+<td>指定数据包从哪个网络接口输出</td>
+</tr>
+<tr>
+<td>-p &mdash;proto</td>
+<td>协议类型</td>
+<td>指定数据包匹配的协议，如TCP、UDP和ICMP等</td>
+</tr>
+<tr>
+<td>-s &ndash;source</td>
+<td>源地址或子网&gt;</td>
+<td>指定数据包匹配的源地址</td>
+</tr>
+<tr>
+<td>&ndash;sport</td>
+<td>源端口号&gt;</td>
+<td>指定数据包匹配的源端口号</td>
+</tr>
+<tr>
+<td>-d &ndash;destination</td>
+<td>目的地址或子网&gt;</td>
+<td>指定数据包匹配的目的地址</td>
+</tr>
+<tr>
+<td>&ndash;dport</td>
+<td>目的端口号&gt;</td>
+<td>指定数据包匹配的目的端口号</td>
+</tr>
+<tr>
+<td>-m &ndash;match</td>
+<td>匹配的模块</td>
+<td>指定数据包规则所使用的过滤模块</td>
+</tr>
+</tbody>
+</table>
+<p>-m：extend matches，这个选项用于提供更多的匹配参数，如：</p>
+<pre><code>-m state –-state ESTABLISHED,RELATED
+-m tcp –-dport 22
+-m multiport –-dports 80,8080
+-m icmp –-icmp-type 8
+</code></pre>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs/technology/security/Firewall/iptables.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#iptables">Iptables</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#netfilter配置表">Netfilter配置表</a></li>
+            <li><a href="#原理">原理</a></li>
+            <li><a href="#规则编写">规则编写</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

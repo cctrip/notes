@@ -1,21 +1,418 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-	
-	<sitemap>
-	   	<loc>https://cctrip.github.io/notes/en/sitemap.xml</loc>
-		
-	   	<lastmod>2020-07-04T00:18:26+08:00</lastmod>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://cctrip.github.io/notes/ru/sitemap.xml</loc>
-		
-	</sitemap>
-	
-	<sitemap>
-	   	<loc>https://cctrip.github.io/notes/zh/sitemap.xml</loc>
-		
-	</sitemap>
-	
-</sitemapindex>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/Kernel/kernel/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Basic/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Basic/constitute/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/Directory/directoryStructure/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/Start/start/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Basic/fileSystem/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/network/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Application/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Basic/opreatingSystem/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/tool/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Basic/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/deploy/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/optimization/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/architecture/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/deploy/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/optimization/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Ansible/ansible/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Docker/docker/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elk/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elkinstall/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubeadm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubernetes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/Mysql/cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/Mysql/install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/Mysql/mysql/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/PostgreSQL/postgresql/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/Redis/cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/Redis/redis/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/hidden/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/network/Protocol/http/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/BookNotes/bookNotes/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/BookNotes/codecademy/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/BookNotes/CS50/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/BookNotes/finacial/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/BookNotes/thinkOS/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/hangzhou/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/interview/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/MyConfig/config/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/MyConfig/vim/vimconf/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Solution/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Translate/translate/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/Algorithm/algorithm/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/DataStructure/datastructure/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/factoryMethod/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/simpleFactory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Basic/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/CookBook/DataStructuresAndAlgorithms/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/CookBook/StringsAndText/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Django/django/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Flask/flask/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Scrapy/scrapy/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/git/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/alias/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/commitHistory/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/configuration/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/createNew/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/introduce/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/record/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/remote/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/tag/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/undo/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Shell/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/Basic/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/Firewall/firewalld/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/Firewall/iptables/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/Firewall/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/IDS/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/IDS/Snort/snort/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/TLS/ssl/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Application/tomcat/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/fileOperation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/permissionsOperation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/Lnmp/README/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/tool/Script/script/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/tool/tcpcopy/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/categories/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/</loc>
+    <lastmod>2020-07-04T00:18:26+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/tags/</loc>
+  </url>
+  
+</urlset>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>计算机基础 on Hugo Book</title>
+    <link>https://cctrip.github.io/notes/docs/technology/system/Basic/</link>
+    <description>Recent content in 计算机基础 on Hugo Book</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/system/Basic/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>计算机组成</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Basic/constitute/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Basic/constitute/</guid>
+      <description>计算机组成 #  计算机组成 #  计算机(computer)：一种利用电子学原理，根据一系列指令来对数据进行处理的工具。
+ 硬件 #    控制器：负责对程序规定的控制信息进行分析,控制并协调输入,输出操作或内存访问。
+  运算器：负责数据的算术运算和逻辑运算即数据的加工处理。
+  存储器：实现记忆功能的部件用来存放计算程序及参与运算的各种数据。
+  输入设备：实现计算程序和原始数据的输入
+  输出设备：实现计算结果输出
+  图示：
+   软件 #    系统软件：负责管理计算机系统中各种独立的硬件，使得它们可以协调工作，提供基本的功能，并为正在运行的应用软件提供平台。
+  应用软件：为了某种特定的用途而被开发的软件。
+   计算机工作过程 #    用户打开程序
+  系统把程序代码段和数据段送入计算机的内存
+  控制器从存储器中取指令
+  控制器分析,执行指令,为取下一条指令做准备
+  取下一条指令,分析执行,如此重复操作,直至执行完程序中全部指令,便可获得全部指令
+  图示：
+  计算机系统结构 #    </description>
+    </item>
+    
+    <item>
+      <title>文件系统</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Basic/fileSystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Basic/fileSystem/</guid>
+      <description>文件系统 #  文件系统是一套实现了数据的存储、分级组织、访问和获取等操作的抽象数据类型（Abstract data type）。
+概念 #  文件系统是一种用于向用户提供底层数据访问的机制。它将设备中的空间划分为特定大小的块（或者称为簇），一般每块512字节。数据存储在这些块中，大小被修正为占用整数个块。由文件系统软件来负责将这些块组织为文件和目录，并记录哪些块被分配给了哪个文件，以及哪些块没有被使用。
+ EXT2文件系统 #  EXT2文件系统是Linux底下最常用的文件系统。其结构如下：
+  Boot Sector
+启动扇区，这个启动扇区可以安装启动管理程序， 这是个非常重要的设计，因为如此一来我们就能够将不同的启动管理程序安装到个别的文件系统最前端，而不用覆盖整颗硬盘唯一的MBR.
+  Block Group
+  Super Block
+记录整个filesystem相关信息
+  Group Descriptions
+描述每个 block group 的开始与结束的 block 号码，以及说明每个区段 (superblock, bitmap, inodemap, data block) 分别介于哪一个 block 号码之间
+  Block Bitmap
+记录使用和未使用的block号码
+  Inode Bitmap
+记录使用和未使用的inode号码
+  Inode Table
+  Data Blocks
+数据块，实际存储数据的地方
+      Inode Table #  inode是ext2文件系统的基本构建块，每个文件和目录都有唯一一个inode。其机构如下：</description>
+    </item>
+    
+    <item>
+      <title>操作系统</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Basic/opreatingSystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Basic/opreatingSystem/</guid>
+      <description>操作系统 #  操作系统(operating system)：是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的内核与基石。操作系统需要处理如管理与配置内存、决定系统资源供需的优先次序、控制输入与输出设备、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互的操作界面。
+ 结构 #    驱动程序：最底层的、直接控制和监视各类硬件的部分，它们的职责是隐藏硬件的具体细节，并向其他部分提供一个抽象的、通用的接口。
+  内核：操作系统之最内核部分，通常运行在最高特权级，负责提供基础性、结构性的功能。
+  函数库(接口库)：是一系列特殊的程序库，它们职责在于把系统所提供的基本服务包装成应用程序所能够使用的编程接口（API），是最靠近应用程序的部分。
+  外围：所谓外围，是指操作系统中除以上三类以外的所有其他部分，通常是用于提供特定高级服务的部件。
+  图示：
+  Linux系统架构：
+  功能 #  操作系统位于底层硬件与用户之间，是两者沟通的桥梁。用户可以通过操作系统的用户界面，输入命令。操作系统则对命令进行解释，驱动硬件设备，实现用户要求。以现代标准而言，一个标准PC的操作系统应该提供以下的功能：
+  进程管理（Processing management）
+  内存管理（Memory management）
+  文件系统（File system）
+  网络通信（Networking）
+  安全机制（Security）
+  用户界面（User interface）
+  驱动程序（Device drivers）
+  </description>
+    </item>
+    
+  </channel>
+</rss>

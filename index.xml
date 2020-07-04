@@ -10,188 +10,1255 @@
     
     
     <item>
-      <title>With ToC</title>
-      <link>https://cctrip.github.io/notes/docs/example/table-of-contents/with-toc/</link>
+      <title>内核编译</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Kernel/kernel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/example/table-of-contents/with-toc/</guid>
-      <description>Caput vino delphine in tamen vias #  Cognita laeva illo fracta #  Lorem markdownum pavent auras, surgit nunc cingentibus libet Laomedonque que est. Pastor An arbor filia foedat, ne fugit aliter, per. Helicona illas et callida neptem est Oresitrophos caput, dentibus est venit. Tenet reddite famuli praesentem fortibus, quaeque vis foret si frondes gelidos gravidae circumtulit inpulit armenta nativum.
- Te at cruciabere vides rubentis manebo Maturuit in praetemptat ruborem ignara postquam habitasse Subitarum supplevit quoque fontesque venabula spretis modo Montis tot est mali quasque gravis Quinquennem domus arsit ipse Pellem turis pugnabant locavit  Natus quaerere #  Pectora et sine mulcere, coniuge dum tincta incurvae.</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Kernel/kernel/</guid>
+      <description>内核编译 #  概念 #  内核指的是一个提供硬件抽象层、磁盘及文件系统控制、多任务等功能的系统软件。
+一般保存在/boot目录中，格式为/boot/vmlinuz-XXX
+ 为什么要编译内核 #    需要新功能支持
+  原核心过于臃肿
+  与硬件搭配的稳定性
+  其他特殊需求
+   编译内核 #    下载源码包， https://www.kernel.org/
+  解压内核包，一般放在/usr/src/kernels目录下
+ tar -Jxf /root/linux-3.16.39.tar.xz -C /usr/src/kernels/    进入内核目录
+ cd /usr/src/kernels/linux-3.16.39    查看内核目录( 目录说明)
+ ls -d ./*/ ./arch/ ./crypto/ ./drivers/ ./fs/ ./init/ ./kernel/ ./mm/ ./samples/ ./security/ ./tools/ ./virt/ .</description>
     </item>
     
     <item>
-      <title>Without ToC</title>
-      <link>https://cctrip.github.io/notes/docs/example/table-of-contents/without-toc/</link>
+      <title>计算机组成</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Basic/constitute/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/example/table-of-contents/without-toc/</guid>
-      <description>At me ipso nepotibus nunc celebratior genus #  Tanto oblite #  Lorem markdownum pectora novis patenti igne sua opus aurae feras materiaque illic demersit imago et aristas questaque posset. Vomit quoque suo inhaesuro clara. Esse cumque, per referri triste. Ut exponit solisque communis in tendens vincetis agisque iamque huic bene ante vetat omina Thebae rates. Aeacus servat admonitu concidit, ad resimas vultus et rugas vultu dignamque Siphnon.
-Quam iugulum regia simulacra, plus meruit humo pecorumque haesit, ab discedunt dixit: ritu pharetramque.</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Basic/constitute/</guid>
+      <description>计算机组成 #  计算机组成 #  计算机(computer)：一种利用电子学原理，根据一系列指令来对数据进行处理的工具。
+ 硬件 #    控制器：负责对程序规定的控制信息进行分析,控制并协调输入,输出操作或内存访问。
+  运算器：负责数据的算术运算和逻辑运算即数据的加工处理。
+  存储器：实现记忆功能的部件用来存放计算程序及参与运算的各种数据。
+  输入设备：实现计算程序和原始数据的输入
+  输出设备：实现计算结果输出
+  图示：
+   软件 #    系统软件：负责管理计算机系统中各种独立的硬件，使得它们可以协调工作，提供基本的功能，并为正在运行的应用软件提供平台。
+  应用软件：为了某种特定的用途而被开发的软件。
+   计算机工作过程 #    用户打开程序
+  系统把程序代码段和数据段送入计算机的内存
+  控制器从存储器中取指令
+  控制器分析,执行指令,为取下一条指令做准备
+  取下一条指令,分析执行,如此重复操作,直至执行完程序中全部指令,便可获得全部指令
+  图示：
+  计算机系统结构 #    </description>
     </item>
     
     <item>
-      <title>Creating a New Theme</title>
-      <link>https://cctrip.github.io/notes/posts/creating-a-new-theme/</link>
-      <pubDate>Sun, 28 Sep 2014 00:00:00 +0000</pubDate>
+      <title>Linux目录结构</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Directory/directoryStructure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/posts/creating-a-new-theme/</guid>
-      <description>Introduction #  This tutorial will show you how to create a simple theme in Hugo. I assume that you are familiar with HTML, the bash command line, and that you are comfortable using Markdown to format content. I&amp;rsquo;ll explain how Hugo uses templates and how you can organize your templates to create a theme. I won&amp;rsquo;t cover using CSS to style your theme.
-We&amp;rsquo;ll start with creating a new site with a very basic template.</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Directory/directoryStructure/</guid>
+      <description>Linux目录结构 #    /boot
+系统启动相关的文件，如内核、initrd，以及grub(bootloader)
+  /dev
+设备文件
+块设备：随机访问，数据块
+字符设备：线性访问，按字符为单位
+设备号：主设备号(major)和次设备号(minor)
+  /etc
+配置文件
+  /home
+用户的家目录，每一个用户的家目录通常默认为/home/USERNAME
+  /root
+管理员的家目录
+  /lib
+库文件
+静态库，.a
+动态库，.dll，.so（shared object）
+  /lib/modules
+内核模块文件
+  /media
+挂载点目录，移动设备
+  /mnt
+挂载点目录，额外的临时文件系统
+  /opt
+可选目录，第三方程序的安装目录
+  /proc
+伪文件系统，内核映射文件
+  /sys
+伪文件系统，跟硬件设备相关的属性映射文件
+  /tmp
+临时文件，/var/tmp
+  /var
+可变化的文件
+  /bin
+可执行文件，用户命令
+  /sbin</description>
     </item>
     
     <item>
-      <title>Migrate to Hugo from Jekyll</title>
-      <link>https://cctrip.github.io/notes/posts/migrate-from-jekyll/</link>
-      <pubDate>Mon, 10 Mar 2014 00:00:00 +0000</pubDate>
+      <title>启动</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Start/start/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/posts/migrate-from-jekyll/</guid>
-      <description>Move static content to static #  Jekyll has a rule that any directory not starting with _ will be copied as-is to the _site output. Hugo keeps all static content under static. You should therefore move it all there. With Jekyll, something that looked like
-▾ &amp;lt;root&amp;gt;/ ▾ images/ logo.png  should become
-▾ &amp;lt;root&amp;gt;/ ▾ static/ ▾ images/ logo.png  Additionally, you&amp;rsquo;ll want any files that should reside at the root (such as CNAME) to be moved to static.</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Start/start/</guid>
+      <description>启动过程 #  整个过程基本可以分为POST–&amp;gt;BIOS–&amp;gt;MBR(GRUB)–&amp;gt;Kernel–&amp;gt;Init–&amp;gt;Runlevel。
+  详解 #    BIOS
+BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上。开机时，会最先读取该系统，然后会有一个加电自检过程，若没有异常就开始加载BIOS程序到内存当中。BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。
+  MBR
+MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。
+  GRUB
+GRUB(Grand Unified Bootloader)，多系统启动程序，其执行过程可分为三个步骤：
+  Stage1
+这个其实就是MBR，它的主要工作就是查找并加载第二段Bootloader程序(stage2)，但系统在没启动时，MBR根本找不到文件系统，也就找不到stage2所存放的位置，因此，就有了stage1_5
+  Stage1_5
+该步骤就是为了识别文件系统
+  Stage2
+GRUB程序会根据/boot/grub/grub.conf文件查找Kernel的信息，然后开始加载Kernel程序，当Kernel程序被检测并在加载到内存中，GRUB就将控制权交接给了Kernel程序。
+PS：实际上这个步骤/boot还没被挂载，GRUB直接识别grub所在磁盘的文件系统，所以实际上应该是/grub/grub.conf文件，该配置文件的信息如下：
+grub.conf:
+ #boot=/dev/sda default=0 #设定默认启动的title的编号，从0开始 timeout=5 #等待用户选择的超时时间 splashimage=(hd0,0)/boot/grub/splash.xpm.gz #GRUB的背景图片 hiddenmenu #隐藏菜单 title CentOS (2.6.18-194.el5PAE) #内核标题 root (hd0,0) #内核文件所在的设备 kernel /vmlinuz-2.6.18-194.el5PAE ro root=LABEL=/ #内核文件路径以及传递给内核的参数 initrd /initrd-2.6.18-194.el5PAE.img #ramdisk文件路径      Kernel</description>
     </item>
     
     <item>
-      <title>(Hu)go Template Primer</title>
-      <link>https://cctrip.github.io/notes/posts/goisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>文件系统</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Basic/fileSystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/posts/goisforlovers/</guid>
-      <description>Hugo uses the excellent Go html/template library for its template engine. It is an extremely lightweight engine that provides a very small amount of logic. In our experience that it is just the right amount of logic to be able to create a good static website. If you have used other template systems from different languages or frameworks you will find a lot of similarities in Go templates.
-This document is a brief primer on using Go templates.</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Basic/fileSystem/</guid>
+      <description>文件系统 #  文件系统是一套实现了数据的存储、分级组织、访问和获取等操作的抽象数据类型（Abstract data type）。
+概念 #  文件系统是一种用于向用户提供底层数据访问的机制。它将设备中的空间划分为特定大小的块（或者称为簇），一般每块512字节。数据存储在这些块中，大小被修正为占用整数个块。由文件系统软件来负责将这些块组织为文件和目录，并记录哪些块被分配给了哪个文件，以及哪些块没有被使用。
+ EXT2文件系统 #  EXT2文件系统是Linux底下最常用的文件系统。其结构如下：
+  Boot Sector
+启动扇区，这个启动扇区可以安装启动管理程序， 这是个非常重要的设计，因为如此一来我们就能够将不同的启动管理程序安装到个别的文件系统最前端，而不用覆盖整颗硬盘唯一的MBR.
+  Block Group
+  Super Block
+记录整个filesystem相关信息
+  Group Descriptions
+描述每个 block group 的开始与结束的 block 号码，以及说明每个区段 (superblock, bitmap, inodemap, data block) 分别介于哪一个 block 号码之间
+  Block Bitmap
+记录使用和未使用的block号码
+  Inode Bitmap
+记录使用和未使用的inode号码
+  Inode Table
+  Data Blocks
+数据块，实际存储数据的地方
+      Inode Table #  inode是ext2文件系统的基本构建块，每个文件和目录都有唯一一个inode。其机构如下：</description>
     </item>
     
     <item>
-      <title>Getting Started with Hugo</title>
-      <link>https://cctrip.github.io/notes/posts/hugoisforlovers/</link>
-      <pubDate>Wed, 02 Apr 2014 00:00:00 +0000</pubDate>
+      <title>操作系统</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Basic/opreatingSystem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/posts/hugoisforlovers/</guid>
-      <description>Step 1. Install Hugo #  Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs #  Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Basic/opreatingSystem/</guid>
+      <description>操作系统 #  操作系统(operating system)：是管理计算机硬件与软件资源的计算机程序，同时也是计算机系统的内核与基石。操作系统需要处理如管理与配置内存、决定系统资源供需的优先次序、控制输入与输出设备、操作网络与管理文件系统等基本事务。操作系统也提供一个让用户与系统交互的操作界面。
+ 结构 #    驱动程序：最底层的、直接控制和监视各类硬件的部分，它们的职责是隐藏硬件的具体细节，并向其他部分提供一个抽象的、通用的接口。
+  内核：操作系统之最内核部分，通常运行在最高特权级，负责提供基础性、结构性的功能。
+  函数库(接口库)：是一系列特殊的程序库，它们职责在于把系统所提供的基本服务包装成应用程序所能够使用的编程接口（API），是最靠近应用程序的部分。
+  外围：所谓外围，是指操作系统中除以上三类以外的所有其他部分，通常是用于提供特定高级服务的部件。
+  图示：
+  Linux系统架构：
+  功能 #  操作系统位于底层硬件与用户之间，是两者沟通的桥梁。用户可以通过操作系统的用户界面，输入命令。操作系统则对命令进行解释，驱动硬件设备，实现用户要求。以现代标准而言，一个标准PC的操作系统应该提供以下的功能：
+  进程管理（Processing management）
+  内存管理（Memory management）
+  文件系统（File system）
+  网络通信（Networking）
+  安全机制（Security）
+  用户界面（User interface）
+  驱动程序（Device drivers）
+  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/example/collapsed/3rd-level/4th-level/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/example/collapsed/3rd-level/4th-level/</guid>
-      <description>4th Level of Menu #  Caesorum illa tu sentit micat vestes papyriferi #  Inde aderam facti; Theseus vis de tauri illa peream. Oculos uberaque non regisque vobis cursuque, opus venit quam vulnera. Et maiora necemque, lege modo; gestanda nitidi, vero? Dum ne pectoraque testantur.
-Venasque repulsa Samos qui, exspectatum eram animosque hinc, aut manes, Assyrii. Cupiens auctoribus pariter rubet, profana magni super nocens. Vos ius sibilat inpar turba visae iusto!</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/architecture/</guid>
+      <description>kafka架构 #  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/example/hidden/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/deploy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/example/hidden/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/deploy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/optimization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/architecture/</guid>
+      <description>Zookeeper架构 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/deploy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/deploy/</guid>
+      <description>Zookeeper部署 #  单机环境搭建 #    下载安装包
+ wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 zookeeper    修改配置文件
+ #vim zookeeper/conf/zoo.cfg tickTime=2000 initLimit=5 syncLimit=2 dataDir=/cache1/zookeeper/data #数据目录 clientPort=2181 #服务端口    配置日志保存目录
+ #修改zookeeper/conf/log4j.properties文件 zookeeper.root.logger=INFO, ROLLINGFILE zookeeper.log.dir=/cache1/zookeeper/logs zookeeper.log.file=zookeeper.log #修改zookeeper/bin/zkEnv.sh if [ &amp;quot;x${ZOO_LOG_DIR}&amp;quot; = &amp;quot;x&amp;quot; ] then ZOO_LOG_DIR=&amp;quot;/cache1/zookeeper/logs/&amp;quot; fi if [ &amp;quot;x${ZOO_LOG4J_PROP}&amp;quot; = &amp;quot;x&amp;quot; ] then ZOO_LOG4J_PROP=&amp;quot;INFO,ROLLINGFILE&amp;quot; fi    启动服务
+ cd zookeeper/bin &amp;amp;&amp;amp; ./zkServer.sh start     集群环境搭建 #    机器准备</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/optimization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/optimization/</guid>
+      <description>Zookeeper优化 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Ansible/ansible/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Ansible/ansible/</guid>
+      <description>Ansible #  安装 #    安装ansible
+pip install ansible    测试
+echo &amp;quot;127.0.0.1&amp;quot; &amp;gt; ~/ansible_hosts export ANSIBLE_INVENTORY=~/ansible_hosts ansible all -m ping --ask-pass    Inventory #    主机和组
+ansible_hosts 文件
+[group1] host1 host2 [group2] host3 host4 ssh选项 ansible_port=5555(默认22) ansible_host=172.16.0.101 ansible_user=root(默认root) ansible_connection=ssh(默认ssh) ansible_ssh_pass= host变量 http_port=80 maxRequestsPerChild=808 group变量 [group1:vars] ansible_port=33 group包含group [group3:children] group1 group2     命令行 #  ansible &amp;lt;server_name&amp;gt; -m &amp;lt;module_name&amp;gt; -a &amp;lt;arguments&amp;gt;   配置文件 #  略</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Docker/docker/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Docker/docker/</guid>
+      <description>Docker #  容器，操作系统层面的虚拟化技术。
+ 基本概念 #     镜像
+   容器
+   仓库
+   安装 #  Docker安装
+#删除旧版本 yum remove docker docker-common docker-selinux docker-engine #获取repository文件 yum install -y yum-utils device-mapper-persistent-data lvm2 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo #安装新版本 yum install docker-ce #启动 systemctl start docker.service   基本使用 #    docker pull :
+获取镜像
+  docker run [options] : options</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elk/</guid>
+      <description>ELK Stack #  ELK是一个实现可靠，安全地从任何来源，任何格式和 实时搜索，分析和可视化的工具
+ 架构 #  ELK Stack主要由四个组件组成：
+  Filebeat: 从客户端收集日志并传送给Logstash
+  Logstash: 用于处理传入日志并传送给ElasticSearch
+  ElasticSearch: 存储日志并供Kibana查询
+  Kibana: 用于搜索和可视化日志的Web界面
+    使用 #     安装
+  日志解析
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elkinstall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elkinstall/</guid>
+      <description>ELK安装 #  环境准备 #    CentOS 7
+  Java 8
+   ELK安装 #    配置ELK的repo文件
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.repo.d/elk.repo [elasticsearch-6.x] name=Elasticsearch repository for 6.x packages baseurl=https://artifacts.elastic.co/packages/6.x/yum gpgcheck=1 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch enabled=1 autorefresh=1 type=rpm-md    ElasticSearch
+#install yum install elasticsearch /bin/systemctl daemon-reload /bin/systemctl enable elasticsearch.service systemctl start elasticsearch.service #Test curl http://localhost:9200/    Kibana
+#install yum install kibana /bin/systemctl daemon-reload /bin/systemctl enable kibana.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/cluster/</guid>
+      <description>手动部署kubernetes高可用集群 #  环境准备 #  软件 #    etcd
+  docker
+  kubernetes
+  kubelet
+  kube-proxy
+  kube-apiserver
+  kube-controller-manager
+  kube-scheduler
+     软件准备 #     Docker安装
+  软件下载
+ wget https://storage.googleapis.com/kubernetes-release/release/v1.6.9/kubernetes.tar.gz tar -zxvf kubernetes.tar.gz ./kubernetes/cluster/get-kube-binaries.sh wget https://github.com/coreos/etcd/releases/download/v3.2.6/etcd-v3.2.6-linux-amd64.tar.gz     etcd高可用集群搭建 #  安装cfssl #  go get -u github.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubeadm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubeadm/</guid>
+      <description>kubeadm快速部署kubernetes #  环境搭建 #    环境准备
+ #放开防火墙限制 systemctl stop firewalld systemctl disable firewalld #更改内核参数 echo 1 &amp;gt; /proc/sys/net/bridge/bridge-nf-call-ip6tables echo 1 &amp;gt; /proc/sys/net/bridge/bridge-nf-call-iptables #禁用SELINUX setenforce 0    Docker安装
+参考 Docker安装
+ #开启iptables filter表中FOWARD链(Docker1.3开始已被禁用) iptables -P FORWARD ACCEPT #/etc/docker/daemon.json增加配置 { &amp;quot;exec-opts&amp;quot;: [&amp;quot;native.cgroupdriver=systemd&amp;quot;] } #重启Docker systemctl restart docker.service    Kubeadm安装
+ #添加repo配置 cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kubernetes.repo [kubernetes] name=Kubernetes baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64 enabled=1 gpgcheck=1 repo_gpgcheck=1 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg EOF #安装kubeadm,kubelet,kubectl yum install -y kubelet kubeadm kubectl systemctl enable kubelet &amp;amp;&amp;amp; systemctl start kubelet     Master node 初始化 #    init</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubernetes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubernetes/</guid>
+      <description>Kubernetes #  k8s是一个开源系统，它可以被用于自动部署，扩展和管理容器化（containerized）应用程序。
+ 架构 #    Master #    etcd
+  API Server
+  Scheduler
+  Controller manager
+  Node #    Kubelet
+  Kube-proxy
+  cAdvisor
+   安装 #     Kubeadm
+基于kubeadm工具部署kubernetes,包含Master和Node。(测试版本，不适用于生产环境)
+   Master-Cluster
+基于kubernetes安装包部署kubernetes集群环境。
+   Objects #  basic objects #    Pod</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/Mysql/cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/database/Mysql/cluster/</guid>
+      <description>MySQL Cluster #  Master-Slave #  Master配置 #  /etc/my.cnf 增加配置
+[mysqld] server-id=1 log-bin=/cache1/mysql/log/mysql-bin.log #忽略系统库 binlog-ignore-db=mysql binlog-ignore-db=information_schema binlog-ignore-db=performance_schema  Replication 帐号创建
+mysql&amp;gt; GRANT REPLICATION SLAVE ON *.* TO &#39;repl&#39;@&#39;%&#39; IDENTIFIED BY &#39;slave@2017&#39;;  导出数据到从库
+mysql&amp;gt; USE newdatabase; mysql&amp;gt; FLUSH TABLES WITH READ LOCK; mysql&amp;gt; SHOW MASTER STATUS; +------------------+----------+--------------+---------------------------------------------+-------------------+ | File | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set | +------------------+----------+--------------+---------------------------------------------+-------------------+ | mysql-bin.000002 | 754 | | mysql,information_schema,performance_schema | | +------------------+----------+--------------+---------------------------------------------+-------------------+ 1 row in set (0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/Mysql/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/database/Mysql/install/</guid>
+      <description>Mysql 安装 #  源码编译安装 #  准备 #    CMake(build framework)
+yum -y install cmake    GNU make(make program)
+yum -y install make    GCC(ANSI C++ complier)
+yum -y install gcc gcc-c++    Boost C++ libraries
+  ncurses library
+yum -y install ncurses ncurses-devel    Perl(run test scripts)
+yum -y install perl     安装 #    创建用户组</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/Mysql/mysql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/database/Mysql/mysql/</guid>
+      <description>Mysql #     Install guide
+   Cluster
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/PostgreSQL/postgresql/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/database/PostgreSQL/postgresql/</guid>
+      <description>PostgreSQL #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/Redis/cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/database/Redis/cluster/</guid>
+      <description>集群 #  集群搭建 #    Redis安装
+wget http://download.redis.io/releases/redis-4.0.1.tar.gz    基础配置
+#除端口外，配置统一 #common port 6379 pidfile /cache1/redis/6379/redis_6379.pid loglevel notice logfile &amp;quot;/cache1/redis/6379/redis_6379.log&amp;quot; dir /cache1/redis/6379 protected-mode no #rdb save 7200 1000 rdbcompression yes rdbchecksum yes dbfilename dump.rdb #aof appendonly yes appendfilename &amp;quot;appendonly.aof&amp;quot; #cluster cluster-enabled yes cluster-config-file nodes.conf cluster-node-timeout 5000    redis集群架构
+192.168.88.1:6379(master) 192.168.88.2:6379(slave) 192.168.88.2:6378(master) 192.168.88.3:6378(slave) 192.168.88.3:6377(master) 192.168.88.1:6377(slave)    启动redis
+cd $PATH redis-server redis-6379.conf &amp;amp;    集群管理器安装</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/Redis/redis/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/database/Redis/redis/</guid>
+      <description>Redis #    基础
+   集群搭建
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/hidden/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/hidden/</guid>
       <description>This page is hidden in menu #  Quondam non pater est dignior ille Eurotas #  Latent te facies #  Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.
  Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor  Cum honorum Latona #  O fallor in sustinui iussorum equidem.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/buttons/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/network/Protocol/http/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/buttons/</guid>
-      <description>Buttons #  Buttons are styled links that can lead to local page or external link.
-Example #  {{&amp;lt; button relref=&amp;#34;/&amp;#34; [class=&amp;#34;...&amp;#34;] &amp;gt;}}Get Home{{&amp;lt; /button &amp;gt;}} {{&amp;lt; button href=&amp;#34;https://github.com/alex-shpak/hugo-book&amp;#34; &amp;gt;}}Contribute{{&amp;lt; /button &amp;gt;}}  Get Home  Contribute  </description>
+      <guid>https://cctrip.github.io/notes/docs/technology/network/Protocol/http/</guid>
+      <description>HTTP #  HTTP，HyperText Transfer Protocol，超文本传输协议，是一种应用层协议，被广泛应用于互联网。
+ </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/columns/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/bookNotes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/columns/</guid>
-      <description>Columns #  Columns help organize shorter pieces of content horizontally for readability.
-{{&amp;lt; columns &amp;gt;}} &amp;lt;!-- begin columns block --&amp;gt; # Left Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic sparator, between columns --&amp;gt; # Mid Content Lorem markdownum insigne... &amp;lt;---&amp;gt; &amp;lt;!-- magic sparator, between columns --&amp;gt; # Right Content Lorem markdownum insigne... {{&amp;lt; /columns &amp;gt;}} Example #  Left Content Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter!</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/bookNotes/</guid>
+      <description>读书笔记 #     操作系统思考
+   CS50
+   codecademy
+  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/details/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/codecademy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/details/</guid>
-      <description>Details #  Details shortcode is a helper for details html5 element. It is going to replace expand shortcode.
-Example #  {{&amp;lt; details &amp;#34;Title&amp;#34; [open] &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} {{&amp;lt; details title=&amp;#34;Title&amp;#34; open=true &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /details &amp;gt;}} Title Markdown content Lorem markdownum insigne&amp;hellip;   </description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/codecademy/</guid>
+      <description>codecademy在线学习 #  HTML和CSS学习 #  HTML #  html基本机构 #  &amp;lt;!DOCTYPE html&amp;gt; //向浏览器声明类型 &amp;lt;html&amp;gt; //所有的html代码都要包含在该元素内 &amp;lt;head&amp;gt; //关于网页的信息，如标题 &amp;lt;title&amp;gt;First Web Page&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; //可见的html代码内容都放在该元素内 &amp;lt;p&amp;gt;Hello,World!&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  可见内容 #    标题
+heading
+ &amp;lt;h1&amp;gt;head&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt; &amp;lt;h3&amp;gt; &amp;lt;h4&amp;gt; &amp;lt;h5&amp;gt; &amp;lt;h6&amp;gt;    段落
+paragraph
+ &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt;    无序列表
+unodered list, list item
+ &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;sub&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt;    有序列表
+ordered list, list item</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/expand/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/CS50/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/expand/</guid>
-      <description>Expand #  Expand shortcode can help to decrease clutter on screen by hiding part of text. Expand content by clicking on it.
-Example #  Default #  {{&amp;lt; expand &amp;gt;}} ## Markdown content Lorem markdownum insigne... {{&amp;lt; /expand &amp;gt;}}   Expand ↕  Markdown content Lorem markdownum insigne&amp;hellip;    With Custom Label #  {{&amp;lt; expand &amp;#34;Custom Label&amp;#34; &amp;#34;...&amp;#34; &amp;gt;}} ## Markdown content Lorem markdownum insigne.</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/CS50/</guid>
+      <description>CS50学习笔记 #  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/hints/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/finacial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/hints/</guid>
-      <description>Hints #  Hint shortcode can be used as hint/alerts/notification block.
-There are 3 colors to choose: info, warning and danger.
-{{&amp;lt; hint [info|warning|danger] &amp;gt;}} **Markdown content** Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa {{&amp;lt; /hint &amp;gt;}} Example #  Markdown content
-Lorem markdownum insigne. Olympo signis Delphis! Retexi Nereius nova develat stringit, frustra Saturnius uteroque inter! Oculis non ritibus Telethusa  Markdown content</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/finacial/</guid>
+      <description>Finanical #  Goal Setting #  Understand How Goals Are Used #    What is a goal?
+  Long term vs Intermediate vs Short term
+  Is a financial goal any different than other goals?
+  SMART Goals #    Specific
+  Measurable
+  Attainable
+  Realistic
+  Time
+  Finanical Goals #    Saving</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/katex/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/thinkOS/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/katex/</guid>
-      <description>KaTeX #  KaTeX shortcode let you render math typesetting in markdown document. See KaTeX
-Example #  {{&amp;lt; katex [display] [class=&amp;#34;text-center&amp;#34;] &amp;gt;}} f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi {{&amp;lt; /katex &amp;gt;}}     \[f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi\]    Display Mode Example #  Here is some inline example:  \(\pi(x)\)  , rendered in the same line. And below is display example, having display: block  \[f(x) = \int_{-\infty}^\infty\hat f(\xi)\,e^{2 \pi i \xi x}\,d\xi\]  Text continues here.</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/thinkOS/</guid>
+      <description>操作系统思考 #  编译 #   编译语言和解释语言    编译语言
+程序被翻译成机器语言，之后由硬件执行。
+  解释语言
+程序被软件解释器读取并执行。
+  静态类型和动态类型    动态类型
+无需定义变量类型，直到运行时才直到变量类型，解释语言通常支持动态类型。
+  静态类型
+需定义变量类型，编译语言通常限制为静态类型。
+优点：
+  编译时检查，可以更快找到错误。
+  节省空间
+动态语言，变量的名称在程序运行时存储在内存中，并且它们通常可由程序访问。 编译语言，变量的名称只存在编译时，而不是运行时。 编译器为每个变量选择一个位置，并记录这些位置作为所编译程序的一部分。变量的位置被称为“地址”。在运行期间，每个变量的值都存储在它的地址处，但变量的名称完全不会存储。      编译过程    预处理
+C是包含&amp;quot;预处理指令&amp;quot;的几种语言之一，它生效于编译之前。例如，#include 指令使其他文件的源代码插入到指令所在的位置
+  解析
+编译器读取源代码，并构建程序的内部表示，称为&amp;quot;抽象语法树(AST)&amp;quot;。这一阶段的错误检查通常为语法错误。
+  静态检查
+编译器会检查变量和值得类型是否正确，函数调用是否带有正确数量和类型的参数，以及其他。这一阶段的错误检测通常为一些&amp;quot;静态语义&amp;quot;的错误
+  代码生成
+编译器读取程序的内部表示，并生成机器码或字节码
+  链接
+如果程序使用了定义在库中的值或函数，编译器需要找到合适的库并包含所需要的代码。
+  优化</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/mermaid/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/mermaid/</guid>
-      <description>Mermaid Chart #   Mermaid is library for generating svg charts and diagrams from text.
-Example #  {{&amp;lt; mermaid [class=&amp;#34;text-center&amp;#34;]&amp;gt;}} sequenceDiagram Alice-&amp;gt;&amp;gt;Bob: Hello Bob, how are you? alt is sick Bob-&amp;gt;&amp;gt;Alice: Not so good :( else is well Bob-&amp;gt;&amp;gt;Alice: Feeling fresh like a daisy end opt Extra response Bob-&amp;gt;&amp;gt;Alice: Thanks for asking end {{&amp;lt; /mermaid &amp;gt;}}     mermaid.initialize({ flowchart: { useMaxWidth:true } });  sequenceDiagram Alice-Bob: Hello Bob, how are you?</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/</guid>
+      <description>经典问题 #  1. 当输入google.com时，发生了什么？ #  1.1 URL解析 #  当输入的URL不合法时，浏览器会将输入的字符传给默认搜索引擎，
+浏览器通过URL能知道以下信息：
+protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自身的HTST列表，确认是否包含该主机。 2、若HTST存在该主机，使用https代替http，否则使用http。 1.3 DNS解析 #  1、浏览器检查自身的DNS缓存 2、查找本地hosts文件 3、发起DNS解析查询 4、查询 本地|ISP DNS服务器 5、本地|ISP DNS服务器像高层服务器发起递归查询直到查到该域名的解析IP 1.4 TCP连接建立 #  1、client端发送SYN请求到server端，声明自己的ISN为aaa (CLOSED--&amp;gt;SYN-SENT) 2、server端接收SYN包，声明自己的ISN为bbb，ACK信息为aaa+1，返回给client端 (LISTEN--&amp;gt;SYN-RECEIVED) 3、client端返回ACK为bbb+1为server端 (SYN-SENT--&amp;gt;ESTABLISHED) 4、数据交互 1.5 TLS连接建立 #  1.6 HTTP #   </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/section/page1/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/hangzhou/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/section/page1/</guid>
-      <description>Page 1 #  </description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/hangzhou/</guid>
+      <description>面试经历 #  club factory #   如何部署 如何监控 部署怎么实现 docker的优势和劣势  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/section/page2/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/interview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/section/page2/</guid>
-      <description>Page 2 #  </description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/interview/</guid>
+      <description>面试笔记 #  面试准备 #     技术知识点
+  非技术相关()
+  面试经历总结 #     经典问题
+   杭州面试
+  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/shortcodes/tabs/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/shortcodes/tabs/</guid>
-      <description>Tabs #  Tabs let you organize content by context, for example installation instructions for each supported platform.
-{{&amp;lt; tabs &amp;#34;uniqueid&amp;#34; &amp;gt;}} {{&amp;lt; tab &amp;#34;MacOS&amp;#34; &amp;gt;}} # MacOS Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;Linux&amp;#34; &amp;gt;}} # Linux Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; tab &amp;#34;Windows&amp;#34; &amp;gt;}} # Windows Content {{&amp;lt; /tab &amp;gt;}} {{&amp;lt; /tabs &amp;gt;}} Example #  MacOS MacOS This is tab MacOS content.
-Lorem markdownum insigne. Olympo signis Delphis!</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</guid>
+      <description>技术知识点 #  硬件 #  1. 机器型号 #  dmidecode | awk -F&amp;#39;:&amp;#39; &amp;#39;/Product Name/{print $2}&amp;#39; 2. CPU信息 #  #获取逻辑CPU数 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | wc -l #获取CPU型号 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | uniq #获取物理cpu数 grep &amp;quot;physical id&amp;quot; /proc/cpuinfo | sort | uniq | wc -l 3. 内存信息 #  #获取内存大小 free -h #内存物理信息 dmidecode -t memory 4. 磁盘信息 #   5. 计算机组成 #  1.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/MyConfig/config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/MyConfig/config/</guid>
+      <description>打造自己开发环境 #  vim #     配置指南
+   基础配置
+   插件配置
+   开发配置
+   tmux #    基础配置   xshell #    颜色配置  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/MyConfig/vim/vimconf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/MyConfig/vim/vimconf/</guid>
+      <description>Vim配置指南 #  Don&amp;rsquo;t put any lines in your vimrc that you don&amp;rsquo;t understand. #      Colors
+   Spaces And Tabs
+   UI Config
+   Searching
+   Folding
+   Custom Movements
+   Custom Leader
+   CtrlP Settings
+   Launch Config
+   Tmux Config
+   Autogroups
+   Backups</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</guid>
+      <description>时间同步相关问题 #  ntpdate:no server suitable for synchronization found #  Question： #  　在使用ntpdate同步时间时，出现了no server suitable for synchronization found的报错。
+　通过ntpdate -d s2m.time.edu.cn 使用debug模式没有出现异常。
+Answer： #  解决办法是，使用ntpdate -ubv s2m.time.edu.cn，可以正常同步了。
+主要是-u选项的作用
+-u：Direct ntpdate to use an unprivileged port for outgoing packets. This is most useful when behind a firewall that blocks incoming traffic to privileged ports, and you want to synchronize with hosts beyond the firewall. Note that the -d option always uses unprivileged ports.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</guid>
+      <description>ssh连接相关问题 #  pam_tally2(sshd:auth): user root (0) has time limit [3s left] since last failure 日志 #  Question： #  工作中，碰到某服务器在批量ssh登陆操作时，出现大量的无法连接的情况。
+Thinking： #  查看ssh日志(/var/log/secure)， 首先注意到的是，&amp;ldquo;Failed password for root from xxx.xxx.xxx.xxx port 51230 ssh2&amp;quot;错误，但发现密码并没有错误，并且只在批量操作时才会出现，故初步判断为连接数问题。
+查看ssh连接数限制
+/usr/sbin/sshd -T | grep -i max  调整参数，更改配置文件/etc/sshd/sshd_config
+maxsessions 1000  重启服务后，依然没有效果。
+再次查看日志，发现在做批量操作时，有大量的&amp;quot;pam_tally2(sshd:auth): user root (0) has time limit [3s left] since last failure&amp;quot;日志。
+应该是pam模块做了相应的限制
+查看配置文件 /etc/pam.d/sshd 文件
+auth required pam_tally2.so deny=10 lock_time=3 unlock_time=30 even_deny_root root_unlock_time=30  Answer： #  更改配置文件：</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/README/</guid>
+      <description>问题解决方案 #     时间同步相关
+   ssh连接相关
+   PGSQL相关
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Translate/translate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Translate/translate/</guid>
+      <description>翻译技术文章 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Advanced/Algorithm/algorithm/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Advanced/Algorithm/algorithm/</guid>
+      <description>算法 #   冒泡排序  对于一个无序的序列，每次对比两个相邻数的大小，若第i个数大于第i+1个数，两个数进行位置互换。每组排序可以选出一个最大的数，然后继续从第一个数开始进行对比，直到完成排序
+#伪代码 int num[] for(int i=0; i &amp;lt; num.length-1; i++){ for(int j=0; j &amp;lt; num.length-i-1; j++){ if( num[j] &amp;gt; num[j+1] ){ int temp = num[j] num[j+1] = num[j] num[j] = temp } } }   选择排序  对于一个无序的序列，从第一个数开始，每次跟接下去的数对比，若第1个数小于第i个数，两个数位置互换，每次选出最小的数，然后开始对比第二个数，直到完成排序。
+#伪代码 int num[] for(int i=0; i &amp;lt; num.length-1; i++){ for(int j=i+1; j &amp;lt; num.length-1; j++){ if( num[i] &amp;gt; num[j] ){ int temp = num[i] num[i] = num[j] num[j] = temp } } }   归并排序  对于一个无序的序列，将序列用递归的方式划分成左右两个序列，然后依次排序合并序列。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Advanced/DataStructure/datastructure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Advanced/DataStructure/datastructure/</guid>
+      <description>数据结构 #    链表
+  堆栈
+  队列
+  哈希表
+  二叉排序树
+  单词查找树
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/factoryMethod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/factoryMethod/</guid>
+      <description>工厂方法模式(Factory Method Pattern) #  模式定义 #  工厂方法模式(Factory Method Pattern)又称为工厂模式，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式，它属于类创建型模式。在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是将产品类的实例化操作延迟到工厂子类中完成，即通过工厂子类来确定究竟应该实例化哪一个具体产品类。
+ 模式结构 #    Product：抽象产品
+  ConcreteProduct：具体产品
+  Factory：抽象工厂
+  ConcreteFactory：具体工厂
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/README/</guid>
+      <description>设计模式 #  设计模式（design pattern）是对软件设计中普遍存在（反复出现）的各种问题，所提出的解决方案。
+ 分类 #  创建型模式 #  创建型模式(Creational Pattern)对类的实例化过程进行了抽象，能够将软件模块中对象的创建和对象的使用分离。为了使软件的结构更加清晰，外界对于这些对象只需要知道它们共同的接口，而不清楚其具体的实现细节，使整个系统的设计更加符合单一职责原则。
+创建型模式隐藏了类的实例的创建细节，通过隐藏对象如何被创建和组合在一起达到使整个系统独立的目的。
+   简单工厂模式
+   工厂方法模式
+   抽象工厂模式
+   建造者模式
+   原型模式
+   单例模式
+   结构型模式 #   行为型模式 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/simpleFactory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/simpleFactory/</guid>
+      <description>简单工厂模式(Simple Factory Pattern) #  模式定义 #  简单工厂模式(Simple Factory Pattern)：又称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。
+ 模式结构 #    Factory：工厂角色
+工厂角色负责实现创建所有实例的内部逻辑
+  Product：抽象产品角色
+抽象产品角色是所创建的所有对象的父类，负责描述所有实例所共有的公共接口
+  ConcreteProduct：具体产品角色
+具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Basic/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Basic/README/</guid>
+      <description>编程基础 #  编程语言 #    解释型语言
+ 程序由解释器读取并执行 SoucreCode --&amp;gt; Interpreter --&amp;gt; Output    编译型语言
+ 程序被编译器翻译成机器语言后再执行 SourceCode --&amp;gt; Compliler --&amp;gt; ObjectCode --&amp;gt; Executor --&amp;gt; Output     什么是程序？ #  程序是指定如何执行计算的指令序列。
+不同的编程语言具有一些共同的基础特性：
+ input：从键盘，文件或者其他输入设备中获取数据。 output：在屏幕显示数据，或者将数据发送给文件或者输出设备。 math：执行基本的数学运算，比如加法和乘法。 conditional execution：检查条件并执行相应的代码。 repetition：反复执行一些操作。  编程可以视为将大型的复杂任务打破成更小和更小的子任务，直到子任务简单到足以执行上述的基本操作的过程。
+ 调试(debugging) #  编程容易出错。编程错误被称为错误，并且跟踪它们的过程称为调试。
+ Syntax errors：语法错误(语法是指程序的结构和关于该结构的规则)。 Runtime errors(exceptions)：运行时错误(异常)。 Semantic errors：语义错误，做的不是你想要让它做的事情。  调试是通过更改程序去发现和解决错误。
+ 数据类型(type) #   interger：整数，例如1,2 string: 字符串，例如&amp;rsquo;Hello&amp;rsquo;   变量(variables) #  变量是引用值的名称，编程语言最强大的功能之一就是操纵变量的能力。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Python/CookBook/DataStructuresAndAlgorithms/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Python/CookBook/DataStructuresAndAlgorithms/README/</guid>
+      <description>数据结构和算法 #    解压序列赋值给多个变量
+问题，现在有一个包含N个元素的元组或者是序列，怎样将它里面的值解压后同时赋值给N个变量？
+实现： 详细代码
+ &amp;gt;&amp;gt;&amp;gt; data = [&#39;John&#39;,170,60,(1999,9,9)] &amp;gt;&amp;gt;&amp;gt; name, height, weight, birthday = data ### 另一种方式 &amp;gt;&amp;gt;&amp;gt; name, height, weight, (year, mon, day) = data    解压可迭代对象赋值给多个变量
+问题，如果一个可迭代对象的元素个数超过变量个数时，会抛出一个ValueError。那么怎样才能从这个可迭代对象中解压出N个元素出来？
+实现： 详细代码
+ &amp;gt;&amp;gt;&amp;gt; record = (&#39;Dave&#39;, &#39;dave@example.com&#39;, &#39;773-555-1212&#39;, &#39;847-555-1212&#39;) &amp;gt;&amp;gt;&amp;gt; name, email, *phone_numbers = record    保留最后N个元素
+问题，在迭代操作或者其他操作的时候，怎样只保留最后有限几个元素的历史记录？
+实现： 详细代码
+ &amp;gt;&amp;gt;&amp;gt; from collections import deque &amp;gt;&amp;gt;&amp;gt; q = deque(maxlen = 3) &amp;gt;&amp;gt;&amp;gt; q.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Python/CookBook/StringsAndText/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Python/CookBook/StringsAndText/README/</guid>
+      <description>#字符串和文本
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Django/django/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Django/django/</guid>
+      <description>Django #  环境初始化 #  python3 install virtualenv cd demosite mkdir py3env virtualenv ./py3env/ source py3env/bin/activate #install Django pip3 install Django  项目初始化 #  django-admin startproject demosite python manage.py runserver python manage.py startapp polls  项目结构 #  demosite/ manage.py demosite/ __init__.py settings.py urls.py wsgi.py polls/ __init__.py admin.py apps.py migrations/ __init__.py models.py tests.py views.py  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Flask/flask/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Flask/flask/</guid>
+      <description>Flask #  安装 #  pip install flask   程序基本结构 #   初始化  所有 Flask 程序都必须创建一个程序实例。Web 服务器使用一种名为 Web 服务器网关接口（Web Server Gateway Interface，WSGI）的协议，把接收自客户端的所有请求都转交给这个对象处理。
+from flask import Flask app = Flask(&#39;__name__&#39;)  路由和函数  程序实例需要知道对每个URL请求运行哪些代码，所以保存了一个URL到Python函数的映射关系。处理URL和函数之间关系的程序称为路由。 在Flask程序中定义路由的最简便方式，是使用程序实例提供的app.route修饰器，把修饰的函数注册为路由。
+@app.route(&#39;/&#39;) def index(): return &#39;&amp;lt;h1&amp;gt;Hello World!&amp;lt;/h1&amp;gt;&#39;   启动服务
+if name == &amp;lsquo;main&amp;rsquo; app.run(Debug=True)
+   模版 #  模板是一个包含响应文本的文件，其中包含用占位变量表示的动态部分，其具体值只在请求的上下文中才能知道。使用真实值替换变量，再返回最终得到的响应字符串，这一过程称为渲染。为了渲染模板，Flask 使用了一个名为 Jinja2 的强大模板引擎。
+Jinja2模板引擎 #  templates/user.html：Jinja2 模板
+&amp;lt;h1&amp;gt;Hello {{ name }} !</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Scrapy/scrapy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Scrapy/scrapy/</guid>
+      <description>#Scrapy Scrapy是一个快速的高级Web爬网和Web抓取框架，用于抓取网站并从其页面提取结构化数据。
+安装 #  pip install scrapy scrapy startproject scrapytest   第一个爬虫 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Python/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Python/README/</guid>
+      <description>Python #  基础语法 #    数据类型
+  流控
+  函数
+  模块
+   常用库 #   CookBook #     数据和算法
+   字符串和文本
+   框架 #     Flask
+   Scrapy
+   Django
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/git/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/git/</guid>
+      <description>Git #  Git起步 #     Git简介
+   Git安装
+   Git配置
+   Git基础 #     创建版本库
+   记录更新
+   提交历史
+   撤销操作
+   远程仓库
+   标签
+   别名
+   Git分支 #   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/alias/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/alias/</guid>
+      <description>别名 #  在我们结束本章 Git 基础之前，正好有一个小技巧可以使你的 Git 体验更简单、容易、熟悉：别名。 我们不会在之后的章节中引用到或假定你使用过它们，但是你大概应该知道如何使用它们。
+Git 并不会在你输入部分命令时自动推断出你想要的命令。 如果不想每次都输入完整的 Git 命令，可以通过 git config 文件来轻松地为每一个命令设置一个别名。 这里有一些例子你可以试试：
+$ git config --global alias.co checkout $ git config --global alias.br branch $ git config --global alias.ci commit $ git config --global alias.st status  这意味着，当要输入 git commit 时，只需要输入 git ci。 随着你继续不断地使用 Git，可能也会经常使用其他命令，所以创建别名时不要犹豫。
+在创建你认为应该存在的命令时这个技术会很有用。 例如，为了解决取消暂存文件的易用性问题，可以向 Git 中添加你自己的取消暂存别名：
+$ git config --global alias.unstage &#39;reset HEAD --&#39;  这会使下面的两个命令等价：
+$ git unstage fileA $ git reset HEAD -- fileA  这样看起来更清楚一些。 通常也会添加一个 last 命令，像这样：</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/commitHistory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/commitHistory/</guid>
+      <description>提交历史 #  查看提交历史 #  git log 命令，查看提交历史。
+$ git log commit ca82a6dff817ec66f44342007202690a93763949 Author: Scott Chacon &amp;lt;schacon@gee-mail.com&amp;gt; Date: Mon Mar 17 21:52:11 2008 -0700 changed the version number commit 085bb3bcb608e1e8451d4b2432f8ecbe6306e7e7 Author: Scott Chacon &amp;lt;schacon@gee-mail.com&amp;gt; Date: Sat Mar 15 16:40:33 2008 -0700 removed unnecessary test commit a11bef06a3f659402fe7563abf99ad00de2209e6 Author: Scott Chacon &amp;lt;schacon@gee-mail.com&amp;gt; Date: Sat Mar 15 10:31:28 2008 -0700 first commit  默认不用任何参数的话，git log 会按提交时间列出所有的更新，最近的更新排在最上面。 正如你所看到的，这个命令会列出每个提交的 SHA-1 校验和、作者的名字和电子邮件地址、提交时间以及提交说明。
+ git log 常用选项 #  -p，用来显示每次提交的内容差异。 你也可以加上 -2 来仅显示最近两次提交：</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/configuration/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/configuration/</guid>
+      <description>Git初始配置 #  Git 自带一个 git config 的工具来帮助设置控制 Git 外观和行为的配置变量。 这些变量存储在三个不同的位置：
+  /etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果使用带有 &amp;ndash;system 选项的 git config 时，它会从此文件读写配置变量。
+  ~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 可以传递 &amp;ndash;global 选项让 Git 读写此文件。
+  当前使用仓库的 Git 目录中的 config 文件（就是 .git/config）：针对该仓库。
+  每一个级别覆盖上一级别的配置，所以 .git/config 的配置变量会覆盖 /etc/gitconfig 中的配置变量。
+用户信息 #  当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：
+$ git config --global user.name &amp;quot;CodeCC&amp;quot; $ git config --global user.email CodeCC@example.com  再次强调，如果使用了 &amp;ndash;global 选项，那么该命令只需要运行一次，因为之后无论你在该系统上做任何事情， Git 都会使用那些信息。 当你想针对特定项目使用不同的用户名称与邮件地址时，可以在那个项目目录下运行没有 &amp;ndash;global 选项的命令来配置。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/createNew/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/createNew/</guid>
+      <description>创建版本库 #    创建一个空目录
+ $ cd /usr/local/src $ mkdir project    创建版本库
+  初始化
+ $ git init Initialized empty Git repository in /usr/local/src/project/.git/    克隆现有仓库
+ $ git clone [url]      添加文件
+ $ git add README.md $ git commit -m &#39;first commit&#39;    </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/install/</guid>
+      <description>Git安装 #    yum安装
+ $ sudo yum install git    源码安装
+依赖包安装
+ $ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel asciidoc xmlto docbook2x  从 https://www.kernel.org/pub/software/scm/git获取最新的版本包
+编译安装
+ $ tar -zxf git-2.0.0.tar.gz $ cd git-2.0.0 $ make configure $ ./configure --prefix=/usr/local/git $ make all doc info $ sudo make install install-doc install-html install-info  升级
+ $ git clone git://git.kernel.org/pub/scm/git/git.git   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/introduce/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/introduce/</guid>
+      <description>Git简介 #  git是一个分布式版本控制软件，最初由林纳斯·托瓦兹（Linus Torvalds）创作，于2005年以GPL发布。最初目的是为更好地管理Linux内核开发而设计。
+  特点
+  速度
+  简单的设计
+  对非线性开发模式的强力支持（允许成千上万个并行开发的分支）
+  完全分布式
+  有能力高效管理类似 Linux 内核一样的超大规模项目（速度和数据量）
+    三种状态[工作区域]
+  已提交(commit),[Git仓库]
+  已修改(modified),[工作目录]
+  已暂存(staged),[暂存区域]
+    基本工作流程
+  在工作目录中修改文件
+  暂存文件，将文件的快照放入暂存区域。
+  提交更新，找到暂存区域的文件，将快照永久性存储到 Git 仓库目录。
+     </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/record/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/record/</guid>
+      <description>记录更新 #  记录每次更新到仓库 #    文件状态
+  已跟踪文件
+  未修改
+  已修改
+  已放入暂存区
+    未跟踪文件
+    使用 Git 时文件的生命周期如下：
+  文件状态 #  git status 命令，用于查看哪些文件处于什么状态。
+已跟踪文件未被更改过，且没有处于未跟踪状态的新文件。会看到类似这样的输出：
+$ git status On branch master nothing to commit, working directory clean  存在新的未跟踪文件。会看到类似这样的输出：
+$ echo &#39;My Project&#39; &amp;gt; README.md $ git status # On branch master # # Initial commit # # Untracked files: # (use &amp;quot;git add &amp;lt;file&amp;gt;.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/remote/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/remote/</guid>
+      <description>远程仓库 #  远程仓库是指托管在因特网或其他网络中的你的项目的版本库。 你可以有好几个远程仓库，通常有些仓库对你只读，有些则可以读写。 与他人协作涉及管理远程仓库以及根据需要推送或拉取数据。
+管理远程仓库包括了解如何添加远程仓库、移除无效的远程仓库、管理不同的远程分支并定义它们是否被跟踪等等。
+ 查看远程仓库 #  git remote ： 列出指定的每一个远程服务器的简写。 如果你已经克隆了自己的仓库，那么至少应该能看到 origin
+$ git remote origin  指定选项 -v，会显示需要读写远程仓库使用的 Git 保存的简写与其对应的 URL。
+$ git remote -v origin https://github.com/Code-CC/leetcode (fetch) origin https://github.com/Code-CC/leetcode (push)   添加远程仓库 #  运行 git remote add   添加一个新的远程 Git 仓库，同时指定一个你可以轻松引用的简写：
+$ git remote origin $ git remote add pb https://github.com/paulboone/ticgit $ git remote -v origin	https://github.com/schacon/ticgit (fetch) origin	https://github.com/schacon/ticgit (push) pb	https://github.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/tag/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/tag/</guid>
+      <description>打标签 #  Git 可以给历史中的某一个提交打上标签，以示重要。 比较有代表性的是人们会使用这个功能来标记发布结点（v1.0 等等）。
+ 列出标签 #  git tag：列出已有的标签
+$ git tag v0.1 v1.3  git tag -l ：使用特定的模式查找标签。
+$ git tag -l &#39;v1.8.5*&#39; v1.8.5 v1.8.5-rc0 v1.8.5-rc1 v1.8.5-rc2 v1.8.5-rc3 v1.8.5.1 v1.8.5.2 v1.8.5.3 v1.8.5.4 v1.8.5.5   创建标签 #  Git 使用两种主要类型的标签：轻量标签（lightweight）与附注标签（annotated）。
+一个轻量标签很像一个不会改变的分支 - 它只是一个特定提交的引用。
+然而，附注标签是存储在 Git 数据库中的一个完整对象。 它们是可以被校验的；其中包含打标签者的名字、电子邮件地址、日期时间；还有一个标签信息；并且可以使用 GNU Privacy Guard （GPG）签名与验证。 通常建议创建附注标签，这样你可以拥有以上所有信息；但是如果你只是想用一个临时的标签，或者因为某些原因不想要保存那些信息，轻量标签也是可用的。
+  附注标签
+git tag -a ：添加一个附注标签。
+ $ git tag -a v1.4 -m &#39;my version 1.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/undo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/undo/</guid>
+      <description>撤消操作 #  重新提交 #  &amp;ndash;amend 选项的提交命令尝试重新提交：
+$ git commit --amend  这个命令会将暂存区中的文件提交。 如果自上次提交以来你还未做任何修改（例如，在上次提交后马上执行了此命令），那么快照会保持不变，而你所修改的只是提交信息。 文本编辑器启动后，可以看到之前的提交信息。 编辑后保存会覆盖原来的提交信息。
+例如，你提交后发现忘记了暂存某些需要的修改，可以像下面这样操作：
+$ git commit -m &#39;initial commit&#39; $ git add forgotten_file $ git commit --amend  最终你只会有一个提交 - 第二次提交将代替第一次提交的结果。
+ 取消暂存的文件 #  $ git add * $ git status # On branch master # Changes to be committed: # (use &amp;quot;git reset HEAD &amp;lt;file&amp;gt;...&amp;quot; to unstage) # # modified: CONTRIBUTING.md # modified: README #  git rest HEAD  取消暂存：</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/README/</guid>
+      <description>版本控制 #  什么是“版本控制”？ #  版本控制是一种记录一个或若干文件内容变化，以便将来查阅特定版本修订情况的系统。
+如果你是位图形或网页设计师，可能会需要保存某一幅图片或页面布局文件的所有修订版本（这或许是你非常渴望拥有的功能），采用版本控制系统（VCS）是个明智的选择。 有了它你就可以将某个文件回溯到之前的状态，甚至将整个项目都回退到过去某个时间点的状态，你可以比较文件的变化细节，查出最后是谁修改了哪个地方，从而找出导致怪异问题出现的原因，又是谁在何时报告了某个功能缺陷等等。 使用版本控制系统通常还意味着，就算你乱来一气把整个项目中的文件改的改删的删，你也照样可以轻松恢复到原先的样子。 但额外增加的工作量却微乎其微。
+ 分类 #    本地版本控制系统
+许多人习惯用复制整个项目目录的方式来保存不同的版本，或许还会改名加上备份时间以示区别。 这么做唯一的好处就是简单，但是特别容易犯错。 有时候会混淆所在的工作目录，一不小心会写错文件或者覆盖意想外的文件。
+为了解决这个问题，人们很久以前就开发了许多种本地版本控制系统，大多都是采用某种简单的数据库来记录文件的历次更新差异。
+ 其中最流行的一种叫做 RCS，现今许多计算机系统上都还看得到它的踪影。 甚至在流行的 Mac OS X 系统上安装了开发者工具包之后，也可以使用 rcs 命令。 它的工作原理是在硬盘上保存补丁集（补丁是指文件修订前后的变化）；通过应用所有的补丁，可以重新计算出各个版本的文件内容。
+  集中化的版本控制系统
+接下来人们又遇到一个问题，如何让在不同系统上的开发者协同工作？ 于是，集中化的版本控制系统（Centralized Version Control Systems，简称 CVCS）应运而生。 这类系统，诸如 CVS、 Subversion 以及 Perforce 等，都有一个单一的集中管理的服务器，保存所有文件的修订版本，而协同工作的人们都通过客户端连到这台服务器，取出最新的文件或者提交更新。 多年以来，这已成为版本控制系统的标准做法。
+ 这种做法带来了许多好处，特别是相较于老式的本地 VCS 来说。 现在，每个人都可以在一定程度上看到项目中的其他人正在做些什么。 而管理员也可以轻松掌控每个开发者的权限，并且管理一个 CVCS 要远比在各个客户端上维护本地数据库来得轻松容易。
+事分两面，有好有坏。 这么做最显而易见的缺点是中央服务器的单点故障。 如果宕机一小时，那么在这一小时内，谁都无法提交更新，也就无法协同工作。 如果中心数据库所在的磁盘发生损坏，又没有做恰当备份，毫无疑问你将丢失所有数据——包括项目的整个变更历史，只剩下人们在各自机器上保留的单独快照。 本地版本控制系统也存在类似问题，只要整个项目的历史记录被保存在单一位置，就有丢失所有历史更新记录的风险。
+  分布式版本控制系统
+于是分布式版本控制系统（Distributed Version Control System，简称 DVCS）面世了。 在这类系统中，像 Git、Mercurial、Bazaar 以及 Darcs 等，客户端并不只提取最新版本的文件快照，而是把代码仓库完整地镜像下来。 这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本地仓库恢复。 因为每一次的克隆操作，实际上都是一次对代码仓库的完整备份。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Shell/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Shell/README/</guid>
+      <description>Shell #  基础语法 #    变量
+  函数
+   进阶 #    代码风格  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/security/Basic/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/security/Basic/README/</guid>
+      <description>安全基础 #  密码学 #  密码学处理数字和字符串。
+哈希 #  哈希散列是一项密码学技术，它将数据转换成其他形式，并且不可恢复。
+加解密 #  加解密是一个双向过程，当且仅当加密密钥被知道时才能检索原始数据。
+对称加密 #  对称加密使用同一个密钥
+非对称加密 #  非对称加密使用公私钥，私钥自己持有，公钥给所有想加密信息发送给你的人。使用公钥加密，使用私钥解密。</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/security/Firewall/firewalld/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/security/Firewall/firewalld/</guid>
+      <description>Firewalld #  firewalld是CentOS7默认的防火墙服务，用于管理网络数据包的流动和转发。
+ 基础命令 #    启动
+ $ systemctl start firewalld.service    查看状态
+ $ systemctl status firewalld.service    关闭
+ $ systemctl stop firewalld.service    开启和关闭开机启动
+ $ systemctl enable firewalld.service $ systemctl disable firewalld.service    Rule配置：firewall-cmd命令
+   Options Description     -h, &amp;ndash;help Prints a short help text and exists   -V, &amp;ndash;version Print the version string of firewalld   -q, &amp;ndash;quiet Do not print status messages   &amp;ndash;state Return and print firewalld state   &amp;ndash;reload Reload firewall and keep state information   &amp;ndash;complete-reload Reload firewall and loose state information   &amp;ndash;runtime-to-permanent Create permanent from runtime configuration   &amp;ndash;permanent Set an option permanently   &amp;ndash;zone=&amp;lt;zone&amp;gt; Use this zone to set or query options, else default zone   &amp;ndash;timeout=&amp;lt;timeval&amp;gt; Enable an option for timeval time, where timeval is,a number followed by one of letters &amp;rsquo;s&amp;rsquo; or &amp;rsquo;m&amp;rsquo; or &amp;lsquo;h&amp;rsquo;       概念 #  区域(Zones) #  一个规则管理群组的概念，定义了可信任级别。其中预先定义的zones有以下几个：</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/security/Firewall/iptables/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/security/Firewall/iptables/</guid>
+      <description>Iptables #  iptables：一个运行在用户空间的应用软件，通过控制Linux内核netfilter模块，来管理网络数据包的流动与转送。
+Netfilter：Linux操作系统核心层内部的一个数据包处理模块，它具有如下功能：
+  网络地址转换(Network Address Translate)
+  数据包内容修改
+  数据包过滤
+  Netfilter的配置表：存放设置的规则的文件，存放在内核内存中。iptables程序通过修改这个规则文件来控制网络数据包流动。 该配置表由表tables、链chains、规则rules组成。
+ Netfilter配置表 #  表(tables) #  用于实现特定的功能
+  raw表
+主要用于决定数据包是否被状态跟踪机制处理。在匹配数据包时，raw表的规则要优先于其他表。包含两条规则链 OUTPUT、PREROUTING。
+iptables中数据包和4种被跟踪连接的4种不同状态：
+ NEW：该包想要开始一个连接（重新连接或将连接重定向） RELATED：该包是属于某个已经建立的连接所建立的新连接。 ESTABLISHED ：只要发送并接到应答，一个数据连接从NEW变为ESTABLISHED,而且该状态会继续匹配这个连接的后续数据包。 INVALID：数据包不能被识别属于哪个连接或没有任何状态比如内存溢出，收到不知属于哪个连接的ICMP错误信息，一般应该DROP这个状态的任何数据。    mangle表
+主要用于修改数据包的TOS（Type Of Service，服务类型）、TTL（Time To Live，生存周期）指以及为数据包设置Mark标记，以实现Qos(Quality Of Service，服务质量)调整以及策略路由等应用，由于需要相应的路由设备支持，因此应用并不广泛。包含五个规则链——PREROUTING，POSTROUTING，INPUT，OUTPUT，FORWARD。
+  nat表
+主要用于修改数据包的IP地址、端口号等信息（网络地址转换，如SNAT、DNAT、MASQUERADE、REDIRECT）。属于一个流的包(因为包 的大小限制导致数据可能会被分成多个数据包)只会经过这个表一次。如果第一个包被允许做NAT或Masqueraded，那么余下的包都会自动地被做相同的操作，也就是说，余下的包不会再通过这个表。
+表对应的内核模块为 iptable_nat，包含三个链：
+ PREROUTING链：作用是在包刚刚到达防火墙时改变它的目的地址 OUTPUT链：改变本地产生的包的目的地址 POSTROUTING链：在包就要离开防火墙之前改变其源地址    filter表
+主要用于对数据包进行过滤，根据具体的规则决定是否放行该数据包（如DROP、ACCEPT、REJECT、LOG）。filter 表对应的内核模块为iptable_filter，包含三个规则链：
+ INPUT链：INPUT针对那些目的地是本地的包 FORWARD链：FORWARD过滤所有不是本地产生的并且目的地不是本地(即本机只是负责转发)的包 OUTPUT链：OUTPUT是用来过滤所有本地生成的包    链(chains) #  在处理各种数据包时，根据防火墙规则的不同介入时机，iptables供涉及5种默认规则链，从应用时间点的角度理解这些链：</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/security/Firewall/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/security/Firewall/README/</guid>
+      <description>防火墙 #  工作在主机或网络边缘，对进出的报文按事先定义的规则进行检查，并且由匹配到的规则进行处理的一组硬件或软件，甚至可能是二者的结合。
+ Linux防火墙 #     iptables
+   firewalld
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/security/IDS/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/security/IDS/README/</guid>
+      <description>IDS #  入侵检测系统
+ HIDS #  OSSEC
+NIDS #  snort
+Firesystem #  tripware</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/security/IDS/Snort/snort/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/security/IDS/Snort/snort/</guid>
+      <description>Snort #  #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/security/TLS/ssl/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/security/TLS/ssl/</guid>
+      <description>SSL协议 #  SSL是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。
+   SSL介绍
+   工作机制
+   工具使用
+   SSL介绍 一个简单的工作流程: #    浏览器请求一个安全页面(https://)。
+  Web服务器返回公钥及其证书。
+  浏览器检查该证书是否由可信任的机构颁发，并且是与站点相关的有效证书。
+  浏览器使用公钥加密随即对称加密密钥，和通过随即加密密钥加密的http数据一同发送给Web服务器。
+  Web服务器通过私钥解密随即对称加密密钥，并使用它解密http数据。
+  Web服务器返回通过随即对称加密密钥加密的请求html文本和http数据。
+  浏览器通过随即对称加密密钥解密html文本和http数据并展示信息。
+   公私钥: #  非对称加密，使用私钥/公钥对加密，数据可以被一个密钥加密，但只能被另一个密钥对解密。该密钥对自己保留一个私钥，并将公钥分配给每个人。
+Message --&amp;gt; [Public Key] --&amp;gt; Encrypted Message --&amp;gt; [Private Key] --&amp;gt; Message   证书: #  证书加载在浏览器或者其他客户端党当中，证书包含了证书所有者的信息。一个例子:
+Certificate: Data: Version: 3 (0x2) Serial Number: 1 (0x1) Signature Algorithm: md5WithRSAEncryption Issuer: C=FJ, ST=Fiji, L=Suva, O=SOPAC, OU=ICT, CN=SOPAC Root CA/Email=administrator@sopac.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</guid>
+      <description>Nginx #  概念 #  Nginx是一个开源免费的web服务器，同时可以作为反向代理、负载均衡和HTTP缓存的软件。
+Nginx架构 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</guid>
+      <description>SSH #  概念 #  安全Shell（SSH）是一种加密网络协议，用于通过无安全网络安全地运行网络服务。
+SSH协议 #    认证
+  加密
+  完整性
+  SSH属性 #    安全远程登录(Secure Remote Login )
+  安全文件传输(Secure File Transfer)
+  安全远程命令执行(Secure Remote Command Execution)
+  密钥和代理(Keys and Agents)
+  访问控制(Access Control)
+  端口转发(Port Forwarding)
+  架构 #    基础操作 #    远程登录
+ssh -l USERNAME HOST -p PORT</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Application/tomcat/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/tomcat/</guid>
+      <description>Tomcat #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/fileOperation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/fileOperation/</guid>
+      <description>一切皆文件 #    列出文件列表
+ ls [option] /PATH #不指定路径，默认为当前路径 option -l:长格式 文件类型: -:普通文件 d:目录文件 b:块设备文件（block） c：字符设备文件（character） l：符号链接文件（symbolic link file） p：命令管道（pipe） s：套接字文件（socket） 文件权限：9位，每三位一组(u-g-o),每一组：rwx（读、写、执行） 文件硬链接的次数 文件的属主(owner) 文件的属组(group) 文件的大小(size)，单位是字节 时间戳(timestamp)：最近一次被修改的时间 访问：access 修改：modify，文件内容发生改变 改变：change，metadata，元数据 文件名 -h:做单位转换，默认bit -a:显示以.开头的隐藏文件 . 表示当前目录 .. 表示父目录 -d：显示目录自身属性 -i：index node，inode -r：逆序显示文件 -R：递归(recursive)显示    进入目录
+ cd /PATH cd ~USERNAME:进入指定用户的家目录 cd -:在当前目录和前一次所在目录之间来回切换    显示文件类型
+ type /PATH/FILENAME    显示当前路径
+ pwd    目录管理</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/permissionsOperation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/permissionsOperation/</guid>
+      <description>权限操作 #  权限 #    可读(r)(4)
+  可写(w)(2)
+  可执行(x)(1)
+  特殊权限
+  SUID(u+s): 运行某程序时，相应进程的属主是程序文件自身的属主
+  SGID(g+s)：运行某程序时，相应进程的属组是程序文件自身的属组
+  Sticky(o+t)：在一个公共目录，每个用户都可以创建删除自己的文件，但不能删除别人的文件
+     用户和组 #    用户(UID)
+  类别
+  管理员：0
+  普通用户：1-65535
+  系统用户：1-499
+  一般用户：500-65535
+      配置文件
+  /etc/passwd
+字段详解(以&amp;rdquo;:&amp;ldquo;为分割符)
+用户名 : 密码 : UID : GID : 注释 : 家目录 : 默认shell</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Lnmp/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Lnmp/README/</guid>
+      <description>web经典架构 #  Nginx #   Mysql #   PHP #   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/tool/Script/script/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/tool/Script/script/</guid>
+      <description>Script #  shell 脚本 #    tomcat系列
+   tomcat服务启动
+   tomcat版本更新
+   tomcat日志分割
+   tomcat应用发布
+   tomcat应用还原
+    zabbix系列
+   server安装
+   agent安装
+     python 脚本 #     PG日志格式更改
+   tcp端口测试
+   ssh登录测试
+   生成随机日志
+  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/tool/tcpcopy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/tool/tcpcopy/</guid>
+      <description>TCPCopy #  TCPCopy是一个流量复制工具。
+ 使用场景 #    压力测试
+  模拟实际场景
+  回归测试
+  性能对照
+   架构 #    TCPCopy包含两部分：
+  tcpcopy
+安装在线上服务器上，用于抓取线上的请求包
+  intercept
+安装在辅助服务器上，做一些辅助作业
+   安装使用 #  设备：
+online server：线上机器(流量导出的机器)
+target server：测试机器(流量导入的机器)
+assistant server：辅助机器
+  在target server上添加路由
+ $ route add -net CLINET_NET gw ASSISTANG_IP    在assistant server上安装intercept服务
+下载地址： https://github.com/session-replay-tools/intercept/releases
+安装：</description>
     </item>
     
   </channel>

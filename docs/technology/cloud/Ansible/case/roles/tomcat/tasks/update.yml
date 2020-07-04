@@ -1,0 +1,15 @@
+---
+#file: update.yml
+- name: Check {{ product }}-{{ project }} directory exists
+  stat: path={{ tomcat_dir }}/{{ product }}-{{ project }}
+  register: pd
+
+- name: Stop {{ project }} service on remote server
+  shell: /etc/init.d/tomcat-service {{ product }}-{{ project }} stop
+  when: pd.stat.exists == true
+
+- name: Delete old {{ product }}-{{ project }} directory
+  file: path={{ tomcat_dir }}/{{ product }}-{{ project }} state=absent
+  when: pd.stat.exists == true
+
+- include_tasks: init.yml

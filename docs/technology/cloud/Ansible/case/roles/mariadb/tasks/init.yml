@@ -1,0 +1,86 @@
+---
+#file: init.yml
+- name: Check mysql command exists
+  stat: path={{ mariadb_dir }}/bin/mysql
+  register: mc
+
+- name: Copy mariadb compress file to remote server
+  copy: src=mariadb-{{ mariadb_version }}.tar.gz dest=/usr/local/src
+  when: mc.stat.exists == false
+
+- name: Uncompress mariadb-{{ mariadb_version }}.tar.gz
+  unarchive: src=/usr/local/src/mariadb-{{ mariadb_version }}.tar.gz dest=/usr/local/src/ remote_src=yes
+  when: mc.stat.exists == false
+
+- name: Install required packages of pgsql
+  yum: state=latest name={{ item }}
+  with_items:
+  - cmake
+  - gcc 
+  - gcc-c++
+  - zlib 
+  - zlib-devel
+  when: mc.stat.exists == false
+
+- name: Create the group mysql
+  group: name=mysql state=present
+  when: mc.stat.exists == false
+
+- name: Create the user mysql
+  user: name=mysql group=mysql
+  when: mc.stat.exists == false
+
+- name: Create bulid directory
+  file: path=/usr/local/src/mariadb-{{ mariadb_version }}/bld state=directory mode=0755
+
+- name: cmake mariadb source file
+  command: cmake .. -DCMAKE_INSTALL_PREFIX={{ mariadb_dir }} -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci
+  args:
+    chdir: /usr/local/src/mariadb-{{ mariadb_version }}/bld
+  when: mc.stat.exists == false
+
+- name: Compile mariadb source file
+  make: chdir=/usr/local/src/mariadb-{{ mariadb_version }}/bld target=install
+  when: mc.stat.exists == false
+
+- name: Delete mariadb source file
+  file: path={{ item }} state=absent
+  with_items:
+  - /usr/local/src/mariadb-{{ mariadb_version }}
+  - /usr/local/src/mariadb-{{ mariadb_version }}.tar.gz
+  when: mc.stat.exists == false
+
+- name: Generate my.cnf
+  template: src=my.cnf.j2 dest=/etc/my.cnf
+
+- name: Check {{ project }}_data directory exists
+  stat: path={{ mariadb_dir }}/{{ project }}_data
+  register: dd
+
+- name: Create directory when {{ project }}_data directory not exists
+  file: path={{ mariadb_dir }}/{{ project}}_data state=directory owner=mysql group=mysql
+  when: dd.stat.exists == false
+
+- name: Check log directory exists
+  stat: path={{ mariadb_dir }}/log
+  register: ld
+
+- name: Create directory when log directory not exists
+  file: path={{ mariadb_dir }}/log state=directory owner=mysql group=mysql
+  when: ld.stat.exists == false
+
+- name: mysql Database initialization
+  command: scripts/mysql_install_db --user=mysql
+  args:
+    chdir: "{{ mariadb_dir }}"
+
+- name: Check mysqld scripts file exists
+  stat: path=/etc/init.d/mysqld
+  register: ms
+
+- name: Copy mysqld start script file to remote server
+  template: src=mysqld.j2 dest=/etc/init.d/mysqld mode=0755
+  when: ms.stat.exists == false
+
+- name: Start mysqld service
+  command: /etc/init.d/mysqld start

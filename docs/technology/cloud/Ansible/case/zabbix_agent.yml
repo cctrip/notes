@@ -1,0 +1,14 @@
+---
+#file: tengine.yml
+- name: Install zabbix_server environment
+  hosts: test-33
+  vars:
+    zabbix_version: 3.4.8
+    zabbix_dir: /usr/local/zabbix
+    server_ip: 172.16.14.32
+    server_port: 10001
+    agent_port: 10002
+    host_name: test-33
+
+  roles: 
+    - zabbix

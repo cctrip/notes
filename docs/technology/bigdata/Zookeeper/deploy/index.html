@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Zookeeper部署 #  单机环境搭建 #    下载安装包
+ wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 zookeeper    修改配置文件
+ #vim zookeeper/conf/zoo.cfg tickTime=2000 initLimit=5 syncLimit=2 dataDir=/cache1/zookeeper/data #数据目录 clientPort=2181 #服务端口    配置日志保存目录
+ #修改zookeeper/conf/log4j.properties文件 zookeeper.root.logger=INFO, ROLLINGFILE zookeeper.log.dir=/cache1/zookeeper/logs zookeeper.log.file=zookeeper.log #修改zookeeper/bin/zkEnv.sh if [ &quot;x${ZOO_LOG_DIR}&quot; = &quot;x&quot; ] then ZOO_LOG_DIR=&quot;/cache1/zookeeper/logs/&quot; fi if [ &quot;x${ZOO_LOG4J_PROP}&quot; = &quot;x&quot; ] then ZOO_LOG4J_PROP=&quot;INFO,ROLLINGFILE&quot; fi    启动服务
+ cd zookeeper/bin &amp;&amp; ./zkServer.sh start     集群环境搭建 #    机器准备">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="Zookeeper部署 #  单机环境搭建 #    下载安装包
+ wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 zookeeper    修改配置文件
+ #vim zookeeper/conf/zoo.cfg tickTime=2000 initLimit=5 syncLimit=2 dataDir=/cache1/zookeeper/data #数据目录 clientPort=2181 #服务端口    配置日志保存目录
+ #修改zookeeper/conf/log4j.properties文件 zookeeper.root.logger=INFO, ROLLINGFILE zookeeper.log.dir=/cache1/zookeeper/logs zookeeper.log.file=zookeeper.log #修改zookeeper/bin/zkEnv.sh if [ &quot;x${ZOO_LOG_DIR}&quot; = &quot;x&quot; ] then ZOO_LOG_DIR=&quot;/cache1/zookeeper/logs/&quot; fi if [ &quot;x${ZOO_LOG4J_PROP}&quot; = &quot;x&quot; ] then ZOO_LOG4J_PROP=&quot;INFO,ROLLINGFILE&quot; fi    启动服务
+ cd zookeeper/bin &amp;&amp; ./zkServer.sh start     集群环境搭建 #    机器准备" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/deploy/" />
+
+<title>Deploy | Hugo Book</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.050acee8186cae8057b1a4980b05a8f0180d26621ac9ae7e01c0c4006a4d3fa3.js" integrity="sha256-BQrO6BhsroBXsaSYCwWo8BgNJmIaya5&#43;AcDEAGpNP6M="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><span>Hugo Book</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">DevOps笔记</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/Basic/" class="">Basic</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/Kafka/" class="">Kafka</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/Kafka/architecture/" class="">Architecture</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/Zookeeper/" class="">Zookeeper</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/Zookeeper/architecture/" class="">Architecture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/Zookeeper/deploy/" class="active">Deploy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/Zookeeper/optimization/" class="">Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://themes.gohugo.io/hugo-book/" target="_blank" rel="noopener">
+        Hugo Themes
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Deploy</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#zookeeper部署">Zookeeper部署</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#单机环境搭建">单机环境搭建</a></li>
+            <li><a href="#集群环境搭建">集群环境搭建</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="zookeeper部署">
+  Zookeeper部署
+  <a class="anchor" href="#zookeeper%e9%83%a8%e7%bd%b2">#</a>
+</h1>
+<h3 id="单机环境搭建">
+  单机环境搭建
+  <a class="anchor" href="#%e5%8d%95%e6%9c%ba%e7%8e%af%e5%a2%83%e6%90%ad%e5%bb%ba">#</a>
+</h3>
+<ul>
+<li>
+<p>下载安装包</p>
+<pre><code>  wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
+  tar -zxvf zookeeper-3.4.10.tar.gz
+  mv zookeeper-3.4.10 zookeeper
+</code></pre>
+</li>
+<li>
+<p>修改配置文件</p>
+<pre><code>  #vim zookeeper/conf/zoo.cfg
+  tickTime=2000
+  initLimit=5
+  syncLimit=2
+  dataDir=/cache1/zookeeper/data  #数据目录
+  clientPort=2181                 #服务端口
+</code></pre>
+</li>
+<li>
+<p>配置日志保存目录</p>
+<pre><code>  #修改zookeeper/conf/log4j.properties文件
+  zookeeper.root.logger=INFO, ROLLINGFILE
+  zookeeper.log.dir=/cache1/zookeeper/logs
+  zookeeper.log.file=zookeeper.log
+
+  #修改zookeeper/bin/zkEnv.sh
+  if [ &quot;x${ZOO_LOG_DIR}&quot; = &quot;x&quot; ]
+  then
+      ZOO_LOG_DIR=&quot;/cache1/zookeeper/logs/&quot;
+  fi
+
+  if [ &quot;x${ZOO_LOG4J_PROP}&quot; = &quot;x&quot; ]
+  then
+      ZOO_LOG4J_PROP=&quot;INFO,ROLLINGFILE&quot;
+  fi
+</code></pre>
+</li>
+<li>
+<p>启动服务</p>
+<pre><code>  cd zookeeper/bin &amp;&amp; ./zkServer.sh start
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="集群环境搭建">
+  集群环境搭建
+  <a class="anchor" href="#%e9%9b%86%e7%be%a4%e7%8e%af%e5%a2%83%e6%90%ad%e5%bb%ba">#</a>
+</h3>
+<ul>
+<li>
+<p>机器准备</p>
+<pre><code>  #3台设备
+  192.168.1.21
+  192.168.1.22
+  192.168.1.33
+</code></pre>
+</li>
+<li>
+<p>系统环境准备</p>
+<pre><code>  #/etc/hosts文件增加以下内容
+  192.168.1.21 zoo1
+  192.168.1.22 zoo2
+  192.168.1.33 zoo3
+</code></pre>
+</li>
+<li>
+<p>下载安装包</p>
+<pre><code>  wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz
+  tar -zxvf zookeeper-3.4.10.tar.gz
+  mv zookeeper-3.4.10 zookeeper
+</code></pre>
+</li>
+<li>
+<p>修改配置文件</p>
+<pre><code>  #vim zookeeper/conf/zoo.cfg
+  tickTime=2000
+  initLimit=5
+  syncLimit=2
+  dataDir=/cache1/zookeeper/data  #数据目录
+  clientPort=2181                 #服务端口
+  server.1=zoo1:2888:3888         #server.x的x与myid文件的值匹配
+  server.2=zoo2:2888:3888         #zoo1表示hostname
+  server.3=zoo3:2888:3888         #2888是followers用来连接leader，3888用于leader的选举
+</code></pre>
+</li>
+<li>
+<p>各机器创建myid文件</p>
+<pre><code>  #zoo1
+  echo 1 &gt; /cache1/zookeeper/data/myid
+
+  #zoo2
+  echo 2 &gt; /cache1/zookeeper/data/myid
+
+  #zoo3
+  echo 3 &gt; /cache1/zookeeper/data/myid
+</code></pre>
+</li>
+<li>
+<p>各机器启动服务</p>
+<pre><code>  cd zookeeper/bin &amp;&amp; ./zkServer.sh start
+</code></pre>
+</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/edit/master/exampleSite/content/docs/technology/bigdata/Zookeeper/deploy.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#zookeeper部署">Zookeeper部署</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#单机环境搭建">单机环境搭建</a></li>
+            <li><a href="#集群环境搭建">集群环境搭建</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
