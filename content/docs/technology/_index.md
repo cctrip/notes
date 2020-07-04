@@ -1,38 +1,36 @@
 ---
 weight: 1
 bookFlatSection: true
-title: "DevOps笔记"
+title: "技术相关"
 ---
 
-### DevOps笔记
+# 技术相关
 
-## 系统
+## [系统](system)
 
-* 计算机基础
+### [计算机基础](system/Basic)
 
-  * [计算机组成](system/Basic/constitute)
+1. [计算机组成](system/Basic/constitute)
 
-  * [操作系统](system/Basic/operatingSystem)
+2. [操作系统](system/Basic/operatingSystem)
 
-  * [文件系统](system/Basic/fileSystem)
+3. [文件系统](system/Basic/fileSystem)
 
-* Linux系统
+### [Linux系统](system/Linux)
 
-  * [内核编译](operation/Linux/kernel.md)
+1. [内核编译](system/Linux/kernel)
 
-  * [启动](operation/Linux/start.md)
+2. [启动](system/Linux/start)
 
-  * [Linux目录结构](operation/Linux/directoryStructure.md)
+3. [Linux目录结构](system/Linux/directory)
 
-  * [Linux操作指南](operation/Linux/GuideBook/operation.md)
+4. [Linux操作指南](system/Linux/guideBook)
 
-* 应用服务
+### [应用服务](system/Application)
 
-  * [Ssh](operation/Application/ssh.md)
+* [SSH](system/Application/ssh)
 
-  * [Nginx](operation/Application/nginx.md)
-
-  * [Tomcat](operation/Application/tomcat.md)
+* [Nginx](system/Application/nginx)
 
 ***
 

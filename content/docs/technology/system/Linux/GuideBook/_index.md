@@ -5,25 +5,25 @@ title: "操作指南"
 
 # 玩转Linux
 
-* [CPU](cpuOperation.md)
+### [CPU相关](cpuOperation.md)
 
-* [内存](memoryOperation.md)
+### [内存相关](memoryOperation.md)
 
-* [磁盘](diskOperation.md)
+### [磁盘相关](diskOperation.md)
 
-* [系统](systemOperation.md)
+### [系统相关](systemOperation.md)
 
-* [网络](networkOperation.md)
+### [网络相关](networkOperation.md)
 
-* [权限](permissionsOperation.md)
+### [权限相关](permissionsOperation.md)
 
-* [文件](fileOperation.md)
+### [文件相关](fileOperation.md)
 
-* [文本](textOperation.md)
+### [文本相关](textOperation.md)
 
-* [IPMI](ipmiOperation.md)
+### [IPMI](ipmiOperation.md)
 
-* [RAID](raidOperation.md)
+### [RAID](raidOperation.md)
 
 ![images](operation-command.png)
 

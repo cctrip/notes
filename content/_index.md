@@ -1,8 +1,9 @@
 ---
-title: Introduction
+title: 介绍
 type: docs
 ---
 
-# Introduction
+# 介绍
 
+个人笔记记录
 

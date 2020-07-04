@@ -1,3 +1,7 @@
+---
+bookHidden: true
+---
+
 # 权限操作
 
 ### 权限
@@ -171,4 +175,5 @@
         --reference=/path/to/somefile
         修改单个用户的权限：u,g,o,a
         chmod 用户类别+|-MODE file,...
+
 ***

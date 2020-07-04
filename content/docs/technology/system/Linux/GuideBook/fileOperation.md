@@ -1,3 +1,7 @@
+---
+bookHidden: true
+---
+
 # 一切皆文件
 
 * 列出文件列表
@@ -107,13 +111,13 @@
     * 分屏显示
 
             more /PATH/FILENAME
-
+    
             less /PATH/FILENAME
-
+    
             head [option] /PATH/FILENAME
             option
               -n number:显示前n行
-
+    
             tail [option] /PATH/FILENAME
             option
               -n number:显示后n行
@@ -155,7 +159,7 @@
               -L:打印最长的行
 
     * 字符转换
-        
+      
             tr [option] SET1 [SET2]
             option
               -d:删除出现在字符集中的所有字符

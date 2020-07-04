@@ -1,3 +1,8 @@
+---
+weight: 1
+title: "SSH"
+---
+
 # SSH
 
 ### 概念
@@ -29,7 +34,6 @@
 #### 架构
 
 ![arch](ssh-architecture.png)
-
 
 ***
 

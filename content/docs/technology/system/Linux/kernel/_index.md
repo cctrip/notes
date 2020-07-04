@@ -41,6 +41,7 @@ title: "内核编译"
 4. 查看内核目录([目录说明](#1))
 		
 		ls -d ./*/
+
 		./arch/ ./crypto/ ./drivers/ ./fs/ ./init/ ./kernel/ ./mm/ ./samples/ ./security/ ./tools/ ./virt/
 		./block/ ./Documentation/ ./firmware/ ./include/ ./ipc/ ./lib/ ./net/ ./scripts/ ./sound/ ./usr/
 
@@ -53,22 +54,27 @@ title: "内核编译"
 6. 核心功能挑选(生成.config文件)([选择界面说明](#2))
 
 		yum  install ncurses-devel  -y
+
 		make menuconfig 
 
 7. 生成bzImage内核 arch/x86/boot/bzImage
 
 		make -j 4 clean
+
 		make -j 4 bzImage
 		ll arch/x86/boot/bzImage
 
 8. 编译安装模块
 
 		make -j 4 modules
+
 		make modules_install
 
 9. 手动添加内核
 		
+		
 		#拷贝内核文件到/boot目录底下
+
 		cp arch/x86/boot/bzImage /boot/vmlinuz-`basename /lib/modules/3.16.39/`
 	
 		#备份.config文件
@@ -86,6 +92,7 @@ title: "内核编译"
 10. 配置grub
 
 		#生成对应版本的initramfs文件
+
 		dracut -v /boot/initramfs-`basename /lib/modules/3.16.39/` 3.16.39
 	
 		#更新grub.cfg配置，加入新内核记录
@@ -93,7 +100,7 @@ title: "内核编译"
 
 11. 查看grub配置/boot/grub2/grub.conf
 
-	![image](grub-conf.png)
+	![](grub-conf.png)
 
 12. 重启机器，选择新内核启动
 
