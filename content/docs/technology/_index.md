@@ -4,17 +4,17 @@ bookFlatSection: true
 title: "DevOps笔记"
 ---
 
-### Code.CC的笔记
+### DevOps笔记
 
-## 运维
+## 系统
 
 * 计算机基础
 
-  * [计算机组成](operation/Basic/constitute)
+  * [计算机组成](system/Basic/constitute)
 
-  * [操作系统](operation/Basic/opreatingSystem)
+  * [操作系统](system/Basic/operatingSystem)
 
-  * [文件系统](operation/Basic/fileSystem)
+  * [文件系统](system/Basic/fileSystem)
 
 * Linux系统
 
