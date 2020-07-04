@@ -10,11 +10,11 @@ title: "DevOps笔记"
 
 * 计算机基础
 
-  * [计算机组成](operation/Basic/constitute.md)
+  * [计算机组成](operation/Basic/constitute)
 
-  * [操作系统](operation/Basic/opreatingSystem.md)
+  * [操作系统](operation/Basic/opreatingSystem)
 
-  * [文件系统](operation/Basic/fileSystem.md)
+  * [文件系统](operation/Basic/fileSystem)
 
 * Linux系统
 
