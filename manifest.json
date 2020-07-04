@@ -1,6 +1,6 @@
 {
-  "name": "CC Notes",
-  "short_name": "CC Notes",
+  "name": "CC's Notes",
+  "short_name": "CC's Notes",
   "start_url": "/notes/",
   "scope": "/notes/",
   "display": "standalone",
