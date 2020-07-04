@@ -1,100 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Introduction on CC&#39;s Notes</title>
+    <title>介绍 on 学而不思则罔</title>
     <link>https://cctrip.github.io/notes/</link>
-    <description>Recent content in Introduction on CC&#39;s Notes</description>
+    <description>Recent content in 介绍 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	<atom:link href="https://cctrip.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>内核编译</title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Kernel/kernel/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Kernel/kernel/</guid>
-      <description>内核编译 #  概念 #  内核指的是一个提供硬件抽象层、磁盘及文件系统控制、多任务等功能的系统软件。
-一般保存在/boot目录中，格式为/boot/vmlinuz-XXX
- 为什么要编译内核 #    需要新功能支持
-  原核心过于臃肿
-  与硬件搭配的稳定性
-  其他特殊需求
-   编译内核 #    下载源码包， https://www.kernel.org/
-  解压内核包，一般放在/usr/src/kernels目录下
- tar -Jxf /root/linux-3.16.39.tar.xz -C /usr/src/kernels/    进入内核目录
- cd /usr/src/kernels/linux-3.16.39    查看内核目录( 目录说明)
- ls -d ./*/ ./arch/ ./crypto/ ./drivers/ ./fs/ ./init/ ./kernel/ ./mm/ ./samples/ ./security/ ./tools/ ./virt/ .</description>
-    </item>
-    
-    <item>
-      <title>Linux目录结构</title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Directory/directoryStructure/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Directory/directoryStructure/</guid>
-      <description>Linux目录结构 #    /boot
-系统启动相关的文件，如内核、initrd，以及grub(bootloader)
-  /dev
-设备文件
-块设备：随机访问，数据块
-字符设备：线性访问，按字符为单位
-设备号：主设备号(major)和次设备号(minor)
-  /etc
-配置文件
-  /home
-用户的家目录，每一个用户的家目录通常默认为/home/USERNAME
-  /root
-管理员的家目录
-  /lib
-库文件
-静态库，.a
-动态库，.dll，.so（shared object）
-  /lib/modules
-内核模块文件
-  /media
-挂载点目录，移动设备
-  /mnt
-挂载点目录，额外的临时文件系统
-  /opt
-可选目录，第三方程序的安装目录
-  /proc
-伪文件系统，内核映射文件
-  /sys
-伪文件系统，跟硬件设备相关的属性映射文件
-  /tmp
-临时文件，/var/tmp
-  /var
-可变化的文件
-  /bin
-可执行文件，用户命令
-  /sbin</description>
-    </item>
-    
-    <item>
-      <title>启动</title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Start/start/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Start/start/</guid>
-      <description>启动过程 #  整个过程基本可以分为POST–&amp;gt;BIOS–&amp;gt;MBR(GRUB)–&amp;gt;Kernel–&amp;gt;Init–&amp;gt;Runlevel。
-  详解 #    BIOS
-BIOS(Basic Input/Output System)，基本输入输出系统，该系统存储于主板的ROM芯片上。开机时，会最先读取该系统，然后会有一个加电自检过程，若没有异常就开始加载BIOS程序到内存当中。BIOS主要的一个功能就是存储了磁盘的启动顺序，BIOS会按照启动顺序去查找第一个磁盘头的MBR信息，并加载和执行MBR中的Bootloader程序，若第一个磁盘不存在MBR，则会继续查找第二个磁盘，一旦BootLoader程序被检测并加载内存中，BIOS就将控制权交接给了BootLoader程序。
-  MBR
-MBR(Master Boot Record)，主引导记录，MBR存储于磁盘的头部，大小为512bytes，其中，446bytes用于存储BootLoader程序，64bytes用于存储分区表信息，最后2bytes用于MBR的有效性检查。
-  GRUB
-GRUB(Grand Unified Bootloader)，多系统启动程序，其执行过程可分为三个步骤：
-  Stage1
-这个其实就是MBR，它的主要工作就是查找并加载第二段Bootloader程序(stage2)，但系统在没启动时，MBR根本找不到文件系统，也就找不到stage2所存放的位置，因此，就有了stage1_5
-  Stage1_5
-该步骤就是为了识别文件系统
-  Stage2
-GRUB程序会根据/boot/grub/grub.conf文件查找Kernel的信息，然后开始加载Kernel程序，当Kernel程序被检测并在加载到内存中，GRUB就将控制权交接给了Kernel程序。
-PS：实际上这个步骤/boot还没被挂载，GRUB直接识别grub所在磁盘的文件系统，所以实际上应该是/grub/grub.conf文件，该配置文件的信息如下：
-grub.conf:
- #boot=/dev/sda default=0 #设定默认启动的title的编号，从0开始 timeout=5 #等待用户选择的超时时间 splashimage=(hd0,0)/boot/grub/splash.xpm.gz #GRUB的背景图片 hiddenmenu #隐藏菜单 title CentOS (2.6.18-194.el5PAE) #内核标题 root (hd0,0) #内核文件所在的设备 kernel /vmlinuz-2.6.18-194.el5PAE ro root=LABEL=/ #内核文件路径以及传递给内核的参数 initrd /initrd-2.6.18-194.el5PAE.img #ramdisk文件路径      Kernel</description>
-    </item>
     
     <item>
       <title></title>
@@ -156,54 +69,10 @@ grub.conf:
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Ansible/ansible/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Ansible/ansible/</guid>
-      <description>Ansible #  安装 #    安装ansible
-pip install ansible    测试
-echo &amp;quot;127.0.0.1&amp;quot; &amp;gt; ~/ansible_hosts export ANSIBLE_INVENTORY=~/ansible_hosts ansible all -m ping --ask-pass    Inventory #    主机和组
-ansible_hosts 文件
-[group1] host1 host2 [group2] host3 host4 ssh选项 ansible_port=5555(默认22) ansible_host=172.16.0.101 ansible_user=root(默认root) ansible_connection=ssh(默认ssh) ansible_ssh_pass= host变量 http_port=80 maxRequestsPerChild=808 group变量 [group1:vars] ansible_port=33 group包含group [group3:children] group1 group2     命令行 #  ansible &amp;lt;server_name&amp;gt; -m &amp;lt;module_name&amp;gt; -a &amp;lt;arguments&amp;gt;   配置文件 #  略</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elk/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elk/</guid>
-      <description>ELK Stack #  ELK是一个实现可靠，安全地从任何来源，任何格式和 实时搜索，分析和可视化的工具
- 架构 #  ELK Stack主要由四个组件组成：
-  Filebeat: 从客户端收集日志并传送给Logstash
-  Logstash: 用于处理传入日志并传送给ElasticSearch
-  ElasticSearch: 存储日志并供Kibana查询
-  Kibana: 用于搜索和可视化日志的Web界面
-    使用 #     安装
-  日志解析
-   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elkinstall/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elkinstall/</guid>
-      <description>ELK安装 #  环境准备 #    CentOS 7
-  Java 8
-   ELK安装 #    配置ELK的repo文件
-rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.repo.d/elk.repo [elasticsearch-6.x] name=Elasticsearch repository for 6.x packages baseurl=https://artifacts.elastic.co/packages/6.x/yum gpgcheck=1 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch enabled=1 autorefresh=1 type=rpm-md    ElasticSearch
-#install yum install elasticsearch /bin/systemctl daemon-reload /bin/systemctl enable elasticsearch.service systemctl start elasticsearch.service #Test curl http://localhost:9200/    Kibana
-#install yum install kibana /bin/systemctl daemon-reload /bin/systemctl enable kibana.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/cluster/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/cluster/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/cluster/</guid>
       <description>手动部署kubernetes高可用集群 #  环境准备 #  软件 #    etcd
   docker
   kubernetes
@@ -219,10 +88,10 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.re
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubeadm/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubeadm/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubeadm/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubeadm/</guid>
       <description>kubeadm快速部署kubernetes #  环境搭建 #    环境准备
  #放开防火墙限制 systemctl stop firewalld systemctl disable firewalld #更改内核参数 echo 1 &amp;gt; /proc/sys/net/bridge/bridge-nf-call-ip6tables echo 1 &amp;gt; /proc/sys/net/bridge/bridge-nf-call-iptables #禁用SELINUX setenforce 0    Docker安装
 参考 Docker安装
@@ -232,10 +101,10 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.re
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubernetes/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubernetes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubernetes/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubernetes/</guid>
       <description>Kubernetes #  k8s是一个开源系统，它可以被用于自动部署，扩展和管理容器化（containerized）应用程序。
  架构 #    Master #    etcd
   API Server
@@ -249,6 +118,50 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.re
    Master-Cluster
 基于kubernetes安装包部署kubernetes集群环境。
    Objects #  basic objects #    Pod</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Ansible/ansible/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Ansible/ansible/</guid>
+      <description>Ansible #  安装 #    安装ansible
+pip install ansible    测试
+echo &amp;quot;127.0.0.1&amp;quot; &amp;gt; ~/ansible_hosts export ANSIBLE_INVENTORY=~/ansible_hosts ansible all -m ping --ask-pass    Inventory #    主机和组
+ansible_hosts 文件
+[group1] host1 host2 [group2] host3 host4 ssh选项 ansible_port=5555(默认22) ansible_host=172.16.0.101 ansible_user=root(默认root) ansible_connection=ssh(默认ssh) ansible_ssh_pass= host变量 http_port=80 maxRequestsPerChild=808 group变量 [group1:vars] ansible_port=33 group包含group [group3:children] group1 group2     命令行 #  ansible &amp;lt;server_name&amp;gt; -m &amp;lt;module_name&amp;gt; -a &amp;lt;arguments&amp;gt;   配置文件 #  略</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elk/</guid>
+      <description>ELK Stack #  ELK是一个实现可靠，安全地从任何来源，任何格式和 实时搜索，分析和可视化的工具
+ 架构 #  ELK Stack主要由四个组件组成：
+  Filebeat: 从客户端收集日志并传送给Logstash
+  Logstash: 用于处理传入日志并传送给ElasticSearch
+  ElasticSearch: 存储日志并供Kibana查询
+  Kibana: 用于搜索和可视化日志的Web界面
+    使用 #     安装
+  日志解析
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elkinstall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elkinstall/</guid>
+      <description>ELK安装 #  环境准备 #    CentOS 7
+  Java 8
+   ELK安装 #    配置ELK的repo文件
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.repo.d/elk.repo [elasticsearch-6.x] name=Elasticsearch repository for 6.x packages baseurl=https://artifacts.elastic.co/packages/6.x/yum gpgcheck=1 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch enabled=1 autorefresh=1 type=rpm-md    ElasticSearch
+#install yum install elasticsearch /bin/systemctl daemon-reload /bin/systemctl enable elasticsearch.service systemctl start elasticsearch.service #Test curl http://localhost:9200/    Kibana
+#install yum install kibana /bin/systemctl daemon-reload /bin/systemctl enable kibana.</description>
     </item>
     
     <item>
@@ -1039,49 +952,10 @@ Certificate: Data: Version: 3 (0x2) Serial Number: 1 (0x1) Signature Algorithm: 
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</guid>
-      <description>Nginx #  概念 #  Nginx是一个开源免费的web服务器，同时可以作为反向代理、负载均衡和HTTP缓存的软件。
-Nginx架构 #  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</guid>
-      <description>SSH #  概念 #  安全Shell（SSH）是一种加密网络协议，用于通过无安全网络安全地运行网络服务。
-SSH协议 #    认证
-  加密
-  完整性
-  SSH属性 #    安全远程登录(Secure Remote Login )
-  安全文件传输(Secure File Transfer)
-  安全远程命令执行(Secure Remote Command Execution)
-  密钥和代理(Keys and Agents)
-  访问控制(Access Control)
-  端口转发(Port Forwarding)
-  架构 #    基础操作 #    远程登录
-ssh -l USERNAME HOST -p PORT</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Application/tomcat/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/tomcat/</guid>
-      <description>Tomcat #  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/fileOperation/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/fileOperation/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</guid>
       <description>一切皆文件 #    列出文件列表
  ls [option] /PATH #不指定路径，默认为当前路径 option -l:长格式 文件类型: -:普通文件 d:目录文件 b:块设备文件（block） c：字符设备文件（character） l：符号链接文件（symbolic link file） p：命令管道（pipe） s：套接字文件（socket） 文件权限：9位，每三位一组(u-g-o),每一组：rwx（读、写、执行） 文件硬链接的次数 文件的属主(owner) 文件的属组(group) 文件的大小(size)，单位是字节 时间戳(timestamp)：最近一次被修改的时间 访问：access 修改：modify，文件内容发生改变 改变：change，metadata，元数据 文件名 -h:做单位转换，默认bit -a:显示以.开头的隐藏文件 . 表示当前目录 .. 表示父目录 -d：显示目录自身属性 -i：index node，inode -r：逆序显示文件 -R：递归(recursive)显示    进入目录
  cd /PATH cd ~USERNAME:进入指定用户的家目录 cd -:在当前目录和前一次所在目录之间来回切换    显示文件类型
@@ -1091,10 +965,10 @@ ssh -l USERNAME HOST -p PORT</description>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/permissionsOperation/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/permissionsOperation/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</guid>
       <description>权限操作 #  权限 #    可读(r)(4)
   可写(w)(2)
   可执行(x)(1)
@@ -1112,15 +986,6 @@ ssh -l USERNAME HOST -p PORT</description>
   /etc/passwd
 字段详解(以&amp;rdquo;:&amp;ldquo;为分割符)
 用户名 : 密码 : UID : GID : 注释 : 家目录 : 默认shell</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/Lnmp/README/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/Lnmp/README/</guid>
-      <description>web经典架构 #  Nginx #   Mysql #   PHP #   </description>
     </item>
     
     <item>

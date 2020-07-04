@@ -1,0 +1,12 @@
+---
+#file: tengine.yml
+- name: Install tengine environment
+  hosts: test-31
+  vars:
+    tengine_version: 2.2.2
+    tengine_dir: /usr/local/tengine
+    openssl_version: 1.0.2j
+    run_user: www
+
+  roles: 
+    - tengine

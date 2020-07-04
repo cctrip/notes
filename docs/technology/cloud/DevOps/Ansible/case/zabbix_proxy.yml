@@ -1,0 +1,17 @@
+---
+#file: tengine.yml
+- name: Install zabbix_proxy environment
+  hosts: test-31
+  vars:
+    zabbix_version: 3.4.8
+    zabbix_dir: /usr/local/zabbix
+    mysql_dir: /cache1/mysql
+    server_ip: 172.16.14.32
+    server_port: 10001
+    db_password: zabbix
+    db_port: 3306
+    host_name: proxy-31
+    listen_port: 10003
+
+  roles: 
+    - zabbix

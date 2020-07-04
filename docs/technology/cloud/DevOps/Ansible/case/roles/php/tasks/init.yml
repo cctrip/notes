@@ -1,0 +1,79 @@
+---
+#file: init.yml
+- name: Check php command exists
+  stat: path={{ php_dir }}/bin/php
+  register: pc
+
+- name: Copy php compress file to remote server
+  copy: src=php-{{ php_version }}.tar.gz dest=/usr/local/src
+  when: pc.stat.exists == false
+
+- name: Uncompress php-{{ php_version }}.tar.gz
+  unarchive: src=/usr/local/src/php-{{ php_version }}.tar.gz dest=/usr/local/src/ remote_src=yes
+  when: pc.stat.exists == false
+
+- name: Install required packages of php
+  yum: state=latest name={{ item }}
+  with_items:
+  - make
+  - gcc 
+  - gcc-c++
+  - libxml2-devel
+  - libjpeg-devel
+  - libpng-devel
+  - freetype-devel
+  - openldap-devel
+  when: pc.stat.exists == false
+
+- name: configure php source file
+  command: ./configure --prefix={{ php_dir }} --with-config-file-path={{ php_dir }}/etc --with-mysql=shared,mysqlnd --with-mysqli=mysqlnd --with-gd --with-jpeg-dir --with-png-dir --with-freetype-dir --enable-bcmath --enable-sockets --enable-mbstring --with-gettext --enable-fpm --with-fpm-user=www --with-fpm-group=www
+  args:
+    chdir: /usr/local/src/php-{{ php_version }}
+  when: pc.stat.exists == false
+
+- name: Compile php source file
+  make: chdir=/usr/local/src/php-{{ php_version }} target=install
+  when: pc.stat.exists == false
+
+- name: Create the group www
+  group: name=www state=present
+  when: pc.stat.exists == false
+
+- name: Create the user www
+  user: name=www group=www
+  when: pc.stat.exists == false
+
+- name: Generate ldap configure file
+  shell: "{{ php_dir }}/bin/phpize"
+  args:
+    chdir: /usr/local/src/php-{{ php_version }}/ext/ldap
+
+- name: Configure ldap source file
+  command: ./configure --with-php-config={{ php_dir }}/bin/php-config --with-php-ldap --with-libdir=lib64
+  args:
+    chdir: /usr/local/src/php-{{ php_version }}/ext/ldap
+
+- name: Compile ldap
+  make: chdir=/usr/local/src/php-{{ php_version }}/ext/ldap target=install
+
+- name: Generate php-fpm.conf
+  template: src=php-fpm.conf.j2 dest={{ php_dir }}/etc/php-fpm.conf
+
+- name: Generate www.conf
+  template: src=www.conf.j2 dest={{ php_dir }}/etc/php-fpm.d/www.conf
+
+- name: Generate php-fpm
+  copy: src=/usr/local/src/php-{{ php_version }}/sapi/fpm/init.d.php-fpm dest=/etc/init.d/php-fpm mode=0755 remote_src=yes
+
+- name: Generate php.ini
+  template: src=php.ini.j2 dest={{ php_dir }}/etc/php.ini
+
+- name: Start php
+  shell: /etc/init.d/php-fpm start
+
+- name: Delete php source file
+  file: path={{ item }} state=absent
+  with_items:
+  - /usr/local/src/php-{{ php_version }}
+  - /usr/local/src/php-{{ php_version }}.tar.gz
+  when: pc.stat.exists == false

@@ -1,52 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>应用 on CC&#39;s Notes</title>
+    <title>应用 on 学而不思则罔</title>
     <link>https://cctrip.github.io/notes/docs/technology/system/Application/</link>
-    <description>Recent content in 应用 on CC&#39;s Notes</description>
+    <description>Recent content in 应用 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	<atom:link href="https://cctrip.github.io/notes/docs/technology/system/Application/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</guid>
-      <description>Nginx #  概念 #  Nginx是一个开源免费的web服务器，同时可以作为反向代理、负载均衡和HTTP缓存的软件。
-Nginx架构 #  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</guid>
-      <description>SSH #  概念 #  安全Shell（SSH）是一种加密网络协议，用于通过无安全网络安全地运行网络服务。
-SSH协议 #    认证
-  加密
-  完整性
-  SSH属性 #    安全远程登录(Secure Remote Login )
-  安全文件传输(Secure File Transfer)
-  安全远程命令执行(Secure Remote Command Execution)
-  密钥和代理(Keys and Agents)
-  访问控制(Access Control)
-  端口转发(Port Forwarding)
-  架构 #    基础操作 #    远程登录
-ssh -l USERNAME HOST -p PORT</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Application/tomcat/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/tomcat/</guid>
-      <description>Tomcat #  </description>
-    </item>
     
   </channel>
 </rss>

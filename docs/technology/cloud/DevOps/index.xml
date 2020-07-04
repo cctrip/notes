@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DevOps on 学而不思则罔</title>
+    <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/</link>
+    <description>Recent content in DevOps on 学而不思则罔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/DevOps/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Ansible/ansible/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Ansible/ansible/</guid>
+      <description>Ansible #  安装 #    安装ansible
+pip install ansible    测试
+echo &amp;quot;127.0.0.1&amp;quot; &amp;gt; ~/ansible_hosts export ANSIBLE_INVENTORY=~/ansible_hosts ansible all -m ping --ask-pass    Inventory #    主机和组
+ansible_hosts 文件
+[group1] host1 host2 [group2] host3 host4 ssh选项 ansible_port=5555(默认22) ansible_host=172.16.0.101 ansible_user=root(默认root) ansible_connection=ssh(默认ssh) ansible_ssh_pass= host变量 http_port=80 maxRequestsPerChild=808 group变量 [group1:vars] ansible_port=33 group包含group [group3:children] group1 group2     命令行 #  ansible &amp;lt;server_name&amp;gt; -m &amp;lt;module_name&amp;gt; -a &amp;lt;arguments&amp;gt;   配置文件 #  略</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elk/</guid>
+      <description>ELK Stack #  ELK是一个实现可靠，安全地从任何来源，任何格式和 实时搜索，分析和可视化的工具
+ 架构 #  ELK Stack主要由四个组件组成：
+  Filebeat: 从客户端收集日志并传送给Logstash
+  Logstash: 用于处理传入日志并传送给ElasticSearch
+  ElasticSearch: 存储日志并供Kibana查询
+  Kibana: 用于搜索和可视化日志的Web界面
+    使用 #     安装
+  日志解析
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elkinstall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elkinstall/</guid>
+      <description>ELK安装 #  环境准备 #    CentOS 7
+  Java 8
+   ELK安装 #    配置ELK的repo文件
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.repo.d/elk.repo [elasticsearch-6.x] name=Elasticsearch repository for 6.x packages baseurl=https://artifacts.elastic.co/packages/6.x/yum gpgcheck=1 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch enabled=1 autorefresh=1 type=rpm-md    ElasticSearch
+#install yum install elasticsearch /bin/systemctl daemon-reload /bin/systemctl enable elasticsearch.service systemctl start elasticsearch.service #Test curl http://localhost:9200/    Kibana
+#install yum install kibana /bin/systemctl daemon-reload /bin/systemctl enable kibana.</description>
+    </item>
+    
+  </channel>
+</rss>

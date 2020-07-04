@@ -3,18 +3,28 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Docker/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/infrastructure/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/other/life/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/kernel/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/</loc>
     <lastmod>2020-07-04T15:41:10+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Docker/</loc>
-    <lastmod>2020-07-04T15:01:59+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/Kernel/kernel/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
   <url>
@@ -33,8 +43,7 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/Directory/directoryStructure/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/directory/</loc>
   </url>
   
   <url>
@@ -43,8 +52,15 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/Start/start/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/start/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/</loc>
   </url>
   
   <url>
@@ -58,6 +74,10 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/other/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/Application/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
@@ -68,13 +88,20 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/ServiceMesh/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/program/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Microservice/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/</loc>
   </url>
   
   <url>
@@ -85,6 +112,14 @@
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/</loc>
     <lastmod>2020-07-04T15:01:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/API/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/</loc>
   </url>
   
   <url>
@@ -153,33 +188,27 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Ansible/ansible/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/cluster/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elk/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubeadm/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elkinstall/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubernetes/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/cluster/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Ansible/ansible/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubeadm/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elk/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubernetes/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/Elk/elkinstall/</loc>
   </url>
   
   <url>
@@ -458,33 +487,11 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Application/tomcat/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/fileOperation/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/permissionsOperation/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/Lnmp/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</loc>
   </url>
   
   <url>
@@ -507,12 +514,12 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/tags/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/tags/</loc>
+    <loc>https://cctrip.github.io/notes/</loc>
+    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
 </urlset>

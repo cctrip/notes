@@ -1,6 +1,6 @@
 {
-  "name": "CC's Notes",
-  "short_name": "CC's Notes",
+  "name": "学而不思则罔",
+  "short_name": "学而不思则罔",
   "start_url": "/notes/",
   "scope": "/notes/",
   "display": "standalone",

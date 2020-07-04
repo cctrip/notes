@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>操作指南 on CC&#39;s Notes</title>
-    <link>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/</link>
-    <description>Recent content in 操作指南 on CC&#39;s Notes</description>
+    <title>操作指南 on 学而不思则罔</title>
+    <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/</link>
+    <description>Recent content in 操作指南 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/fileOperation/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/fileOperation/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</guid>
       <description>一切皆文件 #    列出文件列表
  ls [option] /PATH #不指定路径，默认为当前路径 option -l:长格式 文件类型: -:普通文件 d:目录文件 b:块设备文件（block） c：字符设备文件（character） l：符号链接文件（symbolic link file） p：命令管道（pipe） s：套接字文件（socket） 文件权限：9位，每三位一组(u-g-o),每一组：rwx（读、写、执行） 文件硬链接的次数 文件的属主(owner) 文件的属组(group) 文件的大小(size)，单位是字节 时间戳(timestamp)：最近一次被修改的时间 访问：access 修改：modify，文件内容发生改变 改变：change，metadata，元数据 文件名 -h:做单位转换，默认bit -a:显示以.开头的隐藏文件 . 表示当前目录 .. 表示父目录 -d：显示目录自身属性 -i：index node，inode -r：逆序显示文件 -R：递归(recursive)显示    进入目录
  cd /PATH cd ~USERNAME:进入指定用户的家目录 cd -:在当前目录和前一次所在目录之间来回切换    显示文件类型
@@ -24,10 +24,10 @@
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/permissionsOperation/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/GuideBook/permissionsOperation/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</guid>
       <description>权限操作 #  权限 #    可读(r)(4)
   可写(w)(2)
   可执行(x)(1)

@@ -1,110 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>云原生 on CC&#39;s Notes</title>
+    <title>云原生 on 学而不思则罔</title>
     <link>https://cctrip.github.io/notes/docs/technology/cloud/</link>
-    <description>Recent content in 云原生 on CC&#39;s Notes</description>
+    <description>Recent content in 云原生 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Ansible/ansible/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Ansible/ansible/</guid>
-      <description>Ansible #  安装 #    安装ansible
-pip install ansible    测试
-echo &amp;quot;127.0.0.1&amp;quot; &amp;gt; ~/ansible_hosts export ANSIBLE_INVENTORY=~/ansible_hosts ansible all -m ping --ask-pass    Inventory #    主机和组
-ansible_hosts 文件
-[group1] host1 host2 [group2] host3 host4 ssh选项 ansible_port=5555(默认22) ansible_host=172.16.0.101 ansible_user=root(默认root) ansible_connection=ssh(默认ssh) ansible_ssh_pass= host变量 http_port=80 maxRequestsPerChild=808 group变量 [group1:vars] ansible_port=33 group包含group [group3:children] group1 group2     命令行 #  ansible &amp;lt;server_name&amp;gt; -m &amp;lt;module_name&amp;gt; -a &amp;lt;arguments&amp;gt;   配置文件 #  略</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elk/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elk/</guid>
-      <description>ELK Stack #  ELK是一个实现可靠，安全地从任何来源，任何格式和 实时搜索，分析和可视化的工具
- 架构 #  ELK Stack主要由四个组件组成：
-  Filebeat: 从客户端收集日志并传送给Logstash
-  Logstash: 用于处理传入日志并传送给ElasticSearch
-  ElasticSearch: 存储日志并供Kibana查询
-  Kibana: 用于搜索和可视化日志的Web界面
-    使用 #     安装
-  日志解析
-   </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elkinstall/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Elk/elkinstall/</guid>
-      <description>ELK安装 #  环境准备 #    CentOS 7
-  Java 8
-   ELK安装 #    配置ELK的repo文件
-rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.repo.d/elk.repo [elasticsearch-6.x] name=Elasticsearch repository for 6.x packages baseurl=https://artifacts.elastic.co/packages/6.x/yum gpgcheck=1 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch enabled=1 autorefresh=1 type=rpm-md    ElasticSearch
-#install yum install elasticsearch /bin/systemctl daemon-reload /bin/systemctl enable elasticsearch.service systemctl start elasticsearch.service #Test curl http://localhost:9200/    Kibana
-#install yum install kibana /bin/systemctl daemon-reload /bin/systemctl enable kibana.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/cluster/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/cluster/</guid>
-      <description>手动部署kubernetes高可用集群 #  环境准备 #  软件 #    etcd
-  docker
-  kubernetes
-  kubelet
-  kube-proxy
-  kube-apiserver
-  kube-controller-manager
-  kube-scheduler
-     软件准备 #     Docker安装
-  软件下载
- wget https://storage.googleapis.com/kubernetes-release/release/v1.6.9/kubernetes.tar.gz tar -zxvf kubernetes.tar.gz ./kubernetes/cluster/get-kube-binaries.sh wget https://github.com/coreos/etcd/releases/download/v3.2.6/etcd-v3.2.6-linux-amd64.tar.gz     etcd高可用集群搭建 #  安装cfssl #  go get -u github.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubeadm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubeadm/</guid>
-      <description>kubeadm快速部署kubernetes #  环境搭建 #    环境准备
- #放开防火墙限制 systemctl stop firewalld systemctl disable firewalld #更改内核参数 echo 1 &amp;gt; /proc/sys/net/bridge/bridge-nf-call-ip6tables echo 1 &amp;gt; /proc/sys/net/bridge/bridge-nf-call-iptables #禁用SELINUX setenforce 0    Docker安装
-参考 Docker安装
- #开启iptables filter表中FOWARD链(Docker1.3开始已被禁用) iptables -P FORWARD ACCEPT #/etc/docker/daemon.json增加配置 { &amp;quot;exec-opts&amp;quot;: [&amp;quot;native.cgroupdriver=systemd&amp;quot;] } #重启Docker systemctl restart docker.service    Kubeadm安装
- #添加repo配置 cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kubernetes.repo [kubernetes] name=Kubernetes baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64 enabled=1 gpgcheck=1 repo_gpgcheck=1 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg EOF #安装kubeadm,kubelet,kubectl yum install -y kubelet kubeadm kubectl systemctl enable kubelet &amp;amp;&amp;amp; systemctl start kubelet     Master node 初始化 #    init</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubernetes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubernetes/</guid>
-      <description>Kubernetes #  k8s是一个开源系统，它可以被用于自动部署，扩展和管理容器化（containerized）应用程序。
- 架构 #    Master #    etcd
-  API Server
-  Scheduler
-  Controller manager
-  Node #    Kubelet
-  Kube-proxy
-  cAdvisor
-   安装 #     Kubeadm
-基于kubeadm工具部署kubernetes,包含Master和Node。(测试版本，不适用于生产环境)
-   Master-Cluster
-基于kubernetes安装包部署kubernetes集群环境。
-   Objects #  basic objects #    Pod</description>
-    </item>
     
   </channel>
 </rss>
