@@ -17,7 +17,7 @@
  #添加repo配置 cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo [kubernetes] name=Kubernetes baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64 enabled=1 gpgcheck=1 repo_gpgcheck=1 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg EOF #安装kubeadm,kubelet,kubectl yum install -y kubelet kubeadm kubectl systemctl enable kubelet &amp;&amp; systemctl start kubelet     Master node 初始化 #    init" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/Kubernetes/kubeadm/" />
-
+<meta property="article:modified_time" content="2020-07-04T14:29:14+08:00" />
 <title>Kubeadm | Hugo Book</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
@@ -535,6 +535,12 @@ kubectl get pod --all-namespaces -o wide
   <div class="flex flex-wrap justify-between">
 
 
+
+  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/8877f1c11c8952a266890bb07945a62ebbe4052c" title='Last modified by codecc | July 4, 2020' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>July 4, 2020</span>
+    </a>
+  </div>
 
 
 

@@ -13,7 +13,7 @@ protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自�
 protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自身的HTST列表，确认是否包含该主机。 2、若HTST存在该主机，使用https代替http，否则使用http。 1.3 DNS解析 #  1、浏览器检查自身的DNS缓存 2、查找本地hosts文件 3、发起DNS解析查询 4、查询 本地|ISP DNS服务器 5、本地|ISP DNS服务器像高层服务器发起递归查询直到查到该域名的解析IP 1.4 TCP连接建立 #  1、client端发送SYN请求到server端，声明自己的ISN为aaa (CLOSED--&gt;SYN-SENT) 2、server端接收SYN包，声明自己的ISN为bbb，ACK信息为aaa&#43;1，返回给client端 (LISTEN--&gt;SYN-RECEIVED) 3、client端返回ACK为bbb&#43;1为server端 (SYN-SENT--&gt;ESTABLISHED) 4、数据交互 1.5 TLS连接建立 #  1.6 HTTP #   " />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/other/Interview/classic/" />
-
+<meta property="article:modified_time" content="2020-07-04T14:29:14+08:00" />
 <title>Classic | Hugo Book</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
@@ -551,6 +551,12 @@ resource: /
   <div class="flex flex-wrap justify-between">
 
 
+
+  <div><a class="flex align-center" href="https://github.com/alex-shpak/hugo-book/commit/8877f1c11c8952a266890bb07945a62ebbe4052c" title='Last modified by codecc | July 4, 2020' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>July 4, 2020</span>
+    </a>
+  </div>
 
 
 
