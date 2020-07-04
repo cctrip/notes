@@ -24,7 +24,7 @@ git commit -m "$msg"
 # Push source and build repos.
 git push origin gh-pages
 
-#cd ..
-#git add .
-#git commit -m "$msg"
-#git push
+cd ..
+git add .
+git commit -m "$msg"
+git push
