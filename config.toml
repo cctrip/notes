@@ -40,18 +40,18 @@ enableGitInfo = true
 [menu]
 # [[menu.before]]
 [[menu.after]]
+  name = "关于我"
+  url = "https://cctrip.github.io/"
+  weight = 10
+
+[[menu.after]]
   name = "Blog"
   url = "https://cctrip.github.io/posts"
-  weight = 10
+  weight = 20
 
 [[menu.after]]
   name = "Github"
   url = "https://github.com/cctrip/notes"
-  weight = 20
-
-[[menu.after]]
-  name = "Hugo Themes"
-  url = "https://themes.gohugo.io/hugo-book/"
   weight = 30
 
 [params]
