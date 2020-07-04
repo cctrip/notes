@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="玩转Linux #  CPU相关 #  内存相关 #  磁盘相关 #  系统相关 #  网络相关 #  权限相关 #  文件相关 #  文本相关 #  IPMI #  RAID #    ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="操作指南" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/" />
+
+<title>操作指南 | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.f86d734fb72218510b4acf6704bfaab5f67b6f20a348e04bc138af85e2b76c68.js" integrity="sha256-&#43;G1zT7ciGFELSs9nBL&#43;qtfZ7byCjSOBLwTivheK3bGg="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/index.xml" title="学而不思则罔" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/" class="collapsed ">计算机基础</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/" class="collapsed ">Linux系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/kernel/" class="">内核编译</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/directory/" class="">Linux目录结构</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/start/" class="">启动</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/guideBook/" class="active">操作指南</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/" class="collapsed ">应用</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>操作指南</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#玩转linux">玩转Linux</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#cpu相关cpuoperationmd"><a href="cpuOperation.md">CPU相关</a></a></li>
+            <li><a href="#内存相关memoryoperationmd"><a href="memoryOperation.md">内存相关</a></a></li>
+            <li><a href="#磁盘相关diskoperationmd"><a href="diskOperation.md">磁盘相关</a></a></li>
+            <li><a href="#系统相关systemoperationmd"><a href="systemOperation.md">系统相关</a></a></li>
+            <li><a href="#网络相关networkoperationmd"><a href="networkOperation.md">网络相关</a></a></li>
+            <li><a href="#权限相关permissionsoperationmd"><a href="permissionsOperation.md">权限相关</a></a></li>
+            <li><a href="#文件相关fileoperationmd"><a href="fileOperation.md">文件相关</a></a></li>
+            <li><a href="#文本相关textoperationmd"><a href="textOperation.md">文本相关</a></a></li>
+            <li><a href="#ipmiipmioperationmd"><a href="ipmiOperation.md">IPMI</a></a></li>
+            <li><a href="#raidraidoperationmd"><a href="raidOperation.md">RAID</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="玩转linux">
+  玩转Linux
+  <a class="anchor" href="#%e7%8e%a9%e8%bd%aclinux">#</a>
+</h1>
+<h3 id="cpu相关cpuoperationmd">
+  
+  <a href="cpuOperation.md">CPU相关</a>
+  <a class="anchor" href="#cpu%e7%9b%b8%e5%85%b3cpuoperationmd">#</a>
+</h3>
+<h3 id="内存相关memoryoperationmd">
+  
+  <a href="memoryOperation.md">内存相关</a>
+  <a class="anchor" href="#%e5%86%85%e5%ad%98%e7%9b%b8%e5%85%b3memoryoperationmd">#</a>
+</h3>
+<h3 id="磁盘相关diskoperationmd">
+  
+  <a href="diskOperation.md">磁盘相关</a>
+  <a class="anchor" href="#%e7%a3%81%e7%9b%98%e7%9b%b8%e5%85%b3diskoperationmd">#</a>
+</h3>
+<h3 id="系统相关systemoperationmd">
+  
+  <a href="systemOperation.md">系统相关</a>
+  <a class="anchor" href="#%e7%b3%bb%e7%bb%9f%e7%9b%b8%e5%85%b3systemoperationmd">#</a>
+</h3>
+<h3 id="网络相关networkoperationmd">
+  
+  <a href="networkOperation.md">网络相关</a>
+  <a class="anchor" href="#%e7%bd%91%e7%bb%9c%e7%9b%b8%e5%85%b3networkoperationmd">#</a>
+</h3>
+<h3 id="权限相关permissionsoperationmd">
+  
+  <a href="/notes/docs/technology/system/Linux/guideBook/permissionsOperation/">权限相关</a>
+  <a class="anchor" href="#%e6%9d%83%e9%99%90%e7%9b%b8%e5%85%b3permissionsoperationmd">#</a>
+</h3>
+<h3 id="文件相关fileoperationmd">
+  
+  <a href="/notes/docs/technology/system/Linux/guideBook/fileOperation/">文件相关</a>
+  <a class="anchor" href="#%e6%96%87%e4%bb%b6%e7%9b%b8%e5%85%b3fileoperationmd">#</a>
+</h3>
+<h3 id="文本相关textoperationmd">
+  
+  <a href="textOperation.md">文本相关</a>
+  <a class="anchor" href="#%e6%96%87%e6%9c%ac%e7%9b%b8%e5%85%b3textoperationmd">#</a>
+</h3>
+<h3 id="ipmiipmioperationmd">
+  
+  <a href="ipmiOperation.md">IPMI</a>
+  <a class="anchor" href="#ipmiipmioperationmd">#</a>
+</h3>
+<h3 id="raidraidoperationmd">
+  
+  <a href="raidOperation.md">RAID</a>
+  <a class="anchor" href="#raidraidoperationmd">#</a>
+</h3>
+<p>
+  <img src="operation-command.png" alt="images" /></p>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/system/Linux/guideBook/_index.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#玩转linux">玩转Linux</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#cpu相关cpuoperationmd"><a href="cpuOperation.md">CPU相关</a></a></li>
+            <li><a href="#内存相关memoryoperationmd"><a href="memoryOperation.md">内存相关</a></a></li>
+            <li><a href="#磁盘相关diskoperationmd"><a href="diskOperation.md">磁盘相关</a></a></li>
+            <li><a href="#系统相关systemoperationmd"><a href="systemOperation.md">系统相关</a></a></li>
+            <li><a href="#网络相关networkoperationmd"><a href="networkOperation.md">网络相关</a></a></li>
+            <li><a href="#权限相关permissionsoperationmd"><a href="permissionsOperation.md">权限相关</a></a></li>
+            <li><a href="#文件相关fileoperationmd"><a href="fileOperation.md">文件相关</a></a></li>
+            <li><a href="#文本相关textoperationmd"><a href="textOperation.md">文本相关</a></a></li>
+            <li><a href="#ipmiipmioperationmd"><a href="ipmiOperation.md">IPMI</a></a></li>
+            <li><a href="#raidraidoperationmd"><a href="raidOperation.md">RAID</a></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="权限操作 #  权限 #    可读(r)(4)
+  可写(w)(2)
+  可执行(x)(1)
+  特殊权限
+  SUID(u&#43;s): 运行某程序时，相应进程的属主是程序文件自身的属主
+  SGID(g&#43;s)：运行某程序时，相应进程的属组是程序文件自身的属组
+  Sticky(o&#43;t)：在一个公共目录，每个用户都可以创建删除自己的文件，但不能删除别人的文件
+     用户和组 #    用户(UID)
+  类别
+  管理员：0
+  普通用户：1-65535
+  系统用户：1-499
+  一般用户：500-65535
+      配置文件
+  /etc/passwd
+字段详解(以&rdquo;:&ldquo;为分割符)
+用户名 : 密码 : UID : GID : 注释 : 家目录 : 默认shell">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta property="og:description" content="权限操作 #  权限 #    可读(r)(4)
+  可写(w)(2)
+  可执行(x)(1)
+  特殊权限
+  SUID(u&#43;s): 运行某程序时，相应进程的属主是程序文件自身的属主
+  SGID(g&#43;s)：运行某程序时，相应进程的属组是程序文件自身的属组
+  Sticky(o&#43;t)：在一个公共目录，每个用户都可以创建删除自己的文件，但不能删除别人的文件
+     用户和组 #    用户(UID)
+  类别
+  管理员：0
+  普通用户：1-65535
+  系统用户：1-499
+  一般用户：500-65535
+      配置文件
+  /etc/passwd
+字段详解(以&rdquo;:&ldquo;为分割符)
+用户名 : 密码 : UID : GID : 注释 : 家目录 : 默认shell" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/" />
+
+<title>Permissions Operation | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.f86d734fb72218510b4acf6704bfaab5f67b6f20a348e04bc138af85e2b76c68.js" integrity="sha256-&#43;G1zT7ciGFELSs9nBL&#43;qtfZ7byCjSOBLwTivheK3bGg="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/" class="collapsed ">计算机基础</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/" class="collapsed ">Linux系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/kernel/" class="">内核编译</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/directory/" class="">Linux目录结构</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/start/" class="">启动</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/guideBook/" class="">操作指南</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/" class="collapsed ">应用</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Permissions Operation</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#权限操作">权限操作</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#权限">权限</a></li>
+            <li><a href="#用户和组">用户和组</a></li>
+            <li><a href="#用户管理">用户管理</a></li>
+            <li><a href="#组管理">组管理</a></li>
+            <li><a href="#权限管理">权限管理</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="权限操作">
+  权限操作
+  <a class="anchor" href="#%e6%9d%83%e9%99%90%e6%93%8d%e4%bd%9c">#</a>
+</h1>
+<h3 id="权限">
+  权限
+  <a class="anchor" href="#%e6%9d%83%e9%99%90">#</a>
+</h3>
+<ul>
+<li>
+<p>可读(r)(4)</p>
+</li>
+<li>
+<p>可写(w)(2)</p>
+</li>
+<li>
+<p>可执行(x)(1)</p>
+</li>
+<li>
+<p>特殊权限</p>
+<ul>
+<li>
+<p>SUID(u+s): 运行某程序时，相应进程的属主是程序文件自身的属主</p>
+</li>
+<li>
+<p>SGID(g+s)：运行某程序时，相应进程的属组是程序文件自身的属组</p>
+</li>
+<li>
+<p>Sticky(o+t)：在一个公共目录，每个用户都可以创建删除自己的文件，但不能删除别人的文件</p>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="用户和组">
+  用户和组
+  <a class="anchor" href="#%e7%94%a8%e6%88%b7%e5%92%8c%e7%bb%84">#</a>
+</h3>
+<ul>
+<li>
+<p>用户(UID)</p>
+<ul>
+<li>
+<p>类别</p>
+<ul>
+<li>
+<p>管理员：0</p>
+</li>
+<li>
+<p>普通用户：1-65535</p>
+<ul>
+<li>
+<p>系统用户：1-499</p>
+</li>
+<li>
+<p>一般用户：500-65535</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>配置文件</p>
+<ul>
+<li>
+<p>/etc/passwd</p>
+<p>字段详解(以&rdquo;:&ldquo;为分割符)</p>
+<p>用户名 : 密码 : UID : GID : 注释 : 家目录 : 默认shell</p>
+</li>
+<li>
+<p>/etc/shadow</p>
+<p>字段详解(以&rdquo;:&ldquo;为分隔符)</p>
+<p>用户名 : 密码 : 最近一次修改密码时间 : 最短使用期限 : 最长使用期限 : 警告时间 : 非活动时间 : 过期时间</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>组(GID)</p>
+<ul>
+<li>
+<p>类别</p>
+<ul>
+<li>
+<p>私有组：创建用户时，没指定所组，则系统默认创建同名组</p>
+</li>
+<li>
+<p>基本组：用户的默认组</p>
+</li>
+<li>
+<p>附加组：</p>
+</li>
+</ul>
+</li>
+<li>
+<p>配置文件</p>
+<ul>
+<li>
+<p>/etc/group</p>
+<p>字段详解(以&rdquo;:&ldquo;为分隔符)</p>
+<p>组名 : 密码 : GID : 以此组为其附加组的用户列表</p>
+</li>
+<li>
+<p>/etc/gshadow</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="用户管理">
+  用户管理
+  <a class="anchor" href="#%e7%94%a8%e6%88%b7%e7%ae%a1%e7%90%86">#</a>
+</h3>
+<ul>
+<li>
+<p>添加用户</p>
+<pre><code>  useradd [options] USERNAME
+  option
+  -u：UID
+  -g：groupname 指定基本组
+  -G：groupname,... 指定附加组
+  -c：&quot;COMMENT&quot;
+  -d：指定家目录
+  -s：指定SHELL路径
+  -m -k：若家目录不存在，则自动创建
+  -r：添加系统用户
+</code></pre>
+</li>
+<li>
+<p>删除用户</p>
+<pre><code>  userdel [options] USERNAME
+  option
+  -r：同时删除用户的家目录
+</code></pre>
+</li>
+<li>
+<p>查看用户的帐号属性信息</p>
+<pre><code>  id [options] USERNAME
+  option
+  -u：查看UID
+  -g：查看GID
+  -G: 查看所有的GID
+  -n：查看组名
+                                                                                      
+  finger USERNAME
+</code></pre>
+</li>
+<li>
+<p>修改用户帐号属性</p>
+<pre><code>  usermod [options] USERNAME
+  option
+  -u：UID
+  -g：GID
+  -a -g GID：不使用-a选项，会覆盖此前的附加组
+  -d -m：指定新的家目录，并把之前家目录的文件拷贝到新的家目录中
+  -c：
+  -s：指定SHELL路径
+  -L：锁定帐号
+  -U：解锁帐号
+</code></pre>
+</li>
+<li>
+<p>密码管理</p>
+<pre><code>  passwd [USERNAME]
+  --stdin：标准输入
+  -d：删除用户密码
+</code></pre>
+</li>
+<li>
+<p>检查用户帐号完整性</p>
+<pre><code>  pwck
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="组管理">
+  组管理
+  <a class="anchor" href="#%e7%bb%84%e7%ae%a1%e7%90%86">#</a>
+</h3>
+<ul>
+<li>
+<p>创建用户组：</p>
+<pre><code>  groupadd [option] GROUPNAME
+  -g：GID
+  -r：添加为系统组                                                                                                                                                                                
+</code></pre>
+</li>
+<li>
+<p>修改组的相关属性</p>
+<pre><code>  groupmod [option] GROUPNAME
+  -g：GID
+  -n：GRPNAME
+</code></pre>
+</li>
+<li>
+<p>删除组</p>
+<pre><code>  groupdel GROUPNAME                                                                                                                                                                                            
+</code></pre>
+</li>
+<li>
+<p>更改组密码</p>
+<pre><code>  gpasswd GROUPNAME
+</code></pre>
+</li>
+</ul>
+<hr>
+<h3 id="权限管理">
+  权限管理
+  <a class="anchor" href="#%e6%9d%83%e9%99%90%e7%ae%a1%e7%90%86">#</a>
+</h3>
+<ul>
+<li>
+<p>改变文件属主</p>
+<pre><code>  chown USERNAME file,...
+  -R：修改目录及其内部文件的属主
+  --reference=/path/to/somefile file,...  指定属主与该文件相同
+  chown USERNAME:GROUPNAME file 
+  chown USERNAME.GROUPNAME file
+</code></pre>
+</li>
+<li>
+<p>改变属组</p>
+<pre><code>  chgrp GROUPNAME file,...
+</code></pre>
+</li>
+<li>
+<p>修改文件的权限</p>
+<pre><code>  chmod MODE file,...
+  -R：
+  --reference=/path/to/somefile
+  修改单个用户的权限：u,g,o,a
+  chmod 用户类别+|-MODE file,...
+</code></pre>
+</li>
+</ul>
+<hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/system/Linux/guideBook/permissionsOperation.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#权限操作">权限操作</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#权限">权限</a></li>
+            <li><a href="#用户和组">用户和组</a></li>
+            <li><a href="#用户管理">用户管理</a></li>
+            <li><a href="#组管理">组管理</a></li>
+            <li><a href="#权限管理">权限管理</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
