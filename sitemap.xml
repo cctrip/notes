@@ -8,8 +8,28 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Revision/git/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Revision/git/install/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Revision/git/operation/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Language/shell/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/Application/ssh/</loc>
     <lastmod>2020-07-05T00:20:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/network/Protocol/tcp/</loc>
   </url>
   
   <url>
@@ -29,7 +49,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/other/life/reason/</loc>
-    <lastmod>2020-07-05T00:45:26+08:00</lastmod>
+    <lastmod>2020-07-05T00:47:06+08:00</lastmod>
   </url>
   
   <url>
@@ -38,8 +58,20 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/dataStructure/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Basic/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/network/Basic/</loc>
   </url>
   
   <url>
@@ -50,6 +82,14 @@
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/Basic/constitute/</loc>
     <lastmod>2020-07-04T15:29:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Language/golang/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/network/Protocol/http/</loc>
   </url>
   
   <url>
@@ -83,13 +123,33 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Revision/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/algorithm/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/network/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/network/Protocol/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/other/</loc>
     <lastmod>2020-07-05T00:20:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/network/Protocol/dns/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Language/python/</loc>
   </url>
   
   <url>
@@ -113,6 +173,14 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Language/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/Microservice/</loc>
     <lastmod>2020-07-05T00:20:06+08:00</lastmod>
   </url>
@@ -124,6 +192,10 @@
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/database/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/</loc>
   </url>
   
   <url>
@@ -272,11 +344,6 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/network/Protocol/http/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/other/BookNotes/bookNotes/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
@@ -352,128 +419,31 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/Algorithm/algorithm/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/factoryMethod/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/DataStructure/datastructure/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/simpleFactory/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/factoryMethod/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/DataStructuresAndAlgorithms/README/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/StringsAndText/README/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/Design/simpleFactory/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Django/django/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Basic/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Flask/flask/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/CookBook/DataStructuresAndAlgorithms/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/CookBook/StringsAndText/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Django/django/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Flask/flask/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/Framework/Scrapy/scrapy/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Python/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/git/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/alias/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/commitHistory/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/configuration/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/createNew/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/install/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/introduce/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/record/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/remote/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/tag/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/Git/undo/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/RevisionControl/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/program/Shell/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Scrapy/scrapy/</loc>
   </url>
   
   <url>
@@ -535,7 +505,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/</loc>
-    <lastmod>2020-07-05T00:45:26+08:00</lastmod>
+    <lastmod>2020-07-05T00:47:06+08:00</lastmod>
   </url>
   
   <url>
