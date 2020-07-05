@@ -12,23 +12,18 @@
  $ systemctl enable firewalld.service $ systemctl disable firewalld.service    Rule配置：firewall-cmd命令
    Options Description     -h, &ndash;help Prints a short help text and exists   -V, &ndash;version Print the version string of firewalld   -q, &ndash;quiet Do not print status messages   &ndash;state Return and print firewalld state   &ndash;reload Reload firewall and keep state information   &ndash;complete-reload Reload firewall and loose state information   &ndash;runtime-to-permanent Create permanent from runtime configuration   &ndash;permanent Set an option permanently   &ndash;zone=&lt;zone&gt; Use this zone to set or query options, else default zone   &ndash;timeout=&lt;timeval&gt; Enable an option for timeval time, where timeval is,a number followed by one of letters &rsquo;s&rsquo; or &rsquo;m&rsquo; or &lsquo;h&rsquo;       概念 #  区域(Zones) #  一个规则管理群组的概念，定义了可信任级别。其中预先定义的zones有以下几个：">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="Firewalld #  firewalld是CentOS7默认的防火墙服务，用于管理网络数据包的流动和转发。
- 基础命令 #    启动
- $ systemctl start firewalld.service    查看状态
- $ systemctl status firewalld.service    关闭
- $ systemctl stop firewalld.service    开启和关闭开机启动
- $ systemctl enable firewalld.service $ systemctl disable firewalld.service    Rule配置：firewall-cmd命令
-   Options Description     -h, &ndash;help Prints a short help text and exists   -V, &ndash;version Print the version string of firewalld   -q, &ndash;quiet Do not print status messages   &ndash;state Return and print firewalld state   &ndash;reload Reload firewall and keep state information   &ndash;complete-reload Reload firewall and loose state information   &ndash;runtime-to-permanent Create permanent from runtime configuration   &ndash;permanent Set an option permanently   &ndash;zone=&lt;zone&gt; Use this zone to set or query options, else default zone   &ndash;timeout=&lt;timeval&gt; Enable an option for timeval time, where timeval is,a number followed by one of letters &rsquo;s&rsquo; or &rsquo;m&rsquo; or &lsquo;h&rsquo;       概念 #  区域(Zones) #  一个规则管理群组的概念，定义了可信任级别。其中预先定义的zones有以下几个：" />
-<meta property="og:type" content="article" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
 <meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/security/Firewall/firewalld/" />
-<meta property="article:modified_time" content="2020-07-04T14:29:14+08:00" />
+
 <title>Firewalld | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.71e832022045696c8ed2fdb8c2b7ec2079800b5466664ece6ae205dd72060c6f.js" integrity="sha256-cegyAiBFaWyO0v24wrfsIHmAC1RmZk7OauIF3XIGDG8="></script>
+<script defer src="/notes/en.search.min.ce2e3d879a17708894d0a4c726db60ec224a41c4f37d9c1a3fe60a449f8e204c.js" integrity="sha256-zi49h5oXcIiU0KTHJttg7CJKQcTzfZwaP&#43;YKRJ&#43;OIEw="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/security/Firewall/firewalld/index.xml" title="学而不思则罔" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -213,7 +208,14 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/security/Basic/README/" class="">R E a D M E</a>
+    <a href="/notes/docs/technology/security/Basic/" class="collapsed ">安全基础</a>
+  
+
+          
+  
+  
+  
+
   
 
         </li>
@@ -223,7 +225,33 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/notes/docs/technology/security/Firewall/" class="collapsed ">防火墙</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
     <a href="/notes/docs/technology/security/Firewall/firewalld/" class="active">Firewalld</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
   
 
         </li>
@@ -236,14 +264,21 @@ https://github.com/alex-shpak/hugo-book
     <a href="/notes/docs/technology/security/Firewall/iptables/" class="">Iptables</a>
   
 
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
         </li>
       
     
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/security/Firewall/README/" class="">R E a D M E</a>
+  </ul>
   
 
         </li>
@@ -253,27 +288,14 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/security/IDS/README/" class="">R E a D M E</a>
+    <a href="/notes/docs/technology/security/IDS/" class="collapsed ">入侵检测</a>
   
 
-        </li>
-      
-    
-      
-        <li>
           
   
-    <a href="/notes/docs/technology/security/IDS/Snort/snort/" class="">Snort</a>
+  
   
 
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/security/TLS/ssl/" class="">Ssl</a>
   
 
         </li>
@@ -345,6 +367,23 @@ https://github.com/alex-shpak/hugo-book
           
   
     <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/learn/" class="collapsed ">方法论</a>
   
 
           
@@ -684,16 +723,10 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/8877f1c11c8952a266890bb07945a62ebbe4052c" title='Last modified by codecc | July 4, 2020' target="_blank" rel="noopener">
-      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 4, 2020</span>
-    </a>
-  </div>
-
 
 
   <div>
-    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/security/Firewall/firewalld.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/security/Firewall/firewalld/_index.md" target="_blank" rel="noopener">
       <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>

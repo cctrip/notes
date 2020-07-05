@@ -23,8 +23,32 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/cluster/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/tool/Script/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/program/Language/shell/</loc>
     <lastmod>2020-07-05T11:05:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/IDS/snort/</loc>
   </url>
   
   <url>
@@ -53,8 +77,21 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Basic/</loc>
+    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/other/life/reason/</loc>
     <lastmod>2020-07-05T00:47:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/other/learn/Method/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/Basic/</loc>
   </url>
   
   <url>
@@ -63,8 +100,17 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/Basic/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/dataStructure/</loc>
     <lastmod>2020-07-05T11:05:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/MyConfig/</loc>
+    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
   <url>
@@ -118,6 +164,22 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/SQL/postgres/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/SQL/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/tool/TcpCopy/</loc>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/start/</loc>
     <lastmod>2020-07-05T00:20:06+08:00</lastmod>
   </url>
@@ -128,8 +190,16 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/Basic/fileSystem/</loc>
     <lastmod>2020-07-04T15:29:44+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/other/learn/</loc>
   </url>
   
   <url>
@@ -153,6 +223,15 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Solution/</loc>
+    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/Firewall/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/other/</loc>
     <lastmod>2020-07-05T00:20:06+08:00</lastmod>
   </url>
@@ -163,8 +242,16 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/NoSQL/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/program/Language/python/</loc>
     <lastmod>2020-07-05T11:05:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/security/IDS/</loc>
   </url>
   
   <url>
@@ -197,6 +284,11 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/</loc>
+    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/Microservice/</loc>
     <lastmod>2020-07-05T00:20:06+08:00</lastmod>
   </url>
@@ -216,6 +308,11 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/BookNotes/</loc>
+    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/</loc>
     <lastmod>2020-07-05T00:20:06+08:00</lastmod>
   </url>
@@ -223,6 +320,10 @@
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/API/</loc>
     <lastmod>2020-07-05T00:20:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/other/Translate/</loc>
   </url>
   
   <url>
@@ -251,48 +352,31 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Basic/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/network/Protocol/http/tls/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/architecture/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/deploy/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/deploy/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/optimization/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/optimization/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/architecture/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/deploy/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/architecture/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/deploy/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/optimization/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</loc>
   </url>
   
   <url>
@@ -326,42 +410,15 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/database/Mysql/cluster/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/cluster/</loc>
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/database/Mysql/install/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/database/Mysql/mysql/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/database/PostgreSQL/postgresql/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/database/Redis/cluster/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/database/Redis/redis/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/install/</loc>
   </url>
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/hidden/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/other/BookNotes/bookNotes/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
@@ -396,17 +453,7 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/interview/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/other/MyConfig/config/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
@@ -422,16 +469,6 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/other/Solution/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/other/Translate/translate/</loc>
     <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
@@ -469,38 +506,11 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/security/Basic/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/security/Firewall/firewalld/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/security/Firewall/iptables/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/security/Firewall/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/security/IDS/README/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/security/IDS/Snort/snort/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/security/TLS/ssl/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
   <url>
@@ -509,16 +519,6 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</loc>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/tool/Script/script/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/tool/tcpcopy/</loc>
-    <lastmod>2020-07-04T14:29:14+08:00</lastmod>
   </url>
   
   <url>

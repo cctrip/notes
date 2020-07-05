@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>问题集锦 on 学而不思则罔</title>
+    <link>https://cctrip.github.io/notes/docs/technology/other/Solution/</link>
+    <description>Recent content in 问题集锦 on 学而不思则罔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/other/Solution/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</guid>
+      <description>时间同步相关问题 #  ntpdate:no server suitable for synchronization found #  Question： #  　在使用ntpdate同步时间时，出现了no server suitable for synchronization found的报错。
+　通过ntpdate -d s2m.time.edu.cn 使用debug模式没有出现异常。
+Answer： #  解决办法是，使用ntpdate -ubv s2m.time.edu.cn，可以正常同步了。
+主要是-u选项的作用
+-u：Direct ntpdate to use an unprivileged port for outgoing packets. This is most useful when behind a firewall that blocks incoming traffic to privileged ports, and you want to synchronize with hosts beyond the firewall. Note that the -d option always uses unprivileged ports.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</guid>
+      <description>ssh连接相关问题 #  pam_tally2(sshd:auth): user root (0) has time limit [3s left] since last failure 日志 #  Question： #  工作中，碰到某服务器在批量ssh登陆操作时，出现大量的无法连接的情况。
+Thinking： #  查看ssh日志(/var/log/secure)， 首先注意到的是，&amp;ldquo;Failed password for root from xxx.xxx.xxx.xxx port 51230 ssh2&amp;quot;错误，但发现密码并没有错误，并且只在批量操作时才会出现，故初步判断为连接数问题。
+查看ssh连接数限制
+/usr/sbin/sshd -T | grep -i max  调整参数，更改配置文件/etc/sshd/sshd_config
+maxsessions 1000  重启服务后，依然没有效果。
+再次查看日志，发现在做批量操作时，有大量的&amp;quot;pam_tally2(sshd:auth): user root (0) has time limit [3s left] since last failure&amp;quot;日志。
+应该是pam模块做了相应的限制
+查看配置文件 /etc/pam.d/sshd 文件
+auth required pam_tally2.so deny=10 lock_time=3 unlock_time=30 even_deny_root root_unlock_time=30  Answer： #  更改配置文件：</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SSL协议 #  SSL是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。
+   SSL介绍
+   工作机制
+   工具使用
+   SSL介绍 一个简单的工作流程: #    浏览器请求一个安全页面(https://)。
+  Web服务器返回公钥及其证书。
+  浏览器检查该证书是否由可信任的机构颁发，并且是与站点相关的有效证书。
+  浏览器使用公钥加密随即对称加密密钥，和通过随即加密密钥加密的http数据一同发送给Web服务器。
+  Web服务器通过私钥解密随即对称加密密钥，并使用它解密http数据。
+  Web服务器返回通过随即对称加密密钥加密的请求html文本和http数据。
+  浏览器通过随即对称加密密钥解密html文本和http数据并展示信息。
+   公私钥: #  非对称加密，使用私钥/公钥对加密，数据可以被一个密钥加密，但只能被另一个密钥对解密。该密钥对自己保留一个私钥，并将公钥分配给每个人。
+Message --&gt; [Public Key] --&gt; Encrypted Message --&gt; [Private Key] --&gt; Message   证书: #  证书加载在浏览器或者其他客户端党当中，证书包含了证书所有者的信息。一个例子:
+Certificate: Data: Version: 3 (0x2) Serial Number: 1 (0x1) Signature Algorithm: md5WithRSAEncryption Issuer: C=FJ, ST=Fiji, L=Suva, O=SOPAC, OU=ICT, CN=SOPAC Root CA/Email=administrator@sopac.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="SSL协议" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/network/Protocol/http/tls/" />
+
+<title>SSL协议 | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.ce2e3d879a17708894d0a4c726db60ec224a41c4f37d9c1a3fe60a449f8e204c.js" integrity="sha256-zi49h5oXcIiU0KTHJttg7CJKQcTzfZwaP&#43;YKRJ&#43;OIEw="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/network/Protocol/http/tls/index.xml" title="学而不思则罔" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/Basic/" class="collapsed ">网络基础</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/Protocol/" class="collapsed ">网络协议</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/Protocol/tcp/" class="collapsed ">TCP</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/Protocol/http/" class="collapsed ">HTTP</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/Protocol/http/tls/" class="active">SSL协议</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/Protocol/dns/" class="collapsed ">DNS</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/learn/" class="collapsed ">方法论</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>SSL协议</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ssl协议">SSL协议</a>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="ssl协议">
+  SSL协议
+  <a class="anchor" href="#ssl%e5%8d%8f%e8%ae%ae">#</a>
+</h1>
+<p>SSL是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。</p>
+<ul>
+<li>
+<p>
+  <a href="/notes/#1">SSL介绍</a></p>
+</li>
+<li>
+<p>
+  <a href="/notes/#2">工作机制</a></p>
+</li>
+<li>
+<p>
+  <a href="/notes/#3">工具使用</a></p>
+</li>
+</ul>
+<hr>
+<h3 id="1">SSL介绍</h3>
+<h4 id="一个简单的工作流程">
+  一个简单的工作流程:
+  <a class="anchor" href="#%e4%b8%80%e4%b8%aa%e7%ae%80%e5%8d%95%e7%9a%84%e5%b7%a5%e4%bd%9c%e6%b5%81%e7%a8%8b">#</a>
+</h4>
+<ol>
+<li>
+<p>浏览器请求一个安全页面(https://)。</p>
+</li>
+<li>
+<p>Web服务器返回公钥及其证书。</p>
+</li>
+<li>
+<p>浏览器检查该证书是否由可信任的机构颁发，并且是与站点相关的有效证书。</p>
+</li>
+<li>
+<p>浏览器使用公钥加密随即对称加密密钥，和通过随即加密密钥加密的http数据一同发送给Web服务器。</p>
+</li>
+<li>
+<p>Web服务器通过私钥解密随即对称加密密钥，并使用它解密http数据。</p>
+</li>
+<li>
+<p>Web服务器返回通过随即对称加密密钥加密的请求html文本和http数据。</p>
+</li>
+<li>
+<p>浏览器通过随即对称加密密钥解密html文本和http数据并展示信息。</p>
+</li>
+</ol>
+<hr>
+<h4 id="公私钥">
+  公私钥:
+  <a class="anchor" href="#%e5%85%ac%e7%a7%81%e9%92%a5">#</a>
+</h4>
+<p>非对称加密，使用私钥/公钥对加密，数据可以被一个密钥加密，但只能被另一个密钥对解密。该密钥对自己保留一个私钥，并将公钥分配给每个人。</p>
+<pre><code>Message --&gt; [Public Key] --&gt; Encrypted Message --&gt; [Private Key] --&gt; Message
+</code></pre>
+<hr>
+<h4 id="证书">
+  证书:
+  <a class="anchor" href="#%e8%af%81%e4%b9%a6">#</a>
+</h4>
+<p>证书加载在浏览器或者其他客户端党当中，证书包含了证书所有者的信息。一个例子:</p>
+<pre><code>Certificate: 
+    Data: 
+        Version: 3 (0x2) 
+        Serial Number: 1 (0x1) 
+        Signature Algorithm: md5WithRSAEncryption 
+        Issuer: C=FJ, ST=Fiji, L=Suva, O=SOPAC, OU=ICT, CN=SOPAC Root CA/Email=administrator@sopac.org 
+        Validity 
+            Not Before: Nov 20 05:47:44 2001 GMT 
+            Not After : Nov 20 05:47:44 2002 GMT 
+        Subject: C=FJ, ST=Fiji, L=Suva, O=SOPAC, OU=ICT, CN=www.sopac.org/Email=administrator@sopac.org 
+        Subject Public Key Info: 
+            Public Key Algorithm: rsaEncryption  
+            RSA Public Key: (1024 bit) 
+                Modulus (1024 bit): 
+                    00:ba:54:2c:ab:88:74:aa:6b:35:a5:a9:c1:d0:5a: 
+                    9b:fb:6b:b5:71:bc:ef:d3:ab:15:cc:5b:75:73:36: 
+                    b8:01:d1:59:3f:c1:88:c0:33:91:04:f1:bf:1a:b4: 
+                    7a:c8:39:c2:89:1f:87:0f:91:19:81:09:46:0c:86: 
+                    08:d8:75:c4:6f:5a:98:4a:f9:f8:f7:38:24:fc:bd: 
+                    94:24:37:ab:f1:1c:d8:91:ee:fb:1b:9f:88:ba:25: 
+                    da:f6:21:7f:04:32:35:17:3d:36:1c:fb:b7:32:9e: 
+                    42:af:77:b6:25:1c:59:69:af:be:00:a1:f8:b0:1a: 
+                    6c:14:e2:ae:62:e7:6b:30:e9 
+                Exponent: 65537 (0x10001) 
+         X509v3 extensions: 
+             X509v3 Basic Constraints: 
+                 CA:FALSE 
+             Netscape Comment: 
+                 OpenSSL Generated Certificate
+             X509v3 Subject Key Identifier:
+                 FE:04:46:ED:A0:15:BE:C1:4B:59:03:F8:2D:0D:ED:2A:E0:ED:F9:2F 
+             X509v3 Authority Key Identifier:
+                 keyid:E6:12:7C:3D:A1:02:E5:BA:1F:DA:9E:37:BE:E3:45:3E:9B:AE:E5:A6 
+                 DirName:/C=FJ/ST=Fiji/L=Suva/O=SOPAC/OU=ICT/CN=SOPAC Root CA/Email=administrator@sopac.org 
+                 serial:00
+    Signature Algorithm: md5WithRSAEncryption
+        34:8d:fb:65:0b:85:5b:e2:44:09:f0:55:31:3b:29:2b:f4:fd: 
+        aa:5f:db:b8:11:1a:c6:ab:33:67:59:c1:04:de:34:df:08:57: 
+        2e:c6:60:dc:f7:d4:e2:f1:73:97:57:23:50:02:63:fc:78:96: 
+        34:b3:ca:c4:1b:c5:4c:c8:16:69:bb:9c:4a:7e:00:19:48:62: 
+        e2:51:ab:3a:fa:fd:88:cd:e0:9d:ef:67:50:da:fe:4b:13:c5: 
+        0c:8c:fc:ad:6e:b5:ee:40:e3:fd:34:10:9f:ad:34:bd:db:06: 
+        ed:09:3d:f2:a6:81:22:63:16:dc:ae:33:0c:70:fd:0a:6c:af:
+        bc:5a 
+-----BEGIN CERTIFICATE----- 
+MIIDoTCCAwqgAwIBAgIBATANBgkqhkiG9w0BAQQFADCBiTELMAkGA1UEBhMCRkox 
+DTALBgNVBAgTBEZpamkxDTALBgNVBAcTBFN1dmExDjAMBgNVBAoTBVNPUEFDMQww 
+CgYDVQQLEwNJQ1QxFjAUBgNVBAMTDVNPUEFDIFJvb3QgQ0ExJjAkBgkqhkiG9w0B 
+CQEWF2FkbWluaXN0cmF0b3JAc29wYWMub3JnMB4XDTAxMTEyMDA1NDc0NFoXDTAy 
+MTEyMDA1NDc0NFowgYkxCzAJBgNVBAYTAkZKMQ0wCwYDVQQIEwRGaWppMQ0wCwYD 
+VQQHEwRTdXZhMQ4wDAYDVQQKEwVTT1BBQzEMMAoGA1UECxMDSUNUMRYwFAYDVQQD 
+Ew13d3cuc29wYWMub3JnMSYwJAYJKoZIhvcNAQkBFhdhZG1pbmlzdHJhdG9yQHNv 
+cGFjLm9yZzCBnzANBgkqhkiG9w0BAQEFAAOBjQAwgYkCgYEAulQsq4h0qms1panB 
+0Fqb+2u1cbzv06sVzFt1cza4AdFZP8GIwDORBPG/GrR6yDnCiR+HD5EZgQlGDIYI 
+2HXEb1qYSvn49zgk/L2UJDer8RzYke77G5+IuiXa9iF/BDI1Fz02HPu3Mp5Cr3e2 
+JRxZaa++AKH4sBpsFOKuYudrMOkCAwEAAaOCARUwggERMAkGA1UdEwQCMAAwLAYJ 
+YIZIAYb4QgENBB8WHU9wZW5TU0wgR2VuZXJhdGVkIENlcnRpZmljYXRlMB0GA1Ud
+DgQWBBT+BEbtoBW+wUtZA/gtDe0q4O35LzCBtgYDVR0jBIGuMIGrgBTmEnw9oQLl 
+uh/anje+40U+m67lpqGBj6SBjDCBiTELMAkGA1UEBhMCRkoxDTALBgNVBAgTBEZp 
+amkxDTALBgNVBAcTBFN1dmExDjAMBgNVBAoTBVNPUEFDMQwwCgYDVQQLEwNJQ1Qx 
+FjAUBgNVBAMTDVNPUEFDIFJvb3QgQ0ExJjAkBgkqhkiG9w0BCQEWF2FkbWluaXN0 
+cmF0b3JAc29wYWMub3JnggEAMA0GCSqGSIb3DQEBBAUAA4GBADSN+2ULhVviRAnw 
+VTE7KSv0/apf27gRGsarM2dZwQTeNN8IVy7GYNz31OLxc5dXI1ACY/x4ljSzysQb 
+xUzIFmm7nEp+ABlIYuJRqzr6/YjN4J3vZ1Da/ksTxQyM/K1ute5A4/00EJ+tNL3b 
+Bu0JPfKmgSJjFtyuMwxw/Qpsr7xa
+-----END CERTIFICATE-----
+</code></pre>
+<p>该证书包含对发行人的引用，该证书的所有者的公钥，该证书的有效期和证书的签名，以确保该证书没有被篡改。</p>
+<hr>
+<h4 id="对称密钥">
+  对称密钥:
+  <a class="anchor" href="#%e5%af%b9%e7%a7%b0%e5%af%86%e9%92%a5">#</a>
+</h4>
+<p>对称加密，使用相同密钥进行加密和解密。对称加密在处理速度上比非对称加密快，但安全性低。综合考虑，使用公私钥加解密对称密钥，在每次事务都选择不同的对称密钥是更安全和高效的方案。</p>
+<pre><code>Symetric Key --&gt; [Public Key] --&gt; Encrypted Symetric Key --&gt; [Private Key] --&gt; Symetric Key
+</code></pre>
+<hr>
+<h4 id="加密算法">
+  加密算法:
+  <a class="anchor" href="#%e5%8a%a0%e5%af%86%e7%ae%97%e6%b3%95">#</a>
+</h4>
+<p>加密算法有对称和非对称方法，使用不同长度的密钥。</p>
+<hr>
+<h4 id="hash">
+  Hash
+  <a class="anchor" href="#hash">#</a>
+</h4>
+<p>哈希是由消息中的哈希函数给出的数字。 这是一个单向函数，这意味着不可能得到原始消息知道哈希。 然而，即使消息中最轻微的修改，哈希也会发生巨大变化。 因此，在保持其原始散列的同时修改消息是非常困难的。它也被成为消息摘要。哈希函数用于密码机制，用于证明应用程序是原始的（MD5总和），确保任何消息未被篡改。</p>
+<hr>
+<h4 id="签名">
+  签名
+  <a class="anchor" href="#%e7%ad%be%e5%90%8d">#</a>
+</h4>
+<p>签署信息意味着验证您已经确定了邮件的真实性。要签署消息，需要创建其Hash，然后使用私钥加密Hash，然后添加加密Hash和签名的证书与消息。
+收件人将重新创建消息hash，使用签名的证书中存储的公钥解密加密Hash，检查两个Hash是否相等，最后检查证书。</p>
+<hr>
+<h4 id="passphrase">
+  PassPhrase
+  <a class="anchor" href="#passphrase">#</a>
+</h4>
+<p>PassPhrase就像一个密码，除了它更长。</p>
+<hr>
+<h4 id="pki">
+  PKI
+  <a class="anchor" href="#pki">#</a>
+</h4>
+<p>Public Key Infrastructure（PKI）是软件管理系统和数据库系统，允许签署证书，保留撤销证书清单，分发公钥。</p>
+<hr>
+<h4 id="csrs">
+  CSRs
+  <a class="anchor" href="#csrs">#</a>
+</h4>
+<p>要从CA获取SSL证书，就要生成一个certificate signing request (CSR)。CSR由密钥对的公钥和一些附加信息组成。这两个组件在签名时都会插入证书。</p>
+<p>生成CSR需要填入的信息：</p>
+<pre><code>---
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:New York
+Locality Name (eg, city) []:Brooklyn
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Example Brooklyn Company
+Organizational Unit Name (eg, section) []:Technology Division
+Common Name (e.g. server FQDN or YOUR name) []:examplebrooklyn.com
+Email Address []:
+</code></pre>
+<hr>
+<h3 id="2">工作机制</h3>
+<p>TLS协议由两部分组成，包括（TLS Record Layer,TLS handshake protocol）</p>
+<ul>
+<li>
+<p>Record Layer:</p>
+<p>为每条信息提供一个header和在尾部生成一个从Message Authentication Code (MAC) 得到的hash值，其中header由5 bytes组成，分别是协议说明(1bytes),协议版本(2bytes)和长度(2bytes)，跟在header后面的协议信息长度不得超过16384bytes。</p>
+</li>
+<li>
+<p>Handshake Protocol:</p>
+<p>TLS握手:</p>
+<p>
+  <img src="tls-handshake.png" alt="TLS握手" /></p>
+</li>
+</ul>
+<hr>
+<h3 id="3">OpenSSl工具</h3>
+<p>OpenSSL是一个通用的命令行工具，可用于与公钥基础设施（PKI）和HTTPS（TLS over HTTP）相关的各种任务。</p>
+<h4 id="生成csrs">
+  生成CSRs
+  <a class="anchor" href="#%e7%94%9f%e6%88%90csrs">#</a>
+</h4>
+<pre><code>#生成一个私钥和一个CSR
+openssl req -newkey rsa:2048 -nodes -keyout domain.key -out domain.csr
+
+#使用已存在的私钥生成CSR
+openssl req -key domain.key -new -out domain.csr
+</code></pre>
+<hr>
+<h4 id="生成ssl证书">
+  生成SSL证书
+  <a class="anchor" href="#%e7%94%9f%e6%88%90ssl%e8%af%81%e4%b9%a6">#</a>
+</h4>
+<pre><code>#生成一个私钥和自签名证书
+openssl req -newkey ras:2048 -keyout domain.key -x509 -days 365 -out domain.crt
+
+#使用已存在的私钥生成自签名证书
+openssl req -key domain.key -x509 -days 365 -out domain.crt
+
+#使用已存在的私钥和CSR生成自签名证书
+openssl x509 -signkey domain.key -in domain.csr -req -days 365 -out domain.crt
+</code></pre>
+<hr>
+<h4 id="查看证书">
+  查看证书
+  <a class="anchor" href="#%e6%9f%a5%e7%9c%8b%e8%af%81%e4%b9%a6">#</a>
+</h4>
+<pre><code>#查看CSR信息
+openssl req -text -noout -verify -in domain.csr
+
+#查看证书信息
+openssl x509 -text -noout -in domain.crt
+
+#验证证书是呦CA签署的
+openssl verify -verbose -CAFile ca.crt domain.crt
+</code></pre>
+<hr>
+<h4 id="生成私钥">
+  生成私钥
+  <a class="anchor" href="#%e7%94%9f%e6%88%90%e7%a7%81%e9%92%a5">#</a>
+</h4>
+<pre><code>#创建私钥文件
+openssl genrsa -des3 -out domain.key 2048
+
+#查看私钥信息
+openssl rsa -check -in domain.key
+</code></pre>
+<hr>
+<h4 id="证书格式转换">
+  证书格式转换
+  <a class="anchor" href="#%e8%af%81%e4%b9%a6%e6%a0%bc%e5%bc%8f%e8%bd%ac%e6%8d%a2">#</a>
+</h4>
+<pre><code>#PEM转DER
+openssl x509 -in domain.crt -outform der -out domain.der
+
+#DER转PEM
+openssl x509 -inform der -in domain.der -out domain.crt
+
+#PEM转PKCS7
+openssl crl2pkcs7 -nocrl -certfile domain.crt -certfile ca-chain.crt -out domain.p7b
+
+#PKCS7转PEM
+openssl pkcs7 -in domain.p7b -print_certs -out domain.crt
+
+#PEM转PKCS12
+openssl pkcs12 -inkey domain.key -in domain.crt -export -out domain.pfx
+
+#PKCS12转PEM
+openssl pkcs12 -in domain.pfx -nodes -out domain.combined.crt</code></pre>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/network/Protocol/http/tls/_index.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ssl协议">SSL协议</a>
+      <ul>
+        <li>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

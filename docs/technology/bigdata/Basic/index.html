@@ -4,28 +4,23 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="大数据基础 #  ##分布式系统
-分布式系统是独立计算机的集合，作为单个计算机对系统用户显示。 分布式系统是一种模型，其中位于联网计算机上的组件通过传递消息来通信和协调他们的动作，组件彼此交互以实现共同目标。
- ##分布式计算
-###优势
-###劣势
- ##分布式系统设计
-协调服务 #    Name service
+<meta name="description" content="大数据基础 #  分布式系统 #  分布式系统是独立计算机的集合，作为单个计算机对系统用户显示。 分布式系统是一种模型，其中位于联网计算机上的组件通过传递消息来通信和协调他们的动作，组件彼此交互以实现共同目标。
+ 分布式计算 #  优势 #  劣势 #   分布式系统设计 #  协调服务 #    Name service
   Locking
   Synchronization
   Configuration management
   Leader election
    ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="大数据基础" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/bigdata/Basic/" />
 
-<title>Basic | 学而不思则罔</title>
+<title>大数据基础 | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.71e832022045696c8ed2fdb8c2b7ec2079800b5466664ece6ae205dd72060c6f.js" integrity="sha256-cegyAiBFaWyO0v24wrfsIHmAC1RmZk7OauIF3XIGDG8="></script>
+<script defer src="/notes/en.search.min.ce2e3d879a17708894d0a4c726db60ec224a41c4f37d9c1a3fe60a449f8e204c.js" integrity="sha256-zi49h5oXcIiU0KTHJttg7CJKQcTzfZwaP&#43;YKRJ&#43;OIEw="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/bigdata/Basic/index.xml" title="学而不思则罔" />
@@ -196,7 +191,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/bigdata/Basic/" class="active">Basic</a>
+    <a href="/notes/docs/technology/bigdata/Basic/" class="collapsed active">大数据基础</a>
   
 
           
@@ -217,7 +212,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/bigdata/Kafka/" class="">Kafka</a>
+    <a href="/notes/docs/technology/bigdata/Application/" class="collapsed ">应用</a>
   
 
           
@@ -225,75 +220,6 @@ https://github.com/alex-shpak/hugo-book
   
   
 
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Kafka/architecture/" class="">Architecture</a>
-  
-
-        </li>
-      
-    
-      
-    
-      
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Zookeeper/" class="">Zookeeper</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Zookeeper/architecture/" class="">Architecture</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Zookeeper/deploy/" class="">Deploy</a>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Zookeeper/optimization/" class="">Optimization</a>
-  
-
-        </li>
-      
-    
-  </ul>
   
 
         </li>
@@ -394,6 +320,23 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/learn/" class="collapsed ">方法论</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
   </ul>
   
 
@@ -460,7 +403,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Basic</strong>
+  <strong>大数据基础</strong>
 
   <label for="toc-control">
     
@@ -478,7 +421,14 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#大数据基础">大数据基础</a>
       <ul>
-        <li>
+        <li><a href="#分布式系统">分布式系统</a></li>
+        <li><a href="#分布式计算">分布式计算</a>
+          <ul>
+            <li><a href="#优势">优势</a></li>
+            <li><a href="#劣势">劣势</a></li>
+          </ul>
+        </li>
+        <li><a href="#分布式系统设计">分布式系统设计</a>
           <ul>
             <li><a href="#协调服务">协调服务</a></li>
           </ul>
@@ -500,15 +450,30 @@ https://github.com/alex-shpak/hugo-book
   大数据基础
   <a class="anchor" href="#%e5%a4%a7%e6%95%b0%e6%8d%ae%e5%9f%ba%e7%a1%80">#</a>
 </h1>
-<p>##分布式系统</p>
+<h2 id="分布式系统">
+  分布式系统
+  <a class="anchor" href="#%e5%88%86%e5%b8%83%e5%bc%8f%e7%b3%bb%e7%bb%9f">#</a>
+</h2>
 <p>分布式系统是独立计算机的集合，作为单个计算机对系统用户显示。
 分布式系统是一种模型，其中位于联网计算机上的组件通过传递消息来通信和协调他们的动作，组件彼此交互以实现共同目标。</p>
 <hr>
-<p>##分布式计算</p>
-<p>###优势</p>
-<p>###劣势</p>
+<h2 id="分布式计算">
+  分布式计算
+  <a class="anchor" href="#%e5%88%86%e5%b8%83%e5%bc%8f%e8%ae%a1%e7%ae%97">#</a>
+</h2>
+<h3 id="优势">
+  优势
+  <a class="anchor" href="#%e4%bc%98%e5%8a%bf">#</a>
+</h3>
+<h3 id="劣势">
+  劣势
+  <a class="anchor" href="#%e5%8a%a3%e5%8a%bf">#</a>
+</h3>
 <hr>
-<p>##分布式系统设计</p>
+<h2 id="分布式系统设计">
+  分布式系统设计
+  <a class="anchor" href="#%e5%88%86%e5%b8%83%e5%bc%8f%e7%b3%bb%e7%bb%9f%e8%ae%be%e8%ae%a1">#</a>
+</h2>
 <h3 id="协调服务">
   协调服务
   <a class="anchor" href="#%e5%8d%8f%e8%b0%83%e6%9c%8d%e5%8a%a1">#</a>
@@ -580,7 +545,14 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#大数据基础">大数据基础</a>
       <ul>
-        <li>
+        <li><a href="#分布式系统">分布式系统</a></li>
+        <li><a href="#分布式计算">分布式计算</a>
+          <ul>
+            <li><a href="#优势">优势</a></li>
+            <li><a href="#劣势">劣势</a></li>
+          </ul>
+        </li>
+        <li><a href="#分布式系统设计">分布式系统设计</a>
           <ul>
             <li><a href="#协调服务">协调服务</a></li>
           </ul>

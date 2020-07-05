@@ -10,47 +10,60 @@
     
     
     <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/architecture/</link>
+      <title>Redis集群</title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/architecture/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/cluster/</guid>
+      <description>集群 #  集群搭建 #    Redis安装
+wget http://download.redis.io/releases/redis-4.0.1.tar.gz    基础配置
+#除端口外，配置统一 #common port 6379 pidfile /cache1/redis/6379/redis_6379.pid loglevel notice logfile &amp;quot;/cache1/redis/6379/redis_6379.log&amp;quot; dir /cache1/redis/6379 protected-mode no #rdb save 7200 1000 rdbcompression yes rdbchecksum yes dbfilename dump.rdb #aof appendonly yes appendfilename &amp;quot;appendonly.aof&amp;quot; #cluster cluster-enabled yes cluster-config-file nodes.conf cluster-node-timeout 5000    redis集群架构
+192.168.88.1:6379(master) 192.168.88.2:6379(slave) 192.168.88.2:6378(master) 192.168.88.3:6378(slave) 192.168.88.3:6377(master) 192.168.88.1:6377(slave)    启动redis
+cd $PATH redis-server redis-6379.conf &amp;amp;    集群管理器安装</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</guid>
       <description>kafka架构 #  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/deploy/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/deploy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/deploy/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/deploy/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/optimization/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/optimization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Kafka/optimization/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/optimization/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/architecture/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/architecture/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/architecture/</guid>
       <description>Zookeeper架构 #  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/deploy/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/deploy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/deploy/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/deploy/</guid>
       <description>Zookeeper部署 #  单机环境搭建 #    下载安装包
  wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 zookeeper    修改配置文件
  #vim zookeeper/conf/zoo.cfg tickTime=2000 initLimit=5 syncLimit=2 dataDir=/cache1/zookeeper/data #数据目录 clientPort=2181 #服务端口    配置日志保存目录
@@ -60,10 +73,10 @@
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/optimization/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Zookeeper/optimization/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</guid>
       <description>Zookeeper优化 #  </description>
     </item>
     
@@ -166,10 +179,10 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.re
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/Mysql/cluster/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/database/Mysql/cluster/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/cluster/</guid>
       <description>MySQL Cluster #  Master-Slave #  Master配置 #  /etc/my.cnf 增加配置
 [mysqld] server-id=1 log-bin=/cache1/mysql/log/mysql-bin.log #忽略系统库 binlog-ignore-db=mysql binlog-ignore-db=information_schema binlog-ignore-db=performance_schema  Replication 帐号创建
 mysql&amp;gt; GRANT REPLICATION SLAVE ON *.* TO &#39;repl&#39;@&#39;%&#39; IDENTIFIED BY &#39;slave@2017&#39;;  导出数据到从库
@@ -178,10 +191,10 @@ mysql&amp;gt; USE newdatabase; mysql&amp;gt; FLUSH TABLES WITH READ LOCK; mysql&
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/Mysql/install/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/database/Mysql/install/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/install/</guid>
       <description>Mysql 安装 #  源码编译安装 #  准备 #    CMake(build framework)
 yum -y install cmake    GNU make(make program)
 yum -y install make    GCC(ANSI C++ complier)
@@ -193,68 +206,12 @@ yum -y install perl     安装 #    创建用户组</description>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/Mysql/mysql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/database/Mysql/mysql/</guid>
-      <description>Mysql #     Install guide
-   Cluster
-  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/PostgreSQL/postgresql/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/database/PostgreSQL/postgresql/</guid>
-      <description>PostgreSQL #  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/Redis/cluster/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/database/Redis/cluster/</guid>
-      <description>集群 #  集群搭建 #    Redis安装
-wget http://download.redis.io/releases/redis-4.0.1.tar.gz    基础配置
-#除端口外，配置统一 #common port 6379 pidfile /cache1/redis/6379/redis_6379.pid loglevel notice logfile &amp;quot;/cache1/redis/6379/redis_6379.log&amp;quot; dir /cache1/redis/6379 protected-mode no #rdb save 7200 1000 rdbcompression yes rdbchecksum yes dbfilename dump.rdb #aof appendonly yes appendfilename &amp;quot;appendonly.aof&amp;quot; #cluster cluster-enabled yes cluster-config-file nodes.conf cluster-node-timeout 5000    redis集群架构
-192.168.88.1:6379(master) 192.168.88.2:6379(slave) 192.168.88.2:6378(master) 192.168.88.3:6378(slave) 192.168.88.3:6377(master) 192.168.88.1:6377(slave)    启动redis
-cd $PATH redis-server redis-6379.conf &amp;amp;    集群管理器安装</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/Redis/redis/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/database/Redis/redis/</guid>
-      <description>Redis #    基础
-   集群搭建
-  </description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://cctrip.github.io/notes/docs/technology/hidden/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cctrip.github.io/notes/docs/technology/hidden/</guid>
       <description>This page is hidden in menu #  Quondam non pater est dignior ille Eurotas #  Latent te facies #  Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.
  Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor  Cum honorum Latona #  O fallor in sustinui iussorum equidem.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/bookNotes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/bookNotes/</guid>
-      <description>读书笔记 #     操作系统思考
-   CS50
-   codecademy
-  </description>
     </item>
     
     <item>
@@ -351,37 +308,11 @@ protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自�
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/interview/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/interview/</guid>
-      <description>面试笔记 #  面试准备 #     技术知识点
-  非技术相关()
-  面试经历总结 #     经典问题
-   杭州面试
-  </description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</guid>
       <description>技术知识点 #  硬件 #  1. 机器型号 #  dmidecode | awk -F&amp;#39;:&amp;#39; &amp;#39;/Product Name/{print $2}&amp;#39; 2. CPU信息 #  #获取逻辑CPU数 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | wc -l #获取CPU型号 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | uniq #获取物理cpu数 grep &amp;quot;physical id&amp;quot; /proc/cpuinfo | sort | uniq | wc -l 3. 内存信息 #  #获取内存大小 free -h #内存物理信息 dmidecode -t memory 4. 磁盘信息 #   5. 计算机组成 #  1.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/MyConfig/config/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/other/MyConfig/config/</guid>
-      <description>打造自己开发环境 #  vim #     配置指南
-   基础配置
-   插件配置
-   开发配置
-   tmux #    基础配置   xshell #    颜色配置  </description>
     </item>
     
     <item>
@@ -432,27 +363,6 @@ maxsessions 1000  重启服务后，依然没有效果。
 应该是pam模块做了相应的限制
 查看配置文件 /etc/pam.d/sshd 文件
 auth required pam_tally2.so deny=10 lock_time=3 unlock_time=30 even_deny_root root_unlock_time=30  Answer： #  更改配置文件：</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/README/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/README/</guid>
-      <description>问题解决方案 #     时间同步相关
-   ssh连接相关
-   PGSQL相关
-  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Translate/translate/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Translate/translate/</guid>
-      <description>翻译技术文章 #  </description>
     </item>
     
     <item>
@@ -549,115 +459,6 @@ Jinja2模板引擎 #  templates/user.html：Jinja2 模板
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/security/Basic/README/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/security/Basic/README/</guid>
-      <description>安全基础 #  密码学 #  密码学处理数字和字符串。
-哈希 #  哈希散列是一项密码学技术，它将数据转换成其他形式，并且不可恢复。
-加解密 #  加解密是一个双向过程，当且仅当加密密钥被知道时才能检索原始数据。
-对称加密 #  对称加密使用同一个密钥
-非对称加密 #  非对称加密使用公私钥，私钥自己持有，公钥给所有想加密信息发送给你的人。使用公钥加密，使用私钥解密。</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/security/Firewall/firewalld/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/security/Firewall/firewalld/</guid>
-      <description>Firewalld #  firewalld是CentOS7默认的防火墙服务，用于管理网络数据包的流动和转发。
- 基础命令 #    启动
- $ systemctl start firewalld.service    查看状态
- $ systemctl status firewalld.service    关闭
- $ systemctl stop firewalld.service    开启和关闭开机启动
- $ systemctl enable firewalld.service $ systemctl disable firewalld.service    Rule配置：firewall-cmd命令
-   Options Description     -h, &amp;ndash;help Prints a short help text and exists   -V, &amp;ndash;version Print the version string of firewalld   -q, &amp;ndash;quiet Do not print status messages   &amp;ndash;state Return and print firewalld state   &amp;ndash;reload Reload firewall and keep state information   &amp;ndash;complete-reload Reload firewall and loose state information   &amp;ndash;runtime-to-permanent Create permanent from runtime configuration   &amp;ndash;permanent Set an option permanently   &amp;ndash;zone=&amp;lt;zone&amp;gt; Use this zone to set or query options, else default zone   &amp;ndash;timeout=&amp;lt;timeval&amp;gt; Enable an option for timeval time, where timeval is,a number followed by one of letters &amp;rsquo;s&amp;rsquo; or &amp;rsquo;m&amp;rsquo; or &amp;lsquo;h&amp;rsquo;       概念 #  区域(Zones) #  一个规则管理群组的概念，定义了可信任级别。其中预先定义的zones有以下几个：</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/security/Firewall/iptables/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/security/Firewall/iptables/</guid>
-      <description>Iptables #  iptables：一个运行在用户空间的应用软件，通过控制Linux内核netfilter模块，来管理网络数据包的流动与转送。
-Netfilter：Linux操作系统核心层内部的一个数据包处理模块，它具有如下功能：
-  网络地址转换(Network Address Translate)
-  数据包内容修改
-  数据包过滤
-  Netfilter的配置表：存放设置的规则的文件，存放在内核内存中。iptables程序通过修改这个规则文件来控制网络数据包流动。 该配置表由表tables、链chains、规则rules组成。
- Netfilter配置表 #  表(tables) #  用于实现特定的功能
-  raw表
-主要用于决定数据包是否被状态跟踪机制处理。在匹配数据包时，raw表的规则要优先于其他表。包含两条规则链 OUTPUT、PREROUTING。
-iptables中数据包和4种被跟踪连接的4种不同状态：
- NEW：该包想要开始一个连接（重新连接或将连接重定向） RELATED：该包是属于某个已经建立的连接所建立的新连接。 ESTABLISHED ：只要发送并接到应答，一个数据连接从NEW变为ESTABLISHED,而且该状态会继续匹配这个连接的后续数据包。 INVALID：数据包不能被识别属于哪个连接或没有任何状态比如内存溢出，收到不知属于哪个连接的ICMP错误信息，一般应该DROP这个状态的任何数据。    mangle表
-主要用于修改数据包的TOS（Type Of Service，服务类型）、TTL（Time To Live，生存周期）指以及为数据包设置Mark标记，以实现Qos(Quality Of Service，服务质量)调整以及策略路由等应用，由于需要相应的路由设备支持，因此应用并不广泛。包含五个规则链——PREROUTING，POSTROUTING，INPUT，OUTPUT，FORWARD。
-  nat表
-主要用于修改数据包的IP地址、端口号等信息（网络地址转换，如SNAT、DNAT、MASQUERADE、REDIRECT）。属于一个流的包(因为包 的大小限制导致数据可能会被分成多个数据包)只会经过这个表一次。如果第一个包被允许做NAT或Masqueraded，那么余下的包都会自动地被做相同的操作，也就是说，余下的包不会再通过这个表。
-表对应的内核模块为 iptable_nat，包含三个链：
- PREROUTING链：作用是在包刚刚到达防火墙时改变它的目的地址 OUTPUT链：改变本地产生的包的目的地址 POSTROUTING链：在包就要离开防火墙之前改变其源地址    filter表
-主要用于对数据包进行过滤，根据具体的规则决定是否放行该数据包（如DROP、ACCEPT、REJECT、LOG）。filter 表对应的内核模块为iptable_filter，包含三个规则链：
- INPUT链：INPUT针对那些目的地是本地的包 FORWARD链：FORWARD过滤所有不是本地产生的并且目的地不是本地(即本机只是负责转发)的包 OUTPUT链：OUTPUT是用来过滤所有本地生成的包    链(chains) #  在处理各种数据包时，根据防火墙规则的不同介入时机，iptables供涉及5种默认规则链，从应用时间点的角度理解这些链：</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/security/Firewall/README/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/security/Firewall/README/</guid>
-      <description>防火墙 #  工作在主机或网络边缘，对进出的报文按事先定义的规则进行检查，并且由匹配到的规则进行处理的一组硬件或软件，甚至可能是二者的结合。
- Linux防火墙 #     iptables
-   firewalld
-  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/security/IDS/README/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/security/IDS/README/</guid>
-      <description>IDS #  入侵检测系统
- HIDS #  OSSEC
-NIDS #  snort
-Firesystem #  tripware</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/security/IDS/Snort/snort/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/security/IDS/Snort/snort/</guid>
-      <description>Snort #  #  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/security/TLS/ssl/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/security/TLS/ssl/</guid>
-      <description>SSL协议 #  SSL是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。
-   SSL介绍
-   工作机制
-   工具使用
-   SSL介绍 一个简单的工作流程: #    浏览器请求一个安全页面(https://)。
-  Web服务器返回公钥及其证书。
-  浏览器检查该证书是否由可信任的机构颁发，并且是与站点相关的有效证书。
-  浏览器使用公钥加密随即对称加密密钥，和通过随即加密密钥加密的http数据一同发送给Web服务器。
-  Web服务器通过私钥解密随即对称加密密钥，并使用它解密http数据。
-  Web服务器返回通过随即对称加密密钥加密的请求html文本和http数据。
-  浏览器通过随即对称加密密钥解密html文本和http数据并展示信息。
-   公私钥: #  非对称加密，使用私钥/公钥对加密，数据可以被一个密钥加密，但只能被另一个密钥对解密。该密钥对自己保留一个私钥，并将公钥分配给每个人。
-Message --&amp;gt; [Public Key] --&amp;gt; Encrypted Message --&amp;gt; [Private Key] --&amp;gt; Message   证书: #  证书加载在浏览器或者其他客户端党当中，证书包含了证书所有者的信息。一个例子:
-Certificate: Data: Version: 3 (0x2) Serial Number: 1 (0x1) Signature Algorithm: md5WithRSAEncryption Issuer: C=FJ, ST=Fiji, L=Suva, O=SOPAC, OU=ICT, CN=SOPAC Root CA/Email=administrator@sopac.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
@@ -692,54 +493,6 @@ Certificate: Data: Version: 3 (0x2) Serial Number: 1 (0x1) Signature Algorithm: 
   /etc/passwd
 字段详解(以&amp;rdquo;:&amp;ldquo;为分割符)
 用户名 : 密码 : UID : GID : 注释 : 家目录 : 默认shell</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/tool/Script/script/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/tool/Script/script/</guid>
-      <description>Script #  shell 脚本 #    tomcat系列
-   tomcat服务启动
-   tomcat版本更新
-   tomcat日志分割
-   tomcat应用发布
-   tomcat应用还原
-    zabbix系列
-   server安装
-   agent安装
-     python 脚本 #     PG日志格式更改
-   tcp端口测试
-   ssh登录测试
-   生成随机日志
-  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/tool/tcpcopy/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/tool/tcpcopy/</guid>
-      <description>TCPCopy #  TCPCopy是一个流量复制工具。
- 使用场景 #    压力测试
-  模拟实际场景
-  回归测试
-  性能对照
-   架构 #    TCPCopy包含两部分：
-  tcpcopy
-安装在线上服务器上，用于抓取线上的请求包
-  intercept
-安装在辅助服务器上，做一些辅助作业
-   安装使用 #  设备：
-online server：线上机器(流量导出的机器)
-target server：测试机器(流量导入的机器)
-assistant server：辅助机器
-  在target server上添加路由
- $ route add -net CLINET_NET gw ASSISTANG_IP    在assistant server上安装intercept服务
-下载地址： https://github.com/session-replay-tools/intercept/releases
-安装：</description>
     </item>
     
   </channel>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zookeeper on 学而不思则罔</title>
+    <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/</link>
+    <description>Recent content in Zookeeper on 学而不思则罔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/architecture/</guid>
+      <description>Zookeeper架构 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/deploy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/deploy/</guid>
+      <description>Zookeeper部署 #  单机环境搭建 #    下载安装包
+ wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 zookeeper    修改配置文件
+ #vim zookeeper/conf/zoo.cfg tickTime=2000 initLimit=5 syncLimit=2 dataDir=/cache1/zookeeper/data #数据目录 clientPort=2181 #服务端口    配置日志保存目录
+ #修改zookeeper/conf/log4j.properties文件 zookeeper.root.logger=INFO, ROLLINGFILE zookeeper.log.dir=/cache1/zookeeper/logs zookeeper.log.file=zookeeper.log #修改zookeeper/bin/zkEnv.sh if [ &amp;quot;x${ZOO_LOG_DIR}&amp;quot; = &amp;quot;x&amp;quot; ] then ZOO_LOG_DIR=&amp;quot;/cache1/zookeeper/logs/&amp;quot; fi if [ &amp;quot;x${ZOO_LOG4J_PROP}&amp;quot; = &amp;quot;x&amp;quot; ] then ZOO_LOG4J_PROP=&amp;quot;INFO,ROLLINGFILE&amp;quot; fi    启动服务
+ cd zookeeper/bin &amp;amp;&amp;amp; ./zkServer.sh start     集群环境搭建 #    机器准备</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</guid>
+      <description>Zookeeper优化 #  </description>
+    </item>
+    
+  </channel>
+</rss>
