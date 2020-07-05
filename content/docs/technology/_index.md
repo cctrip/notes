@@ -71,7 +71,7 @@ title: "技术相关"
 
 ***
 
-## 数据库
+## [数据库](database)
 
 * 数据库基础
 
@@ -132,26 +132,7 @@ title: "技术相关"
 ## 工具
 
 * [TCPCopy](tool/tcpcopy.md)
-
 * [Script](tool/Script/script.md)
-
-***
-
-## 其他
-
-* [LeetCode解题](https://github.com/Code-CC/leetcode)
-
-* [我的环境配置](other/MyConfig/config.md)
-
-* [问题集锦](other/Solution/README.md)
-
-* [学习方法](other/learnMethod.md)
-
-* [我的博客](http://blog.codecc.org)
-
-* [读书笔记](other/BookNotes/bookNotes.md)
-
-* [翻译](other/Translate/translate.md)
 
 ***
 

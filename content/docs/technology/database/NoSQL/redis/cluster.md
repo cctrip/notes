@@ -1,3 +1,8 @@
+---
+weight: 1
+title: "Redis集群"
+---
+
 ## 集群
 
 ### 集群搭建
@@ -16,17 +21,17 @@
       logfile "/cache1/redis/6379/redis_6379.log"
       dir /cache1/redis/6379
       protected-mode no
-
+    
       #rdb
       save 7200 1000
       rdbcompression yes
       rdbchecksum yes
       dbfilename dump.rdb
-
+    
       #aof
       appendonly yes
       appendfilename "appendonly.aof"
-
+    
       #cluster
       cluster-enabled yes
       cluster-config-file nodes.conf
@@ -88,11 +93,11 @@
 * 配置文件优化
 
 * 集群配置密码
-    
+  
       #redis.conf配置文件
       requirepass 123456
       masterauth 123456
-
+    
       #集群管理客户端
       #/usr/local/lib/ruby/gems/2.4.1/gems/redis-3.3.3/lib/redis/client.rb
       password => "123456"

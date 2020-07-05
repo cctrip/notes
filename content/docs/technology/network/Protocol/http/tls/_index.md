@@ -1,3 +1,8 @@
+---
+weight: 10
+title: "SSL协议"
+---
+
 # SSL协议
 
 SSL是一种安全协议，目的是为互联网通信提供安全及数据完整性保障。
@@ -193,7 +198,7 @@ OpenSSL是一个通用的命令行工具，可用于与公钥基础设施（PKI�
 
     #生成一个私钥和一个CSR
     openssl req -newkey rsa:2048 -nodes -keyout domain.key -out domain.csr
-
+    
     #使用已存在的私钥生成CSR
     openssl req -key domain.key -new -out domain.csr
 
@@ -203,10 +208,10 @@ OpenSSL是一个通用的命令行工具，可用于与公钥基础设施（PKI�
 
     #生成一个私钥和自签名证书
     openssl req -newkey ras:2048 -keyout domain.key -x509 -days 365 -out domain.crt
-
+    
     #使用已存在的私钥生成自签名证书
     openssl req -key domain.key -x509 -days 365 -out domain.crt
-
+    
     #使用已存在的私钥和CSR生成自签名证书
     openssl x509 -signkey domain.key -in domain.csr -req -days 365 -out domain.crt
 
@@ -216,10 +221,10 @@ OpenSSL是一个通用的命令行工具，可用于与公钥基础设施（PKI�
 
     #查看CSR信息
     openssl req -text -noout -verify -in domain.csr
-
+    
     #查看证书信息
     openssl x509 -text -noout -in domain.crt
-
+    
     #验证证书是呦CA签署的
     openssl verify -verbose -CAFile ca.crt domain.crt
 
@@ -229,7 +234,7 @@ OpenSSL是一个通用的命令行工具，可用于与公钥基础设施（PKI�
 
     #创建私钥文件
     openssl genrsa -des3 -out domain.key 2048
-
+    
     #查看私钥信息
     openssl rsa -check -in domain.key
 
@@ -239,18 +244,18 @@ OpenSSL是一个通用的命令行工具，可用于与公钥基础设施（PKI�
 
     #PEM转DER
     openssl x509 -in domain.crt -outform der -out domain.der
-
+    
     #DER转PEM
     openssl x509 -inform der -in domain.der -out domain.crt
-
+    
     #PEM转PKCS7
     openssl crl2pkcs7 -nocrl -certfile domain.crt -certfile ca-chain.crt -out domain.p7b
-
+    
     #PKCS7转PEM
     openssl pkcs7 -in domain.p7b -print_certs -out domain.crt
-
+    
     #PEM转PKCS12
     openssl pkcs12 -inkey domain.key -in domain.crt -export -out domain.pfx
-
+    
     #PKCS12转PEM
     openssl pkcs12 -in domain.pfx -nodes -out domain.combined.crt

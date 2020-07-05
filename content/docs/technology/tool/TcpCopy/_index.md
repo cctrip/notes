@@ -1,3 +1,9 @@
+---
+bookCollapseSection: false
+weight: 2
+title: "TcpCopy"
+---
+
 # TCPCopy
 
 TCPCopy是一个流量复制工具。
@@ -31,7 +37,6 @@ TCPCopy包含两部分：
 
 	安装在辅助服务器上，做一些辅助作业
 
-
 ***
 
 ### 安装使用
@@ -57,7 +62,7 @@ assistant server：辅助机器
 		$ cd intercept
 		$ ./configure --prefix=/usr/local/intercept
 		$ make && make insall
-		
+	
 	启动：
 
 		$ /usr/local/intercept/sbin/intercept -i eth0 -F tcp and src host TARGET_IP and src port TARGET_PORT -d

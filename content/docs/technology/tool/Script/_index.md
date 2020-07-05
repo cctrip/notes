@@ -1,4 +1,10 @@
-# Script
+---
+bookCollapseSection: true
+weight: 1
+title: "Scripts"
+---
+
+# Scripts
 
 ### shell 脚本
 
@@ -19,7 +25,6 @@
     * [server安装](zabbix_server.sh)
 
     * [agent安装](zabbix_agent.sh)
-
 
 ***
 

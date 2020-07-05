@@ -1,3 +1,9 @@
+---
+bookCollapseSection: true
+weight: 1
+title: "安全基础"
+---
+
 # 安全基础
 
 ## 密码学
