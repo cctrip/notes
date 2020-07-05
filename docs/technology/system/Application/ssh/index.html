@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="SSH #  概念 #  安全Shell（SSH）是一种加密网络协议，用于通过无安全网络安全地运行网络服务。
+SSH协议 #    认证
+  加密
+  完整性
+  SSH属性 #    安全远程登录(Secure Remote Login )
+  安全文件传输(Secure File Transfer)
+  安全远程命令执行(Secure Remote Command Execution)
+  密钥和代理(Keys and Agents)
+  访问控制(Access Control)
+  端口转发(Port Forwarding)
+  架构 #    基础操作 #    远程登录
+ssh -l USERNAME HOST -p PORT">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="SSH" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/system/Application/ssh/" />
+
+<title>SSH | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.519dceff63815bbf5d5166becb8b63b4bd792baede17f03db3a2b23674fa4c1b.js" integrity="sha256-UZ3O/2OBW79dUWa&#43;y4tjtL15K67eF/A9s6KyNnT6TBs="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/system/Application/ssh/index.xml" title="学而不思则罔" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/" class="collapsed ">计算机基础</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/" class="collapsed ">Linux系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/" class="collapsed ">应用</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/ssh/" class="active">SSH</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/nginx/" class="">Nginx</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/architecture/" class="collapsed ">架构</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/learn/" class="collapsed ">方法论</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>SSH</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ssh">SSH</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#概念">概念</a></li>
+            <li><a href="#基础操作">基础操作</a></li>
+            <li><a href="#ssh深入">SSH深入</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="ssh">
+  SSH
+  <a class="anchor" href="#ssh">#</a>
+</h1>
+<h3 id="概念">
+  概念
+  <a class="anchor" href="#%e6%a6%82%e5%bf%b5">#</a>
+</h3>
+<p>安全Shell（SSH）是一种加密网络协议，用于通过无安全网络安全地运行网络服务。</p>
+<h4 id="ssh协议">
+  SSH协议
+  <a class="anchor" href="#ssh%e5%8d%8f%e8%ae%ae">#</a>
+</h4>
+<ul>
+<li>
+<p>认证</p>
+</li>
+<li>
+<p>加密</p>
+</li>
+<li>
+<p>完整性</p>
+</li>
+</ul>
+<h4 id="ssh属性">
+  SSH属性
+  <a class="anchor" href="#ssh%e5%b1%9e%e6%80%a7">#</a>
+</h4>
+<ul>
+<li>
+<p>安全远程登录(Secure Remote Login )</p>
+</li>
+<li>
+<p>安全文件传输(Secure File Transfer)</p>
+</li>
+<li>
+<p>安全远程命令执行(Secure Remote Command Execution)</p>
+</li>
+<li>
+<p>密钥和代理(Keys and Agents)</p>
+</li>
+<li>
+<p>访问控制(Access Control)</p>
+</li>
+<li>
+<p>端口转发(Port Forwarding)</p>
+</li>
+</ul>
+<h4 id="架构">
+  架构
+  <a class="anchor" href="#%e6%9e%b6%e6%9e%84">#</a>
+</h4>
+<p>
+  <img src="ssh-architecture.png" alt="arch" /></p>
+<hr>
+<h3 id="基础操作">
+  基础操作
+  <a class="anchor" href="#%e5%9f%ba%e7%a1%80%e6%93%8d%e4%bd%9c">#</a>
+</h3>
+<ol>
+<li>
+<p>远程登录</p>
+<p>ssh -l USERNAME HOST -p PORT</p>
+</li>
+<li>
+<p>文件传输</p>
+<p>scp SOURCE DESTINATION</p>
+</li>
+<li>
+<p>已知主机(known hosts)</p>
+<p>known hosts可以用来防止中间人攻击。
+每个SSH服务器都有一个秘密的唯一ID，称为主机密钥(host key)，用于向客户端标识自身。当首次连接的时，ssh会记录目标设备的host key到~/.ssh/known_hosts文件，当主机密钥发生改变时，在连接时将会有提示告警。</p>
+</li>
+<li>
+<p>转义字符(The Escape Character)</p>
+<p>转义字符可以用于暂时中断连接，默认符号为&quot;~&rdquo;
+也可以自行进行更改，使用-e选项，ssh -e &ldquo;#&rdquo; HOST</p>
+</li>
+</ol>
+<h4 id="加密密钥认证authentication-by-cryptographic-key">
+  加密密钥认证(Authentication by Cryptographic Key)
+  <a class="anchor" href="#%e5%8a%a0%e5%af%86%e5%af%86%e9%92%a5%e8%ae%a4%e8%af%81authentication-by-cryptographic-key">#</a>
+</h4>
+<p>密码认证方式的缺陷：</p>
+<ul>
+<li>安全的密码复杂性高，难于记忆。</li>
+<li>通过网络传输密码还是会有被捕获的风险。</li>
+</ul>
+<p>SSH支持公钥认证的方式，可以解决上述的密码问题。</p>
+<ol>
+<li>密钥简介</li>
+</ol>
+<p>key是一个数字身份，是一个独特的二进制字符串。</p>
+<p>SSH身份使用一对密钥，一个私有密钥和一个公有密钥。私钥由自身保管，公钥保存在需要访问的ssh服务器上。(~/.ssh/authorized_keys)文件。</p>
+<pre><code>client请求登录server
+server要求身份认证
+client发送自身私钥证明自己身份
+server使用公钥对私钥进行匹配，成功则允许登录。
+</code></pre>
+<ol start="2">
+<li>
+<p>ssh-keygen生成密钥对</p>
+<p>(ssh-keygen -t dsa|rsa) | (ssh-keygen)
+会在~/.ssh/目录生成id_rsa和id_rsa.pub两个文件</p>
+</li>
+<li>
+<p>在ssh服务器上安装公钥</p>
+<ul>
+<li>直接编辑~/.ssh/authorized_keys(权限644),拷贝id_rsa.pub的内容到该文件</li>
+<li>使用ssh-copy-id
+ssh-copy-id -i id_rsa.pub [user@]server_name</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h3 id="ssh深入">
+  SSH深入
+  <a class="anchor" href="#ssh%e6%b7%b1%e5%85%a5">#</a>
+</h3>
+<ul>
+<li>
+<p>加密</p>
+</li>
+<li>
+<p>完整性</p>
+</li>
+<li>
+<p>认证</p>
+</li>
+<li>
+<p>授权</p>
+</li>
+<li>
+<p>转发</p>
+</li>
+</ul>
+<h4 id="密码学入门">
+  密码学入门
+  <a class="anchor" href="#%e5%af%86%e7%a0%81%e5%ad%a6%e5%85%a5%e9%97%a8">#</a>
+</h4>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/b1f5d721e2cb36779bee9ba1c3ebb86e9c42a766" title='Last modified by codecc | July 5, 2020' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>July 5, 2020</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/system/Application/ssh/_index.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ssh">SSH</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#概念">概念</a></li>
+            <li><a href="#基础操作">基础操作</a></li>
+            <li><a href="#ssh深入">SSH深入</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

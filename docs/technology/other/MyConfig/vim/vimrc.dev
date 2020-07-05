@@ -1,0 +1,4 @@
+set backspace=2   " Backspace deletes like most programs in insert mode
+set laststatus=2  " Always display the status line
+set tabstop=2
+set shiftwidth=2

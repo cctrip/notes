@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>介绍 on 学而不思则罔</title>
+    <link>https://cctrip.github.io/notes/</link>
+    <description>Recent content in 介绍 on 学而不思则罔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Redis集群</title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/cluster/</guid>
+      <description>集群 #  集群搭建 #    Redis安装
+wget http://download.redis.io/releases/redis-4.0.1.tar.gz    基础配置
+#除端口外，配置统一 #common port 6379 pidfile /cache1/redis/6379/redis_6379.pid loglevel notice logfile &amp;quot;/cache1/redis/6379/redis_6379.log&amp;quot; dir /cache1/redis/6379 protected-mode no #rdb save 7200 1000 rdbcompression yes rdbchecksum yes dbfilename dump.rdb #aof appendonly yes appendfilename &amp;quot;appendonly.aof&amp;quot; #cluster cluster-enabled yes cluster-config-file nodes.conf cluster-node-timeout 5000    redis集群架构
+192.168.88.1:6379(master) 192.168.88.2:6379(slave) 192.168.88.2:6378(master) 192.168.88.3:6378(slave) 192.168.88.3:6377(master) 192.168.88.1:6377(slave)    启动redis
+cd $PATH redis-server redis-6379.conf &amp;amp;    集群管理器安装</description>
+    </item>
+    
+    <item>
+      <title>技能图谱</title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/map/</guid>
+      <description>Kubernetes 技能图谱 #  Container basics （容器技术基础） #   Linux Operating System Basic Linux Process Management (Linux进程管理) Cgroups Linux Namespaces Rootfs &amp;amp; Container Image Image Registry  Kubernetes architecture （Kubernetes 架构） #  Node #  Kubelet #   Runtime （容器运行时）  CRI (Container Runtime Interface) Runtime shims （容器运行时插件）  Cri-containerd （containerd） Dockershim （Docker） Cri-o （runC） Rktlet （rkt） Frakti （KataContainers）   RuntimeClass (新特性：容器运行时类)   Networking  CNI (Container Network Interface) Linux Network Namespace Network plugins （网络插件）  Flannel Calico OVS SR-IOV macvlan/ipvlan Opencontrail Weave Cilium （新插件，支持BPF，推荐）     Storage  CSI (Container Storage Interface) Persistent Volume &amp;amp; Persistent Volume Claim Volume plugins （存储插件，仅负责提供PV）  NFS Cinder GlusterFS Ceph Local path   Volume extenstion (存储扩展，负责提供完整的Storage方案)  Rook.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</guid>
+      <description>kafka架构 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/deploy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/deploy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/optimization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/architecture/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/architecture/</guid>
+      <description>Zookeeper架构 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/deploy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/deploy/</guid>
+      <description>Zookeeper部署 #  单机环境搭建 #    下载安装包
+ wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 zookeeper    修改配置文件
+ #vim zookeeper/conf/zoo.cfg tickTime=2000 initLimit=5 syncLimit=2 dataDir=/cache1/zookeeper/data #数据目录 clientPort=2181 #服务端口    配置日志保存目录
+ #修改zookeeper/conf/log4j.properties文件 zookeeper.root.logger=INFO, ROLLINGFILE zookeeper.log.dir=/cache1/zookeeper/logs zookeeper.log.file=zookeeper.log #修改zookeeper/bin/zkEnv.sh if [ &amp;quot;x${ZOO_LOG_DIR}&amp;quot; = &amp;quot;x&amp;quot; ] then ZOO_LOG_DIR=&amp;quot;/cache1/zookeeper/logs/&amp;quot; fi if [ &amp;quot;x${ZOO_LOG4J_PROP}&amp;quot; = &amp;quot;x&amp;quot; ] then ZOO_LOG4J_PROP=&amp;quot;INFO,ROLLINGFILE&amp;quot; fi    启动服务
+ cd zookeeper/bin &amp;amp;&amp;amp; ./zkServer.sh start     集群环境搭建 #    机器准备</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</guid>
+      <description>Zookeeper优化 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/elk/elkinstall/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/elk/elkinstall/</guid>
+      <description>ELK安装 #  环境准备 #    CentOS 7
+  Java 8
+   ELK安装 #    配置ELK的repo文件
+rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.repo.d/elk.repo [elasticsearch-6.x] name=Elasticsearch repository for 6.x packages baseurl=https://artifacts.elastic.co/packages/6.x/yum gpgcheck=1 gpgkey=https://artifacts.elastic.co/GPG-KEY-elasticsearch enabled=1 autorefresh=1 type=rpm-md    ElasticSearch
+#install yum install elasticsearch /bin/systemctl daemon-reload /bin/systemctl enable elasticsearch.service systemctl start elasticsearch.service #Test curl http://localhost:9200/    Kibana
+#install yum install kibana /bin/systemctl daemon-reload /bin/systemctl enable kibana.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/cluster/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/cluster/</guid>
+      <description>MySQL Cluster #  Master-Slave #  Master配置 #  /etc/my.cnf 增加配置
+[mysqld] server-id=1 log-bin=/cache1/mysql/log/mysql-bin.log #忽略系统库 binlog-ignore-db=mysql binlog-ignore-db=information_schema binlog-ignore-db=performance_schema  Replication 帐号创建
+mysql&amp;gt; GRANT REPLICATION SLAVE ON *.* TO &#39;repl&#39;@&#39;%&#39; IDENTIFIED BY &#39;slave@2017&#39;;  导出数据到从库
+mysql&amp;gt; USE newdatabase; mysql&amp;gt; FLUSH TABLES WITH READ LOCK; mysql&amp;gt; SHOW MASTER STATUS; +------------------+----------+--------------+---------------------------------------------+-------------------+ | File | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set | +------------------+----------+--------------+---------------------------------------------+-------------------+ | mysql-bin.000002 | 754 | | mysql,information_schema,performance_schema | | +------------------+----------+--------------+---------------------------------------------+-------------------+ 1 row in set (0.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/install/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/install/</guid>
+      <description>Mysql 安装 #  源码编译安装 #  准备 #    CMake(build framework)
+yum -y install cmake    GNU make(make program)
+yum -y install make    GCC(ANSI C++ complier)
+yum -y install gcc gcc-c++    Boost C++ libraries
+  ncurses library
+yum -y install ncurses ncurses-devel    Perl(run test scripts)
+yum -y install perl     安装 #    创建用户组</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/hidden/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/hidden/</guid>
+      <description>This page is hidden in menu #  Quondam non pater est dignior ille Eurotas #  Latent te facies #  Lorem markdownum arma ignoscas vocavit quoque ille texit mandata mentis ultimus, frementes, qui in vel. Hippotades Peleus pennas conscia cuiquam Caeneus quas.
+ Pater demittere evincitque reddunt Maxime adhuc pressit huc Danaas quid freta Soror ego Luctus linguam saxa ultroque prior Tatiumque inquit Saepe liquitur subita superata dederat Anius sudor  Cum honorum Latona #  O fallor in sustinui iussorum equidem.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/codecademy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/codecademy/</guid>
+      <description>codecademy在线学习 #  HTML和CSS学习 #  HTML #  html基本机构 #  &amp;lt;!DOCTYPE html&amp;gt; //向浏览器声明类型 &amp;lt;html&amp;gt; //所有的html代码都要包含在该元素内 &amp;lt;head&amp;gt; //关于网页的信息，如标题 &amp;lt;title&amp;gt;First Web Page&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; //可见的html代码内容都放在该元素内 &amp;lt;p&amp;gt;Hello,World!&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  可见内容 #    标题
+heading
+ &amp;lt;h1&amp;gt;head&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt; &amp;lt;h3&amp;gt; &amp;lt;h4&amp;gt; &amp;lt;h5&amp;gt; &amp;lt;h6&amp;gt;    段落
+paragraph
+ &amp;lt;p&amp;gt;content&amp;lt;/p&amp;gt;    无序列表
+unodered list, list item
+ &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;sub&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt;    有序列表
+ordered list, list item</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/CS50/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/CS50/</guid>
+      <description>CS50学习笔记 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/finacial/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/finacial/</guid>
+      <description>Finanical #  Goal Setting #  Understand How Goals Are Used #    What is a goal?
+  Long term vs Intermediate vs Short term
+  Is a financial goal any different than other goals?
+  SMART Goals #    Specific
+  Measurable
+  Attainable
+  Realistic
+  Time
+  Finanical Goals #    Saving</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/thinkOS/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/thinkOS/</guid>
+      <description>操作系统思考 #  编译 #   编译语言和解释语言    编译语言
+程序被翻译成机器语言，之后由硬件执行。
+  解释语言
+程序被软件解释器读取并执行。
+  静态类型和动态类型    动态类型
+无需定义变量类型，直到运行时才直到变量类型，解释语言通常支持动态类型。
+  静态类型
+需定义变量类型，编译语言通常限制为静态类型。
+优点：
+  编译时检查，可以更快找到错误。
+  节省空间
+动态语言，变量的名称在程序运行时存储在内存中，并且它们通常可由程序访问。 编译语言，变量的名称只存在编译时，而不是运行时。 编译器为每个变量选择一个位置，并记录这些位置作为所编译程序的一部分。变量的位置被称为“地址”。在运行期间，每个变量的值都存储在它的地址处，但变量的名称完全不会存储。      编译过程    预处理
+C是包含&amp;quot;预处理指令&amp;quot;的几种语言之一，它生效于编译之前。例如，#include 指令使其他文件的源代码插入到指令所在的位置
+  解析
+编译器读取源代码，并构建程序的内部表示，称为&amp;quot;抽象语法树(AST)&amp;quot;。这一阶段的错误检查通常为语法错误。
+  静态检查
+编译器会检查变量和值得类型是否正确，函数调用是否带有正确数量和类型的参数，以及其他。这一阶段的错误检测通常为一些&amp;quot;静态语义&amp;quot;的错误
+  代码生成
+编译器读取程序的内部表示，并生成机器码或字节码
+  链接
+如果程序使用了定义在库中的值或函数，编译器需要找到合适的库并包含所需要的代码。
+  优化</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/</guid>
+      <description>经典问题 #  1. 当输入google.com时，发生了什么？ #  1.1 URL解析 #  当输入的URL不合法时，浏览器会将输入的字符传给默认搜索引擎，
+浏览器通过URL能知道以下信息：
+protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自身的HTST列表，确认是否包含该主机。 2、若HTST存在该主机，使用https代替http，否则使用http。 1.3 DNS解析 #  1、浏览器检查自身的DNS缓存 2、查找本地hosts文件 3、发起DNS解析查询 4、查询 本地|ISP DNS服务器 5、本地|ISP DNS服务器像高层服务器发起递归查询直到查到该域名的解析IP 1.4 TCP连接建立 #  1、client端发送SYN请求到server端，声明自己的ISN为aaa (CLOSED--&amp;gt;SYN-SENT) 2、server端接收SYN包，声明自己的ISN为bbb，ACK信息为aaa+1，返回给client端 (LISTEN--&amp;gt;SYN-RECEIVED) 3、client端返回ACK为bbb+1为server端 (SYN-SENT--&amp;gt;ESTABLISHED) 4、数据交互 1.5 TLS连接建立 #  1.6 HTTP #   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/hangzhou/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/hangzhou/</guid>
+      <description>面试经历 #  club factory #   如何部署 如何监控 部署怎么实现 docker的优势和劣势  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</guid>
+      <description>技术知识点 #  硬件 #  1. 机器型号 #  dmidecode | awk -F&amp;#39;:&amp;#39; &amp;#39;/Product Name/{print $2}&amp;#39; 2. CPU信息 #  #获取逻辑CPU数 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | wc -l #获取CPU型号 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | uniq #获取物理cpu数 grep &amp;quot;physical id&amp;quot; /proc/cpuinfo | sort | uniq | wc -l 3. 内存信息 #  #获取内存大小 free -h #内存物理信息 dmidecode -t memory 4. 磁盘信息 #   5. 计算机组成 #  1.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/MyConfig/vim/vimconf/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/MyConfig/vim/vimconf/</guid>
+      <description>Vim配置指南 #  Don&amp;rsquo;t put any lines in your vimrc that you don&amp;rsquo;t understand. #      Colors
+   Spaces And Tabs
+   UI Config
+   Searching
+   Folding
+   Custom Movements
+   Custom Leader
+   CtrlP Settings
+   Launch Config
+   Tmux Config
+   Autogroups
+   Backups</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</guid>
+      <description>时间同步相关问题 #  ntpdate:no server suitable for synchronization found #  Question： #  　在使用ntpdate同步时间时，出现了no server suitable for synchronization found的报错。
+　通过ntpdate -d s2m.time.edu.cn 使用debug模式没有出现异常。
+Answer： #  解决办法是，使用ntpdate -ubv s2m.time.edu.cn，可以正常同步了。
+主要是-u选项的作用
+-u：Direct ntpdate to use an unprivileged port for outgoing packets. This is most useful when behind a firewall that blocks incoming traffic to privileged ports, and you want to synchronize with hosts beyond the firewall. Note that the -d option always uses unprivileged ports.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</guid>
+      <description>ssh连接相关问题 #  pam_tally2(sshd:auth): user root (0) has time limit [3s left] since last failure 日志 #  Question： #  工作中，碰到某服务器在批量ssh登陆操作时，出现大量的无法连接的情况。
+Thinking： #  查看ssh日志(/var/log/secure)， 首先注意到的是，&amp;ldquo;Failed password for root from xxx.xxx.xxx.xxx port 51230 ssh2&amp;quot;错误，但发现密码并没有错误，并且只在批量操作时才会出现，故初步判断为连接数问题。
+查看ssh连接数限制
+/usr/sbin/sshd -T | grep -i max  调整参数，更改配置文件/etc/sshd/sshd_config
+maxsessions 1000  重启服务后，依然没有效果。
+再次查看日志，发现在做批量操作时，有大量的&amp;quot;pam_tally2(sshd:auth): user root (0) has time limit [3s left] since last failure&amp;quot;日志。
+应该是pam模块做了相应的限制
+查看配置文件 /etc/pam.d/sshd 文件
+auth required pam_tally2.so deny=10 lock_time=3 unlock_time=30 even_deny_root root_unlock_time=30  Answer： #  更改配置文件：</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/factoryMethod/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/factoryMethod/</guid>
+      <description>工厂方法模式(Factory Method Pattern) #  模式定义 #  工厂方法模式(Factory Method Pattern)又称为工厂模式，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式，它属于类创建型模式。在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是将产品类的实例化操作延迟到工厂子类中完成，即通过工厂子类来确定究竟应该实例化哪一个具体产品类。
+ 模式结构 #    Product：抽象产品
+  ConcreteProduct：具体产品
+  Factory：抽象工厂
+  ConcreteFactory：具体工厂
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/simpleFactory/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/simpleFactory/</guid>
+      <description>简单工厂模式(Simple Factory Pattern) #  模式定义 #  简单工厂模式(Simple Factory Pattern)：又称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。
+ 模式结构 #    Factory：工厂角色
+工厂角色负责实现创建所有实例的内部逻辑
+  Product：抽象产品角色
+抽象产品角色是所创建的所有对象的父类，负责描述所有实例所共有的公共接口
+  ConcreteProduct：具体产品角色
+具体产品角色是创建目标，所有创建的对象都充当这个角色的某个具体类的实例。
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/DataStructuresAndAlgorithms/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/DataStructuresAndAlgorithms/README/</guid>
+      <description>数据结构和算法 #    解压序列赋值给多个变量
+问题，现在有一个包含N个元素的元组或者是序列，怎样将它里面的值解压后同时赋值给N个变量？
+实现： 详细代码
+ &amp;gt;&amp;gt;&amp;gt; data = [&#39;John&#39;,170,60,(1999,9,9)] &amp;gt;&amp;gt;&amp;gt; name, height, weight, birthday = data ### 另一种方式 &amp;gt;&amp;gt;&amp;gt; name, height, weight, (year, mon, day) = data    解压可迭代对象赋值给多个变量
+问题，如果一个可迭代对象的元素个数超过变量个数时，会抛出一个ValueError。那么怎样才能从这个可迭代对象中解压出N个元素出来？
+实现： 详细代码
+ &amp;gt;&amp;gt;&amp;gt; record = (&#39;Dave&#39;, &#39;dave@example.com&#39;, &#39;773-555-1212&#39;, &#39;847-555-1212&#39;) &amp;gt;&amp;gt;&amp;gt; name, email, *phone_numbers = record    保留最后N个元素
+问题，在迭代操作或者其他操作的时候，怎样只保留最后有限几个元素的历史记录？
+实现： 详细代码
+ &amp;gt;&amp;gt;&amp;gt; from collections import deque &amp;gt;&amp;gt;&amp;gt; q = deque(maxlen = 3) &amp;gt;&amp;gt;&amp;gt; q.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/StringsAndText/README/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/StringsAndText/README/</guid>
+      <description>#字符串和文本
+   </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Django/django/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Django/django/</guid>
+      <description>Django #  环境初始化 #  python3 install virtualenv cd demosite mkdir py3env virtualenv ./py3env/ source py3env/bin/activate #install Django pip3 install Django  项目初始化 #  django-admin startproject demosite python manage.py runserver python manage.py startapp polls  项目结构 #  demosite/ manage.py demosite/ __init__.py settings.py urls.py wsgi.py polls/ __init__.py admin.py apps.py migrations/ __init__.py models.py tests.py views.py  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Flask/flask/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Flask/flask/</guid>
+      <description>Flask #  安装 #  pip install flask   程序基本结构 #   初始化  所有 Flask 程序都必须创建一个程序实例。Web 服务器使用一种名为 Web 服务器网关接口（Web Server Gateway Interface，WSGI）的协议，把接收自客户端的所有请求都转交给这个对象处理。
+from flask import Flask app = Flask(&#39;__name__&#39;)  路由和函数  程序实例需要知道对每个URL请求运行哪些代码，所以保存了一个URL到Python函数的映射关系。处理URL和函数之间关系的程序称为路由。 在Flask程序中定义路由的最简便方式，是使用程序实例提供的app.route修饰器，把修饰的函数注册为路由。
+@app.route(&#39;/&#39;) def index(): return &#39;&amp;lt;h1&amp;gt;Hello World!&amp;lt;/h1&amp;gt;&#39;   启动服务
+if name == &amp;lsquo;main&amp;rsquo; app.run(Debug=True)
+   模版 #  模板是一个包含响应文本的文件，其中包含用占位变量表示的动态部分，其具体值只在请求的上下文中才能知道。使用真实值替换变量，再返回最终得到的响应字符串，这一过程称为渲染。为了渲染模板，Flask 使用了一个名为 Jinja2 的强大模板引擎。
+Jinja2模板引擎 #  templates/user.html：Jinja2 模板
+&amp;lt;h1&amp;gt;Hello {{ name }} !</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Scrapy/scrapy/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Scrapy/scrapy/</guid>
+      <description>#Scrapy Scrapy是一个快速的高级Web爬网和Web抓取框架，用于抓取网站并从其页面提取结构化数据。
+安装 #  pip install scrapy scrapy startproject scrapytest   第一个爬虫 #  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</guid>
+      <description>一切皆文件 #    列出文件列表
+ ls [option] /PATH #不指定路径，默认为当前路径 option -l:长格式 文件类型: -:普通文件 d:目录文件 b:块设备文件（block） c：字符设备文件（character） l：符号链接文件（symbolic link file） p：命令管道（pipe） s：套接字文件（socket） 文件权限：9位，每三位一组(u-g-o),每一组：rwx（读、写、执行） 文件硬链接的次数 文件的属主(owner) 文件的属组(group) 文件的大小(size)，单位是字节 时间戳(timestamp)：最近一次被修改的时间 访问：access 修改：modify，文件内容发生改变 改变：change，metadata，元数据 文件名 -h:做单位转换，默认bit -a:显示以.开头的隐藏文件 . 表示当前目录 .. 表示父目录 -d：显示目录自身属性 -i：index node，inode -r：逆序显示文件 -R：递归(recursive)显示    进入目录
+ cd /PATH cd ~USERNAME:进入指定用户的家目录 cd -:在当前目录和前一次所在目录之间来回切换    显示文件类型
+ type /PATH/FILENAME    显示当前路径
+ pwd    目录管理</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</guid>
+      <description>权限操作 #  权限 #    可读(r)(4)
+  可写(w)(2)
+  可执行(x)(1)
+  特殊权限
+  SUID(u+s): 运行某程序时，相应进程的属主是程序文件自身的属主
+  SGID(g+s)：运行某程序时，相应进程的属组是程序文件自身的属组
+  Sticky(o+t)：在一个公共目录，每个用户都可以创建删除自己的文件，但不能删除别人的文件
+     用户和组 #    用户(UID)
+  类别
+  管理员：0
+  普通用户：1-65535
+  系统用户：1-499
+  一般用户：500-65535
+      配置文件
+  /etc/passwd
+字段详解(以&amp;rdquo;:&amp;ldquo;为分割符)
+用户名 : 密码 : UID : GID : 注释 : 家目录 : 默认shell</description>
+    </item>
+    
+  </channel>
+</rss>
