@@ -1,5 +1,0 @@
----
-#file main.yml
-- include_tasks: init.yml
-  tags:
-    - init

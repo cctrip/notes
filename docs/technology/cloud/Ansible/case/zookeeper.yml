@@ -1,6 +1,0 @@
----
-- hosts: zookeeper
-  gather_facts: True
-
-  roles:
-    - { role: roles/zookeeper }

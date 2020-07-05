@@ -1,4 +1,0 @@
----
-#file: password task lock.yml
-- name: lock password file
-  command: chattr +i /etc/passwd /etc/shadow
