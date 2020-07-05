@@ -4,20 +4,26 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="TCP #  ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="TCP" />
+<meta name="description" content="Git安装 #    yum安装
+ $ sudo yum install git    源码安装
+依赖包安装
+ $ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel asciidoc xmlto docbook2x  从 https://www.kernel.org/pub/software/scm/git获取最新的版本包
+编译安装
+ $ tar -zxf git-2.0.0.tar.gz $ cd git-2.0.0 $ make configure $ ./configure --prefix=/usr/local/git $ make all doc info $ sudo make install install-doc install-html install-info  升级
+ $ git clone git://git.kernel.org/pub/scm/git/git.git     Git初始配置 #  Git 自带一个 git config 的工具来帮助设置控制 Git 外观和行为的配置变量。 这些变量存储在三个不同的位置：">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Git安装" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/network/Protocol/tcp/" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/program/Revision/git/install/" />
 
-<title>TCP | 学而不思则罔</title>
+<title>Git安装 | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
 <script defer src="/notes/en.search.min.71e832022045696c8ed2fdb8c2b7ec2079800b5466664ece6ae205dd72060c6f.js" integrity="sha256-cegyAiBFaWyO0v24wrfsIHmAC1RmZk7OauIF3XIGDG8="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
-<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/network/Protocol/tcp/index.xml" title="学而不思则罔" />
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/program/Revision/git/install/index.xml" title="学而不思则罔" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -111,103 +117,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/network/Basic/" class="collapsed ">网络基础</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/network/Protocol/" class="collapsed ">网络协议</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/network/Protocol/tcp/" class="collapsed active">TCP</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/network/Protocol/http/" class="collapsed ">HTTP</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/network/Protocol/dns/" class="collapsed ">DNS</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-  </ul>
-  
-
-        </li>
-      
-    
-  </ul>
-  
 
         </li>
       
@@ -224,6 +133,145 @@ https://github.com/alex-shpak/hugo-book
   
   
 
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Basic/" class="collapsed ">编程基础</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Revision/" class="collapsed ">版本控制</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Revision/git/" class="collapsed ">Git</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Revision/git/install/" class="active">Git安装</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Revision/git/operation/" class="">Git操作</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/" class="collapsed ">编程语言</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Advanced/" class="collapsed ">编程进阶</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
   
 
         </li>
@@ -435,7 +483,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>TCP</strong>
+  <strong>Git安装</strong>
 
   <label for="toc-control">
     
@@ -451,7 +499,16 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#tcp">TCP</a></li>
+    <li>
+      <ul>
+        <li><a href="#git安装">Git安装</a></li>
+        <li><a href="#git初始配置">Git初始配置</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -463,10 +520,78 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="tcp">
-  TCP
-  <a class="anchor" href="#tcp">#</a>
-</h1>
+  <article class="markdown"><h2 id="git安装">
+  Git安装
+  <a class="anchor" href="#git%e5%ae%89%e8%a3%85">#</a>
+</h2>
+<ul>
+<li>
+<p>yum安装</p>
+<pre><code>  $ sudo yum install git
+</code></pre>
+</li>
+<li>
+<p>源码安装</p>
+<p>依赖包安装</p>
+<pre><code>  $ sudo yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel asciidoc xmlto docbook2x
+</code></pre>
+<p>从
+  <a href="https://www.kernel.org/pub/software/scm/git">https://www.kernel.org/pub/software/scm/git</a>获取最新的版本包</p>
+<p>编译安装</p>
+<pre><code>  $ tar -zxf git-2.0.0.tar.gz
+  $ cd git-2.0.0
+  $ make configure
+  $ ./configure --prefix=/usr/local/git
+  $ make all doc info
+  $ sudo make install install-doc install-html install-info
+</code></pre>
+<p>升级</p>
+<pre><code>  $ git clone git://git.kernel.org/pub/scm/git/git.git
+</code></pre>
+</li>
+</ul>
+<hr>
+<h2 id="git初始配置">
+  Git初始配置
+  <a class="anchor" href="#git%e5%88%9d%e5%a7%8b%e9%85%8d%e7%bd%ae">#</a>
+</h2>
+<p>Git 自带一个 git config 的工具来帮助设置控制 Git 外观和行为的配置变量。 这些变量存储在三个不同的位置：</p>
+<ol>
+<li>
+<p>/etc/gitconfig 文件: 包含系统上每一个用户及他们仓库的通用配置。 如果使用带有 &ndash;system 选项的 git config 时，它会从此文件读写配置变量。</p>
+</li>
+<li>
+<p>~/.gitconfig 或 ~/.config/git/config 文件：只针对当前用户。 可以传递 &ndash;global 选项让 Git 读写此文件。</p>
+</li>
+<li>
+<p>当前使用仓库的 Git 目录中的 config 文件（就是 .git/config）：针对该仓库。</p>
+</li>
+</ol>
+<p>每一个级别覆盖上一级别的配置，所以 .git/config 的配置变量会覆盖 /etc/gitconfig 中的配置变量。</p>
+<h4 id="用户信息">
+  用户信息
+  <a class="anchor" href="#%e7%94%a8%e6%88%b7%e4%bf%a1%e6%81%af">#</a>
+</h4>
+<p>当安装完 Git 应该做的第一件事就是设置你的用户名称与邮件地址。 这样做很重要，因为每一个 Git 的提交都会使用这些信息，并且它会写入到你的每一次提交中，不可更改：</p>
+<pre><code>$ git config --global user.name &quot;CodeCC&quot;
+$ git config --global user.email CodeCC@example.com
+</code></pre>
+<p>再次强调，如果使用了 &ndash;global 选项，那么该命令只需要运行一次，因为之后无论你在该系统上做任何事情， Git 都会使用那些信息。 当你想针对特定项目使用不同的用户名称与邮件地址时，可以在那个项目目录下运行没有 &ndash;global 选项的命令来配置。</p>
+<p>很多 GUI 工具都会在第一次运行时帮助你配置这些信息。</p>
+<h4 id="检查配置信息">
+  检查配置信息
+  <a class="anchor" href="#%e6%a3%80%e6%9f%a5%e9%85%8d%e7%bd%ae%e4%bf%a1%e6%81%af">#</a>
+</h4>
+<p>如果想要检查你的配置，可以使用 git config &ndash;list 命令来列出所有 Git 当时能找到的配置。</p>
+<pre><code>$ git config --list
+user.name=CodeCC
+user.email=CodeCC@example.com
+...
+</code></pre>
+<p>也可以通过输入 git config <key>： 来检查 Git 的某一项配置</p>
+<pre><code>$ git config user.name
+CodeCC
+</code></pre>
 </article>
  
       
@@ -486,7 +611,7 @@ https://github.com/alex-shpak/hugo-book
 
 
   <div>
-    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/network/Protocol/tcp/_index.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/program/Revision/git/install/_index.md" target="_blank" rel="noopener">
       <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -514,7 +639,16 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#tcp">TCP</a></li>
+    <li>
+      <ul>
+        <li><a href="#git安装">Git安装</a></li>
+        <li><a href="#git初始配置">Git初始配置</a>
+          <ul>
+            <li></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 

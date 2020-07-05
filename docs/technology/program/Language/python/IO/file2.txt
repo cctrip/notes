@@ -1,0 +1,2 @@
+This is test.
+('The answer is', 42, '\n')
