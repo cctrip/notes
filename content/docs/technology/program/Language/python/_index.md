@@ -1,3 +1,10 @@
+---
+bookCollapseSection: true
+weight: 3
+title: "Python"
+
+---
+
 # Python
 
 

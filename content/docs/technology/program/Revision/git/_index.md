@@ -1,3 +1,9 @@
+---
+bookCollapseSection: true
+weight: 1
+title: "Git"
+---
+
 ## Git简介
 
 git是一个分布式版本控制软件，最初由林纳斯·托瓦兹（Linus Torvalds）创作，于2005年以GPL发布。最初目的是为更好地管理Linux内核开发而设计。
@@ -31,3 +37,10 @@ git是一个分布式版本控制软件，最初由林纳斯·托瓦兹（Linus 
 	3. 提交更新，找到暂存区域的文件，将快照永久性存储到 Git 仓库目录。
 
 	![](areas.png)
+
+
+
+## [Git安装](install)
+
+## [Git操作](operation)
+

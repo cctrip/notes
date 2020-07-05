@@ -34,21 +34,40 @@ title: "技术相关"
 
 ***
 
-## 网络
+## [网络](network)
 
-* 网络基础
+### [网络基础](network/Basic)
 
-* [网络协议]()
+### [网络协议](network/Protocol)
 
-  * TCP
+1. [TCP](network/Protocol/tcp)
 
-  * HTTP
+2. [HTTP](network/Protocol/http)
 
-  * DNS
+3. [DNS](network/Protocol/dns)
 
-  * TLS
+***
 
-* 路由交换
+## 编程
+
+### [编程基础](program/Basic)
+
+### [版本控制](development/RevisionControl/README.md)
+
+1. [Git](program/Revision/git)
+
+### [编程语言](program/Language)
+
+1. [Shell](program/Language/shell/)
+2. [Golang](program/Language/golang)
+
+3. [Python](program/Language/python)
+
+### [编程进阶]()
+
+* [数据结构](program/Advanced/dataStructure)
+* [算法](program/Advanced/algorithm)
+* [设计模式](program/Advanced/design)
 
 ***
 
@@ -64,27 +83,9 @@ title: "技术相关"
 
 ***
 
-## 编程
+## 云原生
 
-* [编程基础](development/Basic/README.md)
 
-* [版本控制](development/RevisionControl/README.md)
-
-  * [Git](development/RevisionControl/git.md)
-
-* [Shell](development/Shell/README.md)
-
-* [Python](development/Python/README.md)
-
-* GoLang
-
-* [编程进阶]()
-
-  * [算法](development/Advanced/Algorithm/algorithm.md)
-
-  * [数据结构](development/Advanced/DataStructure/datastructure.md)
-
-  * [设计模式](development/Advanced/Design/README.md)
 
 ***
 

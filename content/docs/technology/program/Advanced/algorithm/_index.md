@@ -1,3 +1,9 @@
+---
+bookCollapseSection: true
+weight: 2
+title: "算法"
+---
+
 # 算法
 
 * 冒泡排序

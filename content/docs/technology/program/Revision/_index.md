@@ -1,3 +1,9 @@
+---
+bookCollapseSection: true
+weight: 2
+title: "版本控制"
+---
+
 # 版本控制
 
 ## 什么是“版本控制”？

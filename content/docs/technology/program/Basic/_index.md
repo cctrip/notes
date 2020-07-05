@@ -1,3 +1,9 @@
+---
+bookCollapseSection: true
+weight: 1
+title: "编程基础"
+---
+
 # 编程基础
 
 ### 编程语言
