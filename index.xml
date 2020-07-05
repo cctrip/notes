@@ -23,6 +23,15 @@ cd $PATH redis-server redis-6379.conf &amp;amp;    集群管理器安装</descri
     </item>
     
     <item>
+      <title>技能图谱</title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/map/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/map/</guid>
+      <description>Kubernetes 技能图谱 #  Container basics （容器技术基础） #   Linux Operating System Basic Linux Process Management (Linux进程管理) Cgroups Linux Namespaces Rootfs &amp;amp; Container Image Image Registry  Kubernetes architecture （Kubernetes 架构） #  Node #  Kubelet #   Runtime （容器运行时）  CRI (Container Runtime Interface) Runtime shims （容器运行时插件）  Cri-containerd （containerd） Dockershim （Docker） Cri-o （runC） Rktlet （rkt） Frakti （KataContainers）   RuntimeClass (新特性：容器运行时类)   Networking  CNI (Container Network Interface) Linux Network Namespace Network plugins （网络插件）  Flannel Calico OVS SR-IOV macvlan/ipvlan Opencontrail Weave Cilium （新插件，支持BPF，推荐）     Storage  CSI (Container Storage Interface) Persistent Volume &amp;amp; Persistent Volume Claim Volume plugins （存储插件，仅负责提供PV）  NFS Cinder GlusterFS Ceph Local path   Volume extenstion (存储扩展，负责提供完整的Storage方案)  Rook.</description>
+    </item>
+    
+    <item>
       <title></title>
       <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -78,59 +87,6 @@ cd $PATH redis-server redis-6379.conf &amp;amp;    集群管理器安装</descri
       
       <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</guid>
       <description>Zookeeper优化 #  </description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/cluster/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/cluster/</guid>
-      <description>手动部署kubernetes高可用集群 #  环境准备 #  软件 #    etcd
-  docker
-  kubernetes
-  kubelet
-  kube-proxy
-  kube-apiserver
-  kube-controller-manager
-  kube-scheduler
-     软件准备 #     Docker安装
-  软件下载
- wget https://storage.googleapis.com/kubernetes-release/release/v1.6.9/kubernetes.tar.gz tar -zxvf kubernetes.tar.gz ./kubernetes/cluster/get-kube-binaries.sh wget https://github.com/coreos/etcd/releases/download/v3.2.6/etcd-v3.2.6-linux-amd64.tar.gz     etcd高可用集群搭建 #  安装cfssl #  go get -u github.</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubeadm/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubeadm/</guid>
-      <description>kubeadm快速部署kubernetes #  环境搭建 #    环境准备
- #放开防火墙限制 systemctl stop firewalld systemctl disable firewalld #更改内核参数 echo 1 &amp;gt; /proc/sys/net/bridge/bridge-nf-call-ip6tables echo 1 &amp;gt; /proc/sys/net/bridge/bridge-nf-call-iptables #禁用SELINUX setenforce 0    Docker安装
-参考 Docker安装
- #开启iptables filter表中FOWARD链(Docker1.3开始已被禁用) iptables -P FORWARD ACCEPT #/etc/docker/daemon.json增加配置 { &amp;quot;exec-opts&amp;quot;: [&amp;quot;native.cgroupdriver=systemd&amp;quot;] } #重启Docker systemctl restart docker.service    Kubeadm安装
- #添加repo配置 cat &amp;lt;&amp;lt;EOF &amp;gt; /etc/yum.repos.d/kubernetes.repo [kubernetes] name=Kubernetes baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64 enabled=1 gpgcheck=1 repo_gpgcheck=1 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg EOF #安装kubeadm,kubelet,kubectl yum install -y kubelet kubeadm kubectl systemctl enable kubelet &amp;amp;&amp;amp; systemctl start kubelet     Master node 初始化 #    init</description>
-    </item>
-    
-    <item>
-      <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubernetes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/kubernetes/</guid>
-      <description>Kubernetes #  k8s是一个开源系统，它可以被用于自动部署，扩展和管理容器化（containerized）应用程序。
- 架构 #    Master #    etcd
-  API Server
-  Scheduler
-  Controller manager
-  Node #    Kubelet
-  Kube-proxy
-  cAdvisor
-   安装 #     Kubeadm
-基于kubeadm工具部署kubernetes,包含Master和Node。(测试版本，不适用于生产环境)
-   Master-Cluster
-基于kubernetes安装包部署kubernetes集群环境。
-   Objects #  basic objects #    Pod</description>
     </item>
     
     <item>

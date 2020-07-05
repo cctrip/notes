@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kubernetes 技能图谱 #  Container basics （容器技术基础） #   Linux Operating System Basic Linux Process Management (Linux进程管理) Cgroups Linux Namespaces Rootfs &amp; Container Image Image Registry  Kubernetes architecture （Kubernetes 架构） #  Node #  Kubelet #   Runtime （容器运行时）  CRI (Container Runtime Interface) Runtime shims （容器运行时插件）  Cri-containerd （containerd） Dockershim （Docker） Cri-o （runC） Rktlet （rkt） Frakti （KataContainers）   RuntimeClass (新特性：容器运行时类)   Networking  CNI (Container Network Interface) Linux Network Namespace Network plugins （网络插件）  Flannel Calico OVS SR-IOV macvlan/ipvlan Opencontrail Weave Cilium （新插件，支持BPF，推荐）     Storage  CSI (Container Storage Interface) Persistent Volume &amp; Persistent Volume Claim Volume plugins （存储插件，仅负责提供PV）  NFS Cinder GlusterFS Ceph Local path   Volume extenstion (存储扩展，负责提供完整的Storage方案)  Rook.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="技能图谱" />
+<meta property="og:description" content="Kubernetes 技能图谱 #  Container basics （容器技术基础） #   Linux Operating System Basic Linux Process Management (Linux进程管理) Cgroups Linux Namespaces Rootfs &amp; Container Image Image Registry  Kubernetes architecture （Kubernetes 架构） #  Node #  Kubelet #   Runtime （容器运行时）  CRI (Container Runtime Interface) Runtime shims （容器运行时插件）  Cri-containerd （containerd） Dockershim （Docker） Cri-o （runC） Rktlet （rkt） Frakti （KataContainers）   RuntimeClass (新特性：容器运行时类)   Networking  CNI (Container Network Interface) Linux Network Namespace Network plugins （网络插件）  Flannel Calico OVS SR-IOV macvlan/ipvlan Opencontrail Weave Cilium （新插件，支持BPF，推荐）     Storage  CSI (Container Storage Interface) Persistent Volume &amp; Persistent Volume Claim Volume plugins （存储插件，仅负责提供PV）  NFS Cinder GlusterFS Ceph Local path   Volume extenstion (存储扩展，负责提供完整的Storage方案)  Rook." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/map/" />
+
+<title>技能图谱 | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.9e975907637ad5f4349b0358e91a0828e9b7e1d521841ef577072bc2cd8f3c58.js" integrity="sha256-npdZB2N61fQ0mwNY6RoIKOm34dUhhB71dwcrws2PPFg="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/infrastructure/" class="collapsed ">不可变基础设施</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/" class="collapsed ">容器技术</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Docker/" class="collapsed ">Docker</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/" class="collapsed ">K8S</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/map/" class="active">技能图谱</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/install/" class="">安装</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/ServiceMesh/" class="collapsed ">服务网格</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Microservice/" class="collapsed ">微服务</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/API/" class="collapsed ">声明式API</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/DevOps/" class="collapsed ">DevOps</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/learn/" class="collapsed ">方法论</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>技能图谱</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes-技能图谱">Kubernetes 技能图谱</a>
+      <ul>
+        <li><a href="#container-basics-容器技术基础">Container basics （容器技术基础）</a></li>
+        <li><a href="#kubernetes-architecture-kubernetes-架构">Kubernetes architecture （Kubernetes 架构）</a>
+          <ul>
+            <li><a href="#node">Node</a></li>
+            <li><a href="#master">Master</a></li>
+          </ul>
+        </li>
+        <li><a href="#kubernetes-workloads-kubernetes-作业管理">Kubernetes workloads （Kubernetes 作业管理）</a></li>
+        <li><a href="#kubernetes-applications-management-kubernetes-应用配置">Kubernetes applications management （Kubernetes 应用配置）</a></li>
+        <li><a href="#kubernetes-operations-kubernetes-安装与运维">Kubernetes operations （Kubernetes 安装与运维）</a></li>
+        <li><a href="#kubernetes-extensionsadd-ons-kubernetes-扩展和插件">Kubernetes extensions/add-ons （Kubernetes 扩展和插件）</a></li>
+        <li><a href="#kubernetes-cicd">Kubernetes CI/CD</a></li>
+        <li><a href="#kubernetes-paas">Kubernetes PaaS</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="kubernetes-技能图谱">
+  Kubernetes 技能图谱
+  <a class="anchor" href="#kubernetes-%e6%8a%80%e8%83%bd%e5%9b%be%e8%b0%b1">#</a>
+</h1>
+<h2 id="container-basics-容器技术基础">
+  Container basics （容器技术基础）
+  <a class="anchor" href="#container-basics-%e5%ae%b9%e5%99%a8%e6%8a%80%e6%9c%af%e5%9f%ba%e7%a1%80">#</a>
+</h2>
+<ul>
+<li>Linux Operating System Basic</li>
+<li>Linux Process Management (Linux进程管理)</li>
+<li>Cgroups</li>
+<li>Linux Namespaces</li>
+<li>Rootfs &amp; Container Image</li>
+<li>Image Registry</li>
+</ul>
+<h2 id="kubernetes-architecture-kubernetes-架构">
+  Kubernetes architecture （Kubernetes 架构）
+  <a class="anchor" href="#kubernetes-architecture-kubernetes-%e6%9e%b6%e6%9e%84">#</a>
+</h2>
+<h3 id="node">
+  Node
+  <a class="anchor" href="#node">#</a>
+</h3>
+<h4 id="kubelet">
+  Kubelet
+  <a class="anchor" href="#kubelet">#</a>
+</h4>
+<ul>
+<li>Runtime （容器运行时）
+<ul>
+<li>CRI (Container Runtime Interface)</li>
+<li>Runtime shims （容器运行时插件）
+<ul>
+<li>Cri-containerd （containerd）</li>
+<li>Dockershim （Docker）</li>
+<li>Cri-o （runC）</li>
+<li>Rktlet （rkt）</li>
+<li>Frakti （KataContainers）</li>
+</ul>
+</li>
+<li>RuntimeClass (新特性：容器运行时类)</li>
+</ul>
+</li>
+<li>Networking
+<ul>
+<li>CNI (Container Network Interface)</li>
+<li>Linux Network Namespace</li>
+<li>Network plugins （网络插件）
+<ul>
+<li>Flannel</li>
+<li>Calico</li>
+<li>OVS</li>
+<li>SR-IOV</li>
+<li>macvlan/ipvlan</li>
+<li>Opencontrail</li>
+<li>Weave</li>
+<li>Cilium （新插件，支持BPF，推荐）</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Storage
+<ul>
+<li>CSI  (Container Storage Interface)</li>
+<li>Persistent Volume &amp; Persistent Volume Claim</li>
+<li>Volume plugins （存储插件，仅负责提供PV）
+<ul>
+<li>NFS</li>
+<li>Cinder</li>
+<li>GlusterFS</li>
+<li>Ceph</li>
+<li>Local path</li>
+</ul>
+</li>
+<li>Volume extenstion (存储扩展，负责提供完整的Storage方案)
+<ul>
+<li>Rook.io</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Kube-proxy
+<ul>
+<li>Iptables 转发链与随机模式</li>
+<li>IPVS 负载均衡</li>
+</ul>
+</li>
+</ul>
+<h3 id="master">
+  Master
+  <a class="anchor" href="#master">#</a>
+</h3>
+<ul>
+<li>API server
+<ul>
+<li>Watch &amp; Informer （Watch 和通知框架）</li>
+<li>Admission Plugin（权限控制插件）</li>
+<li>RBAC plugin （基于角色的访问控制插件）</li>
+<li>Custom Resource Definition (新特性，CRD，自定义API对象，重点推荐)</li>
+<li>APIServer aggregator (新特性，聚合APIServer，推荐)</li>
+</ul>
+</li>
+<li>Controller manager
+<ul>
+<li>Reconcile （控制循环与状态协调机制）</li>
+</ul>
+</li>
+<li>Scheduler
+<ul>
+<li>Scheduling algorithm （默认调度算法）</li>
+<li>Scheduler extender （调度器扩展器）</li>
+<li>Custom algorithm （自定义调度算法）</li>
+<li>Custom scheduler （自定义调度器）</li>
+<li>Scheduler Framework （新特性，可扩展调度框架，推荐）</li>
+<li>Multiple scheduler （多调度器）</li>
+</ul>
+</li>
+<li>Etcd
+<ul>
+<li>Etcd operator</li>
+<li>Etcd performance tuning</li>
+</ul>
+</li>
+</ul>
+<h2 id="kubernetes-workloads-kubernetes-作业管理">
+  Kubernetes workloads （Kubernetes 作业管理）
+  <a class="anchor" href="#kubernetes-workloads-kubernetes-%e4%bd%9c%e4%b8%9a%e7%ae%a1%e7%90%86">#</a>
+</h2>
+<ul>
+<li>Pod</li>
+<li>ReplicaSet （容器副本）</li>
+<li>Deployment （常规作业发布）
+<ul>
+<li>Rolling update （自动的滚动更新）</li>
+<li>Pause/resume （可控的更新流程）</li>
+<li>Canary deploy （金丝雀发布）</li>
+<li>Rollback （版本回滚）</li>
+</ul>
+</li>
+<li>DaemonSet （Daemon 作业）</li>
+<li>StatefulSet （有状态任务）
+<ul>
+<li>Topology State</li>
+<li>Storage State</li>
+</ul>
+</li>
+<li>Job （一次性任务）</li>
+<li>CronJob （定时任务）</li>
+</ul>
+<h2 id="kubernetes-applications-management-kubernetes-应用配置">
+  Kubernetes applications management （Kubernetes 应用配置）
+  <a class="anchor" href="#kubernetes-applications-management-kubernetes-%e5%ba%94%e7%94%a8%e9%85%8d%e7%bd%ae">#</a>
+</h2>
+<ul>
+<li>Service （服务发现）
+<ul>
+<li>Publish service（对外暴露 Service）</li>
+<li>Nginx/HAproxy service（自定义 Service）</li>
+<li>External Load Balancer</li>
+</ul>
+</li>
+<li>ConfigMap （应用配置管理）</li>
+<li>Ingress （7层服务发现）</li>
+<li>Secret （加密信息管理）</li>
+<li>Headless Service（DNS 服务发现）</li>
+<li>External Load Balancer</li>
+</ul>
+<h2 id="kubernetes-operations-kubernetes-安装与运维">
+  Kubernetes operations （Kubernetes 安装与运维）
+  <a class="anchor" href="#kubernetes-operations-kubernetes-%e5%ae%89%e8%a3%85%e4%b8%8e%e8%bf%90%e7%bb%b4">#</a>
+</h2>
+<ul>
+<li>Installation
+<ul>
+<li>Kubeadm （内置部署工具，推荐）</li>
+<li>Minikube （本地部署工具）</li>
+<li>Kops （云端部署工具）</li>
+</ul>
+</li>
+<li>Maintenances
+<ul>
+<li>Garbage Collection (垃圾回收)
+<ul>
+<li>Container GC</li>
+<li>Image GC</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Upgrades</li>
+<li>Troubleshooting
+<ul>
+<li>etcd admin
+<ul>
+<li>Key-value CRUD（键值对操作）</li>
+<li>Metrics monitoring （Metrics 监控）</li>
+<li>Cluster design（集群规划）</li>
+<li>Disaster Recovery （灾难恢复，backup 和 restore）</li>
+</ul>
+</li>
+<li>Iptables rules</li>
+</ul>
+</li>
+</ul>
+<h2 id="kubernetes-extensionsadd-ons-kubernetes-扩展和插件">
+  Kubernetes extensions/add-ons （Kubernetes 扩展和插件）
+  <a class="anchor" href="#kubernetes-extensionsadd-ons-kubernetes-%e6%89%a9%e5%b1%95%e5%92%8c%e6%8f%92%e4%bb%b6">#</a>
+</h2>
+<ul>
+<li>Custom Resources Definition （自定义 Kubernetes API 对象）
+<ul>
+<li>Customized controller （自定义 API 对象控制器）</li>
+<li>Workqueue （自定义 API 对象任务队列）</li>
+</ul>
+</li>
+<li>Kube-dns
+<ul>
+<li>SkyDNS</li>
+<li>CoreDNS</li>
+</ul>
+</li>
+<li>Fluentd （日志收集）
+<ul>
+<li>Fluent-bit</li>
+</ul>
+</li>
+<li>Heapster (容器集群监控）</li>
+<li>Istio（微服务治理和负载均衡）</li>
+<li>Federation v2（新特性：集群联邦v2）</li>
+<li>Helm (kubernetes application package)</li>
+</ul>
+<h2 id="kubernetes-cicd">
+  Kubernetes CI/CD
+  <a class="anchor" href="#kubernetes-cicd">#</a>
+</h2>
+<ul>
+<li>Spinnaker</li>
+<li>Skaffold (新项目，推荐)</li>
+</ul>
+<h2 id="kubernetes-paas">
+  Kubernetes PaaS
+  <a class="anchor" href="#kubernetes-paas">#</a>
+</h2>
+<ul>
+<li>OpenShift</li>
+<li>Knative （新项目，推荐）</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/cloud/Container/Kubernetes/map.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes-技能图谱">Kubernetes 技能图谱</a>
+      <ul>
+        <li><a href="#container-basics-容器技术基础">Container basics （容器技术基础）</a></li>
+        <li><a href="#kubernetes-architecture-kubernetes-架构">Kubernetes architecture （Kubernetes 架构）</a>
+          <ul>
+            <li><a href="#node">Node</a></li>
+            <li><a href="#master">Master</a></li>
+          </ul>
+        </li>
+        <li><a href="#kubernetes-workloads-kubernetes-作业管理">Kubernetes workloads （Kubernetes 作业管理）</a></li>
+        <li><a href="#kubernetes-applications-management-kubernetes-应用配置">Kubernetes applications management （Kubernetes 应用配置）</a></li>
+        <li><a href="#kubernetes-operations-kubernetes-安装与运维">Kubernetes operations （Kubernetes 安装与运维）</a></li>
+        <li><a href="#kubernetes-extensionsadd-ons-kubernetes-扩展和插件">Kubernetes extensions/add-ons （Kubernetes 扩展和插件）</a></li>
+        <li><a href="#kubernetes-cicd">Kubernetes CI/CD</a></li>
+        <li><a href="#kubernetes-paas">Kubernetes PaaS</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
