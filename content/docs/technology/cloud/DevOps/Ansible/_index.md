@@ -1,3 +1,9 @@
+---
+bookCollapseSection: true
+weight: 2
+title: "Ansible"
+---
+
 # Ansible
 
 ### 安装
@@ -7,11 +13,11 @@
       pip install ansible
 
 * 测试
-    
+  
       echo "127.0.0.1" > ~/ansible_hosts
-
+    
       export ANSIBLE_INVENTORY=~/ansible_hosts
-
+    
       ansible all -m ping --ask-pass
 
 ### Inventory
@@ -85,7 +91,6 @@ Playbook是Ansible的配置，部署和编排语言，他们可以描述您希�
       handlers:
         - name: restart apache
           service: name=httpd state=restarted
-
 
 ***
 

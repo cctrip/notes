@@ -1,8 +1,8 @@
 ---
 bookCollapseSection: true
-weight: 9
-title: "工具"
+weight: 5
+title: "架构"
 ---
 
-# 工具
+# 架构
 
