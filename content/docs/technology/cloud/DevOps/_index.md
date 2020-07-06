@@ -6,7 +6,7 @@ title: "DevOps"
 
 # DevOps
 
-### 什么是DevOps？
+### What
 
 wiki
 
@@ -27,3 +27,19 @@ wiki
 ***
 
 ![](devops.png)
+
+***
+
+### How
+
+DevOps的首要目标是创建一个支持持续集成和持续交付的开发环境。
+
+实际上，DevOps的四个关键原则将其注入到框架中：
+
+- Continuous integration (持续集成)
+- Continuous delivery (持续交付)
+- Continuous testing(持续测试)
+- Continuous monitoring(持续监控)
+
+***
+
