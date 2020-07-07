@@ -32,3 +32,12 @@ title: "不可变基础设施"
 
 ![](deployments.png)
 
+***
+
+### 阿里云原生课堂
+
+![](process.jpg)
+
+***
+
+![](significance.jpg)
