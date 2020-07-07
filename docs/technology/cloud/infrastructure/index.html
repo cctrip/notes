@@ -4,11 +4,8 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="不可变基础设施 #  What #  定义
- Immutable infrastructure refers to servers (or VMs) that are never modified after deployment.
-  Automate the setup and deployment for every part and every layer of your infrastructure.
-Never change any part of your system once it is deployed. If you need to change it, deploy a new system.
-  immutable infrastructure is a model in which no updates, security patches, or configuration changes happen “in-place” on production systems.">
+<meta name="description" content="不可变基础设施 #  What #  定义 #   不可变基础设施(Immutable.Infrastructure)是由 Chad Fowler 于2013年提出的一个很有前瞻性的构想：在这种模式中，任何基础设施的实例（包括服务器、容 器等各种软硬件）一旦创建之后便成为一种只读状态，不可对其进行任何更改。如果 需要修改或升级某些实例，唯一的方式就是创建一批新的实例以替换。
+  优势 #   基础架构是一致且可靠的，这使测试更加简单 部署更简单，更可预测 每个部署都是版本化和自动化的，因此轻松进行环境回滚 错误，配置偏差和雪花服务器已完全缓解或消除 在所有环境中部署均保持一致 借助云服务，轻松实现自动扩展     阿里云原生课堂 #     ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="不可变基础设施" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -18,7 +15,7 @@ Never change any part of your system once it is deployed. If you need to change 
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.630fcfd183b2dcde1ed536bd40a81e942a1b44b340fe3e0fc1ea499b8da357fc.js" integrity="sha256-Yw/P0YOy3N4e1Ta9QKgelCobRLNA/j4PwepJm42jV/w="></script>
+<script defer src="/notes/en.search.min.21f26b05ed52a11b4532cb4f97ce68e34870872174627afd1c7a17777a7a5169.js" integrity="sha256-IfJrBe1SoRtFMstPl85o40hwhyF0Ynr9HHoXd3p6UWk="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/infrastructure/index.xml" title="学而不思则罔" />
@@ -504,7 +501,11 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#不可变基础设施">不可变基础设施</a>
       <ul>
-        <li><a href="#what">What</a></li>
+        <li><a href="#what">What</a>
+          <ul>
+            <li><a href="#定义">定义</a></li>
+          </ul>
+        </li>
         <li><a href="#优势">优势</a></li>
         <li><a href="#阿里云原生课堂">阿里云原生课堂</a></li>
       </ul>
@@ -528,16 +529,13 @@ https://github.com/alex-shpak/hugo-book
   What
   <a class="anchor" href="#what">#</a>
 </h2>
-<p>定义</p>
+<h3 id="定义">
+  定义
+  <a class="anchor" href="#%e5%ae%9a%e4%b9%89">#</a>
+</h3>
 <blockquote>
-<p>Immutable infrastructure refers to servers (or VMs) that are never modified after deployment.</p>
-</blockquote>
-<blockquote>
-<p>Automate the setup and deployment for every part and every layer of your infrastructure.</p>
-<p>Never change any part of your system once it is deployed. If you need to change it, deploy a new system.</p>
-</blockquote>
-<blockquote>
-<p>immutable infrastructure is a model in which no updates, security patches, or configuration changes happen “in-place” on production systems. If any change is needed, a new version of the architecture is built and deployed into production</p>
+<p>不可变基础设施(Immutable.Infrastructure)是由 
+  <a href="http://chadfowler.com/2013/06/23/immutable-deployments.html">Chad Fowler</a> 于2013年提出的一个很有前瞻性的构想：在这种模式中，任何基础设施的实例（包括服务器、容 器等各种软硬件）一旦创建之后便成为一种只读状态，不可对其进行任何更改。如果 需要修改或升级某些实例，唯一的方式就是创建一批新的实例以替换。</p>
 </blockquote>
 <hr>
 <h2 id="优势">
@@ -614,7 +612,11 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#不可变基础设施">不可变基础设施</a>
       <ul>
-        <li><a href="#what">What</a></li>
+        <li><a href="#what">What</a>
+          <ul>
+            <li><a href="#定义">定义</a></li>
+          </ul>
+        </li>
         <li><a href="#优势">优势</a></li>
         <li><a href="#阿里云原生课堂">阿里云原生课堂</a></li>
       </ul>
