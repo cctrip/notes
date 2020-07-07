@@ -7,15 +7,9 @@ title: "不可变基础设施"
 
 ## What
 
-定义
+### 定义
 
-> Immutable infrastructure refers to servers (or VMs) that are never modified after deployment.
-
-> Automate the setup and deployment for every part and every layer of your infrastructure.
->
-> Never change any part of your system once it is deployed. If you need to change it, deploy a new system.
-
-> immutable infrastructure is a model in which no updates, security patches, or configuration changes happen “in-place” on production systems. If any change is needed, a new version of the architecture is built and deployed into production
+> 不可变基础设施(Immutable.Infrastructure)是由 [Chad Fowler](http://chadfowler.com/2013/06/23/immutable-deployments.html) 于2013年提出的一个很有前瞻性的构想：在这种模式中，任何基础设施的实例（包括服务器、容 器等各种软硬件）一旦创建之后便成为一种只读状态，不可对其进行任何更改。如果 需要修改或升级某些实例，唯一的方式就是创建一批新的实例以替换。
 
 ***
 
