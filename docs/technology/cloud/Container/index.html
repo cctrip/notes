@@ -4,7 +4,15 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="容器技术 #  ">
+<meta name="description" content="容器技术 #  What #  定义 #   容器提供了一种逻辑打包机制，以这种机制打包的应用可以脱离其实际运行的环境。利用这种脱离，不管目标环境是私有数据中心、公有云，还是开发者的个人笔记本电脑，您都可以轻松、一致地部署基于容器的应用。容器化使开发者和 IT 运营团队的关注点泾渭分明 - 开发者专注于应用逻辑和依赖项，而 IT 运营团队可以专注于部署和管理，不必为应用细节分心，例如具体的软件版本和应用特有的配置。
+  VM vs Container #    Why #  与虚拟机的硬件堆栈虚拟化不同，容器在操作系统级别进行虚拟化，且可以直接在操作系统内核上运行多个容器。也就是说，容器更轻巧：它们共享操作系统内核，启动速度更快，且与启动整个操作系统相比其占用的内存微乎其微。
+  一致的环境
+  在任何地方运行
+  隔离
+容器会在操作系统级别虚拟化 CPU、内存、存储和网络资源，为开发者提供在逻辑上与其他应用相隔离的沙盒化操作系统接口。
+   How #  基础 #  Namespaces #  Namespace是对全局系统资源的一种封装隔离，使得处于不同namespace的进程拥有独立的全局系统资源，改变一个namespace中的系统资源只会影响当前namespace里的进程，对其他namespace中的进程没有影响。
+目前，Linux内核里面实现了7种不同类型的namespace。
+名称 宏定义 隔离内容 Cgroup CLONE_NEWCGROUP Cgroup root directory (since Linux 4.6) IPC CLONE_NEWIPC System V IPC, POSIX message queues (since Linux 2.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="容器技术" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -14,7 +22,7 @@
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.21f26b05ed52a11b4532cb4f97ce68e34870872174627afd1c7a17777a7a5169.js" integrity="sha256-IfJrBe1SoRtFMstPl85o40hwhyF0Ynr9HHoXd3p6UWk="></script>
+<script defer src="/notes/en.search.min.069f63d5c5da559151a144e2cc5a78a8e889e082f65b3fa7133ef040056692e3.js" integrity="sha256-Bp9j1cXaVZFRoUTizFp4qOiJ4IL2Wz&#43;nEz7wQAVmkuM="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/index.xml" title="学而不思则罔" />
@@ -536,7 +544,22 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#容器技术">容器技术</a></li>
+    <li><a href="#容器技术">容器技术</a>
+      <ul>
+        <li><a href="#what">What</a>
+          <ul>
+            <li><a href="#定义">定义</a></li>
+            <li><a href="#vm-vs-container">VM vs Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#why">Why</a></li>
+        <li><a href="#how">How</a>
+          <ul>
+            <li><a href="#基础">基础</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -552,6 +575,92 @@ https://github.com/alex-shpak/hugo-book
   容器技术
   <a class="anchor" href="#%e5%ae%b9%e5%99%a8%e6%8a%80%e6%9c%af">#</a>
 </h1>
+<h2 id="what">
+  What
+  <a class="anchor" href="#what">#</a>
+</h2>
+<h3 id="定义">
+  定义
+  <a class="anchor" href="#%e5%ae%9a%e4%b9%89">#</a>
+</h3>
+<blockquote>
+<p>容器提供了一种逻辑打包机制，以这种机制打包的应用可以脱离其实际运行的环境。利用这种脱离，不管目标环境是私有数据中心、公有云，还是开发者的个人笔记本电脑，您都可以轻松、一致地部署基于容器的应用。容器化使开发者和 IT 运营团队的关注点泾渭分明 - 开发者专注于应用逻辑和依赖项，而 IT 运营团队可以专注于部署和管理，不必为应用细节分心，例如具体的软件版本和应用特有的配置。</p>
+</blockquote>
+<hr>
+<h3 id="vm-vs-container">
+  VM vs Container
+  <a class="anchor" href="#vm-vs-container">#</a>
+</h3>
+<p>
+  <img src="containers.png" alt="" /></p>
+<hr>
+<h2 id="why">
+  Why
+  <a class="anchor" href="#why">#</a>
+</h2>
+<p>与虚拟机的硬件堆栈虚拟化不同，容器在操作系统级别进行虚拟化，且可以直接在操作系统内核上运行多个容器。也就是说，容器更轻巧：它们共享操作系统内核，启动速度更快，且与启动整个操作系统相比其占用的内存微乎其微。</p>
+<ul>
+<li>
+<p><strong>一致的环境</strong></p>
+</li>
+<li>
+<p><strong>在任何地方运行</strong></p>
+</li>
+<li>
+<p><strong>隔离</strong></p>
+<p>容器会在操作系统级别虚拟化 CPU、内存、存储和网络资源，为开发者提供在逻辑上与其他应用相隔离的沙盒化操作系统接口。</p>
+</li>
+</ul>
+<hr>
+<h2 id="how">
+  How
+  <a class="anchor" href="#how">#</a>
+</h2>
+<h3 id="基础">
+  基础
+  <a class="anchor" href="#%e5%9f%ba%e7%a1%80">#</a>
+</h3>
+<h4 id="namespaces">
+  Namespaces
+  <a class="anchor" href="#namespaces">#</a>
+</h4>
+<p>Namespace是对全局系统资源的一种封装隔离，使得处于不同namespace的进程拥有独立的全局系统资源，改变一个namespace中的系统资源只会影响当前namespace里的进程，对其他namespace中的进程没有影响。</p>
+<p>目前，Linux内核里面实现了7种不同类型的namespace。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">名称         宏定义             隔离内容
+Cgroup      CLONE_NEWCGROUP   Cgroup root directory (since Linux 4.6)
+IPC         CLONE_NEWIPC      System V IPC, POSIX message queues (since Linux 2.6.19)
+Network     CLONE_NEWNET      Network devices, stacks, ports, etc. (since Linux 2.6.24)
+Mount       CLONE_NEWNS       Mount points (since Linux 2.4.19)
+PID         CLONE_NEWPID      Process IDs (since Linux 2.6.24)
+User        CLONE_NEWUSER     User and group IDs (started in Linux 2.6.23 and completed in Linux 3.8)
+UTS         CLONE_NEWUTS      Hostname and NIS domain name (since Linux 2.6.19)
+</code></pre></div><h4 id="control-groups">
+  Control groups
+  <a class="anchor" href="#control-groups">#</a>
+</h4>
+<p>cgroup和namespace类似，也是将进程进行分组，但它的目的和namespace不一样，namespace是为了隔离进程组之间的资源，而cgroup是为了对一组进程进行统一的资源监控和限制。</p>
+<p>cgroup主要包括下面两部分：</p>
+<ul>
+<li>
+<p>subsystem</p>
+<p>一个subsystem就是一个内核模块，他被关联到一颗cgroup树之后，就会在树的每个节点（进程组）上做具体的操作。subsystem经常被称作&quot;resource controller&rdquo;，因为它主要被用来调度或者限制每个进程组的资源，但是这个说法不完全准确，因为有时我们将进程分组只是为了做一些监控，观察一下他们的状态，比如perf_event subsystem。到目前为止，Linux支持12种subsystem，比如限制CPU的使用时间，限制使用的内存，统计CPU的使用情况，冻结和恢复一组进程等。</p>
+</li>
+<li>
+<p>hierarchy</p>
+<p>一个hierarchy可以理解为一棵cgroup树，树的每个节点就是一个进程组，每棵树都会与零到多个subsystem关联。在一颗树里面，会包含Linux系统中的所有进程，但每个进程只能属于一个节点（进程组）。系统中可以有很多颗cgroup树，每棵树都和不同的subsystem关联，一个进程可以属于多颗树，即一个进程可以属于多个进程组，只是这些进程组和不同的subsystem关联。目前Linux支持12种subsystem，如果不考虑不与任何subsystem关联的情况（systemd就属于这种情况），Linux里面最多可以建12颗cgroup树，每棵树关联一个subsystem，当然也可以只建一棵树，然后让这棵树关联所有的subsystem。当一颗cgroup树不和任何subsystem关联的时候，意味着这棵树只是将进程进行分组，至于要在分组的基础上做些什么，将由应用程序自己决定，systemd就是一个这样的例子。</p>
+</li>
+</ul>
+<h4 id="union-file-systems">
+  Union file systems
+  <a class="anchor" href="#union-file-systems">#</a>
+</h4>
+<p>容器中使用的文件系统是可堆叠的，这意味着可以将不同分支中的文件和目录重叠以形成单个文件系统。该系统有助于避免在每次部署新容器时重复数据。Docker使用此技术实现镜像的功能
+  <a href="https://docs.docker.com/storage/storagedriver/">文档</a></p>
+<ul>
+<li>overlay2</li>
+<li>aufs</li>
+</ul>
+<hr>
 </article>
  
       
@@ -599,7 +708,22 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#容器技术">容器技术</a></li>
+    <li><a href="#容器技术">容器技术</a>
+      <ul>
+        <li><a href="#what">What</a>
+          <ul>
+            <li><a href="#定义">定义</a></li>
+            <li><a href="#vm-vs-container">VM vs Container</a></li>
+          </ul>
+        </li>
+        <li><a href="#why">Why</a></li>
+        <li><a href="#how">How</a>
+          <ul>
+            <li><a href="#基础">基础</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
