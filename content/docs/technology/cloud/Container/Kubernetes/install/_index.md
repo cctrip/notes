@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: false
-weight: 2
+weight: 3
 title: "安装"
 ---
 
