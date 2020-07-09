@@ -5,16 +5,14 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Kubernetes #  What #   Kubernetes 是一个可移植的、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。Kubernetes 拥有一个庞大且快速增长的生态系统。Kubernetes 的服务、支持和工具广泛可用。
-  Why #  容器是打包和运行应用程序的好方式。在生产环境中，您需要管理运行应用程序的容器，并确保不会停机。例如，如果一个容器发生故障，则需要启动另一个容器。如果系统处理此行为，会不会更容易？
-这就是 Kubernetes 的救援方法！Kubernetes 为您提供了一个可弹性运行分布式系统的框架。Kubernetes 会满足您的扩展要求、故障转移、部署模式等。
-Kubernetes 提供：
-  服务发现和负载均衡 Kubernetes 可以使用 DNS 名称或自己的 IP 地址公开容器，如果到容器的流量很大，Kubernetes 可以负载均衡并分配网络流量，从而使部署稳定。
-  存储编排 Kubernetes 允许您自动挂载您选择的存储系统，例如本地存储、公共云提供商等。
-  自动部署和回滚 您可以使用 Kubernetes 描述已部署容器的所需状态，它可以以受控的速率将实际状态更改为所需状态。例如，您可以自动化 Kubernetes 来为您的部署创建新容器，删除现有容器并将它们的所有资源用于新容器。
-  自动二进制打包 Kubernetes 允许您指定每个容器所需 CPU 和内存（RAM）。当容器指定了资源请求时，Kubernetes 可以做出更好的决策来管理容器的资源。
-  自我修复 Kubernetes 重新启动失败的容器、替换容器、杀死不响应用户定义的运行状况检查的容器，并且在准备好服务之前不将其通告给客户端。
-  密钥与配置管理 Kubernetes 允许您存储和管理敏感信息，例如密码、OAuth 令牌和 ssh 密钥。您可以在不重建容器镜像的情况下部署和更新密钥和应用程序配置，也无需在堆栈配置中暴露密钥。
-   How #  Kubernetes 组件 #   ">
+  Why #  部署变化 #   传统部署时代： 早期，组织在物理服务器上运行应用程序。无法为物理服务器中的应用程序定义资源边界，这会导致资源分配问题。例如，如果在物理服务器上运行多个应用程序，则可能会出现一个应用程序占用大部分资源的情况，结果可能导致其他应用程序的性能下降。一种解决方案是在不同的物理服务器上运行每个应用程序，但是由于资源利用不足而无法扩展，并且组织维护许多物理服务器的成本很高。
+虚拟化部署时代： 作为解决方案，引入了虚拟化功能，它允许您在单个物理服务器的 CPU 上运行多个虚拟机（VM）。虚拟化功能允许应用程序在 VM 之间隔离，并提供安全级别，因为一个应用程序的信息不能被另一应用程序自由地访问。
+因为虚拟化可以轻松地添加或更新应用程序、降低硬件成本等等，所以虚拟化可以更好地利用物理服务器中的资源，并可以实现更好的可伸缩性。
+每个 VM 是一台完整的计算机，在虚拟化硬件之上运行所有组件，包括其自己的操作系统。
+容器部署时代： 容器类似于 VM，但是它们具有轻量级的隔离属性，可以在应用程序之间共享操作系统（OS）。因此，容器被认为是轻量级的。容器与 VM 类似，具有自己的文件系统、CPU、内存、进程空间等。由于它们与基础架构分离，因此可以跨云和 OS 分发进行移植。
+容器因具有许多优势而变得流行起来。下面列出了容器的一些好处：
+ 敏捷应用程序的创建和部署：与使用 VM 镜像相比，提高了容器镜像创建的简便性和效率。 持续开发、集成和部署：通过快速简单的回滚(由于镜像不可变性)，提供可靠且频繁的容器镜像构建和部署。 关注开发与运维的分离：在构建/发布时而不是在部署时创建应用程序容器镜像，从而将应用程序与基础架构分离。 可观察性不仅可以显示操作系统级别的信息和指标，还可以显示应用程序的运行状况和其他指标信号。 跨开发、测试和生产的环境一致性：在便携式计算机上与在云中相同地运行。 云和操作系统分发的可移植性：可在 Ubuntu、RHEL、CoreOS、本地、Google Kubernetes Engine 和其他任何地方运行。 以应用程序为中心的管理：提高抽象级别，从在虚拟硬件上运行 OS 到使用逻辑资源在 OS 上运行应用程序。 松散耦合、分布式、弹性、解放的微服务：应用程序被分解成较小的独立部分，并且可以动态部署和管理 - 而不是在一台大型单机上整体运行。 资源隔离：可预测的应用程序性能。 资源利用：高效率和高密度。   Kubernetes能做什么 #  容器是打包和运行应用程序的好方式。在生产环境中，您需要管理运行应用程序的容器，并确保不会停机。例如，如果一个容器发生故障，则需要启动另一个容器。如果系统处理此行为，会不会更容易？
+这就是 Kubernetes 的救援方法！Kubernetes 为您提供了一个可弹性运行分布式系统的框架。Kubernetes 会满足您的扩展要求、故障转移、部署模式等。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="K8S" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -24,7 +22,7 @@ Kubernetes 提供：
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.8515fc80c31bcb66a89452684994ff930bfde21a77443d4cd0914f9fe73023dd.js" integrity="sha256-hRX8gMMby2aolFJoSZT/kwv94hp3RD1M0JFPn&#43;cwI90="></script>
+<script defer src="/notes/en.search.min.b54d4e874f671db5c839c910bcd9005b69aee83660415fca365187e7447fcd50.js" integrity="sha256-tU1Oh09nHbXIOckQvNkAW2mu6DZgQV/KNlGH50R/zVA="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/index.xml" title="学而不思则罔" />
@@ -231,14 +229,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/cloud/Container/Docker/" class="collapsed ">Docker</a>
-  
-
-          
-  
-  
-  
-
+    <a href="/notes/docs/technology/cloud/Container/map/" class="">技能图谱</a>
   
 
         </li>
@@ -248,7 +239,14 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/cloud/Container/map/" class="">技能图谱</a>
+    <a href="/notes/docs/technology/cloud/Container/Docker/" class="collapsed ">Docker</a>
+  
+
+          
+  
+  
+  
+
   
 
         </li>
@@ -614,14 +612,16 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li><a href="#what">What</a>
+        <li><a href="#what">What</a></li>
+        <li><a href="#why">Why</a>
           <ul>
-            <li><a href="#why">Why</a></li>
+            <li><a href="#部署变化">部署变化</a></li>
+            <li><a href="#kubernetes能做什么">Kubernetes能做什么</a></li>
           </ul>
         </li>
         <li><a href="#how">How</a>
           <ul>
-            <li><a href="#kubernetes-组件">Kubernetes 组件</a></li>
+            <li><a href="#kubernetes-架构arch">Kubernetes <a href="arch">架构</a></a></li>
           </ul>
         </li>
       </ul>
@@ -649,9 +649,38 @@ https://github.com/alex-shpak/hugo-book
 <p>Kubernetes 是一个可移植的、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。Kubernetes 拥有一个庞大且快速增长的生态系统。Kubernetes 的服务、支持和工具广泛可用。</p>
 </blockquote>
 <hr>
-<h3 id="why">
+<h2 id="why">
   Why
   <a class="anchor" href="#why">#</a>
+</h2>
+<h3 id="部署变化">
+  部署变化
+  <a class="anchor" href="#%e9%83%a8%e7%bd%b2%e5%8f%98%e5%8c%96">#</a>
+</h3>
+<p>
+  <img src="compare.svg" alt="compare" /></p>
+<p><strong>传统部署时代：</strong> 早期，组织在物理服务器上运行应用程序。无法为物理服务器中的应用程序定义资源边界，这会导致资源分配问题。例如，如果在物理服务器上运行多个应用程序，则可能会出现一个应用程序占用大部分资源的情况，结果可能导致其他应用程序的性能下降。一种解决方案是在不同的物理服务器上运行每个应用程序，但是由于资源利用不足而无法扩展，并且组织维护许多物理服务器的成本很高。</p>
+<p><strong>虚拟化部署时代：</strong> 作为解决方案，引入了虚拟化功能，它允许您在单个物理服务器的 CPU 上运行多个虚拟机（VM）。虚拟化功能允许应用程序在 VM 之间隔离，并提供安全级别，因为一个应用程序的信息不能被另一应用程序自由地访问。</p>
+<p>因为虚拟化可以轻松地添加或更新应用程序、降低硬件成本等等，所以虚拟化可以更好地利用物理服务器中的资源，并可以实现更好的可伸缩性。</p>
+<p>每个 VM 是一台完整的计算机，在虚拟化硬件之上运行所有组件，包括其自己的操作系统。</p>
+<p><strong>容器部署时代：</strong> 容器类似于 VM，但是它们具有轻量级的隔离属性，可以在应用程序之间共享操作系统（OS）。因此，容器被认为是轻量级的。容器与 VM 类似，具有自己的文件系统、CPU、内存、进程空间等。由于它们与基础架构分离，因此可以跨云和 OS 分发进行移植。</p>
+<p>容器因具有许多优势而变得流行起来。下面列出了容器的一些好处：</p>
+<ul>
+<li>敏捷应用程序的创建和部署：与使用 VM 镜像相比，提高了容器镜像创建的简便性和效率。</li>
+<li>持续开发、集成和部署：通过快速简单的回滚(由于镜像不可变性)，提供可靠且频繁的容器镜像构建和部署。</li>
+<li>关注开发与运维的分离：在构建/发布时而不是在部署时创建应用程序容器镜像，从而将应用程序与基础架构分离。</li>
+<li>可观察性不仅可以显示操作系统级别的信息和指标，还可以显示应用程序的运行状况和其他指标信号。</li>
+<li>跨开发、测试和生产的环境一致性：在便携式计算机上与在云中相同地运行。</li>
+<li>云和操作系统分发的可移植性：可在 Ubuntu、RHEL、CoreOS、本地、Google Kubernetes Engine 和其他任何地方运行。</li>
+<li>以应用程序为中心的管理：提高抽象级别，从在虚拟硬件上运行 OS 到使用逻辑资源在 OS 上运行应用程序。</li>
+<li>松散耦合、分布式、弹性、解放的微服务：应用程序被分解成较小的独立部分，并且可以动态部署和管理 - 而不是在一台大型单机上整体运行。</li>
+<li>资源隔离：可预测的应用程序性能。</li>
+<li>资源利用：高效率和高密度。</li>
+</ul>
+<hr>
+<h3 id="kubernetes能做什么">
+  Kubernetes能做什么
+  <a class="anchor" href="#kubernetes%e8%83%bd%e5%81%9a%e4%bb%80%e4%b9%88">#</a>
 </h3>
 <p>容器是打包和运行应用程序的好方式。在生产环境中，您需要管理运行应用程序的容器，并确保不会停机。例如，如果一个容器发生故障，则需要启动另一个容器。如果系统处理此行为，会不会更容易？</p>
 <p>这就是 Kubernetes 的救援方法！Kubernetes 为您提供了一个可弹性运行分布式系统的框架。Kubernetes 会满足您的扩展要求、故障转移、部署模式等。</p>
@@ -687,9 +716,10 @@ Kubernetes 允许您存储和管理敏感信息，例如密码、OAuth 令牌和
   How
   <a class="anchor" href="#how">#</a>
 </h2>
-<h3 id="kubernetes-组件">
-  Kubernetes 组件
-  <a class="anchor" href="#kubernetes-%e7%bb%84%e4%bb%b6">#</a>
+Kubernetes <h3 id="kubernetes-架构arch">
+  
+  <a href="/notes/docs/technology/cloud/Container/Kubernetes/arch/">架构</a>
+  <a class="anchor" href="#kubernetes-%e6%9e%b6%e6%9e%84arch">#</a>
 </h3>
 <p>
   <img src="components-of-kubernetes.png" alt="" /></p>
@@ -703,9 +733,9 @@ Kubernetes 允许您存储和管理敏感信息，例如密码、OAuth 令牌和
 
 
 
-  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/b70b1af30e3aa36dae2c6d5b16a186d615d55362" title='Last modified by codecc | July 5, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/de3e8fc75160b4b03d7ca4461f3779a596152d72" title='Last modified by codecc | July 9, 2020' target="_blank" rel="noopener">
       <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 5, 2020</span>
+      <span>July 9, 2020</span>
     </a>
   </div>
 
@@ -742,14 +772,16 @@ Kubernetes 允许您存储和管理敏感信息，例如密码、OAuth 令牌和
   <ul>
     <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li><a href="#what">What</a>
+        <li><a href="#what">What</a></li>
+        <li><a href="#why">Why</a>
           <ul>
-            <li><a href="#why">Why</a></li>
+            <li><a href="#部署变化">部署变化</a></li>
+            <li><a href="#kubernetes能做什么">Kubernetes能做什么</a></li>
           </ul>
         </li>
         <li><a href="#how">How</a>
           <ul>
-            <li><a href="#kubernetes-组件">Kubernetes 组件</a></li>
+            <li><a href="#kubernetes-架构arch">Kubernetes <a href="arch">架构</a></a></li>
           </ul>
         </li>
       </ul>
