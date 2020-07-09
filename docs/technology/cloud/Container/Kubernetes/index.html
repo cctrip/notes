@@ -4,19 +4,17 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes #  k8s是一个开源系统，它可以被用于自动部署，扩展和管理容器化（containerized）应用程序。
- 架构 #    Master #    etcd
-  API Server
-  Scheduler
-  Controller manager
-  Node #    Kubelet
-  Kube-proxy
-  cAdvisor
-   安装 #     Kubeadm
-基于kubeadm工具部署kubernetes,包含Master和Node。(测试版本，不适用于生产环境)
-   Master-Cluster
-基于kubernetes安装包部署kubernetes集群环境。
-   Objects #  basic objects #    Pod">
+<meta name="description" content="Kubernetes #  What #   Kubernetes 是一个可移植的、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。Kubernetes 拥有一个庞大且快速增长的生态系统。Kubernetes 的服务、支持和工具广泛可用。
+  Why #  容器是打包和运行应用程序的好方式。在生产环境中，您需要管理运行应用程序的容器，并确保不会停机。例如，如果一个容器发生故障，则需要启动另一个容器。如果系统处理此行为，会不会更容易？
+这就是 Kubernetes 的救援方法！Kubernetes 为您提供了一个可弹性运行分布式系统的框架。Kubernetes 会满足您的扩展要求、故障转移、部署模式等。
+Kubernetes 提供：
+  服务发现和负载均衡 Kubernetes 可以使用 DNS 名称或自己的 IP 地址公开容器，如果到容器的流量很大，Kubernetes 可以负载均衡并分配网络流量，从而使部署稳定。
+  存储编排 Kubernetes 允许您自动挂载您选择的存储系统，例如本地存储、公共云提供商等。
+  自动部署和回滚 您可以使用 Kubernetes 描述已部署容器的所需状态，它可以以受控的速率将实际状态更改为所需状态。例如，您可以自动化 Kubernetes 来为您的部署创建新容器，删除现有容器并将它们的所有资源用于新容器。
+  自动二进制打包 Kubernetes 允许您指定每个容器所需 CPU 和内存（RAM）。当容器指定了资源请求时，Kubernetes 可以做出更好的决策来管理容器的资源。
+  自我修复 Kubernetes 重新启动失败的容器、替换容器、杀死不响应用户定义的运行状况检查的容器，并且在准备好服务之前不将其通告给客户端。
+  密钥与配置管理 Kubernetes 允许您存储和管理敏感信息，例如密码、OAuth 令牌和 ssh 密钥。您可以在不重建容器镜像的情况下部署和更新密钥和应用程序配置，也无需在堆栈配置中暴露密钥。
+   How #  Kubernetes 组件 #   ">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="K8S" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -26,7 +24,7 @@
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.069f63d5c5da559151a144e2cc5a78a8e889e082f65b3fa7133ef040056692e3.js" integrity="sha256-Bp9j1cXaVZFRoUTizFp4qOiJ4IL2Wz&#43;nEz7wQAVmkuM="></script>
+<script defer src="/notes/en.search.min.8515fc80c31bcb66a89452684994ff930bfde21a77443d4cd0914f9fe73023dd.js" integrity="sha256-hRX8gMMby2aolFJoSZT/kwv94hp3RD1M0JFPn&#43;cwI90="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/index.xml" title="学而不思则罔" />
@@ -250,6 +248,16 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
+    <a href="/notes/docs/technology/cloud/Container/map/" class="">技能图谱</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
     <a href="/notes/docs/technology/cloud/Container/Kubernetes/" class="collapsed active">K8S</a>
   
 
@@ -266,6 +274,27 @@ https://github.com/alex-shpak/hugo-book
           
   
     <a href="/notes/docs/technology/cloud/Container/Kubernetes/map/" class="">技能图谱</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/arch/" class="">架构</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
   
 
         </li>
@@ -585,12 +614,14 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li>
+        <li><a href="#what">What</a>
           <ul>
-            <li><a href="#架构">架构</a></li>
-            <li><a href="#安装">安装</a></li>
-            <li><a href="#objects">Objects</a></li>
-            <li><a href="#control-plane">Control Plane</a></li>
+            <li><a href="#why">Why</a></li>
+          </ul>
+        </li>
+        <li><a href="#how">How</a>
+          <ul>
+            <li><a href="#kubernetes-组件">Kubernetes 组件</a></li>
           </ul>
         </li>
       </ul>
@@ -610,123 +641,58 @@ https://github.com/alex-shpak/hugo-book
   Kubernetes
   <a class="anchor" href="#kubernetes">#</a>
 </h1>
-<p>k8s是一个开源系统，它可以被用于自动部署，扩展和管理容器化（containerized）应用程序。</p>
+<h2 id="what">
+  What
+  <a class="anchor" href="#what">#</a>
+</h2>
+<blockquote>
+<p>Kubernetes 是一个可移植的、可扩展的开源平台，用于管理容器化的工作负载和服务，可促进声明式配置和自动化。Kubernetes 拥有一个庞大且快速增长的生态系统。Kubernetes 的服务、支持和工具广泛可用。</p>
+</blockquote>
 <hr>
-<h3 id="架构">
-  架构
-  <a class="anchor" href="#%e6%9e%b6%e6%9e%84">#</a>
+<h3 id="why">
+  Why
+  <a class="anchor" href="#why">#</a>
+</h3>
+<p>容器是打包和运行应用程序的好方式。在生产环境中，您需要管理运行应用程序的容器，并确保不会停机。例如，如果一个容器发生故障，则需要启动另一个容器。如果系统处理此行为，会不会更容易？</p>
+<p>这就是 Kubernetes 的救援方法！Kubernetes 为您提供了一个可弹性运行分布式系统的框架。Kubernetes 会满足您的扩展要求、故障转移、部署模式等。</p>
+<p>Kubernetes 提供：</p>
+<ul>
+<li>
+<p><strong>服务发现和负载均衡</strong>
+Kubernetes 可以使用 DNS 名称或自己的 IP 地址公开容器，如果到容器的流量很大，Kubernetes 可以负载均衡并分配网络流量，从而使部署稳定。</p>
+</li>
+<li>
+<p><strong>存储编排</strong>
+Kubernetes 允许您自动挂载您选择的存储系统，例如本地存储、公共云提供商等。</p>
+</li>
+<li>
+<p><strong>自动部署和回滚</strong>
+您可以使用 Kubernetes 描述已部署容器的所需状态，它可以以受控的速率将实际状态更改为所需状态。例如，您可以自动化 Kubernetes 来为您的部署创建新容器，删除现有容器并将它们的所有资源用于新容器。</p>
+</li>
+<li>
+<p><strong>自动二进制打包</strong>
+Kubernetes 允许您指定每个容器所需 CPU 和内存（RAM）。当容器指定了资源请求时，Kubernetes 可以做出更好的决策来管理容器的资源。</p>
+</li>
+<li>
+<p><strong>自我修复</strong>
+Kubernetes 重新启动失败的容器、替换容器、杀死不响应用户定义的运行状况检查的容器，并且在准备好服务之前不将其通告给客户端。</p>
+</li>
+<li>
+<p><strong>密钥与配置管理</strong>
+Kubernetes 允许您存储和管理敏感信息，例如密码、OAuth 令牌和 ssh 密钥。您可以在不重建容器镜像的情况下部署和更新密钥和应用程序配置，也无需在堆栈配置中暴露密钥。</p>
+</li>
+</ul>
+<hr>
+<h2 id="how">
+  How
+  <a class="anchor" href="#how">#</a>
+</h2>
+<h3 id="kubernetes-组件">
+  Kubernetes 组件
+  <a class="anchor" href="#kubernetes-%e7%bb%84%e4%bb%b6">#</a>
 </h3>
 <p>
-  <img src="architecture.png" alt="k8s架构" /></p>
-<hr>
-<h5 id="master">
-  Master
-  <a class="anchor" href="#master">#</a>
-</h5>
-<ul>
-<li>
-<p>etcd</p>
-</li>
-<li>
-<p>API Server</p>
-</li>
-<li>
-<p>Scheduler</p>
-</li>
-<li>
-<p>Controller manager</p>
-</li>
-</ul>
-<h5 id="node">
-  Node
-  <a class="anchor" href="#node">#</a>
-</h5>
-<ul>
-<li>
-<p>Kubelet</p>
-</li>
-<li>
-<p>Kube-proxy</p>
-</li>
-<li>
-<p>cAdvisor</p>
-</li>
-</ul>
-<hr>
-<h3 id="安装">
-  安装
-  <a class="anchor" href="#%e5%ae%89%e8%a3%85">#</a>
-</h3>
-<ul>
-<li>
-<p>
-  <a href="kubeadm.md">Kubeadm</a></p>
-<p>基于kubeadm工具部署kubernetes,包含Master和Node。(测试版本，不适用于生产环境)</p>
-</li>
-<li>
-<p>
-  <a href="cluster.md">Master-Cluster</a></p>
-<p>基于kubernetes安装包部署kubernetes集群环境。</p>
-</li>
-</ul>
-<hr>
-<h3 id="objects">
-  Objects
-  <a class="anchor" href="#objects">#</a>
-</h3>
-<h4 id="basic-objects">
-  basic objects
-  <a class="anchor" href="#basic-objects">#</a>
-</h4>
-<ul>
-<li>
-<p>Pod</p>
-</li>
-<li>
-<p>Service</p>
-</li>
-<li>
-<p>Volume</p>
-</li>
-<li>
-<p>Namespace</p>
-</li>
-</ul>
-<h4 id="controllers">
-  controllers
-  <a class="anchor" href="#controllers">#</a>
-</h4>
-<p>基于basic objects，提供额外的功能。</p>
-<ul>
-<li>
-<p>ReplicaSet</p>
-</li>
-<li>
-<p>Deployment</p>
-</li>
-<li>
-<p>StatefulSet</p>
-</li>
-<li>
-<p>DaemonSet</p>
-</li>
-<li>
-<p>Job</p>
-</li>
-</ul>
-<hr>
-<h3 id="control-plane">
-  Control Plane
-  <a class="anchor" href="#control-plane">#</a>
-</h3>
-<ul>
-<li>
-<p>Kubernetes Master</p>
-</li>
-<li>
-<p>Kubernetes Nodes</p>
-</li>
-</ul>
+  <img src="components-of-kubernetes.png" alt="" /></p>
 </article>
  
       
@@ -776,12 +742,14 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#kubernetes">Kubernetes</a>
       <ul>
-        <li>
+        <li><a href="#what">What</a>
           <ul>
-            <li><a href="#架构">架构</a></li>
-            <li><a href="#安装">安装</a></li>
-            <li><a href="#objects">Objects</a></li>
-            <li><a href="#control-plane">Control Plane</a></li>
+            <li><a href="#why">Why</a></li>
+          </ul>
+        </li>
+        <li><a href="#how">How</a>
+          <ul>
+            <li><a href="#kubernetes-组件">Kubernetes 组件</a></li>
           </ul>
         </li>
       </ul>
