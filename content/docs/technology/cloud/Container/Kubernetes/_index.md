@@ -73,7 +73,7 @@ Kubernetes 提供：
 
 ## How
 
-### Kubernetes[架构](arch)
+### [Kubernetes架构](arch)
 
 ![](components-of-kubernetes.png)
 
