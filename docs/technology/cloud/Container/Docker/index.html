@@ -4,14 +4,15 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Docker #  容器，操作系统层面的虚拟化技术。
- 基本概念 #     镜像
-   容器
-   仓库
-   安装 #  Docker安装
-#删除旧版本 yum remove docker docker-common docker-selinux docker-engine #获取repository文件 yum install -y yum-utils device-mapper-persistent-data lvm2 yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo #安装新版本 yum install docker-ce #启动 systemctl start docker.service   基本使用 #    docker pull :
-获取镜像
-  docker run [options] : options">
+<meta name="description" content="Docker #  What #   Docker是一个用于开发，交付和运行应用程序的开放平台。 Docker使您能够将应用程序与基础架构分开，从而可以快速交付软件。 借助Docker，您可以以与管理应用程序相同的方式来管理基础架构。
+  Docker平台 #  Docker提供了在松散隔离的环境（称为容器）中打包和运行应用程序的功能。隔离和安全性使您可以在给定主机上同时运行多个容器。容器重量轻，因为它们不需要管理程序的额外负担，而是直接在主机的内核中运行。这意味着与使用虚拟机相比，可以在给定的硬件组合上运行更多的容器。您甚至可以在实际上是虚拟机的主机中运行Docker容器！
+Docker提供了工具和平台来管理容器的生命周期：
+ 使用容器开发应用程序及其支持组件。 容器成为分发和测试您的应用程序的单元。 准备就绪后，可以将应用程序作为容器或协调服务部署到生产环境中。无论您的生产环境是本地数据中心，云提供商还是二者的混合体，其工作原理都相同。   Docker Engine #  Docker Engine是具有这些主要组件的client-server应用程序：
+ Docker daemon是一个长时间运行的守护进程 REST API指定程序可以用来与守护程序进行通信并指示其操作的接口 command line interface (CLI) 客户端  CLI使用Docker REST API通过脚本或直接CLI命令来控制Docker守护程序或与Docker守护程序进行交互。许多其他Docker应用程序都使用基础API和CLI。
+Docker daemon 创建和管理Docker对象，例如映像，容器，网络和卷。
+  How #  架构 #    底层技术 #  Namespaces #  Namespace实现对全局系统资源的一种封装隔离
+Control Groups #  CGroup是为了对一组进程进行统一的资源监控和限制
+Union file systems #  Union file system 实现将不同分支中的文件和目录重叠以形成单个文件系统。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Docker" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -21,7 +22,7 @@
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.ff65f7ea4b10fdc78f27735862db5a6640569e701a2dfedc94edb62f82245a98.js" integrity="sha256-/2X36ksQ/cePJ3NYYttaZkBWnnAaLf7clO22L4IkWpg="></script>
+<script defer src="/notes/en.search.min.6590529a1c256579fae3ed8f1ca7610b060520909c861a22309d5387a7e2fd66.js" integrity="sha256-ZZBSmhwlZXn64&#43;2PHKdhCwYFIJCchhoiMJ1Th6fi/WY="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Docker/index.xml" title="学而不思则罔" />
@@ -248,6 +249,27 @@ https://github.com/alex-shpak/hugo-book
 
   
   <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Docker/arch/" class="">架构</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
     
   </ul>
   
@@ -559,12 +581,16 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#docker">Docker</a>
       <ul>
-        <li>
+        <li><a href="#what">What</a>
           <ul>
-            <li><a href="#基本概念">基本概念</a></li>
-            <li><a href="#安装">安装</a></li>
-            <li><a href="#基本使用">基本使用</a></li>
-            <li><a href="#dockerfile">Dockerfile</a></li>
+            <li><a href="#docker平台">Docker平台</a></li>
+            <li><a href="#docker-engine">Docker Engine</a></li>
+          </ul>
+        </li>
+        <li><a href="#how">How</a>
+          <ul>
+            <li><a href="#架构arch"><a href="arch">架构</a></a></li>
+            <li><a href="#底层技术under"><a href="under">底层技术</a></a></li>
           </ul>
         </li>
       </ul>
@@ -584,98 +610,82 @@ https://github.com/alex-shpak/hugo-book
   Docker
   <a class="anchor" href="#docker">#</a>
 </h1>
-<p>容器，操作系统层面的虚拟化技术。</p>
+<h2 id="what">
+  What
+  <a class="anchor" href="#what">#</a>
+</h2>
+<blockquote>
+<p>Docker是一个用于开发，交付和运行应用程序的开放平台。 Docker使您能够将应用程序与基础架构分开，从而可以快速交付软件。 借助Docker，您可以以与管理应用程序相同的方式来管理基础架构。</p>
+</blockquote>
 <hr>
-<h3 id="基本概念">
-  基本概念
-  <a class="anchor" href="#%e5%9f%ba%e6%9c%ac%e6%a6%82%e5%bf%b5">#</a>
+<h3 id="docker平台">
+  Docker平台
+  <a class="anchor" href="#docker%e5%b9%b3%e5%8f%b0">#</a>
 </h3>
+<p>Docker提供了在松散隔离的环境（称为容器）中打包和运行应用程序的功能。隔离和安全性使您可以在给定主机上同时运行多个容器。容器重量轻，因为它们不需要管理程序的额外负担，而是直接在主机的内核中运行。这意味着与使用虚拟机相比，可以在给定的硬件组合上运行更多的容器。您甚至可以在实际上是虚拟机的主机中运行Docker容器！</p>
+<p>Docker提供了工具和平台来管理容器的生命周期：</p>
 <ul>
-<li>
-<p>
-  <a href="/notes/">镜像</a></p>
-</li>
-<li>
-<p>
-  <a href="/notes/">容器</a></p>
-</li>
-<li>
-<p>
-  <a href="/notes/">仓库</a></p>
-</li>
+<li>使用容器开发应用程序及其支持组件。</li>
+<li>容器成为分发和测试您的应用程序的单元。</li>
+<li>准备就绪后，可以将应用程序作为容器或协调服务部署到生产环境中。无论您的生产环境是本地数据中心，云提供商还是二者的混合体，其工作原理都相同。</li>
 </ul>
 <hr>
-<h3 id="安装">
-  安装
-  <a class="anchor" href="#%e5%ae%89%e8%a3%85">#</a>
+<h3 id="docker-engine">
+  Docker Engine
+  <a class="anchor" href="#docker-engine">#</a>
 </h3>
-<p>Docker安装</p>
-<pre><code>#删除旧版本
-yum remove docker docker-common docker-selinux docker-engine
-
-#获取repository文件
-yum install -y yum-utils device-mapper-persistent-data lvm2
-yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-
-#安装新版本
-yum install docker-ce
-
-#启动
-systemctl start docker.service
-</code></pre>
-<hr>
-<h3 id="基本使用">
-  基本使用
-  <a class="anchor" href="#%e5%9f%ba%e6%9c%ac%e4%bd%bf%e7%94%a8">#</a>
-</h3>
+<p>Docker Engine是具有这些主要组件的client-server应用程序：</p>
 <ul>
-<li>
-<p>docker pull <ImageName>:<version><br>
-获取镜像</p>
-</li>
-<li>
-<p>docker run [options] <ImageName>:<version>
-options</p>
-<ul>
-<li>-v &lt;local_dir&gt;:&lt;container_dir&gt;</li>
-<li>-p &lt;local_port&gt;:&lt;container_port&gt;</li>
-<li>-i 交互模式</li>
-<li>-d 后台运行</li>
-<li>-t 使用tty</li>
+<li><code>Docker daemon</code>是一个长时间运行的守护进程</li>
+<li><code>REST API</code>指定程序可以用来与守护程序进行通信并指示其操作的接口</li>
+<li><code>command line interface (CLI)</code> 客户端</li>
 </ul>
-</li>
-<li>
-<p>docker ps 查看容器</p>
-</li>
-<li>
-<p>docker images  查看镜像</p>
-</li>
-<li>
-<p>docker inspect container_name  查看容器配置</p>
-</li>
-<li>
-<p>docker build -t tag -f /PATH/Dockerfile   通过Dockerfile文件构建镜像</p>
-</li>
-</ul>
+<p><code>CLI</code>使用<code>Docker REST API</code>通过脚本或直接<code>CLI</code>命令来控制<code>Docker守护程序</code>或与<code>Docker守护程序</code>进行交互。许多其他Docker应用程序都使用基础API和CLI。</p>
+<p><code>Docker daemon </code>创建和管理Docker对象，例如映像，容器，网络和卷。</p>
+<p>
+  <img src="engine-components-flow.png" alt="" /></p>
 <hr>
-<h3 id="dockerfile">
-  Dockerfile
-  <a class="anchor" href="#dockerfile">#</a>
+<h2 id="how">
+  How
+  <a class="anchor" href="#how">#</a>
+</h2>
+<h3 id="架构arch">
+  
+  <a href="/notes/docs/technology/cloud/Container/Docker/arch/">架构</a>
+  <a class="anchor" href="#%e6%9e%b6%e6%9e%84arch">#</a>
 </h3>
-<p>Dockerfile编写</p>
-<pre><code>FROM &lt;imagename&gt;:&lt;version&gt;   #基于某个镜像
-
-ENV &lt;key&gt; &lt;value&gt;            #设置环境变量
-
-RUN command                  #执行命令
-
-COPY &lt;local_file&gt; &lt;container_path&gt; #拷贝本地文件到容器
-
-ENTRYPOINT                   #执行启动命令
-
-CMD
-</code></pre>
+<p>
+  <img src="architecture.svg" alt="" /></p>
 <hr>
+<h3 id="底层技术under">
+  
+      
+  <a href="under">底层技术</a>
+  <a class="anchor" href="#%e5%ba%95%e5%b1%82%e6%8a%80%e6%9c%afunder">#</a>
+</h3>
+<h4 id="namespacesundernamespace">
+  
+  <a href="under/namespace">Namespaces</a>
+  <a class="anchor" href="#namespacesundernamespace">#</a>
+</h4>
+<p>Namespace实现对全局系统资源的一种封装隔离</p>
+<h4 id="control-groupsundercgroup">
+  
+  <a href="under/cgroup">Control Groups</a>
+  <a class="anchor" href="#control-groupsundercgroup">#</a>
+</h4>
+<p>CGroup是为了对一组进程进行统一的资源监控和限制</p>
+<h4 id="union-file-systemsunderuninofs">
+  
+  <a href="under/uninofs">Union file systems</a>
+  <a class="anchor" href="#union-file-systemsunderuninofs">#</a>
+</h4>
+<p>Union file system 实现将不同分支中的文件和目录重叠以形成单个文件系统。</p>
+<h4 id="container-format">
+  Container format
+  <a class="anchor" href="#container-format">#</a>
+</h4>
+<p>Docker Engine将Namespace，CGroup和UnionFS组合到一个称为<code>container format</code>的包装器中。 默认容器格式为<code>libcontainer</code>。 将来，Docker可能会通过与BSD Jails或Solaris Zone等技术集成来支持其他容器格式。</p>
 </article>
  
       
@@ -725,12 +735,16 @@ CMD
   <ul>
     <li><a href="#docker">Docker</a>
       <ul>
-        <li>
+        <li><a href="#what">What</a>
           <ul>
-            <li><a href="#基本概念">基本概念</a></li>
-            <li><a href="#安装">安装</a></li>
-            <li><a href="#基本使用">基本使用</a></li>
-            <li><a href="#dockerfile">Dockerfile</a></li>
+            <li><a href="#docker平台">Docker平台</a></li>
+            <li><a href="#docker-engine">Docker Engine</a></li>
+          </ul>
+        </li>
+        <li><a href="#how">How</a>
+          <ul>
+            <li><a href="#架构arch"><a href="arch">架构</a></a></li>
+            <li><a href="#底层技术under"><a href="under">底层技术</a></a></li>
           </ul>
         </li>
       </ul>
