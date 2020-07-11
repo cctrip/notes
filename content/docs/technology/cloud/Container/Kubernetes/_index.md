@@ -1,7 +1,7 @@
 ---
 bookCollapseSection: true
 weight: 3
-title: "K8S"
+title: "Kubernetes"
 ---
 
 # Kubernetes
