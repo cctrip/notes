@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="架构 #    The Docker daemon #  The Docker daemon (dockerd) 监听Docker API请求并管理Docker对象，例如图像，容器，网络和卷。 守护程序还可以与其他守护程序通信以管理Docker服务。
-The Docker client #  The Docker client (docker) 是许多Docker用户与Docker交互的主要方式。 当您使用诸如docker run之类的命令时，客户端会将这些命令发送至dockerd，后者将其执行。 docker命令使用Docker API。 Docker客户端可以与多个守护程序通信。
-Docker registries #  Docker registry 存储Docker映像。 Docker Hub是任何人都可以使用的公共注册表，并且Docker配置为默认在Docker Hub上查找映像。 您甚至可以运行自己的私人注册表。
+<meta name="description" content="架构 #  组件 #    Docker daemon #  Docker daemon (dockerd) 监听Docker API请求并管理Docker对象，例如图像，容器，网络和卷。 守护程序还可以与其他守护程序通信以管理Docker服务。
+Docker client #  Docker client (docker) 是许多Docker用户与Docker交互的主要方式。 当您使用诸如docker run之类的命令时，客户端会将这些命令发送至dockerd，后者将其执行。 docker命令使用Docker API。 Docker客户端可以与多个守护程序通信。
+Docker registries #  Docker registry存储Docker映像。 Docker Hub是任何人都可以使用的公共注册表，并且Docker配置为默认在Docker Hub上查找映像。 您甚至可以运行自己的私人注册表。
 当使用 docker pull or docker run 命令时, 将从配置的registry中拉去镜像，当使用 docker push 命令时，镜像将被推送到配置的registry中 。
 Docker objects #  使用Docker时，您正在创建和使用映像，容器，网络，卷，插件和其他对象。 本节是其中一些对象的简要概述。
 IMAGES #  Image是一个只读模板，其中包含创建Docker容器的说明。 通常，一个图像基于另一个图像，并带有一些附加的自定义。 例如，您可以基于“ ubuntu”映像构建映像，但安装Apache Web服务器和您的应用程序以及运行应用程序所需的配置详细信息。
@@ -20,7 +20,7 @@ IMAGES #  Image是一个只读模板，其中包含创建Docker容器的说明�
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.6590529a1c256579fae3ed8f1ca7610b060520909c861a22309d5387a7e2fd66.js" integrity="sha256-ZZBSmhwlZXn64&#43;2PHKdhCwYFIJCchhoiMJ1Th6fi/WY="></script>
+<script defer src="/notes/en.search.min.530f1e2d9bfa526b0fb2cecf54729f89043851f477175ccbd74e5ae2b7d73201.js" integrity="sha256-Uw8eLZv6UmsPss7PVHKfiQQ4UfR3F1zL105a4rfXMgE="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Docker/arch/index.xml" title="学而不思则罔" />
@@ -579,10 +579,10 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#架构">架构</a>
       <ul>
-        <li>
+        <li><a href="#组件">组件</a>
           <ul>
-            <li><a href="#the-docker-daemon">The Docker daemon</a></li>
-            <li><a href="#the-docker-client">The Docker client</a></li>
+            <li><a href="#docker-daemon">Docker daemon</a></li>
+            <li><a href="#docker-client">Docker client</a></li>
             <li><a href="#docker-registries">Docker registries</a></li>
             <li><a href="#docker-objects">Docker objects</a></li>
           </ul>
@@ -604,24 +604,28 @@ https://github.com/alex-shpak/hugo-book
   架构
   <a class="anchor" href="#%e6%9e%b6%e6%9e%84">#</a>
 </h1>
+<h2 id="组件">
+  组件
+  <a class="anchor" href="#%e7%bb%84%e4%bb%b6">#</a>
+</h2>
 <p>
   <img src="../architecture.svg" alt="" /></p>
 <hr>
-<h3 id="the-docker-daemon">
-  The Docker daemon
-  <a class="anchor" href="#the-docker-daemon">#</a>
+<h3 id="docker-daemon">
+  Docker daemon
+  <a class="anchor" href="#docker-daemon">#</a>
 </h3>
-<p>The Docker daemon (<code>dockerd</code>) 监听Docker API请求并管理Docker对象，例如图像，容器，网络和卷。 守护程序还可以与其他守护程序通信以管理Docker服务。</p>
-<h3 id="the-docker-client">
-  The Docker client
-  <a class="anchor" href="#the-docker-client">#</a>
+<p><code>Docker daemon (dockerd)</code> 监听Docker API请求并管理Docker对象，例如图像，容器，网络和卷。 守护程序还可以与其他守护程序通信以管理Docker服务。</p>
+<h3 id="docker-client">
+  Docker client
+  <a class="anchor" href="#docker-client">#</a>
 </h3>
-<p>The Docker client (<code>docker</code>) 是许多Docker用户与Docker交互的主要方式。 当您使用诸如docker run之类的命令时，客户端会将这些命令发送至dockerd，后者将其执行。 docker命令使用Docker API。 Docker客户端可以与多个守护程序通信。</p>
+<p><code>Docker client (docker)</code> 是许多Docker用户与Docker交互的主要方式。 当您使用诸如docker run之类的命令时，客户端会将这些命令发送至dockerd，后者将其执行。 docker命令使用Docker API。 Docker客户端可以与多个守护程序通信。</p>
 <h3 id="docker-registries">
   Docker registries
   <a class="anchor" href="#docker-registries">#</a>
 </h3>
-<p>Docker <em>registry</em> 存储Docker映像。 Docker Hub是任何人都可以使用的公共注册表，并且Docker配置为默认在Docker Hub上查找映像。 您甚至可以运行自己的私人注册表。</p>
+<p><code>Docker registry</code>存储Docker映像。 Docker Hub是任何人都可以使用的公共注册表，并且Docker配置为默认在Docker Hub上查找映像。 您甚至可以运行自己的私人注册表。</p>
 <p>当使用 <code>docker pull</code> or <code>docker run</code> 命令时, 将从配置的registry中拉去镜像，当使用 <code>docker push</code> 命令时，镜像将被推送到配置的registry中 。</p>
 <h3 id="docker-objects">
   Docker objects
@@ -632,20 +636,20 @@ https://github.com/alex-shpak/hugo-book
   IMAGES
   <a class="anchor" href="#images">#</a>
 </h4>
-<p><em>Image</em>是一个只读模板，其中包含创建Docker容器的说明。 通常，一个图像<em>基于</em>另一个图像，并带有一些附加的自定义。 例如，您可以基于“ ubuntu”映像构建映像，但安装Apache Web服务器和您的应用程序以及运行应用程序所需的配置详细信息。</p>
+<p><code>Image</code>是一个只读模板，其中包含创建Docker容器的说明。 通常，一个图像<em>基于</em>另一个图像，并带有一些附加的自定义。 例如，您可以基于“ ubuntu”映像构建映像，但安装Apache Web服务器和您的应用程序以及运行应用程序所需的配置详细信息。</p>
 <p>您可以创建自己的图像，也可以仅使用其他人创建并在注册表中发布的图像。 要构建自己的映像，您可以使用简单的语法创建<em>Dockerfile</em>，以定义创建映像和运行映像所需的步骤。 Dockerfile中的每条指令都会在映像中创建一个层。 当您更改Dockerfile并重建映像时，仅重建那些已更改的层。 与其他虚拟化技术相比，这是使映像如此轻巧，小型和快速的部分原因。</p>
 <h4 id="containers">
   CONTAINERS
   <a class="anchor" href="#containers">#</a>
 </h4>
-<p>Container是image的可运行实例。 您可以使用Docker API或CLI创建，启动，停止，移动或删除容器。 您可以将容器连接到一个或多个网络，将存储连接到它，甚至根据其当前状态创建一个新映像。</p>
+<p><code>Container</code>是image的可运行实例。 您可以使用Docker API或CLI创建，启动，停止，移动或删除容器。 您可以将容器连接到一个或多个网络，将存储连接到它，甚至根据其当前状态创建一个新映像。</p>
 <p>默认情况下，容器与其他容器及其主机之间的隔离度相对较高。 您可以控制容器的网络，存储或其他基础子系统与其他容器或主机之间的隔离程度。</p>
 <p>容器由其映像以及在创建或启动时为其提供的任何配置选项定义。 删除容器后，未存储在永久性存储中的状态更改将消失。</p>
 <h4 id="services">
   SERVICES
   <a class="anchor" href="#services">#</a>
 </h4>
-<p>Service使您可以在多个Docker守护程序之间扩展容器，这些守护程序都可以与多个<em>managers</em>和<em>workers</em> 一起作为<em>swarm</em>协同工作。 群的每个成员都是Docker守护程序，所有守护程序都使用Docker API进行通信。 服务允许您定义所需的状态，例如在任何给定时间必须可用的服务副本数。 默认情况下，该服务在所有工作节点之间是负载平衡的。 对于消费者而言，Docker服务似乎是一个单独的应用程序。 Docker Engine在Docker 1.12及更高版本中支持集群模式。</p>
+<p><code>Service</code>使您可以在多个Docker守护程序之间扩展容器，这些守护程序都可以与多个<em>managers</em>和<em>workers</em> 一起作为<em>swarm</em>协同工作。 群的每个成员都是Docker守护程序，所有守护程序都使用Docker API进行通信。 服务允许您定义所需的状态，例如在任何给定时间必须可用的服务副本数。 默认情况下，该服务在所有工作节点之间是负载平衡的。 对于消费者而言，Docker服务似乎是一个单独的应用程序。 Docker Engine在Docker 1.12及更高版本中支持集群模式。</p>
 <hr>
 </article>
  
@@ -656,6 +660,12 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
+
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/104707abe9875f6f038c1490d201465a9548f869" title='Last modified by codecc | July 11, 2020' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>July 11, 2020</span>
+    </a>
+  </div>
 
 
 
@@ -690,10 +700,10 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     <li><a href="#架构">架构</a>
       <ul>
-        <li>
+        <li><a href="#组件">组件</a>
           <ul>
-            <li><a href="#the-docker-daemon">The Docker daemon</a></li>
-            <li><a href="#the-docker-client">The Docker client</a></li>
+            <li><a href="#docker-daemon">Docker daemon</a></li>
+            <li><a href="#docker-client">Docker client</a></li>
             <li><a href="#docker-registries">Docker registries</a></li>
             <li><a href="#docker-objects">Docker objects</a></li>
           </ul>
