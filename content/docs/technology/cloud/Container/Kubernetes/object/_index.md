@@ -1,10 +1,10 @@
 ---
 bookCollapseSection: true
-weight: 1
-title: "Kubernetes对象"
+weight: 4
+title: "Kubernetes 对象"
 ---
 
-# Kubernetes对象
+# Kubernetes 对象
 
 在 Kubernetes 系统中，*Kubernetes 对象* 是持久化的实体。Kubernetes 使用这些实体去表示整个集群的状态。特别地，它们描述了如下信息：
 
