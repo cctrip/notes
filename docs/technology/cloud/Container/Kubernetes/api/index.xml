@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes API on 学而不思则罔</title>
+    <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/api/</link>
+    <description>Recent content in Kubernetes API on 学而不思则罔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/api/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>API文档</title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/api/doc/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/api/doc/</guid>
+      <description>API文档 #  API Conventions #  This document is oriented at users who want a deeper understanding of the Kubernetes API structure, and developers wanting to extend the Kubernetes API. An introduction to using resources with kubectl can be found in the object management overview.
+Table of Contents
+ Types (Kinds)   Resources Objects   Metadata Spec and Status   Typical status properties    References to related objects  Lists of named subobjects preferred over maps  Primitive types  Constants  Unions    Lists and Simple kinds    Differing Representations Verbs on Resources   PATCH operations    Idempotency  Optional vs.</description>
+    </item>
+    
+  </channel>
+</rss>

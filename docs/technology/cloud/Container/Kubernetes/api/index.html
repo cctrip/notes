@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Kubernetes API #   API协议文档描述了主系统和API概念。
+ API参考文档描述了API整体规范。
+ 访问文档讨论了通过远程访问API的相关问题。
+Kubernetes API是系统描述性配置的基础。 Kubectl 命令行工具被用于创建、更新、删除、获取API对象。
+Kubernetes 通过API资源存储自己序列化状态(现在存储在 etcd)。
+Kubernetes 被分成多个组件，各部分通过API相互交互。
+API 变更 #  根据经验，任何成功的系统都需要随着新的用例出现或现有用例发生变化的情况下，进行相应的进化与调整。因此，我们希望Kubernetes API也可以保持持续的进化和调整。同时，在较长一段时间内，我们也希望与现有客户端版本保持良好的向下兼容性。一般情况下，增加新的API资源和资源字段不会导致向下兼容性问题发生；但如果是需要删除一个已有的资源或者字段，那么必须通过 API废弃流程来进行。
+参考 API变更文档，了解兼容性变更的要素以及如何变更API的流程。
+OpenAPI 和 API Swagger 定义 #  完整的 API 详细文档使用 OpenAPI生成.
+随着 Kubernetes 1.10 版本的正式启用，Kubernetes API 服务通过 /openapi/v2 接口提供 OpenAPI 规范。 通过设置 HTTP 标头的规定了请求的结构。
+   Header Possible Values     Accept application/json, application/com.github.proto-openapi.spec.v2@v1.0&#43;protobuf (the default content-type is application/json for */* or not passing this header)   Accept-Encoding gzip (not passing this header is acceptable)    在1.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Kubernetes API" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/api/" />
+
+<title>Kubernetes API | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.792b3a1dc7a1ed3f2dc20f4dcb4074838b67cc4fb659a95308019144e7eeb52e.js" integrity="sha256-eSs6Hceh7T8twg9Ny0B0g4tnzE&#43;2WalTCAGRROfutS4="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/api/index.xml" title="学而不思则罔" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/architecture/" class="collapsed ">架构</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/infrastructure/" class="">不可变基础设施</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/" class="collapsed ">容器技术</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/map/" class="">技能图谱</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Docker/" class="collapsed ">Docker</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/" class="collapsed ">Kubernetes</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/api/" class="collapsed active">Kubernetes API</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/api/doc/" class="">API文档</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/object/" class="collapsed ">Kubernetes对象</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/map/" class="">技能图谱</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/arch/" class="">架构</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/install/" class="">安装</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/ServiceMesh/" class="collapsed ">服务网格</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Microservice/" class="collapsed ">微服务</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/API/" class="collapsed ">声明式API</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/DevOps/" class="collapsed ">DevOps</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/learn/" class="collapsed ">方法论</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>Kubernetes API</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes-api">Kubernetes API</a>
+      <ul>
+        <li><a href="#api-变更">API 变更</a></li>
+        <li><a href="#openapi-和-api-swagger-定义">OpenAPI 和 API Swagger 定义</a></li>
+        <li><a href="#api-版本">API 版本</a></li>
+        <li><a href="#api-组">API 组</a></li>
+        <li><a href="#启用-api-组">启用 API 组</a></li>
+        <li><a href="#启用-extensionsv1beta1-组中资源">启用 extensions/v1beta1 组中资源</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="kubernetes-api">
+  Kubernetes API
+  <a class="anchor" href="#kubernetes-api">#</a>
+</h1>
+<p>
+  <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md">API协议文档</a>描述了主系统和API概念。</p>
+<p>
+  <a href="https://kubernetes.io/docs/reference">API参考文档</a>描述了API整体规范。</p>
+<p>
+  <a href="https://kubernetes.io/docs/admin/accessing-the-api">访问文档</a>讨论了通过远程访问API的相关问题。</p>
+<p>Kubernetes API是系统描述性配置的基础。 
+  <a href="https://kubernetes.io/docs/user-guide/kubectl/">Kubectl</a> 命令行工具被用于创建、更新、删除、获取API对象。</p>
+<p>Kubernetes 通过API资源存储自己序列化状态(现在存储在
+  <a href="https://coreos.com/docs/distributed-configuration/getting-started-with-etcd/">etcd</a>)。</p>
+<p>Kubernetes 被分成多个组件，各部分通过API相互交互。</p>
+<h2 id="api-变更">
+  API 变更
+  <a class="anchor" href="#api-%e5%8f%98%e6%9b%b4">#</a>
+</h2>
+<p>根据经验，任何成功的系统都需要随着新的用例出现或现有用例发生变化的情况下，进行相应的进化与调整。因此，我们希望Kubernetes API也可以保持持续的进化和调整。同时，在较长一段时间内，我们也希望与现有客户端版本保持良好的向下兼容性。一般情况下，增加新的API资源和资源字段不会导致向下兼容性问题发生；但如果是需要删除一个已有的资源或者字段，那么必须通过
+  <a href="https://kubernetes.io/docs/reference/deprecation-policy/">API废弃流程</a>来进行。</p>
+<p>参考
+  <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api_changes.md">API变更文档</a>，了解兼容性变更的要素以及如何变更API的流程。</p>
+<h2 id="openapi-和-api-swagger-定义">
+  OpenAPI 和 API Swagger 定义
+  <a class="anchor" href="#openapi-%e5%92%8c-api-swagger-%e5%ae%9a%e4%b9%89">#</a>
+</h2>
+<p>完整的 API 详细文档使用 
+  <a href="https://www.openapis.org/">OpenAPI</a>生成.</p>
+<p>随着 Kubernetes 1.10 版本的正式启用，Kubernetes API 服务通过 <code>/openapi/v2</code> 接口提供 OpenAPI 规范。 通过设置 HTTP 标头的规定了请求的结构。</p>
+<table>
+<thead>
+<tr>
+<th>Header</th>
+<th>Possible Values</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Accept</td>
+<td><code>application/json</code>, <code>application/com.github.proto-openapi.spec.v2@v1.0+protobuf</code> (the default content-type is <code>application/json</code> for <code>*/*</code> or not passing this header)</td>
+</tr>
+<tr>
+<td>Accept-Encoding</td>
+<td><code>gzip</code> (not passing this header is acceptable)</td>
+</tr>
+</tbody>
+</table>
+<p>在1.14版本之前，区分结构的接口通过(<code>/swagger.json</code>, <code>/swagger-2.0.0.json</code>, <code>/swagger-2.0.0.pb-v1</code>, <code>/swagger-2.0.0.pb-v1.gz</code>) 提供不同格式的 OpenAPI 规范。但是这些接口已经被废弃，并且已经在 Kubernetes 1.14 中被删除。</p>
+<p><strong>获取 OpenAPI 规范的例子</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>1.10 之前</th>
+<th>从 1.10 开始</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GET /swagger.json</td>
+<td>GET /openapi/v2 <strong>Accept</strong>: application/json</td>
+</tr>
+<tr>
+<td>GET /swagger-2.0.0.pb-v1</td>
+<td>GET /openapi/v2 <strong>Accept</strong>: 
+  <a href="mailto:application/com.github.proto-openapi.spec.v2@v1.0">application/com.github.proto-openapi.spec.v2@v1.0</a>+protobuf</td>
+</tr>
+<tr>
+<td>GET /swagger-2.0.0.pb-v1.gz</td>
+<td>GET /openapi/v2 <strong>Accept</strong>: 
+  <a href="mailto:application/com.github.proto-openapi.spec.v2@v1.0">application/com.github.proto-openapi.spec.v2@v1.0</a>+protobuf <strong>Accept-Encoding</strong>: gzip</td>
+</tr>
+</tbody>
+</table>
+<p>Kubernetes实现了另一种基于Protobuf的序列化格式，该格式主要用于集群内通信，并在
+  <a href="https://github.com/kubernetes/community/blob/master/contributors/design-proposals/api-machinery/protobuf.md">设计方案</a>中进行了说明，每个模式的IDL文件位于定义API对象的Go软件包中。 在 1.14 版本之前， Kubernetes apiserver 也提供 API 服务用于返回 
+  <a href="http://swagger.io/">Swagger v1.2</a> Kubernetes API 规范通过 <code>/swaggerapi</code> 接口. 但是这个接口已经被废弃，并且在 Kubernetes 1.14 中已经被移除。</p>
+<h2 id="api-版本">
+  API 版本
+  <a class="anchor" href="#api-%e7%89%88%e6%9c%ac">#</a>
+</h2>
+<p>为了使删除字段或者重构资源表示更加容易，Kubernetes 支持 多个API版本。每一个版本都在不同API路径下，例如 <code>/api/v1</code> 或者 <code>/apis/extensions/v1beta1</code>。</p>
+<p>我们选择在API级别进行版本化，而不是在资源或字段级别进行版本化，以确保API提供清晰，一致的系统资源和行为视图，并控制对已废止的API和/或实验性API的访问。 JSON和Protobuf序列化模式遵循架构更改的相同准则 - 下面的所有描述都同时适用于这两种格式。</p>
+<p>请注意，API版本控制和软件版本控制只有间接相关性。 
+  <a href="https://git.k8s.io/community/contributors/design-proposals/release/versioning.md">API和发行版本建议</a> 描述了API版本与软件版本之间的关系。</p>
+<p>不同的API版本名称意味着不同级别的软件稳定性和支持程度。 每个级别的标准在
+  <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api_changes.md#alpha-beta-and-stable-versions">API变更文档</a>中有更详细的描述。 内容主要概括如下：</p>
+<ul>
+<li>Alpha 测试版本：
+<ul>
+<li>版本名称包含了 <strong><code>alpha</code></strong> (例如：<strong><code>v1alpha1</code></strong>)。</li>
+<li>可能是有缺陷的。启用该功能可能会带来隐含的问题，默认情况是关闭的。</li>
+<li>支持的功能可能在没有通知的情况下随时删除。</li>
+<li>API的更改可能会带来兼容性问题，但是在后续的软件发布中不会有任何通知。</li>
+<li>由于bugs风险的增加和缺乏长期的支持，推荐在短暂的集群测试中使用。</li>
+</ul>
+</li>
+<li>Beta 测试版本：
+<ul>
+<li>版本名称包含了 <strong><code>beta</code></strong> (例如: <strong><code>v2beta3</code></strong>)。</li>
+<li>代码已经测试过。启用该功能被认为是安全的，功能默认已启用。</li>
+<li>所有已支持的功能不会被删除，细节可能会发生变化。</li>
+<li>对象的模式和/或语义可能会在后续的beta测试版或稳定版中以不兼容的方式进行更改。 发生这种情况时，我们将提供迁移到下一个版本的说明。 这可能需要删除、编辑和重新创建API对象。执行编辑操作时需要谨慎行事，这可能需要停用依赖该功能的应用程序。</li>
+<li>建议仅用于非业务关键型用途，因为后续版本中可能存在不兼容的更改。 如果您有多个可以独立升级的集群，则可以放宽此限制。</li>
+<li><strong>请尝试我们的 beta 版本功能并且给出反馈！一旦他们退出 beta 测试版，我们可能不会做出更多的改变。</strong></li>
+</ul>
+</li>
+<li>稳定版本：
+<ul>
+<li>版本名称是 <strong><code>vX</code></strong>，其中 <strong><code>X</code></strong> 是整数。</li>
+<li>功能的稳定版本将出现在许多后续版本的发行软件中。</li>
+</ul>
+</li>
+</ul>
+<h2 id="api-组">
+  API 组
+  <a class="anchor" href="#api-%e7%bb%84">#</a>
+</h2>
+<p>为了更容易地扩展Kubernetes API，我们实现了
+  <a href="https://git.k8s.io/community/contributors/design-proposals/api-machinery/api-group.md"><em><code>API组</code></em></a>。 API组在REST路径和序列化对象的 <strong><code>apiVersion</code></strong> 字段中指定。</p>
+<p>目前有几个API组正在使用中：</p>
+<ol>
+<li>核心组（通常被称为遗留组）位于REST路径 <code>/api/v1</code> 并使用 <code>apiVersion：v1</code>。</li>
+<li>指定的组位于REST路径 <code>/apis/$GROUP_NAME/$VERSION</code>，并使用 <code>apiVersion：$GROUP_NAME/$VERSION</code> （例如 <code>apiVersion：batch/v1</code>）。 在
+  <a href="https://kubernetes.io/docs/reference/">Kubernetes API参考</a>中可以看到支持的API组的完整列表。</li>
+</ol>
+<p>社区支持使用以下两种方式来提供自定义资源对API进行扩展
+  <a href="https://kubernetes.io/docs/concepts/api-extension/custom-resources/">自定义资源</a>：</p>
+<ol>
+<li>
+  <a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/extend-api-custom-resource-definitions/">CustomResourceDefinition</a> 适用于具有非常基本的CRUD需求的用户。</li>
+<li>需要全套Kubernetes API语义的用户可以实现自己的apiserver， 并使用
+  <a href="https://kubernetes.io/docs/tasks/access-kubernetes-api/configure-aggregation-layer/">聚合器</a> 为客户提供无缝的服务。</li>
+</ol>
+<h2 id="启用-api-组">
+  启用 API 组
+  <a class="anchor" href="#%e5%90%af%e7%94%a8-api-%e7%bb%84">#</a>
+</h2>
+<p>某些资源和API组默认情况下处于启用状态。 可以通过在apiserver上设置 <code>--runtime-config</code> 来启用或禁用它们。 <code>--runtime-config</code> 接受逗号分隔的值。 例如：要禁用batch/v1，请设置 <code>--runtime-config=batch/v1=false</code>，以启用batch/v2alpha1，请设置<code>--runtime-config=batch/v2alpha1</code>。 该标志接受描述apiserver的运行时配置的逗号分隔的一组键值对。</p>
+<blockquote>
+<p><strong>说明：</strong> 启用或禁用组或资源需要重新启动apiserver和控制器管理器来使得 <code>--runtime-config</code> 更改生效。</p>
+</blockquote>
+<h2 id="启用-extensionsv1beta1-组中资源">
+  启用 extensions/v1beta1 组中资源
+  <a class="anchor" href="#%e5%90%af%e7%94%a8-extensionsv1beta1-%e7%bb%84%e4%b8%ad%e8%b5%84%e6%ba%90">#</a>
+</h2>
+<p>在 <code>extensions/v1beta1</code> API 组中，DaemonSets，Deployments，StatefulSet, NetworkPolicies, PodSecurityPolicies 和 ReplicaSets 是默认禁用的。 例如：要启用 deployments 和 daemonsets，请设置 <code>--runtime-config=extensions/v1beta1/deployments=true,extensions/v1beta1/daemonsets=true</code>。</p>
+<blockquote>
+<p><strong>说明：</strong> 出于遗留原因，仅在 <code>extensions / v1beta1</code> API 组中支持各个资源的启用/禁用。</p>
+</blockquote>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/cloud/Container/Kubernetes/api/_index.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubernetes-api">Kubernetes API</a>
+      <ul>
+        <li><a href="#api-变更">API 变更</a></li>
+        <li><a href="#openapi-和-api-swagger-定义">OpenAPI 和 API Swagger 定义</a></li>
+        <li><a href="#api-版本">API 版本</a></li>
+        <li><a href="#api-组">API 组</a></li>
+        <li><a href="#启用-api-组">启用 API 组</a></li>
+        <li><a href="#启用-extensionsv1beta1-组中资源">启用 extensions/v1beta1 组中资源</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
