@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: false
-weight: 5
+weight: 10
 title: "Kubernetes 安装"
 ---
 
