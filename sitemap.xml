@@ -384,11 +384,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/pod/</loc>
-  </url>
-  
-  <url>
-    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/install/</loc>
-    <lastmod>2020-07-13T22:19:45+08:00</lastmod>
+    <lastmod>2020-07-16T20:49:46+08:00</lastmod>
   </url>
   
   <url>
@@ -413,6 +409,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/</loc>
+    <lastmod>2020-07-16T20:49:46+08:00</lastmod>
   </url>
   
   <url>
@@ -422,6 +419,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/storage/</loc>
+    <lastmod>2020-07-16T20:49:46+08:00</lastmod>
   </url>
   
   <url>
@@ -431,6 +429,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/config/</loc>
+    <lastmod>2020-07-16T20:49:46+08:00</lastmod>
   </url>
   
   <url>
@@ -440,11 +439,17 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/security/</loc>
+    <lastmod>2020-07-16T20:49:46+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/tool/</loc>
     <lastmod>2020-07-05T22:52:46+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/install/</loc>
+    <lastmod>2020-07-13T22:19:45+08:00</lastmod>
   </url>
   
   <url>
@@ -613,7 +618,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/</loc>
-    <lastmod>2020-07-13T22:19:45+08:00</lastmod>
+    <lastmod>2020-07-16T20:49:46+08:00</lastmod>
   </url>
   
   <url>
