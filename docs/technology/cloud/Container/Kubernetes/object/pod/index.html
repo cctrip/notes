@@ -12,18 +12,23 @@ Kubernetes 集群中的 Pod 可被用于以下两个主要用途：
   运行多个协同工作的容器的 Pod。 Pod 可能封装由多个紧密耦合且需要共享资源的共处容器组成的应用程序。 这些位于同一位置的容器可能形成单个内聚的服务单元 —— 一个容器将文件从共享卷提供给公众，而另一个单独的“挂斗”（sidecar）容器则刷新或更新这些文件。 Pod 将这些容器和存储资源打包为一个可管理的实体。 Kubernetes 博客 上有一些其他的 Pod 用例信息。更多信息请参考：
    分布式系统工具包：容器组合的模式">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Kubernetes Pod" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/pod/" />
+<meta property="og:description" content="Kubernetes Pod #  What #  Pod 是 Kubernetes 应用程序的基本执行单元，即它是 Kubernetes 对象模型中创建或部署的最小和最简单的单元。Pod 表示在 集群 上运行的进程。
+Pod 封装了应用程序容器（或者在某些情况下封装多个容器）、存储资源、唯一网络 IP 以及控制容器应该如何运行的选项。 Pod 表示部署单元：Kubernetes 中应用程序的单个实例，它可能由单个 容器 或少量紧密耦合并共享资源的容器组成。
+ Docker 是 Kubernetes Pod 中最常用的容器运行时，但 Pod 也能支持其他的 容器运行时。
+Kubernetes 集群中的 Pod 可被用于以下两个主要用途：
+  运行单个容器的 Pod。&ldquo;每个 Pod 一个容器&quot;模型是最常见的 Kubernetes 用例；在这种情况下，可以将 Pod 看作单个容器的包装器，并且 Kubernetes 直接管理 Pod，而不是容器。
+  运行多个协同工作的容器的 Pod。 Pod 可能封装由多个紧密耦合且需要共享资源的共处容器组成的应用程序。 这些位于同一位置的容器可能形成单个内聚的服务单元 —— 一个容器将文件从共享卷提供给公众，而另一个单独的“挂斗”（sidecar）容器则刷新或更新这些文件。 Pod 将这些容器和存储资源打包为一个可管理的实体。 Kubernetes 博客 上有一些其他的 Pod 用例信息。更多信息请参考：
+   分布式系统工具包：容器组合的模式" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/object/pod/" />
 
 <title>Kubernetes Pod | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.0774f36a26cd668016e51430491a95effe4588718dba5652e80a70e865582b55.js" integrity="sha256-B3TzaibNZoAW5RQwSRqV7/5FiHGNulZS6Apw6GVYK1U="></script>
+<script defer src="/notes/en.search.min.16482d15856c9a548b2f1c2496862d925c650895e0f97c05ec5cebae01f6a590.js" integrity="sha256-FkgtFYVsmlSLLxwkloYtklxlCJXg&#43;XwF7FzrrgH2pZA="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
-<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/pod/index.xml" title="学而不思则罔" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -326,24 +331,17 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-
-        </li>
-      
+  <ul>
     
       
         <li>
           
   
-    <a href="/notes/docs/technology/cloud/Container/Kubernetes/pod/" class="collapsed active">Kubernetes Pod</a>
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/object/pod/" class="active">Kubernetes Pod</a>
   
 
-          
-  
-  
-  
-
-  
-  <ul>
+        </li>
+      
     
   </ul>
   
@@ -356,40 +354,6 @@ https://github.com/alex-shpak/hugo-book
           
   
     <a href="/notes/docs/technology/cloud/Container/Kubernetes/network/" class="collapsed ">Kubernetes 网络</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/cloud/Container/Kubernetes/storage/" class="collapsed ">Kubernetes 存储</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/cloud/Container/Kubernetes/config/" class="collapsed ">Kubernetes 配置</a>
   
 
           
@@ -423,7 +387,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/cloud/Container/Kubernetes/install/" class="">Kubernetes 安装</a>
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/install/" class="">Kubernetes 安装配置</a>
   
 
           
@@ -435,6 +399,23 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     
   </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/use/" class="collapsed ">Kubernetes 使用</a>
+  
+
+          
+  
+  
+  
+
   
 
         </li>
@@ -848,16 +829,10 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/6956697add8f9dd98d3f1e458415ae3136346eb6" title='Last modified by codecc | July 16, 2020' target="_blank" rel="noopener">
-      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 16, 2020</span>
-    </a>
-  </div>
-
 
 
   <div>
-    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/cloud/Container/Kubernetes/pod/_index.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/cloud/Container/Kubernetes/object/pod.md" target="_blank" rel="noopener">
       <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>

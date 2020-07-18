@@ -9,16 +9,16 @@
 参考 Docker安装
 #开启iptables filter表中FOWARD链(Docker1.3开始已被禁用) iptables -P FORWARD ACCEPT #/etc/docker/daemon.json增加配置 { &quot;exec-opts&quot;: [&quot;native.cgroupdriver=systemd&quot;] } #重启Docker systemctl restart docker.service    Kubeadm安装
 #添加repo配置 cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo [kubernetes] name=Kubernetes baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64 enabled=1 gpgcheck=1 repo_gpgcheck=1 gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg EOF #安装kubeadm,kubelet,kubectl yum install -y kubelet kubeadm kubectl systemctl enable kubelet &amp;&amp; systemctl start kubelet     Master node 初始化 #    init">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Kubernetes 安装" />
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Kubernetes 安装配置" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/install/" />
 
-<title>Kubernetes 安装 | 学而不思则罔</title>
+<title>Kubernetes 安装配置 | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.0774f36a26cd668016e51430491a95effe4588718dba5652e80a70e865582b55.js" integrity="sha256-B3TzaibNZoAW5RQwSRqV7/5FiHGNulZS6Apw6GVYK1U="></script>
+<script defer src="/notes/en.search.min.16482d15856c9a548b2f1c2496862d925c650895e0f97c05ec5cebae01f6a590.js" integrity="sha256-FkgtFYVsmlSLLxwkloYtklxlCJXg&#43;XwF7FzrrgH2pZA="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/install/index.xml" title="学而不思则罔" />
@@ -332,58 +332,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/cloud/Container/Kubernetes/pod/" class="collapsed ">Kubernetes Pod</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
     <a href="/notes/docs/technology/cloud/Container/Kubernetes/network/" class="collapsed ">Kubernetes 网络</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/cloud/Container/Kubernetes/storage/" class="collapsed ">Kubernetes 存储</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/cloud/Container/Kubernetes/config/" class="collapsed ">Kubernetes 配置</a>
   
 
           
@@ -417,7 +366,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/cloud/Container/Kubernetes/install/" class="active">Kubernetes 安装</a>
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/install/" class="active">Kubernetes 安装配置</a>
   
 
           
@@ -429,6 +378,23 @@ https://github.com/alex-shpak/hugo-book
   <ul>
     
   </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/use/" class="collapsed ">Kubernetes 使用</a>
+  
+
+          
+  
+  
+  
+
   
 
         </li>
@@ -709,7 +675,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Kubernetes 安装</strong>
+  <strong>Kubernetes 安装配置</strong>
 
   <label for="toc-control">
     
