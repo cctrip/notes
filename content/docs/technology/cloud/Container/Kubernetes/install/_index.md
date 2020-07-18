@@ -1,7 +1,7 @@
 ---
 bookCollapseSection: false
-weight: 10
-title: "Kubernetes 安装"
+weight: 7
+title: "Kubernetes 安装配置"
 ---
 
 # 安装

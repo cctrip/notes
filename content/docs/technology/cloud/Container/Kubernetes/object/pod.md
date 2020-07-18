@@ -1,6 +1,6 @@
 ---
-bookCollapseSection: true
-weight: 5
+bookCollapseSection: false
+weight: 1
 title: "Kubernetes Pod"
 ---
 
