@@ -4,23 +4,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Kubernetes 对象 #  在 Kubernetes 系统中，Kubernetes 对象 是持久化的实体。Kubernetes 使用这些实体去表示整个集群的状态。特别地，它们描述了如下信息：
- 哪些容器化应用在运行（以及在哪个 Node 上） 可以被应用使用的资源 关于应用运行时表现的策略，比如重启策略、升级策略，以及容错策略  Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernetes 系统将持续工作以确保对象存在。通过创建对象，本质上是在告知 Kubernetes 系统，所需要的集群工作负载看起来是什么样子的，这就是 Kubernetes 集群的 期望状态（Desired State）。
-操作 Kubernetes 对象 —— 无论是创建、修改，或者删除 —— 需要使用 Kubernetes API。比如，当使用 kubectl 命令行接口时，CLI 会执行必要的 Kubernetes API 调用，也可以在程序中使用 客户端库 直接调用 Kubernetes API。
- 对象Spec与Status #  每个 Kubernetes 对象包含两个嵌套的对象字段，它们负责管理对象的配置：对象 spec 和 对象 status 。 spec 是必需的，它描述了对象的 期望状态（Desired State） —— 希望对象所具有的特征。 status 描述了对象的 实际状态（Actual State） ，它是由 Kubernetes 系统提供和更新的。在任何时刻，Kubernetes 控制面一直努力地管理着对象的实际状态以与期望状态相匹配。">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Kubernetes 对象" />
+<meta name="description" content="Controller #  控制器可以创建和管理多个 Pod，管理副本和上线，并在集群范围内提供自修复能力。
+ ReplicaSet #  ReplicationController #  Deployments #  StatefulSets #  DaemonSet #  Jobs #  Garbage Collection #  TTL Controller for Finished Resources #  CronJob #  ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="controller" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/object/" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/object/workload/controller/" />
 
-<title>Kubernetes 对象 | 学而不思则罔</title>
+<title>controller | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
 <script defer src="/notes/en.search.min.be668f74f3a3dbbb15a435f3f203aed0b0638d1b30aaa4732198d0cf8b48e3d9.js" integrity="sha256-vmaPdPOj27sVpDXz8gOu0LBjjRswqqRzIZjQz4tI49k="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
-<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/object/index.xml" title="学而不思则罔" />
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/object/workload/controller/index.xml" title="学而不思则罔" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -314,7 +312,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           
   
-    <a href="/notes/docs/technology/cloud/Container/Kubernetes/object/" class="collapsed active">Kubernetes 对象</a>
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/object/" class="collapsed ">Kubernetes 对象</a>
   
 
           
@@ -337,6 +335,41 @@ https://github.com/alex-shpak/hugo-book
   
   
 
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/object/workload/pod/" class="">Pod</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/Kubernetes/object/workload/controller/" class="collapsed active">controller</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
   
 
         </li>
@@ -729,7 +762,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Kubernetes 对象</strong>
+  <strong>controller</strong>
 
   <label for="toc-control">
     
@@ -745,13 +778,11 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#kubernetes-对象">Kubernetes 对象</a>
+    <li><a href="#controller">Controller</a>
       <ul>
         <li>
           <ul>
-            <li><a href="#对象spec与status">对象Spec与Status</a></li>
-            <li><a href="#描述-kubernetes-对象">描述 Kubernetes 对象</a></li>
-            <li><a href="#必需字段">必需字段</a></li>
+            <li></li>
           </ul>
         </li>
       </ul>
@@ -767,69 +798,57 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="kubernetes-对象">
-  Kubernetes 对象
-  <a class="anchor" href="#kubernetes-%e5%af%b9%e8%b1%a1">#</a>
+  <article class="markdown"><h1 id="controller">
+  Controller
+  <a class="anchor" href="#controller">#</a>
 </h1>
-<p>在 Kubernetes 系统中，<em>Kubernetes 对象</em> 是持久化的实体。Kubernetes 使用这些实体去表示整个集群的状态。特别地，它们描述了如下信息：</p>
-<ul>
-<li>哪些容器化应用在运行（以及在哪个 Node 上）</li>
-<li>可以被应用使用的资源</li>
-<li>关于应用运行时表现的策略，比如重启策略、升级策略，以及容错策略</li>
-</ul>
-<p>Kubernetes 对象是 “目标性记录” —— 一旦创建对象，Kubernetes 系统将持续工作以确保对象存在。通过创建对象，本质上是在告知 Kubernetes 系统，所需要的集群工作负载看起来是什么样子的，这就是 Kubernetes 集群的 <strong>期望状态（Desired State）</strong>。</p>
-<p>操作 Kubernetes 对象 —— 无论是创建、修改，或者删除 —— 需要使用 
-  <a href="https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md">Kubernetes API</a>。比如，当使用 <code>kubectl</code> 命令行接口时，CLI 会执行必要的 Kubernetes API 调用，也可以在程序中使用 
-  <a href="https://kubernetes.io/docs/reference/using-api/client-libraries/">客户端库</a> 直接调用 Kubernetes API。</p>
+<p>控制器可以创建和管理多个 Pod，管理副本和上线，并在集群范围内提供自修复能力。</p>
 <hr>
-<h3 id="对象spec与status">
-  对象Spec与Status
-  <a class="anchor" href="#%e5%af%b9%e8%b1%a1spec%e4%b8%8estatus">#</a>
-</h3>
-<p>每个 Kubernetes 对象包含两个嵌套的对象字段，它们负责管理对象的配置：对象 <em>spec</em> 和 对象 <em>status</em> 。 <em>spec</em> 是必需的，它描述了对象的 <em>期望状态（Desired State）</em> —— 希望对象所具有的特征。 <em>status</em> 描述了对象的 <em>实际状态（Actual State）</em> ，它是由 Kubernetes 系统提供和更新的。在任何时刻，Kubernetes 控制面一直努力地管理着对象的实际状态以与期望状态相匹配。</p>
-<hr>
-<h3 id="描述-kubernetes-对象">
-  描述 Kubernetes 对象
-  <a class="anchor" href="#%e6%8f%8f%e8%bf%b0-kubernetes-%e5%af%b9%e8%b1%a1">#</a>
-</h3>
-<p>当创建 Kubernetes 对象时，必须提供对象的规约，用来描述该对象的期望状态，以及关于对象的一些基本信息（例如名称）。 当使用 Kubernetes API 创建对象时（或者直接创建，或者基于<code>kubectl</code>），API 请求必须在请求体中包含 JSON 格式的信息。 <strong>大多数情况下，需要在 .yaml 文件中为 <code>kubectl</code> 提供这些信息</strong>。 <code>kubectl</code> 在发起 API 请求时，将这些信息转换成 JSON 格式。</p>
-<p>这里有一个 <code>.yaml</code> 示例文件，展示了 Kubernetes Deployment 的必需字段和对象规约：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">apiVersion</span>: apps/v1 <span style="color:#75715e"># for versions before 1.9.0 use apps/v1beta2</span>
-<span style="color:#66d9ef">kind</span>: Deployment
-<span style="color:#66d9ef">metadata</span>:
-  <span style="color:#66d9ef">name</span>: nginx-deployment
-<span style="color:#66d9ef">spec</span>:
-  <span style="color:#66d9ef">selector</span>:
-    <span style="color:#66d9ef">matchLabels</span>:
-      <span style="color:#66d9ef">app</span>: nginx
-  <span style="color:#66d9ef">replicas</span>: <span style="color:#ae81ff">2</span> <span style="color:#75715e"># tells deployment to run 2 pods matching the template</span>
-  <span style="color:#66d9ef">template</span>:
-    <span style="color:#66d9ef">metadata</span>:
-      <span style="color:#66d9ef">labels</span>:
-        <span style="color:#66d9ef">app</span>: nginx
-    <span style="color:#66d9ef">spec</span>:
-      <span style="color:#66d9ef">containers</span>:
-      - <span style="color:#66d9ef">name</span>: nginx
-        <span style="color:#66d9ef">image</span>: nginx:<span style="color:#ae81ff">1.14.2</span>
-        <span style="color:#66d9ef">ports</span>:
-        - <span style="color:#66d9ef">containerPort</span>: <span style="color:#ae81ff">80</span>
-</code></pre></div><p>使用类似于上面的 <code>.yaml</code> 文件来创建 Deployment，一种方式是使用 <code>kubectl</code> 命令行接口（CLI）中的 
-  <a href="https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply"><code>kubectl apply</code></a> 命令， 将 <code>.yaml</code> 文件作为参数。下面是一个示例：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">kubectl apply -f https://k8s.io/examples/application/deployment.yaml --record
-</code></pre></div><p>输出类似如下这样：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">deployment.apps/nginx-deployment created
-</code></pre></div><h3 id="必需字段">
-  必需字段
-  <a class="anchor" href="#%e5%bf%85%e9%9c%80%e5%ad%97%e6%ae%b5">#</a>
-</h3>
-<p>在想要创建的 Kubernetes 对象对应的 <code>.yaml</code> 文件中，需要配置如下的字段：</p>
-<ul>
-<li><code>apiVersion</code> - 创建该对象所使用的 Kubernetes API 的版本</li>
-<li><code>kind</code> - 想要创建的对象的类型</li>
-<li><code>metadata</code> - 帮助识别对象唯一性的数据，包括一个 <code>name</code> 字符串、UID 和可选的 <code>namespace</code></li>
-</ul>
-<p>您也需要提供对象的 <code>spec</code> 字段。对象 <code>spec</code> 的精确格式对每个 Kubernetes 对象来说是不同的，包含了特定于该对象的嵌套字段。
-  <a href="https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/">Kubernetes API 参考</a>能够帮助我们找到任何我们想创建的对象的 spec 格式。</p>
+<h5 id="replicasethttpskubernetesiodocsconceptsworkloadscontrollersreplicaset">
+  
+  <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/">ReplicaSet</a>
+  <a class="anchor" href="#replicasethttpskubernetesiodocsconceptsworkloadscontrollersreplicaset">#</a>
+</h5>
+<h5 id="replicationcontrollerhttpskubernetesiodocsconceptsworkloadscontrollersreplicationcontroller">
+  
+  <a href="https://kubernetes.io/docs/concepts/workloads/controllers/replicationcontroller/">ReplicationController</a>
+  <a class="anchor" href="#replicationcontrollerhttpskubernetesiodocsconceptsworkloadscontrollersreplicationcontroller">#</a>
+</h5>
+<h5 id="deploymentshttpskubernetesiodocsconceptsworkloadscontrollersdeployment">
+  
+  <a href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployments</a>
+  <a class="anchor" href="#deploymentshttpskubernetesiodocsconceptsworkloadscontrollersdeployment">#</a>
+</h5>
+<h5 id="statefulsetshttpskubernetesiodocsconceptsworkloadscontrollersstatefulset">
+  
+  <a href="https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/">StatefulSets</a>
+  <a class="anchor" href="#statefulsetshttpskubernetesiodocsconceptsworkloadscontrollersstatefulset">#</a>
+</h5>
+<h5 id="daemonsethttpskubernetesiodocsconceptsworkloadscontrollersdaemonset">
+  
+  <a href="https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/">DaemonSet</a>
+  <a class="anchor" href="#daemonsethttpskubernetesiodocsconceptsworkloadscontrollersdaemonset">#</a>
+</h5>
+<h5 id="jobshttpskubernetesiodocsconceptsworkloadscontrollersjob">
+  
+  <a href="https://kubernetes.io/docs/concepts/workloads/controllers/job/">Jobs</a>
+  <a class="anchor" href="#jobshttpskubernetesiodocsconceptsworkloadscontrollersjob">#</a>
+</h5>
+<h5 id="garbage-collectionhttpskubernetesiodocsconceptsworkloadscontrollersgarbage-collection">
+  
+  <a href="https://kubernetes.io/docs/concepts/workloads/controllers/garbage-collection/">Garbage Collection</a>
+  <a class="anchor" href="#garbage-collectionhttpskubernetesiodocsconceptsworkloadscontrollersgarbage-collection">#</a>
+</h5>
+<h5 id="ttl-controller-for-finished-resourceshttpskubernetesiodocsconceptsworkloadscontrollersttlafterfinished">
+  
+  <a href="https://kubernetes.io/docs/concepts/workloads/controllers/ttlafterfinished/">TTL Controller for Finished Resources</a>
+  <a class="anchor" href="#ttl-controller-for-finished-resourceshttpskubernetesiodocsconceptsworkloadscontrollersttlafterfinished">#</a>
+</h5>
+<h5 id="cronjobhttpskubernetesiodocsconceptsworkloadscontrollerscron-jobs">
+  
+  <a href="https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/">CronJob</a>
+  <a class="anchor" href="#cronjobhttpskubernetesiodocsconceptsworkloadscontrollerscron-jobs">#</a>
+</h5>
 </article>
  
       
@@ -840,16 +859,10 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/386265dcc47dab0ad791568dde75141e3989be97" title='Last modified by codecc | July 13, 2020' target="_blank" rel="noopener">
-      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 13, 2020</span>
-    </a>
-  </div>
-
 
 
   <div>
-    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/cloud/Container/Kubernetes/object/_index.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/cloud/Container/Kubernetes/object/workload/controller/_index.md" target="_blank" rel="noopener">
       <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -877,13 +890,11 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#kubernetes-对象">Kubernetes 对象</a>
+    <li><a href="#controller">Controller</a>
       <ul>
         <li>
           <ul>
-            <li><a href="#对象spec与status">对象Spec与Status</a></li>
-            <li><a href="#描述-kubernetes-对象">描述 Kubernetes 对象</a></li>
-            <li><a href="#必需字段">必需字段</a></li>
+            <li></li>
           </ul>
         </li>
       </ul>

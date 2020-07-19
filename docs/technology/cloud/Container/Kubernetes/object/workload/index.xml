@@ -10,12 +10,12 @@
     
     
     <item>
-      <title>Kubernetes Pod</title>
+      <title>Pod</title>
       <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/object/workload/pod/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/object/workload/pod/</guid>
-      <description>Kubernetes Pod #  What #  Pod 是 Kubernetes 应用程序的基本执行单元，即它是 Kubernetes 对象模型中创建或部署的最小和最简单的单元。Pod 表示在 集群 上运行的进程。
+      <description>Pod #  What #  Pod 是 Kubernetes 应用程序的基本执行单元，即它是 Kubernetes 对象模型中创建或部署的最小和最简单的单元。Pod 表示在 集群 上运行的进程。
 Pod 封装了应用程序容器（或者在某些情况下封装多个容器）、存储资源、唯一网络 IP 以及控制容器应该如何运行的选项。 Pod 表示部署单元：Kubernetes 中应用程序的单个实例，它可能由单个 容器 或少量紧密耦合并共享资源的容器组成。
  Docker 是 Kubernetes Pod 中最常用的容器运行时，但 Pod 也能支持其他的 容器运行时。
 Kubernetes 集群中的 Pod 可被用于以下两个主要用途：
