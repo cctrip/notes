@@ -1,10 +1,10 @@
 ---
 bookCollapseSection: false
 weight: 1
-title: "Kubernetes Pod"
+title: "Pod"
 ---
 
-# Kubernetes Pod
+# Pod
 
 ## What
 
