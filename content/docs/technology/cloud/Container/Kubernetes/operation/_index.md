@@ -13,4 +13,16 @@ title: "Kubernetes 操作"
 * minikube
 * kubeadm
 * kops
-* 
+* [kubespray](https://github.com/kubernetes-sigs/kubespray)
+
+***
+
+### 操作
+
+* kubectl
+
+***
+
+### 包管理
+
+* helm
