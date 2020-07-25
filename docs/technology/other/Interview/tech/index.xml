@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>技术知识点 on 学而不思则罔</title>
+    <link>https://cctrip.github.io/notes/docs/technology/other/Interview/tech/</link>
+    <description>Recent content in 技术知识点 on 学而不思则罔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/other/Interview/tech/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/tech/technology/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/tech/technology/</guid>
+      <description>技术知识点 #  1. 计算机基础 #   硬件 #  1. 机器型号 #  dmidecode | awk -F&amp;#39;:&amp;#39; &amp;#39;/Product Name/{print $2}&amp;#39; 2. CPU信息 #  #获取逻辑CPU数 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | wc -l #获取CPU型号 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | uniq #获取物理cpu数 grep &amp;quot;physical id&amp;quot; /proc/cpuinfo | sort | uniq | wc -l 3. 内存信息 #  #获取内存大小 free -h #内存物理信息 dmidecode -t memory 4. 磁盘信息 #   5.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -249,10 +249,10 @@ C是包含&amp;quot;预处理指令&amp;quot;的几种语言之一，它生效�
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/browser/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/browser/</guid>
       <description>经典问题 #  1. 当输入google.com时，发生了什么？ #  1.1 URL解析 #  当输入的URL不合法时，浏览器会将输入的字符传给默认搜索引擎，
 浏览器通过URL能知道以下信息：
 protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自身的HTST列表，确认是否包含该主机。 2、若HTST存在该主机，使用https代替http，否则使用http。 1.3 DNS解析 #  1、浏览器检查自身的DNS缓存 2、查找本地hosts文件 3、发起DNS解析查询 4、查询 本地|ISP DNS服务器 5、本地|ISP DNS服务器像高层服务器发起递归查询直到查到该域名的解析IP 1.4 TCP连接建立 #  1、client端发送SYN请求到server端，声明自己的ISN为aaa (CLOSED--&amp;gt;SYN-SENT) 2、server端接收SYN包，声明自己的ISN为bbb，ACK信息为aaa+1，返回给client端 (LISTEN--&amp;gt;SYN-RECEIVED) 3、client端返回ACK为bbb+1为server端 (SYN-SENT--&amp;gt;ESTABLISHED) 4、数据交互 1.5 TLS连接建立 #  1.6 HTTP #   </description>
@@ -260,20 +260,20 @@ protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自�
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/hangzhou/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/history/hangzhou/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/hangzhou/</guid>
-      <description>面试经历 #  club factory #   如何部署 如何监控 部署怎么实现 docker的优势和劣势  </description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/history/hangzhou/</guid>
+      <description>面试经历 #  CF #   如何部署 如何监控 部署怎么实现 docker的优势和劣势   </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/tech/technology/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/technology/</guid>
-      <description>技术知识点 #  硬件 #  1. 机器型号 #  dmidecode | awk -F&amp;#39;:&amp;#39; &amp;#39;/Product Name/{print $2}&amp;#39; 2. CPU信息 #  #获取逻辑CPU数 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | wc -l #获取CPU型号 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | uniq #获取物理cpu数 grep &amp;quot;physical id&amp;quot; /proc/cpuinfo | sort | uniq | wc -l 3. 内存信息 #  #获取内存大小 free -h #内存物理信息 dmidecode -t memory 4. 磁盘信息 #   5. 计算机组成 #  1.</description>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/tech/technology/</guid>
+      <description>技术知识点 #  1. 计算机基础 #   硬件 #  1. 机器型号 #  dmidecode | awk -F&amp;#39;:&amp;#39; &amp;#39;/Product Name/{print $2}&amp;#39; 2. CPU信息 #  #获取逻辑CPU数 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | wc -l #获取CPU型号 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | uniq #获取物理cpu数 grep &amp;quot;physical id&amp;quot; /proc/cpuinfo | sort | uniq | wc -l 3. 内存信息 #  #获取内存大小 free -h #内存物理信息 dmidecode -t memory 4. 磁盘信息 #   5.</description>
     </item>
     
     <item>
