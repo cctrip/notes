@@ -10,12 +10,39 @@
     
     
     <item>
-      <title>AWS CNI</title>
+      <title>Flannel</title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/flannel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/flannel/</guid>
+      <description>Flannel #  </description>
+    </item>
+    
+    <item>
+      <title>Calico</title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/calico/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/calico/</guid>
+      <description>Calico #  </description>
+    </item>
+    
+    <item>
+      <title>Cilium</title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/cilium/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/cilium/</guid>
+      <description>Cilium #  </description>
+    </item>
+    
+    <item>
+      <title>AWS VPC CNI</title>
       <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/aws_cni/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/aws_cni/</guid>
-      <description>AWS CNI #  架构 #    Pod To Pod #    Pod To External #    https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md</description>
+      <description>AWS VPC CNI #  架构 #    Pod To Pod #    Pod To External #    https://github.com/aws/amazon-vpc-cni-k8s/blob/master/docs/cni-proposal.md</description>
     </item>
     
   </channel>
