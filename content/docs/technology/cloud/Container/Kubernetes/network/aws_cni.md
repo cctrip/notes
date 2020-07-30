@@ -1,10 +1,10 @@
 ---
 bookCollapseSection: false
-weight: 1
-title: "AWS CNI"
+weight: 4
+title: "AWS VPC CNI"
 ---
 
-# AWS CNI
+# AWS VPC CNI
 
 ## 架构
 
