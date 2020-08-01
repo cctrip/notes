@@ -206,7 +206,7 @@ ip address
 
 ### Pod To External
 
-![img](https://github.com/aws/amazon-vpc-cni-k8s/raw/master/docs/images/pod-external.png)
+![img](pod-external.png)
 
 #### AWS_VPC_K8S_CNI_EXTERNALSNAT = False
 
