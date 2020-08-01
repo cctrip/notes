@@ -48,7 +48,7 @@ title: "AWS VPC CNI"
 
 ### Pod To Pod
 
-![img](https://github.com/aws/amazon-vpc-cni-k8s/raw/master/docs/images/wire-network.png)
+![img](wire-network.png)
 
 ***
 
@@ -200,13 +200,13 @@ ip address
 
 
 
-![img](https://github.com/aws/amazon-vpc-cni-k8s/raw/master/docs/images/ping.png)
+![img](pod-pod.png)
 
 ***
 
 ### Pod To External
 
-![img](https://github.com/aws/amazon-vpc-cni-k8s/raw/master/docs/images/ping2external.png)
+![img](https://github.com/aws/amazon-vpc-cni-k8s/raw/master/docs/images/pod-external.png)
 
 #### AWS_VPC_K8S_CNI_EXTERNALSNAT = False
 
