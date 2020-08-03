@@ -16,3 +16,27 @@ title: "技术知识点"
 
 ### 5. Golang
 
+***
+
+## 针对性技术
+
+### 1. TCP
+
+### 2. HTTP/HTTPS
+
+### 3. DNS
+
+### 4. Nginx
+
+### 5. LVS
+
+### 6. Ansible
+
+### 7. Kubernetes
+
+### 8. DevOps
+
+### 9. MySQL
+
+### 10. Redis
+
