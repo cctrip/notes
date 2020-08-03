@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-weight: 6
+weight: 7
 title: "Kubernetes 安全"
 ---
 

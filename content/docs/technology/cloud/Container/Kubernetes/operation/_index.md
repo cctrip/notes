@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-weight: 7
+weight: 8
 title: "Kubernetes 操作"
 ---
 
