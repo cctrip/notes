@@ -70,6 +70,7 @@ Kubernetes集群中的每个节点都运行一个kube-proxy。 kube-proxy负责�
 -A KUBE-SVC-5X4DO3E4TUEJQMU2 -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-5NAUVOHACN3LRMPO
 -A KUBE-SVC-5X4DO3E4TUEJQMU2 -j KUBE-SEP-JBFAMRDVQ5CON62O
 #将目标地址转换为172.31.178.243:9300
+-A KUBE-SEP-JBFAMRDVQ5CON62O -s 172.31.178.243/32 -j KUBE-MARK-MASQ
 -A KUBE-SEP-JBFAMRDVQ5CON62O -p tcp -m tcp -j DNAT --to-destination 172.31.178.243:9300
 
 通过路由规则找对应的pod(node到pod间通信)
@@ -79,13 +80,28 @@ Kubernetes集群中的每个节点都运行一个kube-proxy。 kube-proxy负责�
 
 ```
 
+***
 
+### ipvs
+
+![](ipvs.svg)
+
+
+
+在 `ipvs` 模式下，kube-proxy监视Kubernetes服务和端点，调用 `netlink` 接口相应地创建 IPVS 规则， 并定期将 IPVS 规则与 Kubernetes 服务和端点同步。 该控制循环可确保IPVS 状态与所需状态匹配。访问服务时，IPVS 将流量定向到后端Pod之一。
+
+IPVS代理模式基于类似于 iptables 模式的 netfilter 挂钩函数， 但是使用哈希表作为基础数据结构，并且在内核空间中工作。 这意味着，与 iptables 模式下的 kube-proxy 相比，IPVS 模式下的 kube-proxy 重定向通信的延迟要短，并且在同步代理规则时具有更好的性能。 与其他代理模式相比，IPVS 模式还支持更高的网络流量吞吐量。
+
+IPVS提供了更多选项来平衡后端Pod的流量。 这些是：
+
+- `rr`: round-robin
+- `lc`: least connection (smallest number of open connections)
+- `dh`: destination hashing
+- `sh`: source hashing
+- `sed`: shortest expected delay
+- `nq`: never queue
 
 ***
 
-
-
-## ipvs
-
-## ipvs-ebpf
+### ipvs-ebpf
 
