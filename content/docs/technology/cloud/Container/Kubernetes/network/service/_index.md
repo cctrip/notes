@@ -59,25 +59,39 @@ Kubernetes集群中的每个节点都运行一个kube-proxy。 kube-proxy负责�
 此模式下，kube-proxy针对每个service创建iptables规则，所有流量都通过iptables规则和路由表处理流量转发
 
 ```markdown
-# 以aws为例,cluster ip为10.100.14.55，endpoint为172.31.177.209:9300,172.31.178.228:9300,172.31.178.243:9300
+# 以aws为例,cluster ip为10.100.254.226，endpoint为172.31.178.122:80,172.31.178.161:80,172.31.179.80:80,nodeport为30028
 
-# pod --> cluster ip or nodeip + nodeport
+# pod or node --> cluster ip --> endpoint
 *nat
--A PREROUTING -m comment --comment "kubernetes service portals" -j KUBE-SERVICES #所有流量先进入KUBE-SERVICES检查
--A KUBE-SERVICES -d 10.100.14.55/32 -p tcp -m comment --comment "efk-logs/elasticsearch-master:transport cluster IP" -m tcp --dport 9300 -j KUBE-SVC-5X4DO3E4TUEJQMU2   #匹配目的ip为10.100.14.55
+-A PREROUTING -m comment --comment "kubernetes service portals" -j KUBE-SERVICES #pod所有流量先进入KUBE-SERVICES检查
+-A OUTPUT -m comment --comment "kubernetes service portals" -j KUBE-SERVICES  #node流量通过OUTPUT进入KUBE-SERVICES
+-A KUBE-SERVICES -d 10.100.254.226/32 -p tcp -m comment --comment "ops-test/nginx-service: cluster IP" -m tcp --dport 80 -j KUBE-SVC-473SUSYUDXM6XRRH    #匹配目的ip为10.100.254.226
 #随机选择后端
--A KUBE-SVC-5X4DO3E4TUEJQMU2 -m statistic --mode random --probability 0.33333333349 -j KUBE-SEP-YUFQX2WIG47HGIFG
--A KUBE-SVC-5X4DO3E4TUEJQMU2 -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-5NAUVOHACN3LRMPO
--A KUBE-SVC-5X4DO3E4TUEJQMU2 -j KUBE-SEP-JBFAMRDVQ5CON62O
+-A KUBE-SVC-473SUSYUDXM6XRRH -m statistic --mode random --probability 0.33333333349 -j KUBE-SEP-WWIE6AZWAXCTMCNN
+-A KUBE-SVC-473SUSYUDXM6XRRH -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-ZBMAWDEBUXPXQHDH
+-A KUBE-SVC-473SUSYUDXM6XRRH -j KUBE-SEP-VPHXZB6KBMWRSLML
 #将目标地址转换为172.31.178.243:9300
--A KUBE-SEP-JBFAMRDVQ5CON62O -s 172.31.178.243/32 -j KUBE-MARK-MASQ
--A KUBE-SEP-JBFAMRDVQ5CON62O -p tcp -m tcp -j DNAT --to-destination 172.31.178.243:9300
+-A KUBE-SEP-VPHXZB6KBMWRSLML -s 172.31.179.80/32 -j KUBE-MARK-MASQ
+-A KUBE-SEP-VPHXZB6KBMWRSLML -p tcp -m tcp -j DNAT --to-destination 172.31.179.80:80
 
-通过路由规则找对应的pod(node到pod间通信)
+通过路由规则找对应的pod(pod到pod间通信)
 
-# endpoint --> cluster ip or nodeip + nodeport --> client
+# endpoint --> cluster ip --> pod or node
+回来的包经过conntrack模块直接做SNAT操作
 
 
+# externel --> nodeport --> endpoint
+*nat
+-A PREROUTING -m comment --comment "kubernetes service portals" -j KUBE-SERVICES #外部所有流量先进入KUBE-SERVICES检查
+-A KUBE-SERVICES -m comment --comment "kubernetes service nodeports; NOTE: this must be the last rule in this chain" -m addrtype --dst-type LOCAL -j KUBE-NODEPORTS   #KUBE-SERVICES最后一条进入KUBE-NODEPORTS
+-A KUBE-NODEPORTS -p tcp -m comment --comment "ops-test/nginx-service:" -m tcp --dport 30028 -j KUBE-MARK-MASQ #打标
+-A KUBE-NODEPORTS -p tcp -m comment --comment "ops-test/nginx-service:" -m tcp --dport 30028 -j KUBE-SVC-473SUSYUDXM6XRRH  #后续的DNAT跟cluster ip类似
+
+# endpoint --> nodeport
+回来的包经过conntrack模块直接做SNAT操作，转换成nodeport
+
+# nodeport --> externel
+-A KUBE-POSTROUTING -m comment --comment "kubernetes service traffic requiring SNAT" -m mark --mark 0x4000/0x4000 -j MASQUERADE --random-fully   #跟外部交互需要做SNAT
 ```
 
 ***
@@ -100,6 +114,56 @@ IPVS提供了更多选项来平衡后端Pod的流量。 这些是：
 - `sh`: source hashing
 - `sed`: shortest expected delay
 - `nq`: never queue
+
+
+
+```markdown
+# pod or node --> cluster ip --> endpoint
+-A PREROUTING -m comment --comment "kubernetes service portals" -j KUBE-SERVICES
+-A OUTPUT -m comment --comment "kubernetes service portals" -j KUBE-SERVICES
+-A KUBE-SERVICES -m set --match-set KUBE-CLUSTER-IP dst,dst -j ACCEPT
+
+ipvs处理dnat，进入POSTROUTING链
+# endpoint --> cluster ip --> pod or node
+回来的包经过conntrack模块直接做SNAT操作
+
+
+# externel --> nodeport --> endpoint
+*nat
+-A PREROUTING -m comment --comment "kubernetes service portals" -j KUBE-SERVICES
+-A KUBE-SERVICES -m addrtype --dst-type LOCAL -j KUBE-NODE-PORT
+-A KUBE-NODE-PORT -p tcp -m comment --comment "Kubernetes nodeport TCP port with externalTrafficPolicy=local" -m set --match-set KUBE-NODE-PORT-LOCAL-TCP dst -j RETURN
+-A KUBE-NODE-PORT -p tcp -m comment --comment "Kubernetes nodeport TCP port for masquerade purpose" -m set --match-set KUBE-NODE-PORT-TCP dst -j KUBE-MARK-MASQ
+
+ipvs处理dnat，进入POSTROUTING链
+# endpoint --> nodeport
+回来的包经过conntrack模块直接做SNAT操作，转换成nodeport
+
+-A POSTROUTING -m comment --comment "kubernetes postrouting rules" -j KUBE-POSTROUTING
+-A POSTROUTING -s 169.254.123.0/24 ! -o docker0 -j MASQUERADE
+-A KUBE-POSTROUTING -m comment --comment "kubernetes service traffic requiring SNAT" -m mark --mark 0x4000/0x4000 -j MASQUERADE
+-A KUBE-POSTROUTING -m comment --comment "Kubernetes endpoints dst ip:port, source ip for solving hairpin purpose" -m set --match-set KUBE-LOOP-BACK dst,dst,src -j MASQUERADE
+```
+
+
+
+ipvs 会使用 iptables 进行包过滤、SNAT、masquared(伪装)。具体来说，ipvs 将使用`ipset`来存储需要`DROP`或`masquared`的流量的源或目标地址，以确保 iptables 规则的数量是恒定的，这样我们就不需要关心我们有多少服务了
+
+下表就是 ipvs 使用的 ipset 集合：
+
+| set name                       | members                                                      | usage                                                        |
+| :----------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
+| KUBE-CLUSTER-IP                | All service IP + port                                        | Mark-Masq for cases that `masquerade-all=true` or `clusterCIDR` specified |
+| KUBE-LOOP-BACK                 | All service IP + port + IP                                   | masquerade for solving hairpin purpose                       |
+| KUBE-EXTERNAL-IP               | service external IP + port                                   | masquerade for packages to external IPs                      |
+| KUBE-LOAD-BALANCER             | load balancer ingress IP + port                              | masquerade for packages to load balancer type service        |
+| KUBE-LOAD-BALANCER-LOCAL       | LB ingress IP + port with `externalTrafficPolicy=local`      | accept packages to load balancer with `externalTrafficPolicy=local` |
+| KUBE-LOAD-BALANCER-FW          | load balancer ingress IP + port with `loadBalancerSourceRanges` | package filter for load balancer with `loadBalancerSourceRanges` specified |
+| KUBE-LOAD-BALANCER-SOURCE-CIDR | load balancer ingress IP + port + source CIDR                | package filter for load balancer with `loadBalancerSourceRanges` specified |
+| KUBE-NODE-PORT-TCP             | nodeport type service TCP port                               | masquerade for packets to nodePort(TCP)                      |
+| KUBE-NODE-PORT-LOCAL-TCP       | nodeport type service TCP port with `externalTrafficPolicy=local` | accept packages to nodeport service with `externalTrafficPolicy=local` |
+| KUBE-NODE-PORT-UDP             | nodeport type service UDP port                               | masquerade for packets to nodePort(UDP)                      |
+| KUBE-NODE-PORT-LOCAL-UDP       | nodeport type service UDP port with `externalTrafficPolicy=local` | accept packages to nodeport service with `externalTrafficPolicy=local` |
 
 ***
 
