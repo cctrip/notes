@@ -11,7 +11,7 @@
 目前官方的proxy模式有三种
 userspace #   此模式下，由kube-proxy随机选取port进行监听，并创建iptables规则，将所有到达cluster ip的数据转发到kube-proxy监听的端口上，由kube-proxy通过SessionAffinity配置来确定发送给哪个pod
  iptables #   此模式下，kube-proxy针对每个service创建iptables规则，所有流量都通过iptables规则和路由表处理流量转发
-# 以aws为例,cluster ip为10.100.14.55，endpoint为172.31.177.209:9300,172.31.178.228:9300,172.31.178.243:9300 # pod --&gt; cluster ip or nodeip &#43; nodeport *nat -A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES #所有流量先进入KUBE-SERVICES检查 -A KUBE-SERVICES -d 10.">
+# 以aws为例,cluster ip为10.100.254.226，endpoint为172.31.178.122:80,172.31.178.161:80,172.31.179.80:80,nodeport为30028 # pod or node --&gt; cluster ip --&gt; endpoint *nat -A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES #pod所有流量先进入KUBE-SERVICES检查 -A OUTPUT -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES #node流量通过OUTPUT进入KUBE-SERVICES -A KUBE-SERVICES -d 10.">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="Service通信" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
@@ -21,7 +21,7 @@ userspace #   此模式下，由kube-proxy随机选取port进行监听，并创�
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.a66dd4e6ae59941be5f2fa16a3bdca61c2b26e4227b0a0f2bd940c22d8dcbfa3.js" integrity="sha256-pm3U5q5ZlBvl8voWo73KYcKybkInsKDyvZQMItjcv6M="></script>
+<script defer src="/notes/en.search.min.8103cfbf434685db09d5651988bf1621f85769a3760f02b7b6550800c1244e51.js" integrity="sha256-gQPPv0NGhdsJ1WUZiL8WIfhXaaN2DwK3tlUIAMEkTlE="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/service/index.xml" title="学而不思则罔" />
@@ -763,10 +763,10 @@ https://github.com/alex-shpak/hugo-book
           <ul>
             <li><a href="#userspace">userspace</a></li>
             <li><a href="#iptables">iptables</a></li>
+            <li><a href="#ipvs">ipvs</a></li>
+            <li><a href="#ipvs-ebpf">ipvs-ebpf</a></li>
           </ul>
         </li>
-        <li><a href="#ipvs">ipvs</a></li>
-        <li><a href="#ipvs-ebpf">ipvs-ebpf</a></li>
       </ul>
     </li>
   </ul>
@@ -830,33 +830,155 @@ https://github.com/alex-shpak/hugo-book
 <p>
   <img src="iptables.svg" alt="" /></p>
 <p>此模式下，kube-proxy针对每个service创建iptables规则，所有流量都通过iptables规则和路由表处理流量转发</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># 以aws为例,cluster ip为10.100.14.55，endpoint为172.31.177.209:9300,172.31.178.228:9300,172.31.178.243:9300
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># 以aws为例,cluster ip为10.100.254.226，endpoint为172.31.178.122:80,172.31.178.161:80,172.31.179.80:80,nodeport为30028
 
-# pod --&gt; cluster ip or nodeip + nodeport
+# pod or node --&gt; cluster ip --&gt; endpoint
 *nat
--A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES #所有流量先进入KUBE-SERVICES检查
--A KUBE-SERVICES -d 10.100.14.55/32 -p tcp -m comment --comment &#34;efk-logs/elasticsearch-master:transport cluster IP&#34; -m tcp --dport 9300 -j KUBE-SVC-5X4DO3E4TUEJQMU2   #匹配目的ip为10.100.14.55
+-A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES #pod所有流量先进入KUBE-SERVICES检查
+-A OUTPUT -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES  #node流量通过OUTPUT进入KUBE-SERVICES
+-A KUBE-SERVICES -d 10.100.254.226/32 -p tcp -m comment --comment &#34;ops-test/nginx-service: cluster IP&#34; -m tcp --dport 80 -j KUBE-SVC-473SUSYUDXM6XRRH    #匹配目的ip为10.100.254.226
 #随机选择后端
--A KUBE-SVC-5X4DO3E4TUEJQMU2 -m statistic --mode random --probability 0.33333333349 -j KUBE-SEP-YUFQX2WIG47HGIFG
--A KUBE-SVC-5X4DO3E4TUEJQMU2 -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-5NAUVOHACN3LRMPO
--A KUBE-SVC-5X4DO3E4TUEJQMU2 -j KUBE-SEP-JBFAMRDVQ5CON62O
+-A KUBE-SVC-473SUSYUDXM6XRRH -m statistic --mode random --probability 0.33333333349 -j KUBE-SEP-WWIE6AZWAXCTMCNN
+-A KUBE-SVC-473SUSYUDXM6XRRH -m statistic --mode random --probability 0.50000000000 -j KUBE-SEP-ZBMAWDEBUXPXQHDH
+-A KUBE-SVC-473SUSYUDXM6XRRH -j KUBE-SEP-VPHXZB6KBMWRSLML
 #将目标地址转换为172.31.178.243:9300
--A KUBE-SEP-JBFAMRDVQ5CON62O -p tcp -m tcp -j DNAT --to-destination 172.31.178.243:9300
+-A KUBE-SEP-VPHXZB6KBMWRSLML -s 172.31.179.80/32 -j KUBE-MARK-MASQ
+-A KUBE-SEP-VPHXZB6KBMWRSLML -p tcp -m tcp -j DNAT --to-destination 172.31.179.80:80
 
-通过路由规则找对应的pod(node到pod间通信)
+通过路由规则找对应的pod(pod到pod间通信)
 
-# endpoint --&gt; cluster ip or nodeip + nodeport --&gt; client
+# endpoint --&gt; cluster ip --&gt; pod or node
+回来的包经过conntrack模块直接做SNAT操作
 
 
+# externel --&gt; nodeport --&gt; endpoint
+*nat
+-A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES #外部所有流量先进入KUBE-SERVICES检查
+-A KUBE-SERVICES -m comment --comment &#34;kubernetes service nodeports; NOTE: this must be the last rule in this chain&#34; -m addrtype --dst-type LOCAL -j KUBE-NODEPORTS   #KUBE-SERVICES最后一条进入KUBE-NODEPORTS
+-A KUBE-NODEPORTS -p tcp -m comment --comment &#34;ops-test/nginx-service:&#34; -m tcp --dport 30028 -j KUBE-MARK-MASQ #打标
+-A KUBE-NODEPORTS -p tcp -m comment --comment &#34;ops-test/nginx-service:&#34; -m tcp --dport 30028 -j KUBE-SVC-473SUSYUDXM6XRRH  #后续的DNAT跟cluster ip类似
+
+# endpoint --&gt; nodeport
+回来的包经过conntrack模块直接做SNAT操作，转换成nodeport
+
+# nodeport --&gt; externel
+-A KUBE-POSTROUTING -m comment --comment &#34;kubernetes service traffic requiring SNAT&#34; -m mark --mark 0x4000/0x4000 -j MASQUERADE --random-fully   #跟外部交互需要做SNAT
 </code></pre></div><hr>
-<h2 id="ipvs">
+<h3 id="ipvs">
   ipvs
   <a class="anchor" href="#ipvs">#</a>
-</h2>
-<h2 id="ipvs-ebpf">
+</h3>
+<p>
+  <img src="ipvs.svg" alt="" /></p>
+<p>在 <code>ipvs</code> 模式下，kube-proxy监视Kubernetes服务和端点，调用 <code>netlink</code> 接口相应地创建 IPVS 规则， 并定期将 IPVS 规则与 Kubernetes 服务和端点同步。 该控制循环可确保IPVS 状态与所需状态匹配。访问服务时，IPVS 将流量定向到后端Pod之一。</p>
+<p>IPVS代理模式基于类似于 iptables 模式的 netfilter 挂钩函数， 但是使用哈希表作为基础数据结构，并且在内核空间中工作。 这意味着，与 iptables 模式下的 kube-proxy 相比，IPVS 模式下的 kube-proxy 重定向通信的延迟要短，并且在同步代理规则时具有更好的性能。 与其他代理模式相比，IPVS 模式还支持更高的网络流量吞吐量。</p>
+<p>IPVS提供了更多选项来平衡后端Pod的流量。 这些是：</p>
+<ul>
+<li><code>rr</code>: round-robin</li>
+<li><code>lc</code>: least connection (smallest number of open connections)</li>
+<li><code>dh</code>: destination hashing</li>
+<li><code>sh</code>: source hashing</li>
+<li><code>sed</code>: shortest expected delay</li>
+<li><code>nq</code>: never queue</li>
+</ul>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># pod or node --&gt; cluster ip --&gt; endpoint
+-A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES
+-A OUTPUT -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES
+-A KUBE-SERVICES -m set --match-set KUBE-CLUSTER-IP dst,dst -j ACCEPT
+
+ipvs处理dnat，进入POSTROUTING链
+# endpoint --&gt; cluster ip --&gt; pod or node
+回来的包经过conntrack模块直接做SNAT操作
+
+
+# externel --&gt; nodeport --&gt; endpoint
+*nat
+-A PREROUTING -m comment --comment &#34;kubernetes service portals&#34; -j KUBE-SERVICES
+-A KUBE-SERVICES -m addrtype --dst-type LOCAL -j KUBE-NODE-PORT
+-A KUBE-NODE-PORT -p tcp -m comment --comment &#34;Kubernetes nodeport TCP port with externalTrafficPolicy=local&#34; -m set --match-set KUBE-NODE-PORT-LOCAL-TCP dst -j RETURN
+-A KUBE-NODE-PORT -p tcp -m comment --comment &#34;Kubernetes nodeport TCP port for masquerade purpose&#34; -m set --match-set KUBE-NODE-PORT-TCP dst -j KUBE-MARK-MASQ
+
+ipvs处理dnat，进入POSTROUTING链
+# endpoint --&gt; nodeport
+回来的包经过conntrack模块直接做SNAT操作，转换成nodeport
+
+-A POSTROUTING -m comment --comment &#34;kubernetes postrouting rules&#34; -j KUBE-POSTROUTING
+-A POSTROUTING -s 169.254.123.0/24 ! -o docker0 -j MASQUERADE
+-A KUBE-POSTROUTING -m comment --comment &#34;kubernetes service traffic requiring SNAT&#34; -m mark --mark 0x4000/0x4000 -j MASQUERADE
+-A KUBE-POSTROUTING -m comment --comment &#34;Kubernetes endpoints dst ip:port, source ip for solving hairpin purpose&#34; -m set --match-set KUBE-LOOP-BACK dst,dst,src -j MASQUERADE
+</code></pre></div><p>ipvs 会使用 iptables 进行包过滤、SNAT、masquared(伪装)。具体来说，ipvs 将使用<code>ipset</code>来存储需要<code>DROP</code>或<code>masquared</code>的流量的源或目标地址，以确保 iptables 规则的数量是恒定的，这样我们就不需要关心我们有多少服务了</p>
+<p>下表就是 ipvs 使用的 ipset 集合：</p>
+<table>
+<thead>
+<tr>
+<th align="left">set name</th>
+<th align="left">members</th>
+<th align="left">usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">KUBE-CLUSTER-IP</td>
+<td align="left">All service IP + port</td>
+<td align="left">Mark-Masq for cases that <code>masquerade-all=true</code> or <code>clusterCIDR</code> specified</td>
+</tr>
+<tr>
+<td align="left">KUBE-LOOP-BACK</td>
+<td align="left">All service IP + port + IP</td>
+<td align="left">masquerade for solving hairpin purpose</td>
+</tr>
+<tr>
+<td align="left">KUBE-EXTERNAL-IP</td>
+<td align="left">service external IP + port</td>
+<td align="left">masquerade for packages to external IPs</td>
+</tr>
+<tr>
+<td align="left">KUBE-LOAD-BALANCER</td>
+<td align="left">load balancer ingress IP + port</td>
+<td align="left">masquerade for packages to load balancer type service</td>
+</tr>
+<tr>
+<td align="left">KUBE-LOAD-BALANCER-LOCAL</td>
+<td align="left">LB ingress IP + port with <code>externalTrafficPolicy=local</code></td>
+<td align="left">accept packages to load balancer with <code>externalTrafficPolicy=local</code></td>
+</tr>
+<tr>
+<td align="left">KUBE-LOAD-BALANCER-FW</td>
+<td align="left">load balancer ingress IP + port with <code>loadBalancerSourceRanges</code></td>
+<td align="left">package filter for load balancer with <code>loadBalancerSourceRanges</code> specified</td>
+</tr>
+<tr>
+<td align="left">KUBE-LOAD-BALANCER-SOURCE-CIDR</td>
+<td align="left">load balancer ingress IP + port + source CIDR</td>
+<td align="left">package filter for load balancer with <code>loadBalancerSourceRanges</code> specified</td>
+</tr>
+<tr>
+<td align="left">KUBE-NODE-PORT-TCP</td>
+<td align="left">nodeport type service TCP port</td>
+<td align="left">masquerade for packets to nodePort(TCP)</td>
+</tr>
+<tr>
+<td align="left">KUBE-NODE-PORT-LOCAL-TCP</td>
+<td align="left">nodeport type service TCP port with <code>externalTrafficPolicy=local</code></td>
+<td align="left">accept packages to nodeport service with <code>externalTrafficPolicy=local</code></td>
+</tr>
+<tr>
+<td align="left">KUBE-NODE-PORT-UDP</td>
+<td align="left">nodeport type service UDP port</td>
+<td align="left">masquerade for packets to nodePort(UDP)</td>
+</tr>
+<tr>
+<td align="left">KUBE-NODE-PORT-LOCAL-UDP</td>
+<td align="left">nodeport type service UDP port with <code>externalTrafficPolicy=local</code></td>
+<td align="left">accept packages to nodeport service with <code>externalTrafficPolicy=local</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="ipvs-ebpf">
   ipvs-ebpf
   <a class="anchor" href="#ipvs-ebpf">#</a>
-</h2>
+</h3>
 </article>
  
       
@@ -866,6 +988,12 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
+
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/93208f09215aa961904305e84cb974a0d15fca84" title='Last modified by cctrip | August 6, 2020' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>August 6, 2020</span>
+    </a>
+  </div>
 
 
 
@@ -906,10 +1034,10 @@ https://github.com/alex-shpak/hugo-book
           <ul>
             <li><a href="#userspace">userspace</a></li>
             <li><a href="#iptables">iptables</a></li>
+            <li><a href="#ipvs">ipvs</a></li>
+            <li><a href="#ipvs-ebpf">ipvs-ebpf</a></li>
           </ul>
         </li>
-        <li><a href="#ipvs">ipvs</a></li>
-        <li><a href="#ipvs-ebpf">ipvs-ebpf</a></li>
       </ul>
     </li>
   </ul>
