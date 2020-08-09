@@ -169,3 +169,28 @@ ipvs 会使用 iptables 进行包过滤、SNAT、masquared(伪装)。具体来�
 
 ### ipvs-ebpf
 
+
+
+
+
+***
+
+## 服务类型
+
+对一些应用（如前端）的某些部分，可能希望通过外部 Kubernetes 集群外部 IP 地址暴露 Service。
+
+Kubernetes `ServiceTypes` 允许指定一个需要的类型的 Service，默认是 `ClusterIP` 类型。
+
+`Type` 的取值以及行为如下：
+
+- `ClusterIP`：通过集群的内部 IP 暴露服务，选择该值，服务只能够在集群内部可以访问，这也是默认的 `ServiceType`。
+
+- [`NodePort`](https://kubernetes.io/zh/docs/concepts/services-networking/service/#nodeport)：通过每个 Node 上的 IP 和静态端口（`NodePort`）暴露服务。 `NodePort` 服务会路由到 `ClusterIP` 服务，这个 `ClusterIP` 服务会自动创建。 通过请求 `<NodeIP>:<NodePort>`，可以从集群的外部访问一个 `NodePort` 服务。
+
+- [`LoadBalancer`](https://kubernetes.io/zh/docs/concepts/services-networking/service/#loadbalancer)：使用云提供商的负载局衡器，可以向外部暴露服务。 外部的负载均衡器可以路由到 `NodePort` 服务和 `ClusterIP` 服务。
+
+- [`ExternalName`](https://kubernetes.io/zh/docs/concepts/services-networking/service/#externalname)：通过返回 `CNAME` 和它的值，可以将服务映射到 `externalName` 字段的内容（例如， `foo.bar.example.com`）。 没有任何类型代理被创建。
+
+  > **说明：** 您需要 CoreDNS 1.7 或更高版本才能使用 `ExternalName` 类型。
+
+您也可以使用 [Ingress](https://kubernetes.io/zh/docs/concepts/services-networking/ingress/) 来暴露自己的服务。 Ingress 不是服务类型，但它充当集群的入口点。 它可以将路由规则整合到一个资源中，因为它可以在同一IP地址下公开多个服务。
