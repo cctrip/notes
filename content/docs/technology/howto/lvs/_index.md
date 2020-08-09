@@ -198,6 +198,44 @@ arp_announce参数（2）含义：忽略报文的源IP地址，使用主机上�
 
 
 
+#### Keepalived集群问题
+
+```
+假设主备 director包含rs， 可以这样处理：
+
+经过 director1 的包，如果 mac address 不是 director2 的，用 iptables 给包打 mark=i
+经过 director2 的包，如果 mac address 不是 director1 的，用 iptables 给包打 mark=j
+同时配置 LVS，不用三元组(ip,port,protocol)来表示 virtual_server，而用 fwmark-service，keepalived 配置 lvs 使用 fwmark-service。
+这样，如果是 director 转发过来的包，就不会进入 LVS 进行负载（防止两个 director 互相扔皮球，进入死循环），而是被 RS 服务处理。而客户端进来的包，就会进入 LVS 进行负载。
+
+iptables  -t mangle -I PREROUTING -d $VIP -p tcp -m tcp --dport $VPORT -m mac ! --mac-source $MAC_Director2 -j MARK --set-mark 0x3 
+iptables  -t mangle -I PREROUTING -d $VIP -p tcp -m tcp --dport $VPORT -m mac ! --mac-source $MAC_Director1 -j MARK --set-mark 0x4
+
+
+keealived
+virtual_server fwmark 3  {  # node2 配置 fwmark 4
+    delay_loop 10
+    lb_algo rr
+    lb_kind DR
+    protocol TCP
+  
+    real_server RIP1 8080 {
+    weight 1
+    MISC_CHECK {
+        # some check configuration
+    }
+    }
+  
+    real_server RIP2 8080 {
+    weight 1
+    MISC_CHECK {
+        # some check configuration
+        }
+    }
+```
+
+
+
 
 
 ***
