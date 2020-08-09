@@ -176,8 +176,10 @@ r
 ```
 #Director
 
-1、SYN-RECEIVED
-2、
+1、SYN-RECEIVED (收到syn=1)
+2、ESTABLISH(收到ack=1)
+3、CLOSE_WAIT或者LAST_ACK(收到fin=1,ack=1)
+4、超时机制
 ```
 
 
