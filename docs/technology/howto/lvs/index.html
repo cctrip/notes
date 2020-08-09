@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="LVS #  基础概念 #  术语 #   IPVS,ipvs,ip_vs：内核模块，在director上提供负载均衡功能 LVS, linux virtual server ：由 director &#43; realservers组成virtual server，对client显示为一台机器 director: 运行ipvs代码的节点，client连接director，director转发数据包到realserver，director只是具有使LVS正常工作的特殊规则的IP路由器 realservers：运行服务的主机，处理来自client的请求 client forwarding method (currently LVS-NAT, LVS-DR, LVS-Tun)：决定director如何发送数据包给realserver scheduling ( ipvsadm and schedulers)：director用于选择realserver以便为来自client的新连接请求提供服务的算法   LVS中IP/网络的名称 #   ________ | | | client | (local or on internet) |________| CIP | -- (router) DGW | outside network | L VIP i ____|_____ n | | (director can have 1 or 2 NICs) u | director | x |__________| DIP (and PIP) V | i | DRIP network r ---------------------------------- t | | | u | | | a RIP1 RIP2 RIP3 l _____________ _____________ _____________ | | | | | | S | realserver1 | | realserver2 | | realserver3 | e |_____________| |_____________| |_____________| r v e r --- client IP = CIP virtual IP = VIP - the IP on the director that the client connects to) director IP = DIP - the IP on the director in the DIP/RIP (DRIP) network (this is the realserver gateway for LVS-NAT) realserver IP = RIP (and RIP1, RIP2.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="LVS" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/howto/lvs/" />
+
+<title>LVS | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.9742c9bebbb11a07ab0c865581feae70adf573e7c5ab3885c59b537783914e32.js" integrity="sha256-l0LJvruxGgerDIZVgf6ucK31c&#43;fFqziFxZtTd4ORTjI="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/howto/lvs/index.xml" title="学而不思则罔" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/architecture/" class="collapsed ">架构</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/howto/" class="collapsed ">How To</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/howto/lvs/" class="active">LVS</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/learn/" class="collapsed ">方法论</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>LVS</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lvs">LVS</a>
+      <ul>
+        <li><a href="#基础概念">基础概念</a>
+          <ul>
+            <li><a href="#术语">术语</a></li>
+            <li><a href="#lvs中ip网络的名称">LVS中IP/网络的名称</a></li>
+          </ul>
+        </li>
+        <li><a href="#负载均衡模式转发方式">负载均衡模式(转发方式)</a>
+          <ul>
+            <li><a href="#lvs-nat">LVS-NAT</a></li>
+            <li><a href="#lvs-drdirect-routing">LVS-DR（direct routing）</a></li>
+            <li><a href="#lvs-tuntunnelling">LVS-Tun（tunnelling）</a></li>
+          </ul>
+        </li>
+        <li><a href="#调度算法">调度算法</a>
+          <ul>
+            <li><a href="#heading"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="lvs">
+  LVS
+  <a class="anchor" href="#lvs">#</a>
+</h1>
+<h2 id="基础概念">
+  基础概念
+  <a class="anchor" href="#%e5%9f%ba%e7%a1%80%e6%a6%82%e5%bf%b5">#</a>
+</h2>
+<h3 id="术语">
+  术语
+  <a class="anchor" href="#%e6%9c%af%e8%af%ad">#</a>
+</h3>
+<ul>
+<li><em>IPVS,ipvs,ip_vs</em>：内核模块，在director上提供负载均衡功能</li>
+<li><em>LVS, linux virtual server</em> ：由 <em>director</em> + <em>realservers</em>组成<em>virtual server</em>，对client显示为一台机器</li>
+<li><em>director</em>: 运行ipvs代码的节点，client连接director，director转发数据包到realserver，director只是具有使LVS正常工作的特殊规则的IP路由器</li>
+<li><em>realservers</em>：运行服务的主机，处理来自client的请求</li>
+<li><em>client</em></li>
+<li><em>forwarding method</em> (currently 
+  <a href="https://docs.huihoo.com/hpc-cluster/linux-virtual-server/HOWTO/LVS-HOWTO.LVS-NAT.html#LVS-HOWTO.LVS-NAT">LVS-NAT</a>, 
+  <a href="https://docs.huihoo.com/hpc-cluster/linux-virtual-server/HOWTO/LVS-HOWTO.LVS-DR.html#LVS-HOWTO.LVS-DR">LVS-DR</a>, 
+  <a href="https://docs.huihoo.com/hpc-cluster/linux-virtual-server/HOWTO/LVS-HOWTO.LVS-Tun.html#LVS-HOWTO.LVS-Tun">LVS-Tun</a>)：决定director如何发送数据包给realserver</li>
+<li><em>scheduling</em> (
+  <a href="https://docs.huihoo.com/hpc-cluster/linux-virtual-server/HOWTO/LVS-HOWTO.ipvsadm.html#LVS-HOWTO.ipvsadm">ipvsadm and schedulers</a>)：director用于选择realserver以便为来自client的新连接请求提供服务的算法</li>
+</ul>
+<hr>
+<h3 id="lvs中ip网络的名称">
+  LVS中IP/网络的名称
+  <a class="anchor" href="#lvs%e4%b8%adip%e7%bd%91%e7%bb%9c%e7%9a%84%e5%90%8d%e7%a7%b0">#</a>
+</h3>
+<pre><code>                        ________
+                       |        |
+                       | client | (local or on internet)
+                       |________|
+                          CIP
+                           |
+--                      (router)
+                          DGW
+                           | outside network
+                           |
+L                         VIP
+i                      ____|_____
+n                     |          | (director can have 1 or 2 NICs)
+u                     | director |
+x                     |__________|
+                      DIP (and PIP)
+V                          |
+i                          | DRIP network
+r         ----------------------------------
+t         |                |               |
+u         |                |               |
+a        RIP1             RIP2            RIP3
+l    _____________   _____________   _____________
+    |             | |             | |             |
+S   | realserver1 | | realserver2 | | realserver3 |
+e   |_____________| |_____________| |_____________|
+r
+v
+e
+r
+---
+</code></pre><pre><code>client IP     = CIP
+virtual IP    = VIP - the IP on the director that the client connects to)
+director IP   = DIP - the IP on the director in the DIP/RIP (DRIP) network
+   (this is the realserver gateway for LVS-NAT)
+realserver IP = RIP (and RIP1, RIP2...) the IP on the realserver
+director GW   = DGW - the director's gw (only needed for LVS-NAT)
+   (this can be the realserver gateway for LVS-DR and LVS-Tun)
+</code></pre><hr>
+<h2 id="负载均衡模式转发方式">
+  负载均衡模式(转发方式)
+  <a class="anchor" href="#%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1%e6%a8%a1%e5%bc%8f%e8%bd%ac%e5%8f%91%e6%96%b9%e5%bc%8f">#</a>
+</h2>
+<h3 id="lvs-nat">
+  LVS-NAT
+  <a class="anchor" href="#lvs-nat">#</a>
+</h3>
+<p>基于网络地址转换(NAT)实现，所有数据包都要经过director转发，realserver的gateway需配置为RIP</p>
+<pre><code>                        ________
+                       |        |
+                       | client | (local or on internet)
+                       |________|
+                           |
+                        (router)
+                       DIRECTOR_GW
+                           |
+--                         |
+L                      Virtual IP
+i                      ____|_____
+n                     |          | (director can have 1 or 2 NICs)
+u                     | director |
+x                     |__________|
+                          DIP
+V                          |
+i                          |
+r         -----------------+----------------
+t         |                |               |
+u         |                |               |
+a        RIP1             RIP2            RIP3
+l   ____________     ____________     ____________
+   |            |   |            |   |            |
+S  | realserver |   | realserver |   | realserver |
+e  |____________|   |____________|   |____________|
+r
+v
+e
+r
+</code></pre><h4 id="flow-process">
+  Flow Process
+  <a class="anchor" href="#flow-process">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> client往VIP(director)发起请求 （source ip为cip，destination ip为vip）
+<span style="color:#66d9ef">2.</span> director接收请求，ipvs模块在input链通过调度算法选择realserver，将数据包的目标IP和端口改为RIP的IP和端口(source ip为cip，destination ip为rip)
+<span style="color:#66d9ef">3.</span> POSTROUTING链通过路由选路，将数据包发送给realserver
+<span style="color:#66d9ef">4.</span> realserver处理请求，给director返回数据包(source ip为rip，destination ip为cip)
+<span style="color:#66d9ef">5.</span> director接收数据包，修改数据包的源ip为vip，响应给client(source ip为vip，destination ip为cip)(iptables -t nat -A POSTROUTING -s RIP -j MASQUERADE)
+
+</code></pre></div><hr>
+<h3 id="lvs-drdirect-routing">
+  LVS-DR（direct routing）
+  <a class="anchor" href="#lvs-drdirect-routing">#</a>
+</h3>
+<p>通过更改数据包上的MAC地址并将数据包转发到realserver，realserver需在lo网卡上配置VIP</p>
+<pre><code>                        ________
+                       |        |
+                       | client | (local or on internet)
+                       |________|
+                           |
+                        (router)-----------
+                           |    SERVER_GW  |
+--                         |               |
+L                         VIP              |
+i                      ____|_____          |
+n                     |          | (director can have 1 or 2 NICs)
+u                     | director |         |
+x                     |__________|         |
+                          DIP              |
+V                          |               |
+i                          |               |
+r         -----------------+----------------
+t         |                |               |
+u         |                |               |
+a      RIP1,VIP         RIP2,VIP        RIP3,VIP
+l   ____________     ____________     ____________
+   |            |   |            |   |            |
+S  | realserver |   | realserver |   | realserver |
+e  |____________|   |____________|   |____________|
+r
+v
+e
+r
+</code></pre><h4 id="flow-process-1">
+  Flow Process
+  <a class="anchor" href="#flow-process-1">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"><span style="color:#66d9ef">1.</span> client请求vip(director) (cip--&gt;vip)
+<span style="color:#66d9ef">2.</span> director接收请求，ipvs模块在在input链通过调度算法选择realserver，将数据包的目标mac地址改为realserver的mac地址(cip--&gt;vip)
+<span style="color:#66d9ef">3.</span> realserver解析数据包，发现ip为自己的lo网卡上的ip，处理请求
+<span style="color:#66d9ef">4.</span> realserver发送数据包经由gateway直接回复给client，(vip --&gt; cip)
+</code></pre></div><h4 id="tcp状态机问题">
+  TCP状态机问题
+  <a class="anchor" href="#tcp%e7%8a%b6%e6%80%81%e6%9c%ba%e9%97%ae%e9%a2%98">#</a>
+</h4>
+<pre><code>#Director
+
+1、SYN-RECEIVED
+2、
+</code></pre><h4 id="arp问题">
+  ARP问题
+  <a class="anchor" href="#arp%e9%97%ae%e9%a2%98">#</a>
+</h4>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># realserver
+<span style="color:#66d9ef">1.</span> vip只能设置在lo网卡上，设置在其他网卡会响应arp request，造成arp table混乱
+<span style="color:#66d9ef">2.</span> 抑制arp帧，
+echo &#34;1&#34; &gt;/proc/sys/net/ipv4/conf/all/arp_ignore
+echo &#34;2&#34; &gt;/proc/sys/net/ipv4/conf/all/arp_announce
+
+arp_ignore参数（1）含义：只响应目标IP是本地真实网卡上配置的IP
+arp_announce参数（2）含义：忽略报文的源IP地址，使用主机上能够跟用户通信的真实网卡发送数据
+
+</code></pre></div><h4 id="keepalived集群问题">
+  Keepalived集群问题
+  <a class="anchor" href="#keepalived%e9%9b%86%e7%be%a4%e9%97%ae%e9%a2%98">#</a>
+</h4>
+<pre><code>假设主备 director包含rs， 可以这样处理：
+
+经过 director1 的包，如果 mac address 不是 director2 的，用 iptables 给包打 mark=i
+经过 director2 的包，如果 mac address 不是 director1 的，用 iptables 给包打 mark=j
+同时配置 LVS，不用三元组(ip,port,protocol)来表示 virtual_server，而用 fwmark-service，keepalived 配置 lvs 使用 fwmark-service。
+这样，如果是 director 转发过来的包，就不会进入 LVS 进行负载（防止两个 director 互相扔皮球，进入死循环），而是被 RS 服务处理。而客户端进来的包，就会进入 LVS 进行负载。
+
+iptables  -t mangle -I PREROUTING -d $VIP -p tcp -m tcp --dport $VPORT -m mac ! --mac-source $MAC_Director2 -j MARK --set-mark 0x3 
+iptables  -t mangle -I PREROUTING -d $VIP -p tcp -m tcp --dport $VPORT -m mac ! --mac-source $MAC_Director1 -j MARK --set-mark 0x4
+
+
+keealived
+virtual_server fwmark 3  {  # node2 配置 fwmark 4
+    delay_loop 10
+    lb_algo rr
+    lb_kind DR
+    protocol TCP
+  
+    real_server RIP1 8080 {
+    weight 1
+    MISC_CHECK {
+        # some check configuration
+    }
+    }
+  
+    real_server RIP2 8080 {
+    weight 1
+    MISC_CHECK {
+        # some check configuration
+        }
+    }
+</code></pre><hr>
+<h3 id="lvs-tuntunnelling">
+  LVS-Tun（tunnelling）
+  <a class="anchor" href="#lvs-tuntunnelling">#</a>
+</h3>
+<p>数据包经过IP隧道技术封装并转发到realserver</p>
+<hr>
+<h2 id="调度算法">
+  调度算法
+  <a class="anchor" href="#%e8%b0%83%e5%ba%a6%e7%ae%97%e6%b3%95">#</a>
+</h2>
+<ul>
+<li>round robin (rr), weighted round robin (wrr) ：轮询和按权重轮询</li>
+<li>least connected (lc), weighted least connection (wlc)：最小连接和按权重的最小连接</li>
+</ul>
+<ul>
+<li>
+  <a href="https://docs.huihoo.com/hpc-cluster/linux-virtual-server/HOWTO/LVS-HOWTO.persistent_connection.html#LVS-HOWTO.persistent_connection">persistent connection</a></li>
+<li>LBLC: a persistent memory algorythm</li>
+<li>DH: destination hash</li>
+<li>SH: source hash</li>
+</ul>
+<h3 id="heading">
+  
+  <a class="anchor" href="#heading">#</a>
+</h3>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/efed5406a05bba0f7d54b07c4ab04bf0fbe91b34" title='Last modified by cctrip | August 9, 2020' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>August 9, 2020</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/howto/lvs/_index.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lvs">LVS</a>
+      <ul>
+        <li><a href="#基础概念">基础概念</a>
+          <ul>
+            <li><a href="#术语">术语</a></li>
+            <li><a href="#lvs中ip网络的名称">LVS中IP/网络的名称</a></li>
+          </ul>
+        </li>
+        <li><a href="#负载均衡模式转发方式">负载均衡模式(转发方式)</a>
+          <ul>
+            <li><a href="#lvs-nat">LVS-NAT</a></li>
+            <li><a href="#lvs-drdirect-routing">LVS-DR（direct routing）</a></li>
+            <li><a href="#lvs-tuntunnelling">LVS-Tun（tunnelling）</a></li>
+          </ul>
+        </li>
+        <li><a href="#调度算法">调度算法</a>
+          <ul>
+            <li><a href="#heading"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

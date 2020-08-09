@@ -21,7 +21,7 @@ userspace #   此模式下，由kube-proxy随机选取port进行监听，并创�
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.8103cfbf434685db09d5651988bf1621f85769a3760f02b7b6550800c1244e51.js" integrity="sha256-gQPPv0NGhdsJ1WUZiL8WIfhXaaN2DwK3tlUIAMEkTlE="></script>
+<script defer src="/notes/en.search.min.9742c9bebbb11a07ab0c865581feae70adf573e7c5ab3885c59b537783914e32.js" integrity="sha256-l0LJvruxGgerDIZVgf6ucK31c&#43;fFqziFxZtTd4ORTjI="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/service/index.xml" title="学而不思则罔" />
@@ -618,6 +618,23 @@ https://github.com/alex-shpak/hugo-book
         </li>
       
     
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/howto/" class="collapsed ">How To</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
   </ul>
   
 
@@ -767,6 +784,7 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#ipvs-ebpf">ipvs-ebpf</a></li>
           </ul>
         </li>
+        <li><a href="#服务类型">服务类型</a></li>
       </ul>
     </li>
   </ul>
@@ -979,6 +997,36 @@ ipvs处理dnat，进入POSTROUTING链
   ipvs-ebpf
   <a class="anchor" href="#ipvs-ebpf">#</a>
 </h3>
+<hr>
+<h2 id="服务类型">
+  服务类型
+  <a class="anchor" href="#%e6%9c%8d%e5%8a%a1%e7%b1%bb%e5%9e%8b">#</a>
+</h2>
+<p>对一些应用（如前端）的某些部分，可能希望通过外部 Kubernetes 集群外部 IP 地址暴露 Service。</p>
+<p>Kubernetes <code>ServiceTypes</code> 允许指定一个需要的类型的 Service，默认是 <code>ClusterIP</code> 类型。</p>
+<p><code>Type</code> 的取值以及行为如下：</p>
+<ul>
+<li>
+<p><code>ClusterIP</code>：通过集群的内部 IP 暴露服务，选择该值，服务只能够在集群内部可以访问，这也是默认的 <code>ServiceType</code>。</p>
+</li>
+<li>
+<p>
+  <a href="https://kubernetes.io/zh/docs/concepts/services-networking/service/#nodeport"><code>NodePort</code></a>：通过每个 Node 上的 IP 和静态端口（<code>NodePort</code>）暴露服务。 <code>NodePort</code> 服务会路由到 <code>ClusterIP</code> 服务，这个 <code>ClusterIP</code> 服务会自动创建。 通过请求 <code>&lt;NodeIP&gt;:&lt;NodePort&gt;</code>，可以从集群的外部访问一个 <code>NodePort</code> 服务。</p>
+</li>
+<li>
+<p>
+  <a href="https://kubernetes.io/zh/docs/concepts/services-networking/service/#loadbalancer"><code>LoadBalancer</code></a>：使用云提供商的负载局衡器，可以向外部暴露服务。 外部的负载均衡器可以路由到 <code>NodePort</code> 服务和 <code>ClusterIP</code> 服务。</p>
+</li>
+<li>
+<p>
+  <a href="https://kubernetes.io/zh/docs/concepts/services-networking/service/#externalname"><code>ExternalName</code></a>：通过返回 <code>CNAME</code> 和它的值，可以将服务映射到 <code>externalName</code> 字段的内容（例如， <code>foo.bar.example.com</code>）。 没有任何类型代理被创建。</p>
+<blockquote>
+<p><strong>说明：</strong> 您需要 CoreDNS 1.7 或更高版本才能使用 <code>ExternalName</code> 类型。</p>
+</blockquote>
+</li>
+</ul>
+<p>您也可以使用 
+  <a href="https://kubernetes.io/zh/docs/concepts/services-networking/ingress/">Ingress</a> 来暴露自己的服务。 Ingress 不是服务类型，但它充当集群的入口点。 它可以将路由规则整合到一个资源中，因为它可以在同一IP地址下公开多个服务。</p>
 </article>
  
       
@@ -1038,6 +1086,7 @@ ipvs处理dnat，进入POSTROUTING链
             <li><a href="#ipvs-ebpf">ipvs-ebpf</a></li>
           </ul>
         </li>
+        <li><a href="#服务类型">服务类型</a></li>
       </ul>
     </li>
   </ul>
