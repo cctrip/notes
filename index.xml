@@ -111,6 +111,15 @@ Table of Contents
     </item>
     
     <item>
+      <title>配置</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/config/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/config/</guid>
+      <description>配置 #  user www-data; worker_processes auto; worker_rlimit_nofile 650000; pid /run/nginx.pid; events { worker_connections 76800; # multi_accept on; } http { sendfile on; tcp_nopush on; tcp_nodelay on; #keepalive_timeout 1000;  keepalive_timeout 120s 120s; keepalive_requests 1500; types_hash_max_size 2048; server_tokens off; #define request limit zone  limit_req_zone $limit zone=req_limit:1024m rate=30r/s ; limit_req_zone $limit zone=auth_limit:1024m rate=10r/s ; limit_req_status 466; #limit_req_zone $binary_remote_addr zone=testreq:800m rate=1r/s;  #define connection limit zone per ip  limit_conn_zone $limit zone=conn_limit:100m; # Gzip Settings  ##  gzip on; gzip_http_version 1.</description>
+    </item>
+    
+    <item>
       <title>Cilium</title>
       <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/cilium/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -545,6 +554,15 @@ Jinja2模板引擎 #  templates/user.html：Jinja2 模板
   /etc/passwd
 字段详解(以&amp;rdquo;:&amp;ldquo;为分割符)
 用户名 : 密码 : UID : GID : 注释 : 家目录 : 默认shell</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/kernel/opt/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/kernel/opt/</guid>
+      <description>vm.swappiness = 0 net.ipv4.neigh.default.gc_stale_time=120 # see details in https://help.aliyun.com/knowledge_detail/39428.html net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.default.arp_announce = 2 net.ipv4.conf.lo.arp_announce=2 net.ipv4.conf.all.arp_announce=2 # see details in https://help.aliyun.com/knowledge_detail/41334.html net.ipv4.tcp_max_tw_buckets = 5000 net.ipv4.tcp_synack_retries = 2 net.ipv6.conf.all.disable_ipv6 = 1 net.ipv6.conf.default.disable_ipv6 = 1 net.ipv6.conf.lo.disable_ipv6 = 1 net.core.rmem_default = 256960 net.core.rmem_max = 513920 net.core.wmem_default = 256960 net.core.wmem_max = 513920 net.core.netdev_max_backlog = 2000 net.core.somaxconn = 2048 net.core.optmem_max = 81920 net.ipv4.tcp_mem = 131072 262144 524288 net.ipv4.tcp_rmem = 8760 256960 4088000 net.ipv4.tcp_wmem = 8760 256960 4088000 net.</description>
     </item>
     
   </channel>

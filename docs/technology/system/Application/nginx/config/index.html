@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="配置 #  user www-data; worker_processes auto; worker_rlimit_nofile 650000; pid /run/nginx.pid; events { worker_connections 76800; # multi_accept on; } http { sendfile on; tcp_nopush on; tcp_nodelay on; #keepalive_timeout 1000;  keepalive_timeout 120s 120s; keepalive_requests 1500; types_hash_max_size 2048; server_tokens off; #define request limit zone  limit_req_zone $limit zone=req_limit:1024m rate=30r/s ; limit_req_zone $limit zone=auth_limit:1024m rate=10r/s ; limit_req_status 466; #limit_req_zone $binary_remote_addr zone=testreq:800m rate=1r/s;  #define connection limit zone per ip  limit_conn_zone $limit zone=conn_limit:100m; # Gzip Settings  ##  gzip on; gzip_http_version 1.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="配置" />
+<meta property="og:description" content="配置 #  user www-data; worker_processes auto; worker_rlimit_nofile 650000; pid /run/nginx.pid; events { worker_connections 76800; # multi_accept on; } http { sendfile on; tcp_nopush on; tcp_nodelay on; #keepalive_timeout 1000;  keepalive_timeout 120s 120s; keepalive_requests 1500; types_hash_max_size 2048; server_tokens off; #define request limit zone  limit_req_zone $limit zone=req_limit:1024m rate=30r/s ; limit_req_zone $limit zone=auth_limit:1024m rate=10r/s ; limit_req_status 466; #limit_req_zone $binary_remote_addr zone=testreq:800m rate=1r/s;  #define connection limit zone per ip  limit_conn_zone $limit zone=conn_limit:100m; # Gzip Settings  ##  gzip on; gzip_http_version 1." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/system/Application/nginx/config/" />
+<meta property="article:modified_time" content="2020-08-12T19:24:21+08:00" />
+<title>配置 | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.50e3438bddd97cd33e869f109f71e687dabdf347cc836a36ab89899c2ab596c6.js" integrity="sha256-UONDi93ZfNM&#43;hp8Qn3Hmh9q980fMg2o2q4mJnCq1lsY="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Basic/" class="collapsed ">计算机基础</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Linux/" class="collapsed ">Linux系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/" class="collapsed ">应用</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/ssh/" class="">SSH</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/nginx/" class="">Nginx</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/Application/nginx/config/" class="active">配置</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/architecture/" class="collapsed ">架构</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/howto/" class="collapsed ">How To</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/learn/" class="collapsed ">方法论</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>配置</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#配置">配置</a></li>
+  </ul>
+</nav>
+
+
+    </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="配置">
+  配置
+  <a class="anchor" href="#%e9%85%8d%e7%bd%ae">#</a>
+</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-nginx" data-lang="nginx"><span style="color:#66d9ef">user</span>  <span style="color:#e6db74">www-data</span>;
+<span style="color:#66d9ef">worker_processes</span> <span style="color:#e6db74">auto</span>;
+<span style="color:#66d9ef">worker_rlimit_nofile</span> <span style="color:#ae81ff">650000</span>;
+<span style="color:#66d9ef">pid</span> <span style="color:#e6db74">/run/nginx.pid</span>;
+
+<span style="color:#66d9ef">events</span> {
+    <span style="color:#f92672">worker_connections</span> <span style="color:#ae81ff">76800</span>;
+    <span style="color:#75715e"># multi_accept on;
+</span><span style="color:#75715e"></span>}
+
+<span style="color:#66d9ef">http</span> {
+	<span style="color:#f92672">sendfile</span> <span style="color:#66d9ef">on</span>;
+    <span style="color:#f92672">tcp_nopush</span> <span style="color:#66d9ef">on</span>;
+    <span style="color:#f92672">tcp_nodelay</span> <span style="color:#66d9ef">on</span>;
+    <span style="color:#75715e">#keepalive_timeout 1000;
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">keepalive_timeout</span>  <span style="color:#e6db74">120s</span> <span style="color:#e6db74">120s</span>;
+        <span style="color:#f92672">keepalive_requests</span> <span style="color:#ae81ff">1500</span>;
+    <span style="color:#f92672">types_hash_max_size</span> <span style="color:#ae81ff">2048</span>;
+    <span style="color:#f92672">server_tokens</span> <span style="color:#66d9ef">off</span>;
+    <span style="color:#75715e">#define request limit zone
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">limit_req_zone</span> $limit <span style="color:#e6db74">zone=req_limit:1024m</span> <span style="color:#e6db74">rate=30r/s</span> ;
+        <span style="color:#f92672">limit_req_zone</span> $limit <span style="color:#e6db74">zone=auth_limit:1024m</span> <span style="color:#e6db74">rate=10r/s</span> ;
+        <span style="color:#f92672">limit_req_status</span> <span style="color:#ae81ff">466</span>;
+        <span style="color:#75715e">#limit_req_zone $binary_remote_addr zone=testreq:800m rate=1r/s;
+</span><span style="color:#75715e"></span>        <span style="color:#75715e">#define connection limit zone per ip
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">limit_conn_zone</span>  $limit <span style="color:#e6db74">zone=conn_limit:100m</span>;
+        
+         <span style="color:#75715e"># Gzip Settings
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">##
+</span><span style="color:#75715e"></span>      <span style="color:#f92672">gzip</span>  <span style="color:#66d9ef">on</span>;
+      <span style="color:#f92672">gzip_http_version</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">.0</span>;
+      <span style="color:#f92672">gzip_comp_level</span> <span style="color:#ae81ff">2</span>;
+      <span style="color:#f92672">gzip_min_length</span> <span style="color:#ae81ff">1100</span>;
+      <span style="color:#f92672">gzip_buffers</span>     <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">8k</span>;
+      <span style="color:#f92672">gzip_proxied</span> <span style="color:#e6db74">any</span>;
+      <span style="color:#f92672">gzip_types</span>
+        <span style="color:#75715e"># text/html is always compressed by HttpGzipModule
+</span><span style="color:#75715e"></span>        <span style="color:#e6db74">text/css</span>
+        <span style="color:#e6db74">text/javascript</span>
+        <span style="color:#e6db74">text/xml</span>
+        <span style="color:#e6db74">text/plain</span>
+        <span style="color:#e6db74">text/x-component</span>
+        <span style="color:#e6db74">application/javascript</span>
+        <span style="color:#e6db74">application/x-javascript</span>
+        <span style="color:#e6db74">application/json</span>
+        <span style="color:#e6db74">application/xml</span>
+        <span style="color:#e6db74">application/rss+xml</span>
+        <span style="color:#e6db74">font/truetype</span>
+        <span style="color:#e6db74">font/opentype</span>
+        <span style="color:#e6db74">application/vnd.ms-fontobject</span>
+        <span style="color:#e6db74">image/svg+xml</span>
+            <span style="color:#e6db74">image/jpeg</span>
+            <span style="color:#e6db74">image/gif</span>
+            <span style="color:#e6db74">image/png</span>;
+
+      <span style="color:#75715e">#gzip_static on;
+</span><span style="color:#75715e"></span>
+      <span style="color:#f92672">gzip_proxied</span>        <span style="color:#e6db74">expired</span> <span style="color:#e6db74">no-cache</span> <span style="color:#e6db74">no-store</span> <span style="color:#e6db74">private</span> <span style="color:#e6db74">auth</span>;
+      <span style="color:#f92672">gzip_disable</span>        <span style="color:#e6db74">&#34;MSIE</span> <span style="color:#e6db74">[1-6]\.&#34;</span>;
+      <span style="color:#f92672">gzip_vary</span>           <span style="color:#66d9ef">on</span>;
+      
+      
+       <span style="color:#75715e"># proxy config
+</span><span style="color:#75715e"></span>         <span style="color:#f92672">client_max_body_size</span> <span style="color:#ae81ff">10m</span>;
+         <span style="color:#f92672">client_body_buffer_size</span> <span style="color:#ae81ff">128k</span>;
+         <span style="color:#f92672">client_header_buffer_size</span> <span style="color:#ae81ff">10k</span>;
+         <span style="color:#f92672">proxy_connect_timeout</span> <span style="color:#ae81ff">90</span>;
+         <span style="color:#f92672">proxy_send_timeout</span> <span style="color:#ae81ff">90</span>;
+         <span style="color:#f92672">proxy_read_timeout</span> <span style="color:#ae81ff">90</span>;
+         <span style="color:#f92672">proxy_buffer_size</span> <span style="color:#ae81ff">4k</span>;
+         <span style="color:#f92672">proxy_buffers</span> <span style="color:#ae81ff">4</span> <span style="color:#ae81ff">32k</span>;
+         <span style="color:#f92672">proxy_busy_buffers_size</span> <span style="color:#ae81ff">64k</span>;
+         <span style="color:#f92672">proxy_temp_file_write_size</span> <span style="color:#ae81ff">64k</span>;
+         
+         
+         <span style="color:#f92672">server</span> {
+         <span style="color:#f92672">proxy_http_version</span> <span style="color:#ae81ff">1</span><span style="color:#e6db74">.1</span>;
+        <span style="color:#f92672">proxy_set_header</span> <span style="color:#e6db74">Connection</span> <span style="color:#e6db74">&#34;&#34;</span>;
+         }
+         
+         }
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown"># 传输优化
+# sendfile on;
+一个正常的文件发送过程
+<span style="color:#66d9ef">1.</span> malloc(3): 分配用于存储对象数据的本地缓冲区
+<span style="color:#66d9ef">2.</span> read(2): 检索对象并将其复制到本地缓冲区
+<span style="color:#66d9ef">3.</span> write(2): 将对象从本地缓冲区复制到套接字缓冲区
+
+打开sendfile,该调用将一个对象检索到文件高速缓存，并将指针（不复制整个对象）直接传递给套接字描述符
+
+
+# tcp_nodelay on;
+
+为了避免网络拥塞，TCP协议栈通过Nagle算法实现了一种机制，该机制可以等待数据长达0.2秒，因此不会发送太小的数据包。(Nagle 算法原理是：在发出去的数据还未被确认之前，新生成的小数据先存起来，凑满一个 MSS 或者等到收到确认后再发送)
+tcp_nodelay在HTTP keepalive状态中使用。
+
+# tcp_nopush on;
+与nodelay相反，它优化了一次发送的数据量，而不是优化延迟。一把在高延迟的网络中使用，增加一次发送的数据量。只有在启用了 sendfile 之后才生效。
+
+
+# keepalive_timeout  120s 120s;
+用于客户端不发送数据后保持连接的超时时间，第二个选项为header Keep-Alive: timeout=time的时间
+
+
+# 数据压缩
+gzip  on;
+gzip_http_version 1.0;
+gzip_comp_level 2;
+gzip_min_length 1100;
+gzip_buffers     4 8k;
+gzip_types
+  text/css
+  text/javascript
+  text/xml
+  text/plain
+  text/x-component
+  application/javascript
+  application/x-javascript
+  application/json
+  application/xml
+  application/rss+xml
+  font/truetype
+  font/opentype
+  application/vnd.ms-fontobject
+  image/svg+xml
+  image/jpeg
+  image/gif
+  image/png;
+gzip_proxied        expired no-cache no-store private auth;
+gzip_disable        &#34;MSIE [1-6]\.&#34;;
+gzip_vary           on;
+
+
+# 代理优化
+client_max_body_size 10m;
+client_body_buffer_size 128k;
+client_header_buffer_size 10k;
+proxy_connect_timeout 90;
+proxy_send_timeout 90;
+proxy_read_timeout 90;
+proxy_buffer_size 4k;
+proxy_buffers 4 32k;
+proxy_busy_buffers_size 64k;
+proxy_temp_file_write_size 64k;
+
+
+# buffer_size
+
+
+
+</code></pre></div></article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/7bbedcdd5d2b06f625a06148bbb387a594a3ef14" title='Last modified by cctrip | August 12, 2020' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>August 12, 2020</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/system/Application/nginx/config.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#配置">配置</a></li>
+  </ul>
+</nav>
+
+ 
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
