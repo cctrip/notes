@@ -27,7 +27,7 @@ Certificate: Data: Version: 3 (0x2) Serial Number: 1 (0x1) Signature Algorithm: 
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.0b9b16d3a2693c92fb755b5d2548470332b80e9e956a166cfd5acdc51e173fc1.js" integrity="sha256-C5sW06JpPJL7dVtdJUhHAzK4Dp6VahZs/VrNxR4XP8E="></script>
+<script defer src="/notes/en.search.min.8f159e95a81bc38379bfe2fa0691f0e1b62585b389622030f488d15902d5c97d.js" integrity="sha256-jxWelagbw4N5v&#43;L6BpHw4bYlhbOJYiAw9IjRWQLVyX0="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/network/Protocol/http/tls/index.xml" title="学而不思则罔" />
@@ -189,6 +189,27 @@ https://github.com/alex-shpak/hugo-book
 
   
   <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/Protocol/http/http2/" class="">HTTP/2</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
     
       
         <li>
@@ -541,6 +562,7 @@ https://github.com/alex-shpak/hugo-book
         <li>
           <ul>
             <li></li>
+            <li><a href="#抓包">抓包</a></li>
           </ul>
         </li>
       </ul>
@@ -829,7 +851,54 @@ openssl pkcs7 -in domain.p7b -print_certs -out domain.crt
 openssl pkcs12 -inkey domain.key -in domain.crt -export -out domain.pfx
 
 #PKCS12转PEM
-openssl pkcs12 -in domain.pfx -nodes -out domain.combined.crt</code></pre>
+openssl pkcs12 -in domain.pfx -nodes -out domain.combined.crt
+</code></pre>
+<hr>
+<h3 id="抓包">
+  抓包
+  <a class="anchor" href="#%e6%8a%93%e5%8c%85">#</a>
+</h3>
+<h4 id="process">
+  process
+  <a class="anchor" href="#process">#</a>
+</h4>
+<p>
+  <img src="process.jpg" alt="" /></p>
+<h4 id="client_hello">
+  client_hello
+  <a class="anchor" href="#client_hello">#</a>
+</h4>
+<p>
+  <img src="client_hello.jpg" alt="" /></p>
+<hr>
+<h4 id="server_hello">
+  server_hello
+  <a class="anchor" href="#server_hello">#</a>
+</h4>
+<p>
+  <img src="server_hello.jpg" alt="" /></p>
+<hr>
+<h4 id="server_key_exchange">
+  server_key_exchange
+  <a class="anchor" href="#server_key_exchange">#</a>
+</h4>
+<p>
+  <img src="server_key_change.jpg" alt="" /></p>
+<hr>
+<h4 id="client_key_exchange">
+  client_key_exchange
+  <a class="anchor" href="#client_key_exchange">#</a>
+</h4>
+<p>
+  <img src="client_key_change.jpg" alt="" /></p>
+<hr>
+<h4 id="new-session">
+  new session
+  <a class="anchor" href="#new-session">#</a>
+</h4>
+<p>
+  <img src="new_session.jpg" alt="" /></p>
+<hr>
 </article>
  
       
@@ -840,9 +909,9 @@ openssl pkcs12 -in domain.pfx -nodes -out domain.combined.crt</code></pre>
 
 
 
-  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/a428f920eb52ac0e7189ba2a2b20439e1bc0e287" title='Last modified by codecc | July 5, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/d6672e8ba24607cf78928059df6db45a645fe4e1" title='Last modified by cctrip | August 13, 2020' target="_blank" rel="noopener">
       <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 5, 2020</span>
+      <span>August 13, 2020</span>
     </a>
   </div>
 
@@ -882,6 +951,7 @@ openssl pkcs12 -in domain.pfx -nodes -out domain.combined.crt</code></pre>
         <li>
           <ul>
             <li></li>
+            <li><a href="#抓包">抓包</a></li>
           </ul>
         </li>
       </ul>
