@@ -259,3 +259,41 @@ OpenSSL是一个通用的命令行工具，可用于与公钥基础设施（PKI�
     
     #PKCS12转PEM
     openssl pkcs12 -in domain.pfx -nodes -out domain.combined.crt
+***
+
+### 抓包
+
+#### process
+
+![](process.jpg)
+
+#### client_hello
+
+![](client_hello.jpg)
+
+***
+
+#### server_hello
+
+![](server_hello.jpg)
+
+***
+
+#### server_key_exchange
+
+![](server_key_change.jpg)
+
+***
+
+#### client_key_exchange
+
+![](client_key_change.jpg)
+
+***
+
+#### new session
+
+![](new_session.jpg)
+
+***
+
