@@ -1,12 +1,12 @@
 ---
 bookCollapseSection: true
 weight: 1
-title: "TCP"
+title: "IP"
 ---
 
-# TCP
+# IP
 
-![](tcp_header.jpg)
+![](ip_header.jpg)
 
 ***
 
