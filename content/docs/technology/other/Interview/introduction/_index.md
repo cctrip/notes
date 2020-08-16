@@ -10,7 +10,7 @@ title: "Prepare"
 
 ```
 目前就职于cf的运维开发岗位，主要工作内容是开发运维自动化相关工具和平台，对公司技术部门提供系统、网络、nginx、云服务相关的技术支持。
-入职以来主要做了以下几件事，1、制定运维基础元数据规范，2、开发资源自动化系统，对接不同的云平台，实现资源申请到发布一键化操作。3、搭建和二次开发监控系统，实现基础资源的统一监控、展示和告警。 4、利用ngx_lua实现限源功能，防攻击脚本，对接应用平台，实现项目环境的快速搭建。
+入职以来主要做了以下几件事，1、制定运维基础元数据规范，2、开发资源自动化系统，对接不同的云平台，实现资源申请到发布一键化操作。3、搭建和二次开发监控系统，实现基础资源的统一监控、展示和告警。 4、利用ngx_lua实现限源功能，防攻击脚本，对接应用平台，实现项目环境的快速搭建。5、搭建k8s平台，落地k8s监控和日志系统。
 ```
 
 ***
@@ -43,13 +43,15 @@ title: "Prepare"
 ```
 # 项目亮点和难点
 
+目前接入哪些服务,ecs,rds,redis,slb,
+
 1、interface接口规范，接入一个云平台只需要实现对应的方式就行
 
 2、中间逻辑失败怎么处理
 分两种情况，一种属于资源未创建成功，提供3次重试，都失败返回错误
 一种是资源创建成功，推送各个平台失败
-对于无特殊信息(密码之类的)，记录信息，提供推送接口，手动确认报错后，调用接口推送
-有特殊信息，临时文件记录，提供推送接口，手动确认报错后，调用接口推送后，删除特殊信息
+对于无特殊信息(密码之类的)，记录信息，提供推送接口，手动确认报错后，重试，完成后删除信息
+有特殊信息，临时文件记录，提供推送接口，手动确认报错后，调用接口推送后，删除特殊信息，密码做记录
 
 ```
 
@@ -79,10 +81,10 @@ title: "Prepare"
 	tcp优化
 	
 # nginx优化
-	传输优化
-	压缩优化
-	buffer优化
-	timeout优化
+	传输优化, sendfile, tcp_nopush, tcp_nodelay
+	压缩优化, gzip, level 2, text type
+	buffer优化,   buffer_size, header_buffer_size, proxy,  temp_file
+	timeout优化,  keepalive_timeout, send_timeout,read_timeout
 	
 ```
 
@@ -111,6 +113,13 @@ title: "Prepare"
 7、特殊情况，client和server同时发送FIN，即两个都进入CLOSING状态。即发送FIN后，未收到ACK，确收到对方的FIN包的时候。 
 
 # HTTP结构
+请求行，method，url，version
+请求头，host, content-type,length, cache-control, cors配置，cookie, authrozation
+请求体，
+
+响应行，
+响应头，
+响应体
 
 # HTTP缺点
 # HTTP2优势
@@ -137,25 +146,75 @@ title: "Prepare"
 2、realserver将数据包直接返回给client，(arp抑制)，主要是不发送自己的arp信息，以及发包的时候，忽略源ip信息，直接通过发出去的接口的mac地址
 3、director状态机，通过标志位判断，syn，进入syn-received,ack，establish，  fin+ack， 接入LAST-ACK状态
 
+# keepalived
+如何做健康检查，arrp通信
+当director和realserver同一台时，需mark mac地址
 
 
 # Nginx原理
+master和worker几点，worker处理真实请求
+epoll，异步非阻塞
+
 # 健康检查(被动检查和主动)
+被动，3次失败，10秒不可用
+
 # upstream
+轮询，权重轮询，最小连接， ip_hash
 # 怎么查找host
+ip:port+ server_name是唯一标识
+server_name 存储结构
+完全匹配，前通配符匹配，后通配符匹配
+regex 正则匹配的server
+default_server
+
+
 # 怎么查找location
+1、完全匹配
+2、前缀匹配选最长，判断最长匹配前缀是否带^~非正则匹配
+3、正则匹配
+4、最长前缀匹配
 ```
 
 ```
 # Golang 并发
-# Golang 内存模型
+goroutine
+channel
+sync.waitGroup
+
 # Golang 垃圾回收
+三色标记法+混合写屏障
+
+1、标记准备，开启写屏障
+2、查找根对象，标记为灰色
+3、查找灰色对象，将灰色对象标记为黑色，将黑色对象的子节点标记为灰色
+4、重复3，直到只剩黑色对象和白色对象
+5、标记过程中更改，删除指针时，将自己标记为灰色，新增指针时，将对方标记为灰色
+
 ```
 
 ```
 # k8s
 # pod 与 pod 通信
+云平台插件，
+1、新增eni(弹性网卡)，每张网卡可以绑定n个辅助ip，给pod使用，增加一张eni的路由表，到网关的走这张网卡出去
+2、创建pod，新增veth pair，一端挂载到pod的namesapce，一端挂载到node的namespace
+3、新增2条策略路由，所有到pod ip的数据都走默认路由表，所有从pod ip出来的数据都走eni网卡的路由表
+4、新增一条路由，所有到pod ip的数据都走veth网卡
+5、之后就是VPC处理出来的数据了
+
+flannl
+1、新增一条到xxxx/24的路由到flnanel.0的网卡
+2、flannel处理，pod增加自己的mac头部和下一跳(flannel.0)的mac地址到数据包，增加vxlan头部，增加udp头部，查找bgf，增加ip头部，正常的网络流量处理
+3、解包到pod ip，处理数据
+
 # service通信
+iptables
+prerouting，output链， kube-service链，kube-svc（kube-node）,kube-sep,dnat操作,nf_track
+
+ipvs
+prerouting，ipvs dnat，postrouting，
+
+
 # storageclass
 ```
 
