@@ -2,7 +2,7 @@
 bookCollapseSection: true
 weight: 1
 title: "技能图谱"
-bookToc: false
+bookToc: true
 ---
 
 # 技能图谱
