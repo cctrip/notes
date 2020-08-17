@@ -2,6 +2,7 @@
 bookCollapseSection: false
 weight: 2
 title: "HTTP/2"
+bookToc: false
 ---
 
 # HTTP/2

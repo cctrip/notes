@@ -2,6 +2,7 @@
 bookCollapseSection: true
 weight: 3
 title: "ELK"
+bookToc: false
 ---
 
 # ELK Stack

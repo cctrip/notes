@@ -2,6 +2,7 @@
 bookCollapseSection: false
 weight: 1
 title: "Prepare"
+bookToc: false
 ---
 
 # Prepare

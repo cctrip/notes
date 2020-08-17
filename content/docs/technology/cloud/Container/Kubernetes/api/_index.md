@@ -2,6 +2,7 @@
 bookCollapseSection: true
 weight: 3
 title: "Kubernetes API"
+bookToc: false
 ---
 
 # Kubernetes API

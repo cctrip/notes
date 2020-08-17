@@ -2,6 +2,7 @@
 bookCollapseSection: false
 weight: 2
 title: "Kubernetes 架构"
+bookToc: false
 ---
 
 # 架构
