@@ -20,6 +20,15 @@
     </item>
     
     <item>
+      <title>IO</title>
+      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/programming/io/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/programming/io/</guid>
+      <description>IO #            </description>
+    </item>
+    
+    <item>
       <title>netfilter</title>
       <link>https://cctrip.github.io/notes/docs/technology/security/Firewall/filter/netfilter/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -42,6 +51,15 @@ iptables中数据包和4种被跟踪连接的4种不同状态：
  PREROUTING链：作用是在包刚刚到达防火墙时改变它的目的地址 OUTPUT链：改变本地产生的包的目的地址 POSTROUTING链：在包就要离开防火墙之前改变其源地址    filter表
 主要用于对数据包进行过滤，根据具体的规则决定是否放行该数据包（如DROP、ACCEPT、REJECT、LOG）。filter 表对应的内核模块为iptable_filter，包含三个规则链：
  INPUT链：INPUT针对那些目的地是本地的包 FORWARD链：FORWARD过滤所有不是本地产生的并且目的地不是本地(即本机只是负责转发)的包 OUTPUT链：OUTPUT是用来过滤所有本地生成的包    链(chains) #  在处理各种数据包时，根据防火墙规则的不同介入时机，iptables供涉及5种默认规则链，从应用时间点的角度理解这些链：</description>
+    </item>
+    
+    <item>
+      <title>oauth</title>
+      <link>https://cctrip.github.io/notes/docs/technology/program/Web/oauth/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/program/Web/oauth/</guid>
+      <description>oauth #  </description>
     </item>
     
     <item>
