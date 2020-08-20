@@ -1,6 +1,7 @@
 ---
+bookCollapseSection: true
 weight: 1
-title: "内核编译"
+title: "内核"
 ---
 
 # 内核编译
@@ -76,16 +77,16 @@ title: "内核编译"
 		#拷贝内核文件到/boot目录底下
 
 		cp arch/x86/boot/bzImage /boot/vmlinuz-`basename /lib/modules/3.16.39/`
-	
+		
 		#备份.config文件
 		cp .config /boot/config-`basename /lib/modules/3.16.39/`
-	
+		
 		#添加可执行权限
 		chmod a+x /boot/vmlinuz-3.16.39
-	
+		
 		#拷贝系统内核映射文件
 		cp System.map /boot/System.map-`basename /lib/modules/3.16.39/`
-	
+		
 		#拷贝内核模块列表
 		gzip -c Module.symvers > /boot/symvers-`basename /lib/modules/3.16.39/`.gz
 
@@ -94,7 +95,7 @@ title: "内核编译"
 		#生成对应版本的initramfs文件
 
 		dracut -v /boot/initramfs-`basename /lib/modules/3.16.39/` 3.16.39
-	
+		
 		#更新grub.cfg配置，加入新内核记录
 		grub2-mkconfig -o /boot/grub2/grub.cfg 
 

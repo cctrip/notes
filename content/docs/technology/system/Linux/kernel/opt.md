@@ -1,3 +1,11 @@
+---
+bookCollapseSection: false
+weight: 1
+title: "内核参数优化"
+---
+
+# 参数优化
+
 ```
 vm.swappiness = 0
 net.ipv4.neigh.default.gc_stale_time=120

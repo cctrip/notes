@@ -1,4 +1,5 @@
 ---
+bookCollapseSection: false
 weight: 2
 title: "Linux目录结构"
 ---

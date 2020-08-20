@@ -1,4 +1,5 @@
 ---
+bookCollapseSection: true
 weight: 4
 title: "操作指南"
 ---
