@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>学而不思则罔</title>
+    <title>系统编程 on 学而不思则罔</title>
     <link>https://cctrip.github.io/notes/docs/technology/system/Linux/programming/</link>
-    <description>Recent content on 学而不思则罔</description>
+    <description>Recent content in 系统编程 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	<atom:link href="https://cctrip.github.io/notes/docs/technology/system/Linux/programming/index.xml" rel="self" type="application/rss+xml" />
