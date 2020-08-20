@@ -4,17 +4,35 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="oauth #  ">
+<meta name="description" content="oauth #   OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。参考材料 RFC 6749。
+ 名词定义 #  在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。
+ （1） Third-party application：第三方应用程序，本文中又称&quot;客户端&rdquo;（client），即上一节例子中的&quot;云冲印&rdquo;。
+（2）HTTP service：HTTP服务提供商，本文中简称&quot;服务提供商&rdquo;，即上一节例子中的Google。
+（3）Resource Owner：资源所有者，本文中又称&quot;用户&rdquo;（user）。
+（4）User Agent：用户代理，本文中就是指浏览器。
+（5）Authorization server：认证服务器，即服务提供商专门用来处理认证的服务器。
+（6）Resource server：资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器。
+ 知道了上面这些名词，就不难理解，OAuth的作用就是让&quot;客户端&quot;安全可控地获取&quot;用户&quot;的授权，与&quot;服务商提供商&quot;进行互动。
+ 运行流程 #  &#43;--------&#43; &#43;---------------&#43; | |--(A)------- Authorization Grant ---------&gt;| | | | | | | |&lt;-(B)----------- Access Token -------------| | | | &amp; Refresh Token | | | | | | | | &#43;----------&#43; | | | |--(C)---- Access Token ----&gt;| | | | | | | | | | | |&lt;-(D)- Protected Resource --| Resource | | Authorization | | Client | | Server | | Server | | |--(E)---- Access Token ----&gt;| | | | | | | | | | | |&lt;-(F)- Invalid Token Error -| | | | | | &#43;----------&#43; | | | | | | | |--(G)----------- Refresh Token -----------&gt;| | | | | | | |&lt;-(H)----------- Access Token -------------| | &#43;--------&#43; &amp; Optional Refresh Token &#43;---------------&#43; （A）用户打开客户端以后，客户端要求用户给予授权。">
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="oauth" />
-<meta property="og:description" content="oauth #  " />
+<meta property="og:description" content="oauth #   OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。参考材料 RFC 6749。
+ 名词定义 #  在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。
+ （1） Third-party application：第三方应用程序，本文中又称&quot;客户端&rdquo;（client），即上一节例子中的&quot;云冲印&rdquo;。
+（2）HTTP service：HTTP服务提供商，本文中简称&quot;服务提供商&rdquo;，即上一节例子中的Google。
+（3）Resource Owner：资源所有者，本文中又称&quot;用户&rdquo;（user）。
+（4）User Agent：用户代理，本文中就是指浏览器。
+（5）Authorization server：认证服务器，即服务提供商专门用来处理认证的服务器。
+（6）Resource server：资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器。
+ 知道了上面这些名词，就不难理解，OAuth的作用就是让&quot;客户端&quot;安全可控地获取&quot;用户&quot;的授权，与&quot;服务商提供商&quot;进行互动。
+ 运行流程 #  &#43;--------&#43; &#43;---------------&#43; | |--(A)------- Authorization Grant ---------&gt;| | | | | | | |&lt;-(B)----------- Access Token -------------| | | | &amp; Refresh Token | | | | | | | | &#43;----------&#43; | | | |--(C)---- Access Token ----&gt;| | | | | | | | | | | |&lt;-(D)- Protected Resource --| Resource | | Authorization | | Client | | Server | | Server | | |--(E)---- Access Token ----&gt;| | | | | | | | | | | |&lt;-(F)- Invalid Token Error -| | | | | | &#43;----------&#43; | | | | | | | |--(G)----------- Refresh Token -----------&gt;| | | | | | | |&lt;-(H)----------- Access Token -------------| | &#43;--------&#43; &amp; Optional Refresh Token &#43;---------------&#43; （A）用户打开客户端以后，客户端要求用户给予授权。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/program/Web/oauth/" />
-<meta property="article:modified_time" content="2020-08-19T21:03:24+08:00" />
+<meta property="article:modified_time" content="2020-08-20T15:02:06+08:00" />
 <title>oauth | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.f5dfb841deebb3cbef1e254fd7fad7146be5693aad750c9dc4e312bcaae5750b.js" integrity="sha256-9d&#43;4Qd7rs8vvHiVP1/rXFGvlaTqtdQydxOMSvKrldQs="></script>
+<script defer src="/notes/en.search.min.a1701c7c342e1f003dfda89d506ae633d575f03c1d6269544c2666cce1bd6d3c.js" integrity="sha256-oXAcfDQuHwA9/aidUGrmM9V18DwdYmlUTCZmzOG9bTw="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <!--
@@ -507,7 +525,21 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#oauth">oauth</a></li>
+    <li><a href="#oauth">oauth</a>
+      <ul>
+        <li><a href="#名词定义">名词定义</a></li>
+        <li><a href="#运行流程">运行流程</a></li>
+        <li><a href="#客户端授权模式">客户端授权模式</a>
+          <ul>
+            <li><a href="#1-authorization-code-grant">1. Authorization Code Grant</a></li>
+            <li><a href="#2-implicit-grant">2. Implicit Grant</a></li>
+            <li><a href="#3-resource-owner-password-credentials-grant">3. Resource Owner Password Credentials Grant</a></li>
+            <li><a href="#4-client-credentials-grant">4. Client Credentials Grant</a></li>
+          </ul>
+        </li>
+        <li><a href="#更新token">更新Token</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -523,6 +555,378 @@ https://github.com/alex-shpak/hugo-book
   oauth
   <a class="anchor" href="#oauth">#</a>
 </h1>
+<p>
+  <a href="http://en.wikipedia.org/wiki/OAuth">OAuth</a>是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。参考材料
+  <a href="http://www.rfcreader.com/#rfc6749">RFC 6749</a>。</p>
+<hr>
+<h2 id="名词定义">
+  名词定义
+  <a class="anchor" href="#%e5%90%8d%e8%af%8d%e5%ae%9a%e4%b9%89">#</a>
+</h2>
+<p>在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。</p>
+<blockquote>
+<p>（1） <strong>Third-party application</strong>：第三方应用程序，本文中又称&quot;客户端&rdquo;（client），即上一节例子中的&quot;云冲印&rdquo;。</p>
+<p>（2）<strong>HTTP service</strong>：HTTP服务提供商，本文中简称&quot;服务提供商&rdquo;，即上一节例子中的Google。</p>
+<p>（3）<strong>Resource Owner</strong>：资源所有者，本文中又称&quot;用户&rdquo;（user）。</p>
+<p>（4）<strong>User Agent</strong>：用户代理，本文中就是指浏览器。</p>
+<p>（5）<strong>Authorization server</strong>：认证服务器，即服务提供商专门用来处理认证的服务器。</p>
+<p>（6）<strong>Resource server</strong>：资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器。</p>
+</blockquote>
+<p>知道了上面这些名词，就不难理解，OAuth的作用就是让&quot;客户端&quot;安全可控地获取&quot;用户&quot;的授权，与&quot;服务商提供商&quot;进行互动。</p>
+<hr>
+<h2 id="运行流程">
+  运行流程
+  <a class="anchor" href="#%e8%bf%90%e8%a1%8c%e6%b5%81%e7%a8%8b">#</a>
+</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-markdown" data-lang="markdown">  +--------+                                           +---------------+
+  |        |--(A)------- Authorization Grant ---------&gt;|               |
+  |        |                                           |               |
+  |        |&lt;<span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">B</span><span style="color:#960050;background-color:#1e0010">)</span><span style="color:#a6e22e">-----------</span> <span style="color:#a6e22e">Access</span> <span style="color:#a6e22e">Token</span> <span style="color:#a6e22e">-------------</span><span style="color:#960050;background-color:#1e0010">|</span>               <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">|</span>        <span style="color:#960050;background-color:#1e0010">|</span>               <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#a6e22e">Refresh</span> <span style="color:#a6e22e">Token</span>             <span style="color:#960050;background-color:#1e0010">|</span>               <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">|</span>        <span style="color:#960050;background-color:#1e0010">|</span>                                           <span style="color:#960050;background-color:#1e0010">|</span>               <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">|</span>        <span style="color:#960050;background-color:#1e0010">|</span>                            <span style="color:#960050;background-color:#1e0010">+</span><span style="color:#a6e22e">----------</span><span style="color:#960050;background-color:#1e0010">+</span>   <span style="color:#960050;background-color:#1e0010">|</span>               <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">|</span>        <span style="color:#960050;background-color:#1e0010">|</span><span style="color:#a6e22e">--</span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">C</span><span style="color:#960050;background-color:#1e0010">)</span><span style="color:#a6e22e">----</span> <span style="color:#a6e22e">Access</span> <span style="color:#a6e22e">Token</span> <span style="color:#a6e22e">----</span>&gt;|          |   |               |
+  |        |                            |          |   |               |
+  |        |&lt;<span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">D</span><span style="color:#960050;background-color:#1e0010">)</span><span style="color:#a6e22e">-</span> <span style="color:#a6e22e">Protected</span> <span style="color:#a6e22e">Resource</span> <span style="color:#a6e22e">--</span><span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">Resource</span> <span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">Authorization</span> <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">|</span> <span style="color:#a6e22e">Client</span> <span style="color:#960050;background-color:#1e0010">|</span>                            <span style="color:#960050;background-color:#1e0010">|</span>  <span style="color:#a6e22e">Server</span>  <span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">|</span>     <span style="color:#a6e22e">Server</span>    <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">|</span>        <span style="color:#960050;background-color:#1e0010">|</span><span style="color:#a6e22e">--</span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">E</span><span style="color:#960050;background-color:#1e0010">)</span><span style="color:#a6e22e">----</span> <span style="color:#a6e22e">Access</span> <span style="color:#a6e22e">Token</span> <span style="color:#a6e22e">----</span>&gt;|          |   |               |
+  |        |                            |          |   |               |
+  |        |&lt;<span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">F</span><span style="color:#960050;background-color:#1e0010">)</span><span style="color:#a6e22e">-</span> <span style="color:#a6e22e">Invalid</span> <span style="color:#a6e22e">Token</span> <span style="color:#a6e22e">Error</span> <span style="color:#a6e22e">-</span><span style="color:#960050;background-color:#1e0010">|</span>          <span style="color:#960050;background-color:#1e0010">|</span>   <span style="color:#960050;background-color:#1e0010">|</span>               <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">|</span>        <span style="color:#960050;background-color:#1e0010">|</span>                            <span style="color:#960050;background-color:#1e0010">+</span><span style="color:#a6e22e">----------</span><span style="color:#960050;background-color:#1e0010">+</span>   <span style="color:#960050;background-color:#1e0010">|</span>               <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">|</span>        <span style="color:#960050;background-color:#1e0010">|</span>                                           <span style="color:#960050;background-color:#1e0010">|</span>               <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">|</span>        <span style="color:#960050;background-color:#1e0010">|</span><span style="color:#a6e22e">--</span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">G</span><span style="color:#960050;background-color:#1e0010">)</span><span style="color:#a6e22e">-----------</span> <span style="color:#a6e22e">Refresh</span> <span style="color:#a6e22e">Token</span> <span style="color:#a6e22e">-----------</span>&gt;|               |
+  |        |                                           |               |
+  |        |&lt;<span style="color:#f92672">-</span><span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">H</span><span style="color:#960050;background-color:#1e0010">)</span><span style="color:#a6e22e">-----------</span> <span style="color:#a6e22e">Access</span> <span style="color:#a6e22e">Token</span> <span style="color:#a6e22e">-------------</span><span style="color:#960050;background-color:#1e0010">|</span>               <span style="color:#960050;background-color:#1e0010">|</span>
+  <span style="color:#960050;background-color:#1e0010">+</span><span style="color:#a6e22e">--------</span><span style="color:#960050;background-color:#1e0010">+</span>           <span style="color:#960050;background-color:#1e0010">&amp;</span> <span style="color:#a6e22e">Optional</span> <span style="color:#a6e22e">Refresh</span> <span style="color:#a6e22e">Token</span>        <span style="color:#960050;background-color:#1e0010">+</span><span style="color:#a6e22e">---------------</span><span style="color:#960050;background-color:#1e0010">+</span>
+</code></pre></div><p>（A）用户打开客户端以后，客户端要求用户给予授权。</p>
+<p>（B）用户同意给予客户端授权。</p>
+<p>（C）客户端使用上一步获得的授权，向认证服务器申请令牌。</p>
+<p>（D）认证服务器对客户端进行认证以后，确认无误，同意发放令牌。</p>
+<p>（E）客户端使用令牌，向资源服务器申请获取资源。</p>
+<p>（F）资源服务器确认令牌无误，同意向客户端开放资源。</p>
+<hr>
+<h2 id="客户端授权模式">
+  客户端授权模式
+  <a class="anchor" href="#%e5%ae%a2%e6%88%b7%e7%ab%af%e6%8e%88%e6%9d%83%e6%a8%a1%e5%bc%8f">#</a>
+</h2>
+<p>客户端必须得到用户的授权（authorization grant），才能获得令牌（access token）。OAuth 2.0定义了四种授权方式。</p>
+<ul>
+<li>授权码模式（authorization code）</li>
+<li>简化模式（implicit）</li>
+<li>密码模式（resource owner password credentials）</li>
+<li>客户端模式（client credentials）</li>
+</ul>
+<hr>
+<h3 id="1-authorization-code-grant">
+  1. Authorization Code Grant
+  <a class="anchor" href="#1-authorization-code-grant">#</a>
+</h3>
+<pre><code>
+     +----------+
+     | Resource |
+     |   Owner  |
+     |          |
+     +----------+
+          ^
+          |
+         (B)
+     +----|-----+          Client Identifier      +---------------+
+     |         -+----(A)-- &amp; Redirection URI ----&gt;|               |
+     |  User-   |                                 | Authorization |
+     |  Agent  -+----(B)-- User authenticates ---&gt;|     Server    |
+     |          |                                 |               |
+     |         -+----(C)-- Authorization Code ---&lt;|               |
+     +-|----|---+                                 +---------------+
+       |    |                                         ^      v
+      (A)  (C)                                        |      |
+       |    |                                         |      |
+       ^    v                                         |      |
+     +---------+                                      |      |
+     |         |&gt;---(D)-- Authorization Code ---------'      |
+     |  Client |          &amp; Redirection URI                  |
+     |         |                                             |
+     |         |&lt;---(E)----- Access Token -------------------'
+     +---------+       (w/ Optional Refresh Token)
+   Note: The lines illustrating steps (A), (B), and (C) are broken into
+   two parts as they pass through the user-agent.
+</code></pre><p>（A）用户访问客户端，后者将前者导向认证服务器。</p>
+<p>（B）用户选择是否给予客户端授权。</p>
+<p>（C）假设用户给予授权，认证服务器将用户导向客户端事先指定的&quot;重定向URI&rdquo;（redirection URI），同时附上一个授权码。</p>
+<p>（D）客户端收到授权码，附上早先的&quot;重定向URI&rdquo;，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见。</p>
+<p>（E）认证服务器核对了授权码和重定向URI，确认无误后，向客户端发送访问令牌（access token）和更新令牌（refresh token）。</p>
+<hr>
+<p>下面是上面这些步骤所需要的参数。</p>
+<p>A步骤中，客户端申请认证的URI，包含以下参数：</p>
+<ul>
+<li>response_type：表示授权类型，必选项，此处的值固定为&quot;code&rdquo;</li>
+<li>client_id：表示客户端的ID，必选项</li>
+<li>redirect_uri：表示重定向URI，可选项</li>
+<li>scope：表示申请的权限范围，可选项</li>
+<li>state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。</li>
+</ul>
+<p>下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">https://authorization-server.com/oauth/authorize
+</span><span style="color:#960050;background-color:#1e0010">?client_id=a17c21ed
+</span><span style="color:#960050;background-color:#1e0010">&amp;response_type=code
+</span><span style="color:#960050;background-color:#1e0010">&amp;state=5ca75bd30
+</span><span style="color:#960050;background-color:#1e0010">&amp;redirect_uri=https%3A%2F%2Fexample-app.com%2Fauth
+</span><span style="color:#960050;background-color:#1e0010">&amp;scope=photos
+</span></code></pre></div></blockquote>
+<p>C步骤中，服务器回应客户端的URI，包含以下参数：</p>
+<ul>
+<li>code：表示授权码，必选项。该码的有效期应该很短，通常设为10分钟，客户端只能使用该码一次，否则会被授权服务器拒绝。该码与客户端ID和重定向URI，是一一对应关系。</li>
+<li>state：如果客户端的请求中包含这个参数，认证服务器的回应也必须一模一样包含这个参数。</li>
+</ul>
+<p>下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">302</span> <span style="color:#a6e22e">Found</span>
+Location<span style="color:#f92672">:</span> <span style="color:#ae81ff">https://example-app.com/cb?code=Yzk5ZDczMzRlNDEwY&amp;state=5ca75bd30</span>
+</code></pre></div></blockquote>
+<p>D步骤中，客户端向认证服务器申请令牌的HTTP请求，包含以下参数：</p>
+<ul>
+<li>grant_type：表示使用的授权模式，必选项，此处的值固定为&quot;authorization_code&rdquo;。</li>
+<li>code：表示上一步获得的授权码，必选项。</li>
+<li>redirect_uri：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致。</li>
+<li>client_id：表示客户端ID，必选项。</li>
+</ul>
+<p>下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#a6e22e">POST</span> /oauth/token <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+Host<span style="color:#f92672">:</span> <span style="color:#ae81ff">authorization-server.com</span>
+<span style="color:#960050;background-color:#1e0010"> </span>
+grant_type=authorization_code
+&amp;code=xxxxxxxxxxx
+&amp;redirect_uri=https://example-app.com/redirect
+&amp;client_id=xxxxxxxxxx
+&amp;client_secret=xxxxxxxxxx
+</code></pre></div></blockquote>
+<p>E步骤中，认证服务器发送的HTTP回复，包含以下参数：</p>
+<ul>
+<li>access_token：表示访问令牌，必选项。</li>
+<li>token_type：表示令牌类型，该值大小写不敏感，必选项，可以是bearer类型或mac类型。</li>
+<li>expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。</li>
+<li>refresh_token：表示更新令牌，用来获取下一次的访问令牌，可选项。</li>
+<li>scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。</li>
+</ul>
+<p>下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">application/json;charset=UTF-8</span>
+Cache-Control<span style="color:#f92672">:</span> <span style="color:#ae81ff">no-store</span>
+Pragma<span style="color:#f92672">:</span> <span style="color:#ae81ff">no-cache</span>
+
+{
+  <span style="color:#f92672">&#34;access_token&#34;</span>: <span style="color:#e6db74">&#34;AYjcyMzY3ZDhiNmJkNTY&#34;</span>,
+  <span style="color:#f92672">&#34;refresh_token&#34;</span>: <span style="color:#e6db74">&#34;RjY2NjM5NzA2OWJjuE7c&#34;</span>,
+  <span style="color:#f92672">&#34;token_type&#34;</span>: <span style="color:#e6db74">&#34;Bearer&#34;</span>,
+  <span style="color:#f92672">&#34;expires&#34;</span>: <span style="color:#ae81ff">3600</span>
+}
+</code></pre></div></blockquote>
+<hr>
+<h3 id="2-implicit-grant">
+  2. Implicit Grant
+  <a class="anchor" href="#2-implicit-grant">#</a>
+</h3>
+<pre><code>+----------+
+     | Resource |
+     |  Owner   |
+     |          |
+     +----------+
+          ^
+          |
+         (B)
+     +----|-----+          Client Identifier     +---------------+
+     |         -+----(A)-- &amp; Redirection URI ---&gt;|               |
+     |  User-   |                                | Authorization |
+     |  Agent  -|----(B)-- User authenticates --&gt;|     Server    |
+     |          |                                |               |
+     |          |&lt;---(C)--- Redirection URI ----&lt;|               |
+     |          |          with Access Token     +---------------+
+     |          |            in Fragment
+     |          |                                +---------------+
+     |          |----(D)--- Redirection URI ----&gt;|   Web-Hosted  |
+     |          |          without Fragment      |     Client    |
+     |          |                                |    Resource   |
+     |     (F)  |&lt;---(E)------- Script ---------&lt;|               |
+     |          |                                +---------------+
+     +-|--------+
+       |    |
+      (A)  (G) Access Token
+       |    |
+       ^    v
+     +---------+
+     |         |
+     |  Client |
+     |         |
+     +---------+
+
+   Note: The lines illustrating steps (A) and (B) are broken into two
+   parts as they pass through the user-agent.
+</code></pre><p>（A）客户端将用户导向认证服务器。</p>
+<p>（B）用户决定是否给于客户端授权。</p>
+<p>（C）假设用户给予授权，认证服务器将用户导向客户端指定的&quot;重定向URI&rdquo;，并在URI的Hash部分包含了访问令牌。</p>
+<p>（D）浏览器向资源服务器发出请求，其中不包括上一步收到的Hash值。</p>
+<p>（E）资源服务器返回一个网页，其中包含的代码可以获取Hash值中的令牌。</p>
+<p>（F）浏览器执行上一步获得的脚本，提取出令牌。</p>
+<p>（G）浏览器将令牌发给客户端。</p>
+<hr>
+<p>下面是上面这些步骤所需要的参数。</p>
+<p>A步骤中，客户端发出的HTTP请求，包含以下参数：</p>
+<ul>
+<li>response_type：表示授权类型，此处的值固定为&quot;token&rdquo;，必选项。</li>
+<li>client_id：表示客户端的ID，必选项。</li>
+<li>redirect_uri：表示重定向的URI，可选项。</li>
+<li>scope：表示权限范围，可选项。</li>
+<li>state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。</li>
+</ul>
+<p>下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">GET /authorize?response_type=token&amp;client_id=s6BhdRkqt3&amp;state=xyz
+</span><span style="color:#960050;background-color:#1e0010">        &amp;redirect_uri=https%3A%2F%2Fclient%2Eexample%2Ecom%2Fcb HTTP/1.1
+</span><span style="color:#960050;background-color:#1e0010">Host: server.example.com
+</span></code></pre></div></blockquote>
+<p>C步骤中，认证服务器回应客户端的URI，包含以下参数：</p>
+<ul>
+<li>access_token：表示访问令牌，必选项。</li>
+<li>token_type：表示令牌类型，该值大小写不敏感，必选项。</li>
+<li>expires_in：表示过期时间，单位为秒。如果省略该参数，必须其他方式设置过期时间。</li>
+<li>scope：表示权限范围，如果与客户端申请的范围一致，此项可省略。</li>
+<li>state：如果客户端的请求中包含这个参数，认证服务器的回应也必须一模一样包含这个参数。</li>
+</ul>
+<p>下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">     </span><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">302</span> <span style="color:#a6e22e">Found</span>
+     <span style="color:#ae81ff">Location: http://example.com/cb#access_token=2YotnFZFEjr1zCsicMWpAA</span>
+               <span style="color:#ae81ff">&amp;state=xyz&amp;token_type=example&amp;expires_in=3600</span>
+</code></pre></div></blockquote>
+<p>在上面的例子中，认证服务器用HTTP头信息的Location栏，指定浏览器重定向的网址。注意，在这个网址的Hash部分包含了令牌。</p>
+<p>根据上面的D步骤，下一步浏览器会访问Location指定的网址，但是Hash部分不会发送。接下来的E步骤，服务提供商的资源服务器发送过来的代码，会提取出Hash中的令牌。</p>
+<hr>
+<h3 id="3-resource-owner-password-credentials-grant">
+  3. Resource Owner Password Credentials Grant
+  <a class="anchor" href="#3-resource-owner-password-credentials-grant">#</a>
+</h3>
+<pre><code>     +----------+
+     | Resource |
+     |  Owner   |
+     |          |
+     +----------+
+          v
+          |    Resource Owner
+         (A) Password Credentials
+          |
+          v
+     +---------+                                  +---------------+
+     |         |&gt;--(B)---- Resource Owner -------&gt;|               |
+     |         |         Password Credentials     | Authorization |
+     | Client  |                                  |     Server    |
+     |         |&lt;--(C)---- Access Token ---------&lt;|               |
+     |         |    (w/ Optional Refresh Token)   |               |
+     +---------+                                  +---------------+
+
+</code></pre><p>（A）用户向客户端提供用户名和密码。</p>
+<p>（B）客户端将用户名和密码发给认证服务器，向后者请求令牌。</p>
+<p>（C）认证服务器确认无误后，向客户端提供访问令牌。</p>
+<hr>
+<p>B步骤中，客户端发出的HTTP请求，包含以下参数：</p>
+<ul>
+<li>grant_type：表示授权类型，此处的值固定为&quot;password&rdquo;，必选项。</li>
+<li>username：表示用户名，必选项。</li>
+<li>password：表示用户的密码，必选项。</li>
+<li>scope：表示权限范围，可选项。</li>
+</ul>
+<p>下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">     </span><span style="color:#a6e22e">POST</span> /token <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+     <span style="color:#ae81ff">Host: server.example.com</span>
+     <span style="color:#ae81ff">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
+     <span style="color:#ae81ff">Content-Type: application/x-www-form-urlencoded</span>
+
+     grant_type=password&amp;username=johndoe&amp;password=A3ddj3w
+</code></pre></div></blockquote>
+<p>C步骤中，认证服务器向客户端发送访问令牌，下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">     </span><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+     <span style="color:#ae81ff">Content-Type: application/json;charset=UTF-8</span>
+     <span style="color:#ae81ff">Cache-Control: no-store</span>
+     <span style="color:#ae81ff">Pragma: no-cache</span>
+
+     {
+       &#34;access_token&#34;:&#34;2YotnFZFEjr1zCsicMWpAA&#34;,
+       &#34;token_type&#34;:&#34;example&#34;,
+       &#34;expires_in&#34;:3600,
+       &#34;refresh_token&#34;:&#34;tGzv3JOkF0XG5Qx2TlKWIA&#34;,
+       &#34;example_parameter&#34;:&#34;example_value&#34;
+     }
+</code></pre></div></blockquote>
+<p>上面代码中，各个参数的含义参见《授权码模式》一节。</p>
+<p>整个过程中，客户端不得保存用户的密码。</p>
+<hr>
+<h3 id="4-client-credentials-grant">
+  4. Client Credentials Grant
+  <a class="anchor" href="#4-client-credentials-grant">#</a>
+</h3>
+<pre><code>     +---------+                                  +---------------+
+     |         |                                  |               |
+     |         |&gt;--(A)- Client Authentication ---&gt;| Authorization |
+     | Client  |                                  |     Server    |
+     |         |&lt;--(B)---- Access Token ---------&lt;|               |
+     |         |                                  |               |
+     +---------+                                  +---------------+
+</code></pre><p>（A）客户端向认证服务器进行身份认证，并要求一个访问令牌。</p>
+<p>（B）认证服务器确认无误后，向客户端提供访问令牌。</p>
+<hr>
+<p>A步骤中，客户端发出的HTTP请求，包含以下参数：</p>
+<ul>
+<li>grant<em>type：表示授权类型，此处的值固定为&quot;client</em>credentials&rdquo;，必选项。</li>
+<li>scope：表示权限范围，可选项。</li>
+</ul>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">     </span><span style="color:#a6e22e">POST</span> /token <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+     <span style="color:#ae81ff">Host: server.example.com</span>
+     <span style="color:#ae81ff">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
+     <span style="color:#ae81ff">Content-Type: application/x-www-form-urlencoded</span>
+
+     grant_type=client_credentials
+</code></pre></div></blockquote>
+<p>认证服务器必须以某种方式，验证客户端身份。</p>
+<p>B步骤中，认证服务器向客户端发送访问令牌，下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">     </span><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+     <span style="color:#ae81ff">Content-Type: application/json;charset=UTF-8</span>
+     <span style="color:#ae81ff">Cache-Control: no-store</span>
+     <span style="color:#ae81ff">Pragma: no-cache</span>
+
+     {
+       &#34;access_token&#34;:&#34;2YotnFZFEjr1zCsicMWpAA&#34;,
+       &#34;token_type&#34;:&#34;example&#34;,
+       &#34;expires_in&#34;:3600,
+       &#34;example_parameter&#34;:&#34;example_value&#34;
+     }
+</code></pre></div></blockquote>
+<p>上面代码中，各个参数的含义参见《授权码模式》一节。</p>
+<hr>
+<h2 id="更新token">
+  更新Token
+  <a class="anchor" href="#%e6%9b%b4%e6%96%b0token">#</a>
+</h2>
+<p>如果用户访问的时候，客户端的&quot;访问令牌&quot;已经过期，则需要使用&quot;更新令牌&quot;申请一个新的访问令牌。</p>
+<p>客户端发出更新令牌的HTTP请求，包含以下参数：</p>
+<ul>
+<li>grant<em>type：表示使用的授权模式，此处的值固定为&quot;refresh</em>token&rdquo;，必选项。</li>
+<li>refresh_token：表示早前收到的更新令牌，必选项。</li>
+<li>scope：表示申请的授权范围，不可以超出上一次申请的范围，如果省略该参数，则表示与上一次一致。</li>
+</ul>
+<p>下面是一个例子。</p>
+<blockquote>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-http" data-lang="http"><span style="color:#960050;background-color:#1e0010">     </span><span style="color:#a6e22e">POST</span> /token <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+     <span style="color:#ae81ff">Host: server.example.com</span>
+     <span style="color:#ae81ff">Authorization: Basic czZCaGRSa3F0MzpnWDFmQmF0M2JW</span>
+     <span style="color:#ae81ff">Content-Type: application/x-www-form-urlencoded</span>
+
+     grant_type=refresh_token&amp;refresh_token=tGzv3JOkF0XG5Qx2TlKWIA
+</code></pre></div></blockquote>
 </article>
  
       
@@ -533,9 +937,9 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/43b02aa6f00a9e89cfa56d7df5c6d1cb5bdd5eb4" title='Last modified by codecc | August 19, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/707978ebb5aacdab22a946961e60e0518765e634" title='Last modified by cctrip | August 20, 2020' target="_blank" rel="noopener">
       <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>August 19, 2020</span>
+      <span>August 20, 2020</span>
     </a>
   </div>
 
@@ -570,7 +974,21 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#oauth">oauth</a></li>
+    <li><a href="#oauth">oauth</a>
+      <ul>
+        <li><a href="#名词定义">名词定义</a></li>
+        <li><a href="#运行流程">运行流程</a></li>
+        <li><a href="#客户端授权模式">客户端授权模式</a>
+          <ul>
+            <li><a href="#1-authorization-code-grant">1. Authorization Code Grant</a></li>
+            <li><a href="#2-implicit-grant">2. Implicit Grant</a></li>
+            <li><a href="#3-resource-owner-password-credentials-grant">3. Resource Owner Password Credentials Grant</a></li>
+            <li><a href="#4-client-credentials-grant">4. Client Credentials Grant</a></li>
+          </ul>
+        </li>
+        <li><a href="#更新token">更新Token</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
