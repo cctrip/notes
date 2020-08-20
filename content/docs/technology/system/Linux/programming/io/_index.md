@@ -108,7 +108,7 @@ select，poll，epoll都是IO多路复用的机制。I/O多路复用就是通过
 
 ### select
 
-```
+```c
 int select (int n, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
 ```
 
@@ -120,13 +120,13 @@ select目前几乎在所有的平台上支持，其良好跨平台支持也是�
 
 ### poll
 
-```
+```c
 int poll (struct pollfd *fds, unsigned int nfds, int timeout);
 ```
 
 不同与select使用三个位图来表示三个fdset的方式，poll使用一个 pollfd的指针实现。
 
-```
+```c
 struct pollfd {
     int fd; /* file descriptor */
     short events; /* requested events to watch */
@@ -150,7 +150,7 @@ epoll是在2.6内核中提出的，是之前的select和poll的增强版本。�
 
 epoll操作过程需要三个接口，分别如下：
 
-```
+```c
 int epoll_create(int size)；//创建一个epoll的句柄，size用来告诉内核这个监听的数目一共有多大
 int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)；
 int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);
@@ -167,7 +167,7 @@ int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout
 \- fd：是需要监听的fd（文件描述符）
 \- epoll_event：是告诉内核需要监听什么事，struct epoll_event结构如下：
 
-```
+```c
 struct epoll_event {
   __uint32_t events;  /* Epoll events */
   epoll_data_t data;  /* User data variable */
@@ -224,7 +224,7 @@ ET模式在很大程度上减少了epoll事件被重复触发的次数，因此�
 当使用epoll的ET模型来工作时，当产生了一个EPOLLIN事件后，
 读数据的时候需要考虑的是当recv()返回的大小如果等于请求的大小，那么很有可能是缓冲区还有数据未读完，也意味着该次事件还没有处理完，所以还需要再次读取：
 
-```
+```c
 while(rs){
   buflen = recv(activeevents[i].data.fd, buf, sizeof(buf), 0);
   if(buflen < 0){
@@ -264,7 +264,7 @@ Linux环境下开发经常会碰到很多错误(设置errno)，其中EAGAIN是�
 
 下面是一段不完整的代码且格式不对，意在表述上面的过程，去掉了一些模板代码。
 
-```
+```c
 #define IPADDRESS   "127.0.0.1"
 #define PORT        8787
 #define MAXSIZE     1024
