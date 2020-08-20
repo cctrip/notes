@@ -20,7 +20,7 @@
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.a16f5c6a2f750926308df2f72a211bca72811da61ab250986323931f63dc7d58.js" integrity="sha256-oW9cai91CSYwjfL3KiEbynKBHaYaslCYYyOTH2PcfVg="></script>
+<script defer src="/notes/en.search.min.48871a5f699f9d1801d0a9cdb1365d14e9e09ddc262e8431df14843e02fe1bd0.js" integrity="sha256-SIcaX2mfnRgB0KnNsTZdFOngndwmLoQx3xSEPgL&#43;G9A="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/system/Linux/programming/io/index.xml" title="学而不思则罔" />
@@ -731,22 +731,22 @@ https://github.com/alex-shpak/hugo-book
   select
   <a class="anchor" href="#select">#</a>
 </h3>
-<pre><code>int select (int n, fd_set *readfds, fd_set *writefds, fd_set *exceptfds, struct timeval *timeout);
-</code></pre><p>select 函数监视的文件描述符分3类，分别是writefds、readfds、和exceptfds。调用后select函数会阻塞，直到有描述副就绪（有数据 可读、可写、或者有except），或者超时（timeout指定等待时间，如果立即返回设为null即可），函数返回。当select函数返回后，可以 通过遍历fdset，来找到就绪的描述符。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">select</span> (<span style="color:#66d9ef">int</span> n, fd_set <span style="color:#f92672">*</span>readfds, fd_set <span style="color:#f92672">*</span>writefds, fd_set <span style="color:#f92672">*</span>exceptfds, <span style="color:#66d9ef">struct</span> timeval <span style="color:#f92672">*</span>timeout);
+</code></pre></div><p>select 函数监视的文件描述符分3类，分别是writefds、readfds、和exceptfds。调用后select函数会阻塞，直到有描述副就绪（有数据 可读、可写、或者有except），或者超时（timeout指定等待时间，如果立即返回设为null即可），函数返回。当select函数返回后，可以 通过遍历fdset，来找到就绪的描述符。</p>
 <p>select目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点。select的一 个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，可以通过修改宏定义甚至重新编译内核的方式提升这一限制，但 是这样也会造成效率的降低。</p>
 <hr>
 <h3 id="poll">
   poll
   <a class="anchor" href="#poll">#</a>
 </h3>
-<pre><code>int poll (struct pollfd *fds, unsigned int nfds, int timeout);
-</code></pre><p>不同与select使用三个位图来表示三个fdset的方式，poll使用一个 pollfd的指针实现。</p>
-<pre><code>struct pollfd {
-    int fd; /* file descriptor */
-    short events; /* requested events to watch */
-    short revents; /* returned events witnessed */
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">poll</span> (<span style="color:#66d9ef">struct</span> pollfd <span style="color:#f92672">*</span>fds, <span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> nfds, <span style="color:#66d9ef">int</span> timeout);
+</code></pre></div><p>不同与select使用三个位图来表示三个fdset的方式，poll使用一个 pollfd的指针实现。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> pollfd {
+    <span style="color:#66d9ef">int</span> fd; <span style="color:#75715e">/* file descriptor */</span>
+    <span style="color:#66d9ef">short</span> events; <span style="color:#75715e">/* requested events to watch */</span>
+    <span style="color:#66d9ef">short</span> revents; <span style="color:#75715e">/* returned events witnessed */</span>
 };
-</code></pre><p>pollfd结构包含了要监视的event和发生的event，不再使用select“参数-值”传递的方式。同时，pollfd并没有最大数量限制（但是数量过大后性能也是会下降）。 和select函数一样，poll返回后，需要轮询pollfd来获取就绪的描述符。</p>
+</code></pre></div><p>pollfd结构包含了要监视的event和发生的event，不再使用select“参数-值”传递的方式。同时，pollfd并没有最大数量限制（但是数量过大后性能也是会下降）。 和select函数一样，poll返回后，需要轮询pollfd来获取就绪的描述符。</p>
 <blockquote>
 <p>从上面看，select和poll都需要在返回后，<code>通过遍历文件描述符来获取已经就绪的socket</code>。事实上，同时连接的大量客户端在一时刻可能只有很少的处于就绪状态，因此随着监视的描述符数量的增长，其效率也会线性下降。</p>
 </blockquote>
@@ -762,10 +762,10 @@ https://github.com/alex-shpak/hugo-book
   <a class="anchor" href="#1-epoll%e6%93%8d%e4%bd%9c%e8%bf%87%e7%a8%8b">#</a>
 </h4>
 <p>epoll操作过程需要三个接口，分别如下：</p>
-<pre><code>int epoll_create(int size)；//创建一个epoll的句柄，size用来告诉内核这个监听的数目一共有多大
-int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)；
-int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);
-</code></pre><p><strong>1. int epoll_create(int size);</strong>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">epoll_create</span>(<span style="color:#66d9ef">int</span> size)<span style="color:#960050;background-color:#1e0010">；</span><span style="color:#75715e">//创建一个epoll的句柄，size用来告诉内核这个监听的数目一共有多大
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> epoll_ctl(<span style="color:#66d9ef">int</span> epfd, <span style="color:#66d9ef">int</span> op, <span style="color:#66d9ef">int</span> fd, <span style="color:#66d9ef">struct</span> epoll_event <span style="color:#f92672">*</span>event)<span style="color:#960050;background-color:#1e0010">；</span>
+<span style="color:#66d9ef">int</span> epoll_wait(<span style="color:#66d9ef">int</span> epfd, <span style="color:#66d9ef">struct</span> epoll_event <span style="color:#f92672">*</span> events, <span style="color:#66d9ef">int</span> maxevents, <span style="color:#66d9ef">int</span> timeout);
+</code></pre></div><p><strong>1. int epoll_create(int size);</strong>
 创建一个epoll的句柄，size用来告诉内核这个监听的数目一共有多大，这个参数不同于select()中的第一个参数，给出最大监听的fd+1的值，<code>参数size并不是限制了epoll所能监听的描述符最大个数，只是对内核初始分配内部数据结构的一个建议</code>。
 当创建好epoll句柄后，它就会占用一个fd值，在linux下如果查看/proc/进程id/fd/，是能够看到这个fd的，所以在使用完epoll后，必须调用close()关闭，否则可能导致fd被耗尽。</p>
 <p><strong>2. int epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)；</strong>
@@ -774,20 +774,20 @@ int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout
 - op：表示op操作，用三个宏来表示：添加EPOLL_CTL_ADD，删除EPOLL_CTL_DEL，修改EPOLL_CTL_MOD。分别添加、删除和修改对fd的监听事件。
 - fd：是需要监听的fd（文件描述符）
 - epoll_event：是告诉内核需要监听什么事，struct epoll_event结构如下：</p>
-<pre><code>struct epoll_event {
-  __uint32_t events;  /* Epoll events */
-  epoll_data_t data;  /* User data variable */
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">struct</span> epoll_event {
+  __uint32_t events;  <span style="color:#75715e">/* Epoll events */</span>
+  epoll_data_t data;  <span style="color:#75715e">/* User data variable */</span>
 };
 
-//events可以是以下几个宏的集合：
-EPOLLIN ：表示对应的文件描述符可以读（包括对端SOCKET正常关闭）；
-EPOLLOUT：表示对应的文件描述符可以写；
-EPOLLPRI：表示对应的文件描述符有紧急的数据可读（这里应该表示有带外数据到来）；
-EPOLLERR：表示对应的文件描述符发生错误；
-EPOLLHUP：表示对应的文件描述符被挂断；
-EPOLLET： 将EPOLL设为边缘触发(Edge Triggered)模式，这是相对于水平触发(Level Triggered)来说的。
-EPOLLONESHOT：只监听一次事件，当监听完这次事件之后，如果还需要继续监听这个socket的话，需要再次把这个socket加入到EPOLL队列里
-</code></pre><p><strong>3. int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);</strong>
+<span style="color:#75715e">//events可以是以下几个宏的集合：
+</span><span style="color:#75715e"></span>EPOLLIN <span style="color:#960050;background-color:#1e0010">：表示对应的文件描述符可以读（包括对端</span>SOCKET正常关闭<span style="color:#960050;background-color:#1e0010">）；</span>
+EPOLLOUT<span style="color:#960050;background-color:#1e0010">：表示对应的文件描述符可以写；</span>
+EPOLLPRI<span style="color:#960050;background-color:#1e0010">：表示对应的文件描述符有紧急的数据可读（这里应该表示有带外数据到来）；</span>
+EPOLLERR<span style="color:#960050;background-color:#1e0010">：表示对应的文件描述符发生错误；</span>
+EPOLLHUP<span style="color:#960050;background-color:#1e0010">：表示对应的文件描述符被挂断；</span>
+EPOLLET<span style="color:#960050;background-color:#1e0010">：</span> <span style="color:#960050;background-color:#1e0010">将</span>EPOLL设为边缘触发(Edge Triggered)<span style="color:#960050;background-color:#1e0010">模式，这是相对于水平触发</span>(Level Triggered)<span style="color:#960050;background-color:#1e0010">来说的。</span>
+EPOLLONESHOT<span style="color:#960050;background-color:#1e0010">：只监听一次事件，当监听完这次事件之后，如果还需要继续监听这个</span>socket的话<span style="color:#960050;background-color:#1e0010">，需要再次把这个</span>socket加入到EPOLL队列里
+</code></pre></div><p><strong>3. int epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout);</strong>
 等待epfd上的io事件，最多返回maxevents个事件。
 参数events用来从内核得到事件的集合，maxevents告之内核这个events有多大，这个maxevents的值不能大于创建epoll_create()时的size，参数timeout是超时时间（毫秒，0会立即返回，-1将不确定，也有说法说是永久阻塞）。该函数返回需要处理的事件数目，如返回0表示已超时。</p>
 <hr>
@@ -827,30 +827,30 @@ EPOLLONESHOT：只监听一次事件，当监听完这次事件之后，如果�
 如果我们在第1步将RFD添加到epoll描述符的时候使用了EPOLLET标志，那么在第5步调用epoll_wait(2)之后将有可能会挂起，因为剩余的数据还存在于文件的输入缓冲区内，而且数据发出端还在等待一个针对已经发出数据的反馈信息。只有在监视的文件句柄上发生了某个事件的时候 ET 工作模式才会汇报事件。因此在第5步的时候，调用者可能会放弃等待仍在存在于文件输入缓冲区内的剩余数据。</p>
 <p>当使用epoll的ET模型来工作时，当产生了一个EPOLLIN事件后，
 读数据的时候需要考虑的是当recv()返回的大小如果等于请求的大小，那么很有可能是缓冲区还有数据未读完，也意味着该次事件还没有处理完，所以还需要再次读取：</p>
-<pre><code>while(rs){
-  buflen = recv(activeevents[i].data.fd, buf, sizeof(buf), 0);
-  if(buflen &lt; 0){
-    // 由于是非阻塞的模式,所以当errno为EAGAIN时,表示当前缓冲区已无数据可读
-    // 在这里就当作是该次事件已处理处.
-    if(errno == EAGAIN){
-        break;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#66d9ef">while</span>(rs){
+  buflen <span style="color:#f92672">=</span> recv(activeevents[i].data.fd, buf, <span style="color:#66d9ef">sizeof</span>(buf), <span style="color:#ae81ff">0</span>);
+  <span style="color:#66d9ef">if</span>(buflen <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>){
+    <span style="color:#75715e">// 由于是非阻塞的模式,所以当errno为EAGAIN时,表示当前缓冲区已无数据可读
+</span><span style="color:#75715e"></span>    <span style="color:#75715e">// 在这里就当作是该次事件已处理处.
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">if</span>(errno <span style="color:#f92672">==</span> EAGAIN){
+        <span style="color:#66d9ef">break</span>;
     }
-    else{
-        return;
+    <span style="color:#66d9ef">else</span>{
+        <span style="color:#66d9ef">return</span>;
     }
   }
-  else if(buflen == 0){
-     // 这里表示对端的socket已正常关闭.
-  }
+  <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(buflen <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>){
+     <span style="color:#75715e">// 这里表示对端的socket已正常关闭.
+</span><span style="color:#75715e"></span>  }
 
- if(buflen == sizeof(buf){
-      rs = 1;   // 需要再次读取
- }
- else{
-      rs = 0;
+ <span style="color:#66d9ef">if</span>(buflen <span style="color:#f92672">==</span> <span style="color:#66d9ef">sizeof</span>(buf){
+      rs <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;   <span style="color:#75715e">// 需要再次读取
+</span><span style="color:#75715e"></span> }
+ <span style="color:#66d9ef">else</span>{
+      rs <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
  }
 }
-</code></pre><blockquote>
+</code></pre></div><blockquote>
 <p><strong>Linux中的EAGAIN含义</strong></p>
 </blockquote>
 <p>Linux环境下开发经常会碰到很多错误(设置errno)，其中EAGAIN是其中比较常见的一个错误(比如用在非阻塞操作中)。
@@ -863,125 +863,125 @@ EPOLLONESHOT：只监听一次事件，当监听完这次事件之后，如果�
   <a class="anchor" href="#3-%e4%bb%a3%e7%a0%81%e6%bc%94%e7%a4%ba">#</a>
 </h4>
 <p>下面是一段不完整的代码且格式不对，意在表述上面的过程，去掉了一些模板代码。</p>
-<pre><code>#define IPADDRESS   &quot;127.0.0.1&quot;
-#define PORT        8787
-#define MAXSIZE     1024
-#define LISTENQ     5
-#define FDSIZE      1000
-#define EPOLLEVENTS 100
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#define IPADDRESS   &#34;127.0.0.1&#34;
+</span><span style="color:#75715e">#define PORT        8787
+</span><span style="color:#75715e">#define MAXSIZE     1024
+</span><span style="color:#75715e">#define LISTENQ     5
+</span><span style="color:#75715e">#define FDSIZE      1000
+</span><span style="color:#75715e">#define EPOLLEVENTS 100
+</span><span style="color:#75715e"></span>
+listenfd <span style="color:#f92672">=</span> socket_bind(IPADDRESS,PORT);
 
-listenfd = socket_bind(IPADDRESS,PORT);
+<span style="color:#66d9ef">struct</span> epoll_event events[EPOLLEVENTS];
 
-struct epoll_event events[EPOLLEVENTS];
+<span style="color:#75715e">//创建一个描述符
+</span><span style="color:#75715e"></span>epollfd <span style="color:#f92672">=</span> epoll_create(FDSIZE);
 
-//创建一个描述符
-epollfd = epoll_create(FDSIZE);
+<span style="color:#75715e">//添加监听描述符事件
+</span><span style="color:#75715e"></span>add_event(epollfd,listenfd,EPOLLIN);
 
-//添加监听描述符事件
-add_event(epollfd,listenfd,EPOLLIN);
-
-//循环等待
-for ( ; ; ){
-    //该函数返回已经准备好的描述符事件数目
-    ret = epoll_wait(epollfd,events,EPOLLEVENTS,-1);
-    //处理接收到的连接
-    handle_events(epollfd,events,ret,listenfd,buf);
+<span style="color:#75715e">//循环等待
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">for</span> ( ; ; ){
+    <span style="color:#75715e">//该函数返回已经准备好的描述符事件数目
+</span><span style="color:#75715e"></span>    ret <span style="color:#f92672">=</span> epoll_wait(epollfd,events,EPOLLEVENTS,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+    <span style="color:#75715e">//处理接收到的连接
+</span><span style="color:#75715e"></span>    handle_events(epollfd,events,ret,listenfd,buf);
 }
 
-//事件处理函数
-static void handle_events(int epollfd,struct epoll_event *events,int num,int listenfd,char *buf)
+<span style="color:#75715e">//事件处理函数
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> handle_events(<span style="color:#66d9ef">int</span> epollfd,<span style="color:#66d9ef">struct</span> epoll_event <span style="color:#f92672">*</span>events,<span style="color:#66d9ef">int</span> num,<span style="color:#66d9ef">int</span> listenfd,<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf)
 {
-     int i;
-     int fd;
-     //进行遍历;这里只要遍历已经准备好的io事件。num并不是当初epoll_create时的FDSIZE。
-     for (i = 0;i &lt; num;i++)
+     <span style="color:#66d9ef">int</span> i;
+     <span style="color:#66d9ef">int</span> fd;
+     <span style="color:#75715e">//进行遍历;这里只要遍历已经准备好的io事件。num并不是当初epoll_create时的FDSIZE。
+</span><span style="color:#75715e"></span>     <span style="color:#66d9ef">for</span> (i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;i <span style="color:#f92672">&lt;</span> num;i<span style="color:#f92672">++</span>)
      {
-         fd = events[i].data.fd;
-        //根据描述符的类型和事件类型进行处理
-         if ((fd == listenfd) &amp;&amp;(events[i].events &amp; EPOLLIN))
+         fd <span style="color:#f92672">=</span> events[i].data.fd;
+        <span style="color:#75715e">//根据描述符的类型和事件类型进行处理
+</span><span style="color:#75715e"></span>         <span style="color:#66d9ef">if</span> ((fd <span style="color:#f92672">==</span> listenfd) <span style="color:#f92672">&amp;&amp;</span>(events[i].events <span style="color:#f92672">&amp;</span> EPOLLIN))
             handle_accpet(epollfd,listenfd);
-         else if (events[i].events &amp; EPOLLIN)
+         <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (events[i].events <span style="color:#f92672">&amp;</span> EPOLLIN)
             do_read(epollfd,fd,buf);
-         else if (events[i].events &amp; EPOLLOUT)
+         <span style="color:#66d9ef">else</span> <span style="color:#a6e22e">if</span> (events[i].events <span style="color:#f92672">&amp;</span> EPOLLOUT)
             do_write(epollfd,fd,buf);
      }
 }
 
-//添加事件
-static void add_event(int epollfd,int fd,int state){
-    struct epoll_event ev;
-    ev.events = state;
-    ev.data.fd = fd;
-    epoll_ctl(epollfd,EPOLL_CTL_ADD,fd,&amp;ev);
+<span style="color:#75715e">//添加事件
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> add_event(<span style="color:#66d9ef">int</span> epollfd,<span style="color:#66d9ef">int</span> fd,<span style="color:#66d9ef">int</span> state){
+    <span style="color:#66d9ef">struct</span> epoll_event ev;
+    ev.events <span style="color:#f92672">=</span> state;
+    ev.data.fd <span style="color:#f92672">=</span> fd;
+    epoll_ctl(epollfd,EPOLL_CTL_ADD,fd,<span style="color:#f92672">&amp;</span>ev);
 }
 
-//处理接收到的连接
-static void handle_accpet(int epollfd,int listenfd){
-     int clifd;     
-     struct sockaddr_in cliaddr;     
+<span style="color:#75715e">//处理接收到的连接
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> handle_accpet(<span style="color:#66d9ef">int</span> epollfd,<span style="color:#66d9ef">int</span> listenfd){
+     <span style="color:#66d9ef">int</span> clifd;     
+     <span style="color:#66d9ef">struct</span> sockaddr_in cliaddr;     
      socklen_t  cliaddrlen;     
-     clifd = accept(listenfd,(struct sockaddr*)&amp;cliaddr,&amp;cliaddrlen);     
-     if (clifd == -1)         
-     perror(&quot;accpet error:&quot;);     
-     else {         
-         printf(&quot;accept a new client: %s:%d\n&quot;,inet_ntoa(cliaddr.sin_addr),cliaddr.sin_port);                       //添加一个客户描述符和事件         
-         add_event(epollfd,clifd,EPOLLIN);     
+     clifd <span style="color:#f92672">=</span> accept(listenfd,(<span style="color:#66d9ef">struct</span> sockaddr<span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>cliaddr,<span style="color:#f92672">&amp;</span>cliaddrlen);     
+     <span style="color:#66d9ef">if</span> (clifd <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)         
+     perror(<span style="color:#e6db74">&#34;accpet error:&#34;</span>);     
+     <span style="color:#66d9ef">else</span> {         
+         printf(<span style="color:#e6db74">&#34;accept a new client: %s:%d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>,inet_ntoa(cliaddr.sin_addr),cliaddr.sin_port);                       <span style="color:#75715e">//添加一个客户描述符和事件         
+</span><span style="color:#75715e"></span>         add_event(epollfd,clifd,EPOLLIN);     
      } 
 }
 
-//读处理
-static void do_read(int epollfd,int fd,char *buf){
-    int nread;
-    nread = read(fd,buf,MAXSIZE);
-    if (nread == -1)     {         
-        perror(&quot;read error:&quot;);         
-        close(fd); //记住close fd        
-        delete_event(epollfd,fd,EPOLLIN); //删除监听 
-    }
-    else if (nread == 0)     {         
-        fprintf(stderr,&quot;client close.\n&quot;);
-        close(fd); //记住close fd       
-        delete_event(epollfd,fd,EPOLLIN); //删除监听 
-    }     
-    else {         
-        printf(&quot;read message is : %s&quot;,buf);        
-        //修改描述符对应的事件，由读改为写         
-        modify_event(epollfd,fd,EPOLLOUT);     
+<span style="color:#75715e">//读处理
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> do_read(<span style="color:#66d9ef">int</span> epollfd,<span style="color:#66d9ef">int</span> fd,<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf){
+    <span style="color:#66d9ef">int</span> nread;
+    nread <span style="color:#f92672">=</span> read(fd,buf,MAXSIZE);
+    <span style="color:#66d9ef">if</span> (nread <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)     {         
+        perror(<span style="color:#e6db74">&#34;read error:&#34;</span>);         
+        close(fd); <span style="color:#75715e">//记住close fd        
+</span><span style="color:#75715e"></span>        delete_event(epollfd,fd,EPOLLIN); <span style="color:#75715e">//删除监听 
+</span><span style="color:#75715e"></span>    }
+    <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (nread <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)     {         
+        fprintf(stderr,<span style="color:#e6db74">&#34;client close.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>);
+        close(fd); <span style="color:#75715e">//记住close fd       
+</span><span style="color:#75715e"></span>        delete_event(epollfd,fd,EPOLLIN); <span style="color:#75715e">//删除监听 
+</span><span style="color:#75715e"></span>    }     
+    <span style="color:#66d9ef">else</span> {         
+        printf(<span style="color:#e6db74">&#34;read message is : %s&#34;</span>,buf);        
+        <span style="color:#75715e">//修改描述符对应的事件，由读改为写         
+</span><span style="color:#75715e"></span>        modify_event(epollfd,fd,EPOLLOUT);     
     } 
 }
 
-//写处理
-static void do_write(int epollfd,int fd,char *buf) {     
-    int nwrite;     
-    nwrite = write(fd,buf,strlen(buf));     
-    if (nwrite == -1){         
-        perror(&quot;write error:&quot;);        
-        close(fd);   //记住close fd       
-        delete_event(epollfd,fd,EPOLLOUT);  //删除监听    
-    }else{
+<span style="color:#75715e">//写处理
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> do_write(<span style="color:#66d9ef">int</span> epollfd,<span style="color:#66d9ef">int</span> fd,<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>buf) {     
+    <span style="color:#66d9ef">int</span> nwrite;     
+    nwrite <span style="color:#f92672">=</span> write(fd,buf,strlen(buf));     
+    <span style="color:#66d9ef">if</span> (nwrite <span style="color:#f92672">==</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>){         
+        perror(<span style="color:#e6db74">&#34;write error:&#34;</span>);        
+        close(fd);   <span style="color:#75715e">//记住close fd       
+</span><span style="color:#75715e"></span>        delete_event(epollfd,fd,EPOLLOUT);  <span style="color:#75715e">//删除监听    
+</span><span style="color:#75715e"></span>    }<span style="color:#66d9ef">else</span>{
         modify_event(epollfd,fd,EPOLLIN); 
     }    
-    memset(buf,0,MAXSIZE); 
+    memset(buf,<span style="color:#ae81ff">0</span>,MAXSIZE); 
 }
 
-//删除事件
-static void delete_event(int epollfd,int fd,int state) {
-    struct epoll_event ev;
-    ev.events = state;
-    ev.data.fd = fd;
-    epoll_ctl(epollfd,EPOLL_CTL_DEL,fd,&amp;ev);
+<span style="color:#75715e">//删除事件
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> delete_event(<span style="color:#66d9ef">int</span> epollfd,<span style="color:#66d9ef">int</span> fd,<span style="color:#66d9ef">int</span> state) {
+    <span style="color:#66d9ef">struct</span> epoll_event ev;
+    ev.events <span style="color:#f92672">=</span> state;
+    ev.data.fd <span style="color:#f92672">=</span> fd;
+    epoll_ctl(epollfd,EPOLL_CTL_DEL,fd,<span style="color:#f92672">&amp;</span>ev);
 }
 
-//修改事件
-static void modify_event(int epollfd,int fd,int state){     
-    struct epoll_event ev;
-    ev.events = state;
-    ev.data.fd = fd;
-    epoll_ctl(epollfd,EPOLL_CTL_MOD,fd,&amp;ev);
+<span style="color:#75715e">//修改事件
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> modify_event(<span style="color:#66d9ef">int</span> epollfd,<span style="color:#66d9ef">int</span> fd,<span style="color:#66d9ef">int</span> state){     
+    <span style="color:#66d9ef">struct</span> epoll_event ev;
+    ev.events <span style="color:#f92672">=</span> state;
+    ev.data.fd <span style="color:#f92672">=</span> fd;
+    epoll_ctl(epollfd,EPOLL_CTL_MOD,fd,<span style="color:#f92672">&amp;</span>ev);
 }
 
-//注：另外一端我就省了
-</code></pre><hr>
+<span style="color:#75715e">//注：另外一端我就省了
+</span></code></pre></div><hr>
 <h4 id="4-epoll总结">
   4. epoll总结
   <a class="anchor" href="#4-epoll%e6%80%bb%e7%bb%93">#</a>
