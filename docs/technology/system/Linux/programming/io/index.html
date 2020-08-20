@@ -594,10 +594,48 @@ https://github.com/alex-shpak/hugo-book
 
   <label for="toc-control">
     
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
   </label>
 </div>
 
 
+  
+    <input type="checkbox" class="hidden" id="toc-control" />
+    <aside class="hidden clearfix">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#io">IO</a>
+      <ul>
+        <li><a href="#io模型">I/O模型</a>
+          <ul>
+            <li><a href="#阻塞io">阻塞I/O</a></li>
+            <li><a href="#非阻塞io">非阻塞I/O</a></li>
+            <li><a href="#信号驱动io">信号驱动I/O</a></li>
+            <li><a href="#异步io">异步I/O</a></li>
+            <li><a href="#io多路复用">I/O多路复用</a></li>
+            <li><a href="#总结">总结</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#io-多路复用之selectpollepoll详解">I/O 多路复用之select、poll、epoll详解</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#select">select</a></li>
+            <li><a href="#poll">poll</a></li>
+            <li><a href="#epoll">epoll</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+    </aside>
   
  
       </header>
@@ -1018,6 +1056,41 @@ static void modify_event(int epollfd,int fd,int state){
       <label for="menu-control" class="hidden book-menu-overlay"></label>
     </div>
 
+    
+    <aside class="book-toc">
+      
+  <nav id="TableOfContents">
+  <ul>
+    <li><a href="#io">IO</a>
+      <ul>
+        <li><a href="#io模型">I/O模型</a>
+          <ul>
+            <li><a href="#阻塞io">阻塞I/O</a></li>
+            <li><a href="#非阻塞io">非阻塞I/O</a></li>
+            <li><a href="#信号驱动io">信号驱动I/O</a></li>
+            <li><a href="#异步io">异步I/O</a></li>
+            <li><a href="#io多路复用">I/O多路复用</a></li>
+            <li><a href="#总结">总结</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#io-多路复用之selectpollepoll详解">I/O 多路复用之select、poll、epoll详解</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#select">select</a></li>
+            <li><a href="#poll">poll</a></li>
+            <li><a href="#epoll">epoll</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+ 
+    </aside>
     
   </main>
 
