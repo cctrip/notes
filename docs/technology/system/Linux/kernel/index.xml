@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>内核编译 on 学而不思则罔</title>
+    <title>内核 on 学而不思则罔</title>
     <link>https://cctrip.github.io/notes/docs/technology/system/Linux/kernel/</link>
-    <description>Recent content in 内核编译 on 学而不思则罔</description>
+    <description>Recent content in 内核 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
 	<atom:link href="https://cctrip.github.io/notes/docs/technology/system/Linux/kernel/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title></title>
+      <title>内核参数优化</title>
       <link>https://cctrip.github.io/notes/docs/technology/system/Linux/kernel/opt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/kernel/opt/</guid>
-      <description>vm.swappiness = 0 net.ipv4.neigh.default.gc_stale_time=120 # see details in https://help.aliyun.com/knowledge_detail/39428.html net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.default.arp_announce = 2 net.ipv4.conf.lo.arp_announce=2 net.ipv4.conf.all.arp_announce=2 # see details in https://help.aliyun.com/knowledge_detail/41334.html net.ipv4.tcp_max_tw_buckets = 5000 net.ipv4.tcp_synack_retries = 2 net.ipv6.conf.all.disable_ipv6 = 1 net.ipv6.conf.default.disable_ipv6 = 1 net.ipv6.conf.lo.disable_ipv6 = 1 net.core.rmem_default = 256960 net.core.rmem_max = 513920 net.core.wmem_default = 256960 net.core.wmem_max = 513920 net.core.netdev_max_backlog = 2000 net.core.somaxconn = 2048 net.core.optmem_max = 81920 net.ipv4.tcp_mem = 131072 262144 524288 net.ipv4.tcp_rmem = 8760 256960 4088000 net.ipv4.tcp_wmem = 8760 256960 4088000 net.</description>
+      <description>参数优化 #  vm.swappiness = 0 net.ipv4.neigh.default.gc_stale_time=120 # see details in https://help.aliyun.com/knowledge_detail/39428.html net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.default.arp_announce = 2 net.ipv4.conf.lo.arp_announce=2 net.ipv4.conf.all.arp_announce=2 # see details in https://help.aliyun.com/knowledge_detail/41334.html net.ipv4.tcp_max_tw_buckets = 5000 net.ipv4.tcp_synack_retries = 2 net.ipv6.conf.all.disable_ipv6 = 1 net.ipv6.conf.default.disable_ipv6 = 1 net.ipv6.conf.lo.disable_ipv6 = 1 net.core.rmem_default = 256960 net.core.rmem_max = 513920 net.core.wmem_default = 256960 net.core.wmem_max = 513920 net.core.netdev_max_backlog = 2000 net.core.somaxconn = 2048 net.core.optmem_max = 81920 net.ipv4.tcp_mem = 131072 262144 524288 net.ipv4.tcp_rmem = 8760 256960 4088000 net.</description>
     </item>
     
   </channel>
