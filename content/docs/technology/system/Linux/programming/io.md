@@ -6,7 +6,11 @@ title: "IO"
 
 # IO
 
+## 阻塞I/O
+
 ![](blocking_io.png)
+
+
 
 ***
 
