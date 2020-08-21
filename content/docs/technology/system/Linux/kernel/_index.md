@@ -1,6 +1,6 @@
 ---
 bookCollapseSection: true
-weight: 1
+weight: 3
 title: "内核"
 ---
 

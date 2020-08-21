@@ -1,7 +1,7 @@
 ---
 bookCollapseSection: false
-weight: 2
-title: "启动"
+weight: 1
+title: "启动过程"
 ---
 
 # 启动过程

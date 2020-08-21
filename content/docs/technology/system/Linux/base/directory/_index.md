@@ -1,7 +1,7 @@
 ---
 bookCollapseSection: false
 weight: 2
-title: "Linux目录结构"
+title: "目录结构"
 ---
 
 # Linux目录结构
