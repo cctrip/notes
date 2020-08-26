@@ -185,6 +185,15 @@ ENI是虚拟网络接口，您可以将其附加到VPC中的实例。 将ENI附�
     </item>
     
     <item>
+      <title>Prometheus</title>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/monitor/prometheus/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/monitor/prometheus/</guid>
+      <description>Prometheus #  </description>
+    </item>
+    
+    <item>
       <title>目标</title>
       <link>https://cctrip.github.io/notes/docs/technology/other/Interview/request/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>

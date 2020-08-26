@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="en" dir=>
+
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Monitor #  Collect #  做什么 #   收到有意义的自动化警报，以解决潜在问题。 快速调查并深入了解性能问题。   Collecting data is cheap, but not having it when you need it can be expensive, so you should instrument everything, and collect all the useful data you reasonably can.
+ Metric #  Metric在特定时间点捕获与您的系统有关的值,
+  Work Metric #  Work metrics 通过衡量有用的输出来指示系统的顶级运行状况。
+ 吞吐量 成功率 错误 性能(延迟)  Example work metrics: Web server
+   Subtype Description Value     throughput requests per second 312   success percentage of responses that are 2xx since last measurement 99.">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="监控" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/DevOps/monitor/" />
+
+<title>监控 | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
+<script defer src="/notes/en.search.min.846465ababe4f9732febe9bab51bca5be2c54c475d7f386b6eb7a4fc1bbc9d08.js" integrity="sha256-hGRlq6vk&#43;XMv6&#43;m6tRvKW&#43;LFTEddfzhrbrek/Bu8nQg="></script>
+
+<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/cloud/DevOps/monitor/index.xml" title="学而不思则罔" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir=>
+  <input type="checkbox" class="hidden" id="menu-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/system/" class="collapsed ">系统</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/network/" class="collapsed ">网络</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/" class="collapsed ">编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/" class="collapsed ">数据库</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/architecture/" class="collapsed ">架构</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/" class="collapsed ">云原生</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/infrastructure/" class="">不可变基础设施</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Container/" class="collapsed ">容器技术</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/ServiceMesh/" class="collapsed ">服务网格</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/Microservice/" class="collapsed ">微服务</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/API/" class="collapsed ">声明式API</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/DevOps/" class="collapsed ">DevOps</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/DevOps/map/" class="">技能图谱</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/DevOps/ansible/" class="collapsed ">Ansible</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/DevOps/elk/" class="collapsed ">ELK</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/DevOps/monitor/" class="active">监控</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/cloud/DevOps/monitor/prometheus/" class="">Prometheus</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/bigdata/" class="collapsed ">大数据</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/security/" class="collapsed ">安全</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/tool/" class="collapsed ">工具</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/other/" class="collapsed ">其他</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/howto/" class="collapsed ">How To</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+    <a href="/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/life/" class="collapsed ">人生</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/other/learn/" class="collapsed ">方法论</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+
+
+ 
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>监控</strong>
+
+  <label for="toc-control">
+    
+  </label>
+</div>
+
+
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="monitor">
+  Monitor
+  <a class="anchor" href="#monitor">#</a>
+</h1>
+<h2 id="collect">
+  Collect
+  <a class="anchor" href="#collect">#</a>
+</h2>
+<h4 id="做什么">
+  做什么
+  <a class="anchor" href="#%e5%81%9a%e4%bb%80%e4%b9%88">#</a>
+</h4>
+<ol>
+<li>收到有意义的自动化警报，以解决潜在问题。</li>
+<li>快速调查并深入了解性能问题。</li>
+</ol>
+<blockquote>
+<p><em>Collecting data is cheap, but not having it when you need it can be expensive, so you should instrument everything, and collect all the useful data you reasonably can.</em></p>
+</blockquote>
+<h3 id="metric">
+  Metric
+  <a class="anchor" href="#metric">#</a>
+</h3>
+<p>Metric在特定时间点捕获与您的系统有关的值,</p>
+<p>
+  <img src="metric.png" alt="" /></p>
+<hr>
+<h4 id="work-metric">
+  Work Metric
+  <a class="anchor" href="#work-metric">#</a>
+</h4>
+<p>Work metrics 通过衡量有用的输出来指示系统的顶级运行状况。</p>
+<ul>
+<li>吞吐量</li>
+<li>成功率</li>
+<li>错误</li>
+<li>性能(延迟)</li>
+</ul>
+<p><strong>Example work metrics: Web server</strong></p>
+<table>
+<thead>
+<tr>
+<th><strong>Subtype</strong></th>
+<th><strong>Description</strong></th>
+<th><strong>Value</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>throughput</td>
+<td>requests per second</td>
+<td>312</td>
+</tr>
+<tr>
+<td>success</td>
+<td>percentage of responses that are 2xx since last measurement</td>
+<td>99.1</td>
+</tr>
+<tr>
+<td>error</td>
+<td>percentage of responses that are 5xx since last measurement</td>
+<td>0.1</td>
+</tr>
+<tr>
+<td>performance</td>
+<td>90th percentile response time in seconds</td>
+<td>0.4</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="resource-metric">
+  Resource Metric
+  <a class="anchor" href="#resource-metric">#</a>
+</h4>
+<ul>
+<li>利用率</li>
+<li>饱和度</li>
+<li>错误</li>
+<li>可用性</li>
+</ul>
+<p>Here are example metrics for a handful of common resource types:</p>
+<table>
+<thead>
+<tr>
+<th><strong>Resource</strong></th>
+<th><strong>Utilization</strong></th>
+<th><strong>Saturation</strong></th>
+<th><strong>Errors</strong></th>
+<th><strong>Availability</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Disk IO</td>
+<td>% time that device was busy</td>
+<td>wait queue length</td>
+<td># device errors</td>
+<td>% time writable</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>% of total memory capacity in use</td>
+<td>swap usage</td>
+<td>N/A (not usually observable)</td>
+<td>N/A</td>
+</tr>
+<tr>
+<td>Microservice</td>
+<td>average % time each request-servicing thread was busy</td>
+<td># enqueued requests</td>
+<td># internal errors such as caught exceptions</td>
+<td>% time service is reachable</td>
+</tr>
+<tr>
+<td>Database</td>
+<td>average % time each connection was busy</td>
+<td># enqueued queries</td>
+<td># internal errors, e.g. replication errors</td>
+<td>% time database is reachable</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="四大特征">
+  四大特征
+  <a class="anchor" href="#%e5%9b%9b%e5%a4%a7%e7%89%b9%e5%be%81">#</a>
+</h3>
+<ul>
+<li>清晰，保持指标和事件尽可能简单，并明确命名</li>
+<li>粒状，</li>
+<li>按范围标记，保留与数据关联的多个作用域非常重要，这样您就可以警告任何作用域的问题，并快速调查中断，而不受固定主机层次结构的限制</li>
+<li>保留时长</li>
+</ul>
+<hr>
+<h4 id="总结">
+  总结
+  <a class="anchor" href="#%e6%80%bb%e7%bb%93">#</a>
+</h4>
+<ul>
+<li>记录一切，并尽可能收集尽可能多的工作指标，资源指标和事件。复杂系统的可观察性要求全面的测量。</li>
+<li>以足够的粒度收集指标，以使重要的峰值和下降可见。</li>
+<li>为了最大程度地发挥数据的价值，请在多个范围内标记指标和事件，并将其完整粒度保留至少15个月。</li>
+</ul>
+<hr>
+<h2 id="alert">
+  Alert
+  <a class="anchor" href="#alert">#</a>
+</h2>
+<h3 id="告警等级">
+  告警等级
+  <a class="anchor" href="#%e5%91%8a%e8%ad%a6%e7%ad%89%e7%ba%a7">#</a>
+</h3>
+<ol>
+<li>记录(低等级)</li>
+<li>通知(中等)</li>
+<li>页面、电话等(紧急)</li>
+</ol>
+<h4 id="总结-1">
+  总结
+  <a class="anchor" href="#%e6%80%bb%e7%bb%93-1">#</a>
+</h4>
+<p>仅在系统出现紧急问题的症状时发送页面 检测到工作，或者是否存在关键且有限的资源限制 即将达到</p>
+<p>设置您的监视系统以在检测到警报时记录警报 基础架构中的实际问题，即使这些问题没有 尚未影响整体表现</p>
+<hr>
+<h2 id="恢复">
+  恢复
+  <a class="anchor" href="#%e6%81%a2%e5%a4%8d">#</a>
+</h2>
+<ol>
+<li>查看work指标</li>
+<li>查看资源指标</li>
+<li>是否做过变更</li>
+<li>修复并不忘记它</li>
+</ol>
+<hr>
+<h3 id="总结-2">
+  总结
+  <a class="anchor" href="#%e6%80%bb%e7%bb%93-2">#</a>
+</h3>
+<p>遵循标准化的监视框架，您可以更系统地调查问题：</p>
+<ul>
+<li>对于基础架构中的每个系统，请提前设置一个仪表板，以显示其所有关键指标并覆盖相关事件</li>
+<li>通过从显示症状的最高级别系统开始，调查其原因，审查其工作和资源指标以及任何相关事件，以调查问题的原因</li>
+<li>如果检测到有问题的资源，则对资源（及其组成资源）应用相同的调查模式，直到发现并纠正根本问题为止</li>
+</ul>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/c4875dc89736121b16b4078580c5aa57267494ae" title='Last modified by cctrip | August 24, 2020' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>August 24, 2020</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/cloud/DevOps/monitor/_index.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
