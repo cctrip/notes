@@ -48,6 +48,10 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/excute/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/security/Firewall/filter/netfilter/</loc>
     <lastmod>2020-08-04T23:22:53+08:00</lastmod>
   </url>
@@ -579,6 +583,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/monitor/prometheus/</loc>
+    <lastmod>2020-08-26T22:01:35+08:00</lastmod>
   </url>
   
   <url>
@@ -807,7 +812,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/</loc>
-    <lastmod>2020-08-24T16:52:25+08:00</lastmod>
+    <lastmod>2020-08-26T22:01:35+08:00</lastmod>
   </url>
   
   <url>

@@ -4,13 +4,13 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="kafka架构 #  ">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="" />
-<meta property="og:description" content="kafka架构 #  " />
+<meta name="description" content="MySQL执行过程 #    大体来说，MySQL 可以分为 Server 层和存储引擎层两部分。Server 层包括连接器、查询缓存、分析器、优化器、执行器等，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。而存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持 InnoDB、MyISAM、Memory 等多个存储引擎。现在最常用的存储引擎是 InnoDB，它从 MySQL5.5.5 版本开始成为了默认存储引擎。">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="MySQL执行过程" />
+<meta property="og:description" content="MySQL执行过程 #    大体来说，MySQL 可以分为 Server 层和存储引擎层两部分。Server 层包括连接器、查询缓存、分析器、优化器、执行器等，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。而存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持 InnoDB、MyISAM、Memory 等多个存储引擎。现在最常用的存储引擎是 InnoDB，它从 MySQL5.5.5 版本开始成为了默认存储引擎。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/" />
-<meta property="article:modified_time" content="2020-07-05T12:38:18+08:00" />
-<title>Architecture | 学而不思则罔</title>
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/excute/" />
+
+<title>MySQL执行过程 | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
@@ -144,6 +144,133 @@ https://github.com/alex-shpak/hugo-book
   
 
   
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/Basic/" class="collapsed ">数据库基础</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/SQL/" class="collapsed ">SQL</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/SQL/mysql/" class="collapsed ">MySQL</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/SQL/mysql/excute/" class="active">MySQL执行过程</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/SQL/mysql/cluster/" class="">Cluster</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/SQL/mysql/install/" class="">Install</a>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/SQL/postgres/" class="collapsed ">PostgreSQL</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/database/NoSQL/" class="collapsed ">NoSQL</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
 
         </li>
       
@@ -194,100 +321,6 @@ https://github.com/alex-shpak/hugo-book
   
   
 
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Basic/" class="collapsed ">大数据基础</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Application/" class="collapsed ">应用</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Application/kafka/" class="collapsed ">Kafka</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Application/kafka/architecture/" class="active">Architecture</a>
-  
-
-        </li>
-      
-    
-      
-    
-      
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/bigdata/Application/zookeeper/" class="collapsed ">Zookeeper</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-  </ul>
-  
-
-        </li>
-      
-    
-  </ul>
   
 
         </li>
@@ -482,7 +515,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>Architecture</strong>
+  <strong>MySQL执行过程</strong>
 
   <label for="toc-control">
     
@@ -498,7 +531,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#kafka架构">kafka架构</a></li>
+    <li><a href="#mysql执行过程">MySQL执行过程</a></li>
   </ul>
 </nav>
 
@@ -510,10 +543,14 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="kafka架构">
-  kafka架构
-  <a class="anchor" href="#kafka%e6%9e%b6%e6%9e%84">#</a>
+  <article class="markdown"><h1 id="mysql执行过程">
+  MySQL执行过程
+  <a class="anchor" href="#mysql%e6%89%a7%e8%a1%8c%e8%bf%87%e7%a8%8b">#</a>
 </h1>
+<p>
+  <img src="mysql.png" alt="" /></p>
+<hr>
+<p>大体来说，MySQL 可以分为 Server 层和存储引擎层两部分。Server 层包括连接器、查询缓存、分析器、优化器、执行器等，涵盖 MySQL 的大多数核心服务功能，以及所有的内置函数（如日期、时间、数学和加密函数等），所有跨存储引擎的功能都在这一层实现，比如存储过程、触发器、视图等。而存储引擎层负责数据的存储和提取。其架构模式是插件式的，支持 InnoDB、MyISAM、Memory 等多个存储引擎。现在最常用的存储引擎是 InnoDB，它从 MySQL5.5.5 版本开始成为了默认存储引擎。</p>
 </article>
  
       
@@ -524,16 +561,10 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/a428f920eb52ac0e7189ba2a2b20439e1bc0e287" title='Last modified by codecc | July 5, 2020' target="_blank" rel="noopener">
-      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>July 5, 2020</span>
-    </a>
-  </div>
-
 
 
   <div>
-    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/bigdata/Application/kafka/architecture.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/database/SQL/mysql/excute.md" target="_blank" rel="noopener">
       <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -561,7 +592,7 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#kafka架构">kafka架构</a></li>
+    <li><a href="#mysql执行过程">MySQL执行过程</a></li>
   </ul>
 </nav>
 
