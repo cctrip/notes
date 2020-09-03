@@ -14,7 +14,7 @@
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.74675702fccfba618d82f6feec73d55e772ce6addaf7eb663fab3916c0e0281e.js" integrity="sha256-dGdXAvzPumGNgvb&#43;7HPVXncs5q3a9&#43;tmP6s5FsDgKB4="></script>
+<script defer src="/notes/en.search.min.92ad219120ac1419048f5d31c25cb645517bc5edabcee19160a80d144f3b41d5.js" integrity="sha256-kq0hkSCsFBkEj10xwly2RVF7xe2rzuGRYKgNFE87QdU="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/other/Interview/introduction/index.xml" title="学而不思则罔" />
@@ -848,12 +848,32 @@ default_server
 3、正则匹配
 4、最长前缀匹配
 </code></pre><pre><code># Golang 并发
-goroutine
+进程：分配资源的基本单位，独立的栈空间，独立的堆空间，进程之间调度由os完成
+线程：独立运行和独立调度的基本单位，独立的栈空间，共享堆空间，内核线程之间调度由os完成
+协程：用户级线程，独立的栈空间，共享堆空间，调度由用户自己控制，协作式调度，主动转让控制权
+goroutine：Golang自己实现的协程，不完全协作式调度，由go自己实现的调度器调度。
+
+内存消耗方面
+每个 goroutine (协程) 默认占用内存远比 Java 、C 的线程少。
+goroutine：2KB
+线程：1MB
+
+线程和 goroutine 切换调度开销方面
+线程/goroutine 切换开销方面，goroutine 远比线程小
+线程：涉及模式切换(从用户态切换到内核态)、16个寄存器、PC、SP...等寄存器的刷新等。
+goroutine：只有三个寄存器的值修改 - PC / SP / DX.
+
 channel
-sync.waitGroup
+不通过共享内存来通信，而是通过通信来共享内存
+
 
 # Golang 垃圾回收
 三色标记法+混合写屏障
+
+根对象
+全局变量：程序在编译期就能确定的那些存在于程序整个生命周期的变量。
+执行栈：每个 goroutine 都包含自己的执行栈，这些执行栈上包含栈上的变量及指向分配的堆内存区块的指针。
+寄存器：寄存器的值可能表示一个指针，参与计算的这些指针可能指向某些赋值器分配的堆内存区块。
 
 1、标记准备，开启写屏障
 2、查找根对象，标记为灰色
@@ -903,9 +923,9 @@ prerouting，ipvs dnat，postrouting，
 
 
 
-  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/134c57607de5eb79d7413ba2e5a8b9b4f80e4908" title='Last modified by codecc | August 17, 2020' target="_blank" rel="noopener">
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/07e6f88a8e89ae2211293304cd17a9095ab93b46" title='Last modified by codecc | August 30, 2020' target="_blank" rel="noopener">
       <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>August 17, 2020</span>
+      <span>August 30, 2020</span>
     </a>
   </div>
 
