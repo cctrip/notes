@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>学习 on 学而不思则罔</title>
+    <link>https://cctrip.github.io/notes/docs/technology/leetcode/learn/</link>
+    <description>Recent content in 学习 on 学而不思则罔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/leetcode/learn/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>数组</title>
+      <link>https://cctrip.github.io/notes/docs/technology/leetcode/learn/array/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/leetcode/learn/array/</guid>
+      <description>数组 #  什么是数组？ #   An Array is a collection of items. The items could be integers, strings, DVDs, games, books—anything really. The items are stored in neighboring (contiguous) memory locations. Because they&amp;rsquo;re stored together, checking through the entire collection of items is straightforward.
+  数组的CRUD #  创建和访问数组 #  //数组，长度不可变 //切片，长度可变 func arraySlice() { //创建数组(声明长度) 	var array1 = [5]int{1, 2, 3} //创建数组(不声明长度) 	var array2 = [.</description>
+    </item>
+    
+    <item>
+      <title>链表</title>
+      <link>https://cctrip.github.io/notes/docs/technology/leetcode/learn/linklist/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/leetcode/learn/linklist/</guid>
+      <description>链表 #  </description>
+    </item>
+    
+  </channel>
+</rss>

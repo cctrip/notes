@@ -152,6 +152,10 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/leetcode/learn/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/other/learn/Method/</loc>
     <lastmod>2020-08-22T10:36:15+08:00</lastmod>
   </url>
@@ -204,6 +208,10 @@
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/program/Advanced/dataStructure/</loc>
     <lastmod>2020-07-05T11:05:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/leetcode/learn/array/</loc>
   </url>
   
   <url>
@@ -376,12 +384,16 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/other/life/career/</loc>
-    <lastmod>2020-09-12T11:06:49+08:00</lastmod>
+    <lastmod>2020-09-12T14:44:14+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/config/</loc>
     <lastmod>2020-08-12T19:24:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/leetcode/learn/linklist/</loc>
   </url>
   
   <url>
@@ -494,11 +506,12 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/learn/</loc>
+    <lastmod>2020-09-12T14:44:14+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/</loc>
-    <lastmod>2020-08-10T23:29:49+08:00</lastmod>
+    <lastmod>2020-09-12T14:44:14+08:00</lastmod>
   </url>
   
   <url>
@@ -672,6 +685,10 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/technology/leetcode/</loc>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</loc>
     <lastmod>2020-07-05T12:38:18+08:00</lastmod>
   </url>
@@ -747,7 +764,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/technology/other/Interview/history/interview/</loc>
-    <lastmod>2020-09-10T21:42:25+08:00</lastmod>
+    <lastmod>2020-09-12T14:44:14+08:00</lastmod>
   </url>
   
   <url>
@@ -827,7 +844,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/docs/</loc>
-    <lastmod>2020-09-12T11:06:49+08:00</lastmod>
+    <lastmod>2020-09-12T14:44:14+08:00</lastmod>
   </url>
   
   <url>
