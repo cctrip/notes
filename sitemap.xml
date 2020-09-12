@@ -375,6 +375,11 @@
   </url>
   
   <url>
+    <loc>https://cctrip.github.io/notes/docs/other/life/career/</loc>
+    <lastmod>2020-08-23T22:37:32+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/config/</loc>
     <lastmod>2020-08-12T19:24:21+08:00</lastmod>
   </url>
@@ -663,11 +668,6 @@
   </url>
   
   <url>
-    <loc>https://cctrip.github.io/notes/docs/other/life/career/</loc>
-    <lastmod>2020-08-23T22:37:32+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</loc>
     <lastmod>2020-07-05T12:38:18+08:00</lastmod>
   </url>
@@ -832,7 +832,7 @@
   
   <url>
     <loc>https://cctrip.github.io/notes/</loc>
-    <lastmod>2020-09-11T22:41:52+08:00</lastmod>
+    <lastmod>2020-09-11T22:43:17+08:00</lastmod>
   </url>
   
 </urlset>
