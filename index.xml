@@ -431,6 +431,7 @@ protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自�
 4、自动化做了什么
 5、ansible做了什么
 6、Docker如何实现隔离，属于什么级别的隔离
+7、成本控制怎么做
  </description>
     </item>
     
