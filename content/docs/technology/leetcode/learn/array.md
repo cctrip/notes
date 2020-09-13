@@ -114,3 +114,27 @@ func search(num int) bool {
 
 ***
 
+### 就地操作数组
+
+节省时间和空间
+
+***
+
+### 删除重复元素
+
+```go
+func removeDuplicates(nums []int) {
+	if len(nums) == 0 {
+		return
+	}
+	writePointer := 1
+	for readPointer := 1; readPointer < len(nums); readPointer++ {
+		if nums[readPointer] != nums[readPointer-1] {
+			nums[writePointer] = nums[readPointer]
+			writePointer++
+		}
+	}
+	fmt.Println(nums[:writePointer])
+}
+```
+
