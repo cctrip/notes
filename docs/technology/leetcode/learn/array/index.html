@@ -11,12 +11,12 @@
   数组的CRUD #  创建和访问数组 #  //数组，长度不可变 //切片，长度可变 func arraySlice() { //创建数组(声明长度) 	var array1 = [5]int{1, 2, 3} //创建数组(不声明长度) 	var array2 = [." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/leetcode/learn/array/" />
-
+<meta property="article:modified_time" content="2020-09-12T21:40:47+08:00" />
 <title>数组 | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
-<script defer src="/notes/en.search.min.a4e2529cd187fe82140723a3772ed03f802ae15a12c157cdcb1e0691d2c82193.js" integrity="sha256-pOJSnNGH/oIUByOjdy7QP4Aq4VoSwVfNyx4GkdLIIZM="></script>
+<script defer src="/notes/en.search.min.72840cd48939153d003ccdd7a68350d827430b743dec6b2558088db1f369c20d.js" integrity="sha256-coQM1Ik5FT0APM3XpoNQ2CdDC3Q97GslWAiNsfNpwg0="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <!--
@@ -477,6 +477,8 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#数组插入元素">数组插入元素</a></li>
             <li><a href="#数组删除元素">数组删除元素</a></li>
             <li><a href="#搜索某个元素">搜索某个元素</a></li>
+            <li><a href="#就地操作数组">就地操作数组</a></li>
+            <li><a href="#删除重复元素">删除重复元素</a></li>
           </ul>
         </li>
       </ul>
@@ -600,7 +602,30 @@ https://github.com/alex-shpak/hugo-book
   <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
 }
 </code></pre></div><hr>
-</article>
+<h3 id="就地操作数组">
+  就地操作数组
+  <a class="anchor" href="#%e5%b0%b1%e5%9c%b0%e6%93%8d%e4%bd%9c%e6%95%b0%e7%bb%84">#</a>
+</h3>
+<p>节省时间和空间</p>
+<hr>
+<h3 id="删除重复元素">
+  删除重复元素
+  <a class="anchor" href="#%e5%88%a0%e9%99%a4%e9%87%8d%e5%a4%8d%e5%85%83%e7%b4%a0">#</a>
+</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-go" data-lang="go"><span style="color:#66d9ef">func</span> <span style="color:#a6e22e">removeDuplicates</span>(<span style="color:#a6e22e">nums</span> []<span style="color:#66d9ef">int</span>) {
+	<span style="color:#66d9ef">if</span> len(<span style="color:#a6e22e">nums</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span> {
+		<span style="color:#66d9ef">return</span>
+	}
+	<span style="color:#a6e22e">writePointer</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>
+	<span style="color:#66d9ef">for</span> <span style="color:#a6e22e">readPointer</span> <span style="color:#f92672">:=</span> <span style="color:#ae81ff">1</span>; <span style="color:#a6e22e">readPointer</span> &lt; len(<span style="color:#a6e22e">nums</span>); <span style="color:#a6e22e">readPointer</span><span style="color:#f92672">++</span> {
+		<span style="color:#66d9ef">if</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">readPointer</span>] <span style="color:#f92672">!=</span> <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">readPointer</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] {
+			<span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">writePointer</span>] = <span style="color:#a6e22e">nums</span>[<span style="color:#a6e22e">readPointer</span>]
+			<span style="color:#a6e22e">writePointer</span><span style="color:#f92672">++</span>
+		}
+	}
+	<span style="color:#a6e22e">fmt</span>.<span style="color:#a6e22e">Println</span>(<span style="color:#a6e22e">nums</span>[:<span style="color:#a6e22e">writePointer</span>])
+}
+</code></pre></div></article>
  
       
 
@@ -609,6 +634,12 @@ https://github.com/alex-shpak/hugo-book
   <div class="flex flex-wrap justify-between">
 
 
+
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/86225b1378f9dbd1e8f708b021eaefed24ff1f52" title='Last modified by codecc | September 12, 2020' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>September 12, 2020</span>
+    </a>
+  </div>
 
 
 
@@ -650,6 +681,8 @@ https://github.com/alex-shpak/hugo-book
             <li><a href="#数组插入元素">数组插入元素</a></li>
             <li><a href="#数组删除元素">数组删除元素</a></li>
             <li><a href="#搜索某个元素">搜索某个元素</a></li>
+            <li><a href="#就地操作数组">就地操作数组</a></li>
+            <li><a href="#删除重复元素">删除重复元素</a></li>
           </ul>
         </li>
       </ul>
