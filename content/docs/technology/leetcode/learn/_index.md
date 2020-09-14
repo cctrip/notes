@@ -6,5 +6,22 @@ title: "学习"
 
 # 学习
 
-* [Array](array.md)
-* [linked list](linklist.md)
+* [数组](array.md)
+* [链表](linklist.md)
+
+
+
+***
+
+### 对比
+
+![](compare.png)
+
+***
+
+> 如果需要经常插入和删除元素，选择链表
+>
+> 如果需要经常通过index访问元素，选择数组
+
+***
+
