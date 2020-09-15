@@ -8,6 +8,7 @@ title: "学习"
 
 * [数组](array.md)
 * [链表](linklist.md)
+* [二叉树](bintree.md)
 
 
 
