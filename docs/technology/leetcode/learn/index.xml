@@ -29,5 +29,20 @@
   CRUD #  创建一个单向链表 #  type List struct { Value {}interface Next *List } import &amp;#34;container/list&amp;#34; func list() { l := list.New() }  添加元素 #  func Append() { }  删除元素 #  func Remove() { } </description>
     </item>
     
+    <item>
+      <title>二叉树</title>
+      <link>https://cctrip.github.io/notes/docs/technology/leetcode/learn/bintree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/leetcode/learn/bintree/</guid>
+      <description>二叉树 #   树是模拟分层树结构的常用数据结构。
+树的每个节点将具有一个根值和对其他称为子节点的节点的引用列表。从图的角度看，树也可以定义为有向无环图，它具有N个节点和N-1个边。
+二叉树是最典型的树结构之一。顾名思义，二叉树是一种树数据结构，其中每个节点最多具有两个子节点，分别称为左子节点和右子节点。
+  遍历 #  前序遍历 #  根结点 &amp;mdash;&amp;gt; 左子树 &amp;mdash;&amp;gt; 右子树
+中序遍历 #  左子树&amp;mdash;&amp;gt; 根结点 &amp;mdash;&amp;gt; 右子树
+后序遍历 #  左子树 &amp;mdash;&amp;gt; 右子树 &amp;mdash;&amp;gt; 根结点
+层次遍历 #  广度优先 #  深度优先 #  </description>
+    </item>
+    
   </channel>
 </rss>
