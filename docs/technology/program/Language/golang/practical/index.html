@@ -4,55 +4,21 @@
 <head>
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Linux目录结构 #    /boot
-系统启动相关的文件，如内核、initrd，以及grub(bootloader)
-  /dev
-设备文件
-块设备：随机访问，数据块
-字符设备：线性访问，按字符为单位
-设备号：主设备号(major)和次设备号(minor)
-  /etc
-配置文件
-  /home
-用户的家目录，每一个用户的家目录通常默认为/home/USERNAME
-  /root
-管理员的家目录
-  /lib
-库文件
-静态库，.a
-动态库，.dll，.so（shared object）
-  /lib/modules
-内核模块文件
-  /media
-挂载点目录，移动设备
-  /mnt
-挂载点目录，额外的临时文件系统
-  /opt
-可选目录，第三方程序的安装目录
-  /proc
-伪文件系统，内核映射文件
-  /sys
-伪文件系统，跟硬件设备相关的属性映射文件
-  /tmp
-临时文件，/var/tmp
-  /var
-可变化的文件
-  /bin
-可执行文件，用户命令
-  /sbin">
-<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="目录结构" />
+<meta name="description" content="实用GO #   《Go语言最佳实践》
+ 指导原则 #  1. 简单性 #  2. 可读性 #  3. 生产力 #   ">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="实用GO" />
 <meta property="og:description" content="" />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/system/Linux/base/directory/" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/program/Language/golang/practical/" />
 
-<title>目录结构 | 学而不思则罔</title>
+<title>实用GO | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.b3215d9d1d18d9051e7fbe8f256ff80e30f41d29073b86348e230d297b771002.css" integrity="sha256-syFdnR0Y2QUef76PJW/4DjD0HSkHO4Y0jiMNKXt3EAI=">
 <script defer src="/notes/en.search.min.60ba35f13fcd555a669ada6eed59f701d06aea5cdace00731c5c19720bef119b.js" integrity="sha256-YLo18T/NVVpmmtpu7Vn3AdBq6lzazgBzHFwZcgvvEZs="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
-<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/system/Linux/base/directory/index.xml" title="学而不思则罔" />
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/program/Language/golang/practical/index.xml" title="学而不思则罔" />
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -129,179 +95,6 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/system/Basic/" class="collapsed ">计算机基础</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/system/Linux/" class="collapsed ">Linux系统</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/system/Linux/base/" class="collapsed ">基础</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/system/Linux/base/start/" class="">启动过程</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/system/Linux/base/directory/" class="active">目录结构</a>
-  
-
-          
-  
-  
-  
-
-  
-  <ul>
-    
-  </ul>
-  
-
-        </li>
-      
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/system/Linux/guideBook/" class="collapsed ">操作指南</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/system/Linux/kernel/" class="collapsed ">内核</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/system/Linux/programming/" class="collapsed ">系统编程</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-  </ul>
-  
-
-        </li>
-      
-    
-      
-        <li>
-          
-  
-    <a href="/notes/docs/technology/system/Application/" class="collapsed ">应用</a>
-  
-
-          
-  
-  
-  
-
-  
-
-        </li>
-      
-    
-  </ul>
-  
 
         </li>
       
@@ -335,6 +128,276 @@ https://github.com/alex-shpak/hugo-book
   
   
 
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Basic/" class="collapsed ">编程基础</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Revision/" class="collapsed ">版本控制</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/" class="collapsed ">编程语言</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/shell/" class="collapsed ">Shell</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/golang/" class="collapsed ">Golang</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/golang/concurrent/" class="">并发</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/golang/garbage/" class="">垃圾回收</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/golang/memory/" class="">内存模型</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/golang/framework/" class="">框架</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/golang/practical/" class="active">实用GO</a>
+  
+
+          
+  
+  
+  
+
+  
+  <ul>
+    
+  </ul>
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/python/" class="collapsed ">Python</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Language/javascript/" class="collapsed ">Javascript</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Advanced/" class="collapsed ">编程进阶</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+    <a href="/notes/docs/technology/program/Web/" class="collapsed ">WEB编程</a>
+  
+
+          
+  
+  
+  
+
+  
+
+        </li>
+      
+    
+  </ul>
   
 
         </li>
@@ -614,7 +677,7 @@ https://github.com/alex-shpak/hugo-book
     <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
   </label>
 
-  <strong>目录结构</strong>
+  <strong>实用GO</strong>
 
   <label for="toc-control">
     
@@ -630,7 +693,17 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#linux目录结构">Linux目录结构</a></li>
+    <li><a href="#实用go">实用GO</a>
+      <ul>
+        <li><a href="#指导原则">指导原则</a>
+          <ul>
+            <li><a href="#1-简单性">1. 简单性</a></li>
+            <li><a href="#2-可读性">2. 可读性</a></li>
+            <li><a href="#3-生产力">3. 生产力</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
@@ -642,95 +715,29 @@ https://github.com/alex-shpak/hugo-book
 
       
       
-  <article class="markdown"><h1 id="linux目录结构">
-  Linux目录结构
-  <a class="anchor" href="#linux%e7%9b%ae%e5%bd%95%e7%bb%93%e6%9e%84">#</a>
+  <article class="markdown"><h1 id="实用go">
+  实用GO
+  <a class="anchor" href="#%e5%ae%9e%e7%94%a8go">#</a>
 </h1>
-<ul>
-<li>
-<p>/boot</p>
-<p>系统启动相关的文件，如内核、initrd，以及grub(bootloader)</p>
-</li>
-<li>
-<p>/dev</p>
-<p>设备文件</p>
-<p>块设备：随机访问，数据块</p>
-<p>字符设备：线性访问，按字符为单位</p>
-<p>设备号：主设备号(major)和次设备号(minor)</p>
-</li>
-<li>
-<p>/etc</p>
-<p>配置文件</p>
-</li>
-<li>
-<p>/home</p>
-<p>用户的家目录，每一个用户的家目录通常默认为/home/USERNAME</p>
-</li>
-<li>
-<p>/root</p>
-<p>管理员的家目录</p>
-</li>
-<li>
-<p>/lib</p>
-<p>库文件</p>
-<p>静态库，.a</p>
-<p>动态库，.dll，.so（shared object）</p>
-</li>
-<li>
-<p>/lib/modules</p>
-<p>内核模块文件</p>
-</li>
-<li>
-<p>/media</p>
-<p>挂载点目录，移动设备</p>
-</li>
-<li>
-<p>/mnt</p>
-<p>挂载点目录，额外的临时文件系统</p>
-</li>
-<li>
-<p>/opt</p>
-<p>可选目录，第三方程序的安装目录</p>
-</li>
-<li>
-<p>/proc</p>
-<p>伪文件系统，内核映射文件</p>
-</li>
-<li>
-<p>/sys</p>
-<p>伪文件系统，跟硬件设备相关的属性映射文件</p>
-</li>
-<li>
-<p>/tmp</p>
-<p>临时文件，/var/tmp</p>
-</li>
-<li>
-<p>/var</p>
-<p>可变化的文件</p>
-</li>
-<li>
-<p>/bin</p>
-<p>可执行文件，用户命令</p>
-</li>
-<li>
-<p>/sbin</p>
-<p>可执行文件，管理命令</p>
-</li>
-<li>
-<p>/usr</p>
-<p>shared，read-only</p>
-<p>/usr/bin</p>
-<p>/usr/sbin</p>
-<p>/usr/lib</p>
-</li>
-<li>
-<p>/usr/local</p>
-<p>第三方软件</p>
-<p>/usr/local/bin</p>
-<p>/usr/local/sbin</p>
-<p>/usr/local/lib</p>
-</li>
-</ul>
+<p>
+  <a href="https://dave.cheney.net/practical-go/presentations/qcon-china.html">《Go语言最佳实践》</a></p>
+<hr>
+<h2 id="指导原则">
+  指导原则
+  <a class="anchor" href="#%e6%8c%87%e5%af%bc%e5%8e%9f%e5%88%99">#</a>
+</h2>
+<h3 id="1-简单性">
+  1. 简单性
+  <a class="anchor" href="#1-%e7%ae%80%e5%8d%95%e6%80%a7">#</a>
+</h3>
+<h3 id="2-可读性">
+  2. 可读性
+  <a class="anchor" href="#2-%e5%8f%af%e8%af%bb%e6%80%a7">#</a>
+</h3>
+<h3 id="3-生产力">
+  3. 生产力
+  <a class="anchor" href="#3-%e7%94%9f%e4%ba%a7%e5%8a%9b">#</a>
+</h3>
 <hr>
 </article>
  
@@ -742,16 +749,10 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/dedd326a507bc06573a9198e14fade07c853efa4" title='Last modified by codecc | August 21, 2020' target="_blank" rel="noopener">
-      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
-      <span>August 21, 2020</span>
-    </a>
-  </div>
-
 
 
   <div>
-    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/system/Linux/base/directory/_index.md" target="_blank" rel="noopener">
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/program/Language/golang/practical/_index.md" target="_blank" rel="noopener">
       <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
       <span>Edit this page</span>
     </a>
@@ -779,7 +780,17 @@ https://github.com/alex-shpak/hugo-book
       
   <nav id="TableOfContents">
   <ul>
-    <li><a href="#linux目录结构">Linux目录结构</a></li>
+    <li><a href="#实用go">实用GO</a>
+      <ul>
+        <li><a href="#指导原则">指导原则</a>
+          <ul>
+            <li><a href="#1-简单性">1. 简单性</a></li>
+            <li><a href="#2-可读性">2. 可读性</a></li>
+            <li><a href="#3-生产力">3. 生产力</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
   </ul>
 </nav>
 
