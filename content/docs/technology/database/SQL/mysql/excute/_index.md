@@ -1,5 +1,5 @@
 ---
-bookCollapseSection: true
+bookCollapseSection: false
 weight: 1
 title: "MySQL执行过程"
 ---
