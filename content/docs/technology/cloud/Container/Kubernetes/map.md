@@ -139,3 +139,10 @@ title: "技能图谱"
 ## Kubernetes PaaS
 - OpenShift
 - Knative （新项目，推荐）
+
+***
+
+### 路径
+
+[kube-ladder](https://github.com/caicloud/kube-ladder)
+
