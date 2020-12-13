@@ -2,6 +2,7 @@
 <html lang="en" dir=>
 
 <head>
+  <meta name="generator" content="Hugo 0.72.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Kubernetes 技能图谱 #  Container basics （容器技术基础） #   Linux Operating System Basic Linux Process Management (Linux进程管理) Cgroups Linux Namespaces Rootfs &amp; Container Image Image Registry  Kubernetes architecture （Kubernetes 架构） #  Node #  Kubelet #   Runtime （容器运行时）  CRI (Container Runtime Interface) Runtime shims （容器运行时插件）  Cri-containerd （containerd） Dockershim （Docker） Cri-o （runC） Rktlet （rkt） Frakti （KataContainers）   RuntimeClass (新特性：容器运行时类)   Networking  CNI (Container Network Interface) Linux Network Namespace Network plugins （网络插件）  Flannel Calico OVS SR-IOV macvlan/ipvlan Opencontrail Weave Cilium （新插件，支持BPF，推荐）     Storage  CSI (Container Storage Interface) Persistent Volume &amp; Persistent Volume Claim Volume plugins （存储插件，仅负责提供PV）  NFS Cinder GlusterFS Ceph Local path   Volume extenstion (存储扩展，负责提供完整的Storage方案)  Rook.">
@@ -14,7 +15,7 @@
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.134b70e5316650a530cb42e4e8630b2a01d532bebfc0337028211175336e4806.css" integrity="sha256-E0tw5TFmUKUwy0Lk6GMLKgHVMr6/wDNwKCERdTNuSAY=">
-<script defer src="/notes/en.search.min.0e0b8effc33122ec262331ba0ec0c357df19602238438d4e9923eb3e0a26d0ac.js" integrity="sha256-DguO/8MxIuwmIzG6DsDDV98ZYCI4Q41OmSPrPgom0Kw="></script>
+<script defer src="/notes/en.search.min.af9cf7e7271161ce78c70a1ea9ddad150d16e9736b67a49954a6837cce2e0ddf.js" integrity="sha256-r5z35ycRYc54xwoeqd2tFQ0W6XNrZ6SZVKaDfM4uDd8="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <!--
@@ -3362,7 +3363,11 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#kubernetes-operations-kubernetes-安装与运维">Kubernetes operations （Kubernetes 安装与运维）</a></li>
         <li><a href="#kubernetes-extensionsadd-ons-kubernetes-扩展和插件">Kubernetes extensions/add-ons （Kubernetes 扩展和插件）</a></li>
         <li><a href="#kubernetes-cicd">Kubernetes CI/CD</a></li>
-        <li><a href="#kubernetes-paas">Kubernetes PaaS</a></li>
+        <li><a href="#kubernetes-paas">Kubernetes PaaS</a>
+          <ul>
+            <li><a href="#路径">路径</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>
@@ -3624,6 +3629,13 @@ https://github.com/alex-shpak/hugo-book
 <li>OpenShift</li>
 <li>Knative （新项目，推荐）</li>
 </ul>
+<hr>
+<h3 id="路径">
+  路径
+  <a class="anchor" href="#%e8%b7%af%e5%be%84">#</a>
+</h3>
+<p>
+  <a href="https://github.com/caicloud/kube-ladder">kube-ladder</a></p>
 </article>
  
       
@@ -3685,7 +3697,11 @@ https://github.com/alex-shpak/hugo-book
         <li><a href="#kubernetes-operations-kubernetes-安装与运维">Kubernetes operations （Kubernetes 安装与运维）</a></li>
         <li><a href="#kubernetes-extensionsadd-ons-kubernetes-扩展和插件">Kubernetes extensions/add-ons （Kubernetes 扩展和插件）</a></li>
         <li><a href="#kubernetes-cicd">Kubernetes CI/CD</a></li>
-        <li><a href="#kubernetes-paas">Kubernetes PaaS</a></li>
+        <li><a href="#kubernetes-paas">Kubernetes PaaS</a>
+          <ul>
+            <li><a href="#路径">路径</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

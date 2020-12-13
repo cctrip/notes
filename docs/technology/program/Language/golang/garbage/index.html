@@ -2,6 +2,7 @@
 <html lang="en" dir=>
 
 <head>
+  <meta name="generator" content="Hugo 0.72.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="垃圾回收 #  GC算法 #  1. 引用计数（reference counting） #  每个单元维护一个域，保存其它单元指向它的引用数量（类似有向图的入度）。当引用数量为 0 时，将其回收。 2. 标记-清扫（mark &amp; sweep） #  标记-清扫算法是第一种自动内存管理，基于追踪的垃圾收集算法。算法思想在 70 年代就提出了，是一种非常古老的算法。内存单元并不会在变成垃圾立刻回收，而是保持不可达状态，直到到达某个阈值或者固定时间长度。这个时候系统会挂起用户程序，也就是 STW，转而执行垃圾回收程序。垃圾回收程序对所有的存活单元进行一次全局遍历确定哪些单元可以回收。算法分两个部分：标记（mark）和清扫（sweep）。标记阶段表明所有的存活单元，清扫阶段将垃圾单元回收。 ### 三色标记法 1. 起初所有对象都是白色。 2. 从根出发扫描所有可达对象，标记为灰色，放入待处理队列。 3. 从队列取出灰色对象，将其引用对象标记为灰色放入队列，自身标记为黑色。 4. 重复 3，直到灰色对象队列为空。此时白色对象即为垃圾，进行回收。 3. 节点复制（Copying Garbage Collection） #  4. 分代收集（Generational Garbage Collection） #   Golang GC #  1. 何时触发GC #  被动GC，在堆上分配大于 32K byte 对象的时候进行检测此时是否满足垃圾回收条件，如果满足则进行垃圾回收。
@@ -16,7 +17,7 @@
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.134b70e5316650a530cb42e4e8630b2a01d532bebfc0337028211175336e4806.css" integrity="sha256-E0tw5TFmUKUwy0Lk6GMLKgHVMr6/wDNwKCERdTNuSAY=">
-<script defer src="/notes/en.search.min.0e0b8effc33122ec262331ba0ec0c357df19602238438d4e9923eb3e0a26d0ac.js" integrity="sha256-DguO/8MxIuwmIzG6DsDDV98ZYCI4Q41OmSPrPgom0Kw="></script>
+<script defer src="/notes/en.search.min.af9cf7e7271161ce78c70a1ea9ddad150d16e9736b67a49954a6837cce2e0ddf.js" integrity="sha256-r5z35ycRYc54xwoeqd2tFQ0W6XNrZ6SZVKaDfM4uDd8="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/program/Language/golang/garbage/index.xml" title="学而不思则罔" />

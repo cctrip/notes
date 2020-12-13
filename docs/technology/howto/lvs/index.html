@@ -2,6 +2,7 @@
 <html lang="en" dir=>
 
 <head>
+  <meta name="generator" content="Hugo 0.72.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="LVS #  基础概念 #  术语 #   IPVS,ipvs,ip_vs：内核模块，在director上提供负载均衡功能 LVS, linux virtual server ：由 director &#43; realservers组成virtual server，对client显示为一台机器 director: 运行ipvs代码的节点，client连接director，director转发数据包到realserver，director只是具有使LVS正常工作的特殊规则的IP路由器 realservers：运行服务的主机，处理来自client的请求 client forwarding method (currently LVS-NAT, LVS-DR, LVS-Tun)：决定director如何发送数据包给realserver scheduling ( ipvsadm and schedulers)：director用于选择realserver以便为来自client的新连接请求提供服务的算法   LVS中IP/网络的名称 #   ________ | | | client | (local or on internet) |________| CIP | -- (router) DGW | outside network | L VIP i ____|_____ n | | (director can have 1 or 2 NICs) u | director | x |__________| DIP (and PIP) V | i | DRIP network r ---------------------------------- t | | | u | | | a RIP1 RIP2 RIP3 l _____________ _____________ _____________ | | | | | | S | realserver1 | | realserver2 | | realserver3 | e |_____________| |_____________| |_____________| r v e r --- client IP = CIP virtual IP = VIP - the IP on the director that the client connects to) director IP = DIP - the IP on the director in the DIP/RIP (DRIP) network (this is the realserver gateway for LVS-NAT) realserver IP = RIP (and RIP1, RIP2.">
@@ -14,7 +15,7 @@
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
 <link rel="stylesheet" href="/notes/book.min.134b70e5316650a530cb42e4e8630b2a01d532bebfc0337028211175336e4806.css" integrity="sha256-E0tw5TFmUKUwy0Lk6GMLKgHVMr6/wDNwKCERdTNuSAY=">
-<script defer src="/notes/en.search.min.0e0b8effc33122ec262331ba0ec0c357df19602238438d4e9923eb3e0a26d0ac.js" integrity="sha256-DguO/8MxIuwmIzG6DsDDV98ZYCI4Q41OmSPrPgom0Kw="></script>
+<script defer src="/notes/en.search.min.af9cf7e7271161ce78c70a1ea9ddad150d16e9736b67a49954a6837cce2e0ddf.js" integrity="sha256-r5z35ycRYc54xwoeqd2tFQ0W6XNrZ6SZVKaDfM4uDd8="></script>
 
 <script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
 <link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/howto/lvs/index.xml" title="学而不思则罔" />
