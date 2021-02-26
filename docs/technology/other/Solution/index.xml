@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>问题集锦 on 学而不思则罔</title>
-    <link>https://cctrip.github.io/notes/docs/technology/other/Solution/</link>
+    <link>https://cctrip.github.io/notes/docs/technology/other/solution/</link>
     <description>Recent content in 问题集锦 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/other/Solution/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/other/solution/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/solution/aboutNtpdate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/solution/aboutNtpdate/</guid>
       <description>时间同步相关问题 #  ntpdate:no server suitable for synchronization found #  Question： #  　在使用ntpdate同步时间时，出现了no server suitable for synchronization found的报错。
 　通过ntpdate -d s2m.time.edu.cn 使用debug模式没有出现异常。
 Answer： #  解决办法是，使用ntpdate -ubv s2m.time.edu.cn，可以正常同步了。
@@ -24,10 +24,10 @@ Answer： #  解决办法是，使用ntpdate -ubv s2m.time.edu.cn，可以正常
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/</guid>
       <description>ssh连接相关问题 #  pam_tally2(sshd:auth): user root (0) has time limit [3s left] since last failure 日志 #  Question： #  工作中，碰到某服务器在批量ssh登陆操作时，出现大量的无法连接的情况。
 Thinking： #  查看ssh日志(/var/log/secure)， 首先注意到的是，&amp;ldquo;Failed password for root from xxx.xxx.xxx.xxx port 51230 ssh2&amp;quot;错误，但发现密码并没有错误，并且只在批量操作时才会出现，故初步判断为连接数问题。
 查看ssh连接数限制

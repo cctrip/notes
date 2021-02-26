@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Redis on 学而不思则罔</title>
-    <link>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/</link>
+    <link>https://cctrip.github.io/notes/docs/technology/database/nosql/redis/</link>
     <description>Recent content in Redis on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/database/nosql/redis/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Redis集群</title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/cluster/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/database/nosql/redis/cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/cluster/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/database/nosql/redis/cluster/</guid>
       <description>集群 #  集群搭建 #    Redis安装
 wget http://download.redis.io/releases/redis-4.0.1.tar.gz    基础配置
 #除端口外，配置统一 #common port 6379 pidfile /cache1/redis/6379/redis_6379.pid loglevel notice logfile &amp;quot;/cache1/redis/6379/redis_6379.log&amp;quot; dir /cache1/redis/6379 protected-mode no #rdb save 7200 1000 rdbcompression yes rdbchecksum yes dbfilename dump.rdb #aof appendonly yes appendfilename &amp;quot;appendonly.aof&amp;quot; #cluster cluster-enabled yes cluster-config-file nodes.conf cluster-node-timeout 5000    redis集群架构

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes on 学而不思则罔</title>
-    <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/</link>
+    <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/</link>
     <description>Recent content in Kubernetes on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>技能图谱</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/map/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/map/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/map/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/map/</guid>
       <description>Kubernetes 技能图谱 #  Container basics （容器技术基础） #   Linux Operating System Basic Linux Process Management (Linux进程管理) Cgroups Linux Namespaces Rootfs &amp;amp; Container Image Image Registry  Kubernetes architecture （Kubernetes 架构） #  Node #  Kubelet #   Runtime （容器运行时）  CRI (Container Runtime Interface) Runtime shims （容器运行时插件）  Cri-containerd （containerd） Dockershim （Docker） Cri-o （runC） Rktlet （rkt） Frakti （KataContainers）   RuntimeClass (新特性：容器运行时类)   Networking  CNI (Container Network Interface) Linux Network Namespace Network plugins （网络插件）  Flannel Calico OVS SR-IOV macvlan/ipvlan Opencontrail Weave Cilium （新插件，支持BPF，推荐）     Storage  CSI (Container Storage Interface) Persistent Volume &amp;amp; Persistent Volume Claim Volume plugins （存储插件，仅负责提供PV）  NFS Cinder GlusterFS Ceph Local path   Volume extenstion (存储扩展，负责提供完整的Storage方案)  Rook.</description>
     </item>
     

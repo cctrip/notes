@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ELK on 学而不思则罔</title>
-    <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/elk/</link>
+    <link>https://cctrip.github.io/notes/docs/technology/cloud/devops/elk/</link>
     <description>Recent content in ELK on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/DevOps/elk/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/devops/elk/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/elk/elkinstall/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/devops/elk/elkinstall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/elk/elkinstall/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/devops/elk/elkinstall/</guid>
       <description>ELK安装 #  环境准备 #    CentOS 7
   Java 8
    ELK安装 #    配置ELK的repo文件

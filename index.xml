@@ -11,20 +11,20 @@
     
     <item>
       <title>Flannel</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/flannel/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/flannel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/flannel/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/flannel/</guid>
       <description>Flannel #  UDP(Tunnel设备) #  TUN 设备是一种工作在三层（Network Layer）的虚拟网络设备。TUN 设备的功能非常简单，即：在操作系统内核和用户应用程序之间传递 IP 包。
  XVLAN #  通信原理 #    帧格式 #  Outer Ethernet Header: +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Destination MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Destination MAC Address | Outer Source MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Source MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |OptnlEthtype = C-Tag 802.1Q | Outer.VLAN Tag Information | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Ethertype = 0x0800 | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Outer IPv4 Header: #目的ip由flannel维护 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |Version| IHL |Type of Service| Total Length | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Identification |Flags| Fragment Offset | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Time to Live |Protocl=17(UDP)| Header Checksum | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Source IPv4 Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Destination IPv4 Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Outer UDP Header: +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Source Port | Dest Port = VXLAN Port | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | UDP Length | UDP Checksum | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ VXLAN Header: +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |R|R|R|R|I|R|R|R| Reserved | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | VXLAN Network Identifier (VNI) | Reserved | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Inner Ethernet Header: #目的mac为flannel配置的网关地址的mac，由flannel下放到各个node上 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Inner Destination MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Inner Destination MAC Address | Inner Source MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Inner Source MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |OptnlEthtype = C-Tag 802.</description>
     </item>
     
     <item>
       <title>oauth</title>
-      <link>https://cctrip.github.io/notes/docs/technology/program/Web/oauth/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/program/web/oauth/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/program/Web/oauth/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/program/web/oauth/</guid>
       <description>oauth #   OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。参考材料 RFC 6749。
  名词定义 #  在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。
  （1） Third-party application：第三方应用程序，本文中又称&amp;quot;客户端&amp;rdquo;（client），即上一节例子中的&amp;quot;云冲印&amp;rdquo;。
@@ -39,10 +39,10 @@
     
     <item>
       <title>Pod</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/object/workload/pod/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/object/workload/pod/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/object/workload/pod/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/object/workload/pod/</guid>
       <description>Pod #  What #  Pod 是 Kubernetes 应用程序的基本执行单元，即它是 Kubernetes 对象模型中创建或部署的最小和最简单的单元。Pod 表示在 集群 上运行的进程。
 Pod 封装了应用程序容器（或者在某些情况下封装多个容器）、存储资源、唯一网络 IP 以及控制容器应该如何运行的选项。 Pod 表示部署单元：Kubernetes 中应用程序的单个实例，它可能由单个 容器 或少量紧密耦合并共享资源的容器组成。
  Docker 是 Kubernetes Pod 中最常用的容器运行时，但 Pod 也能支持其他的 容器运行时。
@@ -54,10 +54,10 @@ Kubernetes 集群中的 Pod 可被用于以下两个主要用途：
     
     <item>
       <title>Redis集群</title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/cluster/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/database/nosql/redis/cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/database/NoSQL/redis/cluster/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/database/nosql/redis/cluster/</guid>
       <description>集群 #  集群搭建 #    Redis安装
 wget http://download.redis.io/releases/redis-4.0.1.tar.gz    基础配置
 #除端口外，配置统一 #common port 6379 pidfile /cache1/redis/6379/redis_6379.pid loglevel notice logfile &amp;quot;/cache1/redis/6379/redis_6379.log&amp;quot; dir /cache1/redis/6379 protected-mode no #rdb save 7200 1000 rdbcompression yes rdbchecksum yes dbfilename dump.rdb #aof appendonly yes appendfilename &amp;quot;appendonly.aof&amp;quot; #cluster cluster-enabled yes cluster-config-file nodes.conf cluster-node-timeout 5000    redis集群架构
@@ -67,10 +67,10 @@ cd $PATH redis-server redis-6379.conf &amp;amp;    集群管理器安装</descri
     
     <item>
       <title>内核参数优化</title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/kernel/opt/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/system/linux/kernel/opt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/kernel/opt/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/linux/kernel/opt/</guid>
       <description>参数优化 #  vm.swappiness = 0 net.ipv4.neigh.default.gc_stale_time=120 # see details in https://help.aliyun.com/knowledge_detail/39428.html net.ipv4.conf.all.rp_filter=0 net.ipv4.conf.default.rp_filter=0 net.ipv4.conf.default.arp_announce = 2 net.ipv4.conf.lo.arp_announce=2 net.ipv4.conf.all.arp_announce=2 # see details in https://help.aliyun.com/knowledge_detail/41334.html net.ipv4.tcp_max_tw_buckets = 5000 net.ipv4.tcp_synack_retries = 2 net.ipv6.conf.all.disable_ipv6 = 1 net.ipv6.conf.default.disable_ipv6 = 1 net.ipv6.conf.lo.disable_ipv6 = 1 net.core.rmem_default = 256960 net.core.rmem_max = 513920 net.core.wmem_default = 256960 net.core.wmem_max = 513920 net.core.netdev_max_backlog = 2000 net.core.somaxconn = 2048 net.core.optmem_max = 81920 net.ipv4.tcp_mem = 131072 262144 524288 net.ipv4.tcp_rmem = 8760 256960 4088000 net.</description>
     </item>
     
@@ -124,19 +124,19 @@ cd $PATH redis-server redis-6379.conf &amp;amp;    集群管理器安装</descri
     
     <item>
       <title>技能图谱</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/map/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/map/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/map/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/map/</guid>
       <description>Kubernetes 技能图谱 #  Container basics （容器技术基础） #   Linux Operating System Basic Linux Process Management (Linux进程管理) Cgroups Linux Namespaces Rootfs &amp;amp; Container Image Image Registry  Kubernetes architecture （Kubernetes 架构） #  Node #  Kubelet #   Runtime （容器运行时）  CRI (Container Runtime Interface) Runtime shims （容器运行时插件）  Cri-containerd （containerd） Dockershim （Docker） Cri-o （runC） Rktlet （rkt） Frakti （KataContainers）   RuntimeClass (新特性：容器运行时类)   Networking  CNI (Container Network Interface) Linux Network Namespace Network plugins （网络插件）  Flannel Calico OVS SR-IOV macvlan/ipvlan Opencontrail Weave Cilium （新插件，支持BPF，推荐）     Storage  CSI (Container Storage Interface) Persistent Volume &amp;amp; Persistent Volume Claim Volume plugins （存储插件，仅负责提供PV）  NFS Cinder GlusterFS Ceph Local path   Volume extenstion (存储扩展，负责提供完整的Storage方案)  Rook.</description>
     </item>
     
     <item>
       <title>技能图谱</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/map/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/map/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/map/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/map/</guid>
       <description>技能图谱 #  容器化工具 #    Docker  LXC  RunC  Rkt  Systemd-nspawn  Garden  Vagga  VMWare Photon  gVisor  Pouch Container  Kata Containers  监控和数据收集 #    Sysdig Monitor  cAdvisor  Weave Scope  Prometheus  TICK-Stack  Docker-Alertd  Grafana  Cockpit  基础设施集成 #    Magnum  Boot2Docker  MaestroNG  CloudFoundry Containers Service Broker  编排和调度 #    Crane  Mesos  Marathon  Compose  Yarn  Kubernetes  Openshift Origin  Rancher  K3s  Nomad  SwarmKit  Nebula  Dokku  Flynn  商业平台 #    AWS Container Service  Google Container Engine  Azure Container Service  阿里云容器服务  腾讯云容器服务  华为云容器引擎  容器镜像仓库 #    Repository  Nexus  Habor  Portus  Dragonfly  服务发现和容器 #    Consul  Etcd  ZooKeeper  Eureka  Traefik  Registrator  容器日志收集处理 #    Splunk  Elastic Stack  Fluentd  Flume  Graylog  Rsyslog  容器相关的系统发行版 #    Container Linux (CoreOS)  Project Atomic  RancherOS  ClearLinux  VMWare Photon  Talos  k3os  LinuxKit  SmartOS  容器网络 #    Pipework  Flannel  Calico  Weave  Kubenet  Contiv  OpenContrail  MacVlan  Canal  Romana  Submariner  容器安全 #    Anchore Engine  Aqua Microscanner  Clair  Dagda  Twistlock  OpenSCAP  Notary  Twistlock  SELinux  AppArmor  容器数据持久化 #    Ceph  Convoy  REX-Ray  Netshare  OpenStorage  容器相关标准 #    OCI Runtime Spec  OCI Image Spec  OCI Distribution Spec  Container Network Interface  Container Storage Interface   </description>
     </item>
     
@@ -152,10 +152,10 @@ cd $PATH redis-server redis-6379.conf &amp;amp;    集群管理器安装</descri
     
     <item>
       <title>API文档</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/api/doc/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/api/doc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/api/doc/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/api/doc/</guid>
       <description>API文档 #  API Conventions #  This document is oriented at users who want a deeper understanding of the Kubernetes API structure, and developers wanting to extend the Kubernetes API. An introduction to using resources with kubectl can be found in the object management overview.
 Table of Contents
  Types (Kinds)   Resources Objects   Metadata Spec and Status   Typical status properties    References to related objects  Lists of named subobjects preferred over maps  Primitive types  Constants  Unions    Lists and Simple kinds    Differing Representations Verbs on Resources   PATCH operations    Idempotency  Optional vs.</description>
@@ -163,10 +163,10 @@ Table of Contents
     
     <item>
       <title>Calico</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/calico/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/calico/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/calico/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/calico/</guid>
       <description>Calico #  </description>
     </item>
     
@@ -229,10 +229,10 @@ Table of Contents
     
     <item>
       <title>配置</title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/config/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/system/application/nginx/config/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/config/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/application/nginx/config/</guid>
       <description>配置 #  user www-data; worker_processes auto; worker_rlimit_nofile 650000; pid /run/nginx.pid; events { worker_connections 76800; # multi_accept on; } http { sendfile on; tcp_nopush on; tcp_nodelay on; #keepalive_timeout 1000;  keepalive_timeout 120s 120s; keepalive_requests 1500; types_hash_max_size 2048; server_tokens off; #define request limit zone  limit_req_zone $limit zone=req_limit:1024m rate=30r/s ; limit_req_zone $limit zone=auth_limit:1024m rate=10r/s ; limit_req_status 466; #limit_req_zone $binary_remote_addr zone=testreq:800m rate=1r/s;  #define connection limit zone per ip  limit_conn_zone $limit zone=conn_limit:100m; # Gzip Settings  ##  gzip on; gzip_http_version 1.</description>
     </item>
     
@@ -248,10 +248,10 @@ Table of Contents
     
     <item>
       <title>Cilium</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/cilium/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/cilium/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/cilium/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/cilium/</guid>
       <description>Cilium #  </description>
     </item>
     
@@ -272,10 +272,10 @@ Table of Contents
     
     <item>
       <title>AWS VPC CNI</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/aws/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/aws/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/aws/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/aws/</guid>
       <description>AWS VPC CNI #  Goal #  K8S网络需求 #   Pod之间的通信不需要通过NAT转换 Node和Pod通信不需要通过NAT转换 Pod所看到的IP地址与其他人所看到的IP地址相同   K8S运行在AWS VPC上的目标 #   Pod联网必须支持与用户从EC2联网中获得的特性相当的高吞吐量和可用性，低延迟和最小抖动 可以使用跟EC2一样的网络安全组 网络操作必须简单安全。用户必须能够应用现有的AWS VPC网络和安全最佳实践，以通过AWS VPC构建Kubernetes集群 只需几秒钟即可设置Pod网络 管理员应能够将群集扩展到2000个节点   方案 #   为每个Node(ec2)创建多个弹性网络接口(ENIs)，并分配secondary IP 对于每个Pod，选择一个可用的secondary IP，将其分配给Pod，并实现以下功能：  在单个主机上进行Pod到Pod的通信 在不同主机上进行Pod到Pod的通信 允许在Pod和AWS服务进行通信 允许Pod和本地数据中心进行通信 允许Pod和Internet进行通信     在EC2-VPC里，每个实例可以创建多个ENI，每个ENI可以分配多个IP地址。 任何发往这些IP地址之一的数据包，EC2-VPC都会将该数据包传递到实例。
 ENI是虚拟网络接口，您可以将其附加到VPC中的实例。 将ENI附加到实例后，将创建一个对应的接口。 主ENI IP地址会自动分配给该接口。 所有辅助地址均未分配，并且由主机所有者决定如何配置它们。
   架构 #  Pod To Pod #    Inside a Pod #  IP address</description>
@@ -283,10 +283,10 @@ ENI是虚拟网络接口，您可以将其附加到VPC中的实例。 将ENI附�
     
     <item>
       <title>100个问题</title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/100/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/interview/100/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/100/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/interview/100/</guid>
       <description>100个问题 #  1. What is a skill you have that most people don’t acknowledge?
 ​	优势：网络知识，TCP，路由
 2. How would your best friend describe you?
@@ -301,64 +301,64 @@ ENI是虚拟网络接口，您可以将其附加到VPC中的实例。 将ENI附�
     
     <item>
       <title>Prometheus</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/monitor/prometheus/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/devops/monitor/prometheus/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/monitor/prometheus/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/devops/monitor/prometheus/</guid>
       <description>Prometheus #    AlertManager #  webhook #  doraemon #   Prometheus #   Discovery #  consul #  registrtor #  exporter #   UI #  Grafana #   K8s-Operator #  </description>
     </item>
     
     <item>
       <title>目标</title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/request/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/interview/request/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/request/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/interview/request/</guid>
       <description>目标 #  Ali #    阿里云智能事业群-监控运维平台技术专家-杭州/北京  #运维方向 运维方向：百万服务器运维管理规模的技术挑战，衔接监控与安全平台能力，为客户提供资源授权、可靠变更以及运维产品和解决方案 岗位要求： 全岗位通用要求 1. 对创新有发自内心的热爱和激情，学习能力强，认真负责，有团队合作精神并乐于分享 2. 熟悉互联网应用架构，云计算，具备互联网架构设计经验，应用软件研发/运维工作背景 3. 善于总结和思考，正视技术挑战、有技术愿景，期望从事对业界有影响力的工作 运维方向：熟悉DevOps/PEOps以及运维、AIOps平台研发经验优先 岗位关键词 1. 通用要求：Java | Go 3. 运维方向：Kubernetes | K8S | Cloud Native | ServerLess | ServiceMesh | SRE | DevOps   蚂蚁金服-容器调度SRE  岗位描述： 全方面参与云原生的资源调度系统的设计，开发，优化与维护。蚂蚁金服在线和实时业务的容器调度，调度节点单集群规模超过万台服务器，为蚂蚁上层业务提供设施标准容器服务和全局资源动态分配调度。具体职责包括但不限于： 1. 设计调度系统高可用体系，用以保障双十一等大型活动的平稳进行 2. 标准化调度系统监控，日志采集，包括SLA的制定与故障定位 3. 建立统一额度管控，弹性伸缩调度，提升系统资源利用率 4. 建设自动化及工程化的解决方式，以减少在传统运维层面的人力投入，做到无人值守。 岗位要求： 1. 至少精通一门编程语言，有软件开发背景，Java/Golang优先 2. 熟悉Linux系统和 Shell，对网络及基础设施层有一定的了解和知识储备 3. 有Docker、k8s 、微服务治理及资源调度经验者优先 4. 熟悉监控及自动化部署平台研发，具有大规模集群调度和架构设计经验优先 5. 有良好的沟通，团队协作能力 6. 熟悉DevOps流程，理解传统运维痛点   蚂蚁集团-云原生基础设施 SRE  二、中间件 SRE 蚂蚁金服中间件团队使用 Service Mesh、SofaStack、Serverless 等技术，上层业务提供统一高效的服务注册、消息、定时任务、限流等能力。中间件SRE团队致力于打造新一代中间件云原生系统的SLA体系，建设各种场景下的高可用能力，推进新的云原生技术在蚂蚁快速落地的同时，为上游业务提供5个9的可用率。加入我们，你将 1.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/application/kafka/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/architecture/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/application/kafka/architecture/</guid>
       <description>kafka架构 #  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/deploy/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/application/kafka/deploy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/deploy/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/application/kafka/deploy/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/optimization/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/application/kafka/optimization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/kafka/optimization/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/application/kafka/optimization/</guid>
       <description></description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/architecture/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/architecture/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/architecture/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/architecture/</guid>
       <description>Zookeeper架构 #  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/deploy/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/deploy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/deploy/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/deploy/</guid>
       <description>Zookeeper部署 #  单机环境搭建 #    下载安装包
  wget http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.10/zookeeper-3.4.10.tar.gz tar -zxvf zookeeper-3.4.10.tar.gz mv zookeeper-3.4.10 zookeeper    修改配置文件
  #vim zookeeper/conf/zoo.cfg tickTime=2000 initLimit=5 syncLimit=2 dataDir=/cache1/zookeeper/data #数据目录 clientPort=2181 #服务端口    配置日志保存目录
@@ -368,19 +368,19 @@ ENI是虚拟网络接口，您可以将其附加到VPC中的实例。 将ENI附�
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/optimization/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/Application/zookeeper/optimization/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/optimization/</guid>
       <description>Zookeeper优化 #  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/elk/elkinstall/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/devops/elk/elkinstall/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/DevOps/elk/elkinstall/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/devops/elk/elkinstall/</guid>
       <description>ELK安装 #  环境准备 #    CentOS 7
   Java 8
    ELK安装 #    配置ELK的repo文件
@@ -391,10 +391,10 @@ rpm --import https://artifacts.elastic.co/GPG-KEY-elasticsearch #vim /etc/yum.re
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/cluster/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/database/sql/mysql/cluster/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/cluster/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/database/sql/mysql/cluster/</guid>
       <description>MySQL Cluster #  Master-Slave #  Master配置 #  /etc/my.cnf 增加配置
 [mysqld] server-id=1 log-bin=/cache1/mysql/log/mysql-bin.log #忽略系统库 binlog-ignore-db=mysql binlog-ignore-db=information_schema binlog-ignore-db=performance_schema  Replication 帐号创建
 mysql&amp;gt; GRANT REPLICATION SLAVE ON *.* TO &#39;repl&#39;@&#39;%&#39; IDENTIFIED BY &#39;slave@2017&#39;;  导出数据到从库
@@ -403,10 +403,10 @@ mysql&amp;gt; USE newdatabase; mysql&amp;gt; FLUSH TABLES WITH READ LOCK; mysql&
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/install/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/database/sql/mysql/install/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/database/SQL/mysql/install/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/database/sql/mysql/install/</guid>
       <description>Mysql 安装 #  源码编译安装 #  准备 #    CMake(build framework)
 yum -y install cmake    GNU make(make program)
 yum -y install make    GCC(ANSI C++ complier)
@@ -428,10 +428,10 @@ yum -y install perl     安装 #    创建用户组</description>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/codecademy/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/book_notes/codecademy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/codecademy/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/book_notes/codecademy/</guid>
       <description>codecademy在线学习 #  HTML和CSS学习 #  HTML #  html基本机构 #  &amp;lt;!DOCTYPE html&amp;gt; //向浏览器声明类型 &amp;lt;html&amp;gt; //所有的html代码都要包含在该元素内 &amp;lt;head&amp;gt; //关于网页的信息，如标题 &amp;lt;title&amp;gt;First Web Page&amp;lt;/title&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; //可见的html代码内容都放在该元素内 &amp;lt;p&amp;gt;Hello,World!&amp;lt;/p&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  可见内容 #    标题
 heading
  &amp;lt;h1&amp;gt;head&amp;lt;/h1&amp;gt; &amp;lt;h2&amp;gt; &amp;lt;h3&amp;gt; &amp;lt;h4&amp;gt; &amp;lt;h5&amp;gt; &amp;lt;h6&amp;gt;    段落
@@ -444,19 +444,19 @@ ordered list, list item</description>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/CS50/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/book_notes/CS50/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/CS50/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/book_notes/CS50/</guid>
       <description>CS50学习笔记 #  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/finacial/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/book_notes/finacial/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/finacial/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/book_notes/finacial/</guid>
       <description>Finanical #  Goal Setting #  Understand How Goals Are Used #    What is a goal?
   Long term vs Intermediate vs Short term
   Is a financial goal any different than other goals?
@@ -470,10 +470,10 @@ ordered list, list item</description>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/BookNotes/thinkOS/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/book_notes/thinkOS/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/BookNotes/thinkOS/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/book_notes/thinkOS/</guid>
       <description>操作系统思考 #  编译 #   编译语言和解释语言    编译语言
 程序被翻译成机器语言，之后由硬件执行。
   解释语言
@@ -500,10 +500,10 @@ C是包含&amp;quot;预处理指令&amp;quot;的几种语言之一，它生效�
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/browser/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/interview/classic/browser/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/classic/browser/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/interview/classic/browser/</guid>
       <description>经典问题 #  1. 当输入google.com时，发生了什么？ #  1.1 URL解析 #  当输入的URL不合法时，浏览器会将输入的字符传给默认搜索引擎，
 浏览器通过URL能知道以下信息：
 protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自身的HTST列表，确认是否包含该主机。 2、若HTST存在该主机，使用https代替http，否则使用http。 1.3 DNS解析 #  1、浏览器检查自身的DNS缓存 2、查找本地hosts文件 3、发起DNS解析查询 4、查询 本地|ISP DNS服务器 5、本地|ISP DNS服务器像高层服务器发起递归查询直到查到该域名的解析IP 1.4 TCP连接建立 #  1、client端发送SYN请求到server端，声明自己的ISN为aaa (CLOSED--&amp;gt;SYN-SENT) 2、server端接收SYN包，声明自己的ISN为bbb，ACK信息为aaa+1，返回给client端 (LISTEN--&amp;gt;SYN-RECEIVED) 3、client端返回ACK为bbb+1为server端 (SYN-SENT--&amp;gt;ESTABLISHED) 4、数据交互 1.5 TLS连接建立 #  1.6 HTTP #   </description>
@@ -511,10 +511,10 @@ protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自�
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/history/interview/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/interview/history/interview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/history/interview/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/interview/history/interview/</guid>
       <description>面试经历 #  CF #   如何部署 如何监控 部署怎么实现 docker的优势和劣势   RC #  一面 #  1、Docker部署
 2、nginx_lua的几个阶段
 3、TCP窗口滑动、慢启动
@@ -537,19 +537,19 @@ protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自�
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/tech/technology/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/interview/tech/technology/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/tech/technology/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/interview/tech/technology/</guid>
       <description>技术知识点 #  1. 计算机基础 #   硬件 #  1. 机器型号 #  dmidecode | awk -F&amp;#39;:&amp;#39; &amp;#39;/Product Name/{print $2}&amp;#39; 2. CPU信息 #  #获取逻辑CPU数 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | wc -l #获取CPU型号 awk -F&#39;:&#39; &#39;/name/{print $2}&#39; /proc/cpuinfo | uniq #获取物理cpu数 grep &amp;quot;physical id&amp;quot; /proc/cpuinfo | sort | uniq | wc -l 3. 内存信息 #  #获取内存大小 free -h #内存物理信息 dmidecode -t memory 4. 磁盘信息 #   5.</description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/MyConfig/vim/vimconf/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/myconfig/vim/vimconf/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/MyConfig/vim/vimconf/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/myconfig/vim/vimconf/</guid>
       <description>Vim配置指南 #  Don&amp;rsquo;t put any lines in your vimrc that you don&amp;rsquo;t understand. #      Colors
    Spaces And Tabs
    UI Config
@@ -566,10 +566,10 @@ protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自�
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/solution/aboutNtpdate/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutNtpdate/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/solution/aboutNtpdate/</guid>
       <description>时间同步相关问题 #  ntpdate:no server suitable for synchronization found #  Question： #  　在使用ntpdate同步时间时，出现了no server suitable for synchronization found的报错。
 　通过ntpdate -d s2m.time.edu.cn 使用debug模式没有出现异常。
 Answer： #  解决办法是，使用ntpdate -ubv s2m.time.edu.cn，可以正常同步了。
@@ -579,10 +579,10 @@ Answer： #  解决办法是，使用ntpdate -ubv s2m.time.edu.cn，可以正常
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Solution/aboutSsh/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/</guid>
       <description>ssh连接相关问题 #  pam_tally2(sshd:auth): user root (0) has time limit [3s left] since last failure 日志 #  Question： #  工作中，碰到某服务器在批量ssh登陆操作时，出现大量的无法连接的情况。
 Thinking： #  查看ssh日志(/var/log/secure)， 首先注意到的是，&amp;ldquo;Failed password for root from xxx.xxx.xxx.xxx port 51230 ssh2&amp;quot;错误，但发现密码并没有错误，并且只在批量操作时才会出现，故初步判断为连接数问题。
 查看ssh连接数限制
@@ -596,10 +596,10 @@ auth required pam_tally2.so deny=10 lock_time=3 unlock_time=30 even_deny_root ro
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/factoryMethod/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/program/advanced/design/factoryMethod/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/factoryMethod/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/program/advanced/design/factoryMethod/</guid>
       <description>工厂方法模式(Factory Method Pattern) #  模式定义 #  工厂方法模式(Factory Method Pattern)又称为工厂模式，也叫虚拟构造器(Virtual Constructor)模式或者多态工厂(Polymorphic Factory)模式，它属于类创建型模式。在工厂方法模式中，工厂父类负责定义创建产品对象的公共接口，而工厂子类则负责生成具体的产品对象，这样做的目的是将产品类的实例化操作延迟到工厂子类中完成，即通过工厂子类来确定究竟应该实例化哪一个具体产品类。
  模式结构 #    Product：抽象产品
   ConcreteProduct：具体产品
@@ -610,10 +610,10 @@ auth required pam_tally2.so deny=10 lock_time=3 unlock_time=30 even_deny_root ro
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/simpleFactory/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/program/advanced/design/simpleFactory/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/program/Advanced/design/simpleFactory/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/program/advanced/design/simpleFactory/</guid>
       <description>简单工厂模式(Simple Factory Pattern) #  模式定义 #  简单工厂模式(Simple Factory Pattern)：又称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。在简单工厂模式中，可以根据参数的不同返回不同类的实例。简单工厂模式专门定义一个类来负责创建其他类的实例，被创建的实例通常都具有共同的父类。
  模式结构 #    Factory：工厂角色
 工厂角色负责实现创建所有实例的内部逻辑
@@ -626,10 +626,10 @@ auth required pam_tally2.so deny=10 lock_time=3 unlock_time=30 even_deny_root ro
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/DataStructuresAndAlgorithms/README/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/DataStructuresAndAlgorithms/README/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/DataStructuresAndAlgorithms/README/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/DataStructuresAndAlgorithms/README/</guid>
       <description>数据结构和算法 #    解压序列赋值给多个变量
 问题，现在有一个包含N个元素的元组或者是序列，怎样将它里面的值解压后同时赋值给N个变量？
 实现： 详细代码
@@ -644,29 +644,29 @@ auth required pam_tally2.so deny=10 lock_time=3 unlock_time=30 even_deny_root ro
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/StringsAndText/README/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/StringsAndText/README/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/CookBook/StringsAndText/README/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/StringsAndText/README/</guid>
       <description>#字符串和文本
    </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Django/django/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/program/language/python/Framework/Django/django/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Django/django/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/program/language/python/Framework/Django/django/</guid>
       <description>Django #  环境初始化 #  python3 install virtualenv cd demosite mkdir py3env virtualenv ./py3env/ source py3env/bin/activate #install Django pip3 install Django  项目初始化 #  django-admin startproject demosite python manage.py runserver python manage.py startapp polls  项目结构 #  demosite/ manage.py demosite/ __init__.py settings.py urls.py wsgi.py polls/ __init__.py admin.py apps.py migrations/ __init__.py models.py tests.py views.py  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Flask/flask/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/program/language/python/Framework/Flask/flask/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Flask/flask/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/program/language/python/Framework/Flask/flask/</guid>
       <description>Flask #  安装 #  pip install flask   程序基本结构 #   初始化  所有 Flask 程序都必须创建一个程序实例。Web 服务器使用一种名为 Web 服务器网关接口（Web Server Gateway Interface，WSGI）的协议，把接收自客户端的所有请求都转交给这个对象处理。
 from flask import Flask app = Flask(&#39;__name__&#39;)  路由和函数  程序实例需要知道对每个URL请求运行哪些代码，所以保存了一个URL到Python函数的映射关系。处理URL和函数之间关系的程序称为路由。 在Flask程序中定义路由的最简便方式，是使用程序实例提供的app.route修饰器，把修饰的函数注册为路由。
 @app.route(&#39;/&#39;) def index(): return &#39;&amp;lt;h1&amp;gt;Hello World!&amp;lt;/h1&amp;gt;&#39;   启动服务
@@ -678,20 +678,20 @@ Jinja2模板引擎 #  templates/user.html：Jinja2 模板
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Scrapy/scrapy/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/program/language/python/Framework/Scrapy/scrapy/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/program/Language/python/Framework/Scrapy/scrapy/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/program/language/python/Framework/Scrapy/scrapy/</guid>
       <description>#Scrapy Scrapy是一个快速的高级Web爬网和Web抓取框架，用于抓取网站并从其页面提取结构化数据。
 安装 #  pip install scrapy scrapy startproject scrapytest   第一个爬虫 #  </description>
     </item>
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/system/linux/guideBook/fileOperation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/fileOperation/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/linux/guideBook/fileOperation/</guid>
       <description>一切皆文件 #    列出文件列表
  ls [option] /PATH #不指定路径，默认为当前路径 option -l:长格式 文件类型: -:普通文件 d:目录文件 b:块设备文件（block） c：字符设备文件（character） l：符号链接文件（symbolic link file） p：命令管道（pipe） s：套接字文件（socket） 文件权限：9位，每三位一组(u-g-o),每一组：rwx（读、写、执行） 文件硬链接的次数 文件的属主(owner) 文件的属组(group) 文件的大小(size)，单位是字节 时间戳(timestamp)：最近一次被修改的时间 访问：access 修改：modify，文件内容发生改变 改变：change，metadata，元数据 文件名 -h:做单位转换，默认bit -a:显示以.开头的隐藏文件 . 表示当前目录 .. 表示父目录 -d：显示目录自身属性 -i：index node，inode -r：逆序显示文件 -R：递归(recursive)显示    进入目录
  cd /PATH cd ~USERNAME:进入指定用户的家目录 cd -:在当前目录和前一次所在目录之间来回切换    显示文件类型
@@ -701,10 +701,10 @@ Jinja2模板引擎 #  templates/user.html：Jinja2 模板
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/system/linux/guideBook/permissionsOperation/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Linux/guideBook/permissionsOperation/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/linux/guideBook/permissionsOperation/</guid>
       <description>权限操作 #  权限 #    可读(r)(4)
   可写(w)(2)
   可执行(x)(1)

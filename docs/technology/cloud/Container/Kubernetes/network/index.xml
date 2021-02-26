@@ -2,47 +2,47 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes 网络 on 学而不思则罔</title>
-    <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/</link>
+    <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/</link>
     <description>Recent content in Kubernetes 网络 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Flannel</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/flannel/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/flannel/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/flannel/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/flannel/</guid>
       <description>Flannel #  UDP(Tunnel设备) #  TUN 设备是一种工作在三层（Network Layer）的虚拟网络设备。TUN 设备的功能非常简单，即：在操作系统内核和用户应用程序之间传递 IP 包。
  XVLAN #  通信原理 #    帧格式 #  Outer Ethernet Header: +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Destination MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Destination MAC Address | Outer Source MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Source MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |OptnlEthtype = C-Tag 802.1Q | Outer.VLAN Tag Information | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Ethertype = 0x0800 | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Outer IPv4 Header: #目的ip由flannel维护 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |Version| IHL |Type of Service| Total Length | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Identification |Flags| Fragment Offset | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Time to Live |Protocl=17(UDP)| Header Checksum | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Source IPv4 Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Outer Destination IPv4 Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Outer UDP Header: +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Source Port | Dest Port = VXLAN Port | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | UDP Length | UDP Checksum | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ VXLAN Header: +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |R|R|R|R|I|R|R|R| Reserved | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | VXLAN Network Identifier (VNI) | Reserved | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ Inner Ethernet Header: #目的mac为flannel配置的网关地址的mac，由flannel下放到各个node上 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Inner Destination MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Inner Destination MAC Address | Inner Source MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ | Inner Source MAC Address | +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+ |OptnlEthtype = C-Tag 802.</description>
     </item>
     
     <item>
       <title>Calico</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/calico/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/calico/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/calico/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/calico/</guid>
       <description>Calico #  </description>
     </item>
     
     <item>
       <title>Cilium</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/cilium/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/cilium/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/cilium/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/cilium/</guid>
       <description>Cilium #  </description>
     </item>
     
     <item>
       <title>AWS VPC CNI</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/aws/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/aws/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/Kubernetes/network/aws/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/aws/</guid>
       <description>AWS VPC CNI #  Goal #  K8S网络需求 #   Pod之间的通信不需要通过NAT转换 Node和Pod通信不需要通过NAT转换 Pod所看到的IP地址与其他人所看到的IP地址相同   K8S运行在AWS VPC上的目标 #   Pod联网必须支持与用户从EC2联网中获得的特性相当的高吞吐量和可用性，低延迟和最小抖动 可以使用跟EC2一样的网络安全组 网络操作必须简单安全。用户必须能够应用现有的AWS VPC网络和安全最佳实践，以通过AWS VPC构建Kubernetes集群 只需几秒钟即可设置Pod网络 管理员应能够将群集扩展到2000个节点   方案 #   为每个Node(ec2)创建多个弹性网络接口(ENIs)，并分配secondary IP 对于每个Pod，选择一个可用的secondary IP，将其分配给Pod，并实现以下功能：  在单个主机上进行Pod到Pod的通信 在不同主机上进行Pod到Pod的通信 允许在Pod和AWS服务进行通信 允许Pod和本地数据中心进行通信 允许Pod和Internet进行通信     在EC2-VPC里，每个实例可以创建多个ENI，每个ENI可以分配多个IP地址。 任何发往这些IP地址之一的数据包，EC2-VPC都会将该数据包传递到实例。
 ENI是虚拟网络接口，您可以将其附加到VPC中的实例。 将ENI附加到实例后，将创建一个对应的接口。 主ENI IP地址会自动分配给该接口。 所有辅助地址均未分配，并且由主机所有者决定如何配置它们。
   架构 #  Pod To Pod #    Inside a Pod #  IP address</description>

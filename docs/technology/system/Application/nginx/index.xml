@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nginx on 学而不思则罔</title>
-    <link>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/</link>
+    <link>https://cctrip.github.io/notes/docs/technology/system/application/nginx/</link>
     <description>Recent content in Nginx on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/system/Application/nginx/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/system/application/nginx/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>配置</title>
-      <link>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/config/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/system/application/nginx/config/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/system/Application/nginx/config/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/system/application/nginx/config/</guid>
       <description>配置 #  user www-data; worker_processes auto; worker_rlimit_nofile 650000; pid /run/nginx.pid; events { worker_connections 76800; # multi_accept on; } http { sendfile on; tcp_nopush on; tcp_nodelay on; #keepalive_timeout 1000;  keepalive_timeout 120s 120s; keepalive_requests 1500; types_hash_max_size 2048; server_tokens off; #define request limit zone  limit_req_zone $limit zone=req_limit:1024m rate=30r/s ; limit_req_zone $limit zone=auth_limit:1024m rate=10r/s ; limit_req_status 466; #limit_req_zone $binary_remote_addr zone=testreq:800m rate=1r/s;  #define connection limit zone per ip  limit_conn_zone $limit zone=conn_limit:100m; # Gzip Settings  ##  gzip on; gzip_http_version 1.</description>
     </item>
     

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>容器技术 on 学而不思则罔</title>
-    <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/</link>
+    <link>https://cctrip.github.io/notes/docs/technology/cloud/container/</link>
     <description>Recent content in 容器技术 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/Container/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/container/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>技能图谱</title>
-      <link>https://cctrip.github.io/notes/docs/technology/cloud/Container/map/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/cloud/container/map/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/cloud/Container/map/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/cloud/container/map/</guid>
       <description>技能图谱 #  容器化工具 #    Docker  LXC  RunC  Rkt  Systemd-nspawn  Garden  Vagga  VMWare Photon  gVisor  Pouch Container  Kata Containers  监控和数据收集 #    Sysdig Monitor  cAdvisor  Weave Scope  Prometheus  TICK-Stack  Docker-Alertd  Grafana  Cockpit  基础设施集成 #    Magnum  Boot2Docker  MaestroNG  CloudFoundry Containers Service Broker  编排和调度 #    Crane  Mesos  Marathon  Compose  Yarn  Kubernetes  Openshift Origin  Rancher  K3s  Nomad  SwarmKit  Nebula  Dokku  Flynn  商业平台 #    AWS Container Service  Google Container Engine  Azure Container Service  阿里云容器服务  腾讯云容器服务  华为云容器引擎  容器镜像仓库 #    Repository  Nexus  Habor  Portus  Dragonfly  服务发现和容器 #    Consul  Etcd  ZooKeeper  Eureka  Traefik  Registrator  容器日志收集处理 #    Splunk  Elastic Stack  Fluentd  Flume  Graylog  Rsyslog  容器相关的系统发行版 #    Container Linux (CoreOS)  Project Atomic  RancherOS  ClearLinux  VMWare Photon  Talos  k3os  LinuxKit  SmartOS  容器网络 #    Pipework  Flannel  Calico  Weave  Kubenet  Contiv  OpenContrail  MacVlan  Canal  Romana  Submariner  容器安全 #    Anchore Engine  Aqua Microscanner  Clair  Dagda  Twistlock  OpenSCAP  Notary  Twistlock  SELinux  AppArmor  容器数据持久化 #    Ceph  Convoy  REX-Ray  Netshare  OpenStorage  容器相关标准 #    OCI Runtime Spec  OCI Image Spec  OCI Distribution Spec  Container Network Interface  Container Storage Interface   </description>
     </item>
     

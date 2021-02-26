@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>总结 on 学而不思则罔</title>
-    <link>https://cctrip.github.io/notes/docs/technology/other/Interview/history/</link>
+    <link>https://cctrip.github.io/notes/docs/technology/other/interview/history/</link>
     <description>Recent content in 总结 on 学而不思则罔</description>
     <generator>Hugo -- gohugo.io</generator>
     
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/other/Interview/history/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/other/interview/history/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title></title>
-      <link>https://cctrip.github.io/notes/docs/technology/other/Interview/history/interview/</link>
+      <link>https://cctrip.github.io/notes/docs/technology/other/interview/history/interview/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://cctrip.github.io/notes/docs/technology/other/Interview/history/interview/</guid>
+      <guid>https://cctrip.github.io/notes/docs/technology/other/interview/history/interview/</guid>
       <description>面试经历 #  CF #   如何部署 如何监控 部署怎么实现 docker的优势和劣势   RC #  一面 #  1、Docker部署
 2、nginx_lua的几个阶段
 3、TCP窗口滑动、慢启动
