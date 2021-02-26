@@ -1,0 +1,13 @@
+---
+#file: redis.yml
+- name: Install Redis Environment
+  hosts: test-73 test-74
+  vars:
+    redis_version: 4.0.8
+    redis_dir: /cache1/redis
+    RUN_PORT: 7001
+    PASSWORD: cbssmdb186
+    redis_mode: cluster
+
+  roles: 
+    - redis

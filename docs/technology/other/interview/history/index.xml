@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>总结 on 学而不思则罔</title>
+    <link>https://cctrip.github.io/notes/docs/technology/other/interview/history/</link>
+    <description>Recent content in 总结 on 学而不思则罔</description>
+    <generator>Hugo -- gohugo.io</generator>
+    
+	<atom:link href="https://cctrip.github.io/notes/docs/technology/other/interview/history/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://cctrip.github.io/notes/docs/technology/other/interview/history/interview/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://cctrip.github.io/notes/docs/technology/other/interview/history/interview/</guid>
+      <description>面试经历 #  CF #   如何部署 如何监控 部署怎么实现 docker的优势和劣势   RC #  一面 #  1、Docker部署
+2、nginx_lua的几个阶段
+3、TCP窗口滑动、慢启动
+4、LVS的几种模式实现原理
+5、nginx location的优先级
+6、监控系统架构
+7、网络7层的功能
+8、HTTP的同源策略
+9、算法题，开根号
+10、python题，[for i range xxx] 与 (for i range xxx)区别
+二面 #  1、浏览器输入网址后发生了什么？(客户端，服务端(框架里面的路由实现))
+2、k8s ci/cd 迁移怎么做的
+3、算法题，全排列
+4、自动化做了什么
+5、ansible做了什么
+6、Docker如何实现隔离，属于什么级别的隔离
+7、成本控制怎么做
+ </description>
+    </item>
+    
+  </channel>
+</rss>

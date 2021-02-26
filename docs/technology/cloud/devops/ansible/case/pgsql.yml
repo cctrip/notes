@@ -1,0 +1,12 @@
+---
+#file: pgsql.yml
+- name: Install pgsql environment
+  hosts: test-32
+  vars:
+    pgsql_version: 9.6.6
+    pg_dir: /cache1/PostgreSQL
+    RUN_PORT: 5432
+    project: test
+
+  roles: 
+    - pgsql
