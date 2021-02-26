@@ -237,17 +237,11 @@ virtual_server fwmark 3  {  # node2 配置 fwmark 4
     }
 ```
 
-
-
-
-
 ***
 
 ### LVS-Tun（tunnelling）
 
 数据包经过IP隧道技术封装并转发到realserver
-
-
 
 ***
 
