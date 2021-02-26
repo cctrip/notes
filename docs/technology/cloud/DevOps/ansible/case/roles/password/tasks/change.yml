@@ -1,7 +1,0 @@
----
-#file: password task change.yml
-- name: unlock password file
-  command: chattr -i /etc/passwd /etc/shadow
-
-- name: Change {{ myuser }} password to {{ mypassword }}
-  user: name={{ myuser }} password={{ mypassword |password_hash('sha512') }}
