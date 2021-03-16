@@ -255,4 +255,3 @@ virtual_server fwmark 3  {  # node2 配置 fwmark 4
 - DH: destination hash
 - SH: source hash
 
-### 
