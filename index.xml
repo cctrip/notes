@@ -4,11 +4,7 @@
     <title>介绍 on 学而不思则罔</title>
     <link>https://cctrip.github.io/notes/</link>
     <description>Recent content in 介绍 on 学而不思则罔</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="https://cctrip.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://cctrip.github.io/notes/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Flannel</title>
       <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/flannel/</link>
@@ -27,9 +23,9 @@
       <guid>https://cctrip.github.io/notes/docs/technology/program/web/oauth/</guid>
       <description>oauth #   OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。参考材料 RFC 6749。
  名词定义 #  在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。
- （1） Third-party application：第三方应用程序，本文中又称&amp;quot;客户端&amp;rdquo;（client），即上一节例子中的&amp;quot;云冲印&amp;rdquo;。
-（2）HTTP service：HTTP服务提供商，本文中简称&amp;quot;服务提供商&amp;rdquo;，即上一节例子中的Google。
-（3）Resource Owner：资源所有者，本文中又称&amp;quot;用户&amp;rdquo;（user）。
+ （1） Third-party application：第三方应用程序，本文中又称&amp;quot;客户端&amp;quot;（client），即上一节例子中的&amp;quot;云冲印&amp;quot;。
+（2）HTTP service：HTTP服务提供商，本文中简称&amp;quot;服务提供商&amp;quot;，即上一节例子中的Google。
+（3）Resource Owner：资源所有者，本文中又称&amp;quot;用户&amp;quot;（user）。
 （4）User Agent：用户代理，本文中就是指浏览器。
 （5）Authorization server：认证服务器，即服务提供商专门用来处理认证的服务器。
 （6）Resource server：资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器。
@@ -720,7 +716,7 @@ Jinja2模板引擎 #  templates/user.html：Jinja2 模板
   一般用户：500-65535
       配置文件
   /etc/passwd
-字段详解(以&amp;rdquo;:&amp;ldquo;为分割符)
+字段详解(以&amp;quot;:&amp;ldquo;为分割符)
 用户名 : 密码 : UID : GID : 注释 : 家目录 : 默认shell</description>
     </item>
     

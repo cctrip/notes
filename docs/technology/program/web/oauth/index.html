@@ -2,14 +2,14 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.72.0" />
+  <meta name="generator" content="Hugo 0.81.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="oauth #   OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。参考材料 RFC 6749。
  名词定义 #  在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。
- （1） Third-party application：第三方应用程序，本文中又称&quot;客户端&rdquo;（client），即上一节例子中的&quot;云冲印&rdquo;。
-（2）HTTP service：HTTP服务提供商，本文中简称&quot;服务提供商&rdquo;，即上一节例子中的Google。
-（3）Resource Owner：资源所有者，本文中又称&quot;用户&rdquo;（user）。
+ （1） Third-party application：第三方应用程序，本文中又称&quot;客户端&quot;（client），即上一节例子中的&quot;云冲印&quot;。
+（2）HTTP service：HTTP服务提供商，本文中简称&quot;服务提供商&quot;，即上一节例子中的Google。
+（3）Resource Owner：资源所有者，本文中又称&quot;用户&quot;（user）。
 （4）User Agent：用户代理，本文中就是指浏览器。
 （5）Authorization server：认证服务器，即服务提供商专门用来处理认证的服务器。
 （6）Resource server：资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器。
@@ -18,24 +18,26 @@
 <meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="oauth" />
 <meta property="og:description" content="oauth #   OAuth是一个关于授权（authorization）的开放网络标准，在全世界得到广泛应用，目前的版本是2.0版。参考材料 RFC 6749。
  名词定义 #  在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。
- （1） Third-party application：第三方应用程序，本文中又称&quot;客户端&rdquo;（client），即上一节例子中的&quot;云冲印&rdquo;。
-（2）HTTP service：HTTP服务提供商，本文中简称&quot;服务提供商&rdquo;，即上一节例子中的Google。
-（3）Resource Owner：资源所有者，本文中又称&quot;用户&rdquo;（user）。
+ （1） Third-party application：第三方应用程序，本文中又称&quot;客户端&quot;（client），即上一节例子中的&quot;云冲印&quot;。
+（2）HTTP service：HTTP服务提供商，本文中简称&quot;服务提供商&quot;，即上一节例子中的Google。
+（3）Resource Owner：资源所有者，本文中又称&quot;用户&quot;（user）。
 （4）User Agent：用户代理，本文中就是指浏览器。
 （5）Authorization server：认证服务器，即服务提供商专门用来处理认证的服务器。
 （6）Resource server：资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器。
  知道了上面这些名词，就不难理解，OAuth的作用就是让&quot;客户端&quot;安全可控地获取&quot;用户&quot;的授权，与&quot;服务商提供商&quot;进行互动。
  运行流程 #   &#43;--------&#43; &#43;---------------&#43; | |--(A)------- Authorization Grant ---------&gt;| | | | | | | |&lt;-(B)----------- Access Token -------------| | | | &amp; Refresh Token | | | | | | | | &#43;----------&#43; | | | |--(C)---- Access Token ----&gt;| | | | | | | | | | | |&lt;-(D)- Protected Resource --| Resource | | Authorization | | Client | | Server | | Server | | |--(E)---- Access Token ----&gt;| | | | | | | | | | | |&lt;-(F)- Invalid Token Error -| | | | | | &#43;----------&#43; | | | | | | | |--(G)----------- Refresh Token -----------&gt;| | | | | | | |&lt;-(H)----------- Access Token -------------| | &#43;--------&#43; &amp; Optional Refresh Token &#43;---------------&#43; （A）用户打开客户端以后，客户端要求用户给予授权。" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/program/web/oauth/" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/program/web/oauth/" /><meta property="article:section" content="docs" />
+
+
 
 <title>oauth | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/notes/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
-<script defer src="/notes/en.search.min.b1864aecffe48cbef6dbd001a233bb0338581d1e76977514862a9bfc103714a4.js" integrity="sha256-sYZK7P/kjL7229ABojO7AzhYHR52l3UUhiqb/BA3FKQ="></script>
+<link rel="stylesheet" href="/notes/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css" integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3&#43;Gsag98vL3PZKw=">
+<script defer src="/notes/en.search.min.911273f723ce2edf5391b92f43d6e7e1cd773014a0b0845265a0f725857f052f.js" integrity="sha256-kRJz9yPOLt9TkbkvQ9bn4c13MBSgsIRSZaD3JYV/BS8="></script>
 
-<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<script defer src="/notes/sw.min.102e0b752b65c874dd63b7b7ef9f8391b698d86adbb048ed0e6ddf02a6093f83.js" integrity="sha256-EC4LdStlyHTdY7e375&#43;DkbaY2GrbsEjtDm3fAqYJP4M="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -924,7 +926,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/DataStructuresAndAlgorithms/README/" class="">R E a D M E</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/DataStructuresAndAlgorithms/README/" class="">Readme</a>
   
 
         </li>
@@ -937,7 +939,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/StringsAndText/README/" class="">R E a D M E</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/StringsAndText/README/" class="">Readme</a>
   
 
         </li>
@@ -1395,6 +1397,28 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ced38c1042d67188284fcbea5f351b4" class="toggle"  />
+    <label for="section-4ced38c1042d67188284fcbea5f351b4" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/architecture/explicit_arch/" class="">清晰架构</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
     
   </ul>
 
@@ -2626,7 +2650,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/" class="">About Ssh</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/" class="">About SSH</a>
   
 
         </li>
@@ -2939,7 +2963,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/CS50/" class="">C S50</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/CS50/" class="">Cs50</a>
   
 
         </li>
@@ -2965,7 +2989,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/thinkOS/" class="">Think O S</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/thinkOS/" class="">Think Os</a>
   
 
         </li>
@@ -3402,7 +3426,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -3474,9 +3498,9 @@ https://github.com/alex-shpak/hugo-book
 </h2>
 <p>在详细讲解OAuth 2.0之前，需要了解几个专用名词。它们对读懂后面的讲解，尤其是几张图，至关重要。</p>
 <blockquote>
-<p>（1） <strong>Third-party application</strong>：第三方应用程序，本文中又称&quot;客户端&rdquo;（client），即上一节例子中的&quot;云冲印&rdquo;。</p>
-<p>（2）<strong>HTTP service</strong>：HTTP服务提供商，本文中简称&quot;服务提供商&rdquo;，即上一节例子中的Google。</p>
-<p>（3）<strong>Resource Owner</strong>：资源所有者，本文中又称&quot;用户&rdquo;（user）。</p>
+<p>（1） <strong>Third-party application</strong>：第三方应用程序，本文中又称&quot;客户端&quot;（client），即上一节例子中的&quot;云冲印&quot;。</p>
+<p>（2）<strong>HTTP service</strong>：HTTP服务提供商，本文中简称&quot;服务提供商&quot;，即上一节例子中的Google。</p>
+<p>（3）<strong>Resource Owner</strong>：资源所有者，本文中又称&quot;用户&quot;（user）。</p>
 <p>（4）<strong>User Agent</strong>：用户代理，本文中就是指浏览器。</p>
 <p>（5）<strong>Authorization server</strong>：认证服务器，即服务提供商专门用来处理认证的服务器。</p>
 <p>（6）<strong>Resource server</strong>：资源服务器，即服务提供商存放用户生成的资源的服务器。它与认证服务器，可以是同一台服务器，也可以是不同的服务器。</p>
@@ -3560,14 +3584,14 @@ https://github.com/alex-shpak/hugo-book
    two parts as they pass through the user-agent.
 </code></pre><p>（A）用户访问客户端，后者将前者导向认证服务器。</p>
 <p>（B）用户选择是否给予客户端授权。</p>
-<p>（C）假设用户给予授权，认证服务器将用户导向客户端事先指定的&quot;重定向URI&rdquo;（redirection URI），同时附上一个授权码。</p>
-<p>（D）客户端收到授权码，附上早先的&quot;重定向URI&rdquo;，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见。</p>
+<p>（C）假设用户给予授权，认证服务器将用户导向客户端事先指定的&quot;重定向URI&quot;（redirection URI），同时附上一个授权码。</p>
+<p>（D）客户端收到授权码，附上早先的&quot;重定向URI&quot;，向认证服务器申请令牌。这一步是在客户端的后台的服务器上完成的，对用户不可见。</p>
 <p>（E）认证服务器核对了授权码和重定向URI，确认无误后，向客户端发送访问令牌（access token）和更新令牌（refresh token）。</p>
 <hr>
 <p>下面是上面这些步骤所需要的参数。</p>
 <p>A步骤中，客户端申请认证的URI，包含以下参数：</p>
 <ul>
-<li>response_type：表示授权类型，必选项，此处的值固定为&quot;code&rdquo;</li>
+<li>response_type：表示授权类型，必选项，此处的值固定为&quot;code&quot;</li>
 <li>client_id：表示客户端的ID，必选项</li>
 <li>redirect_uri：表示重定向URI，可选项</li>
 <li>scope：表示申请的权限范围，可选项</li>
@@ -3594,7 +3618,7 @@ Location<span style="color:#f92672">:</span> <span style="color:#ae81ff">https:/
 </code></pre></div></blockquote>
 <p>D步骤中，客户端向认证服务器申请令牌的HTTP请求，包含以下参数：</p>
 <ul>
-<li>grant_type：表示使用的授权模式，必选项，此处的值固定为&quot;authorization_code&rdquo;。</li>
+<li>grant_type：表示使用的授权模式，必选项，此处的值固定为&quot;authorization_code&quot;。</li>
 <li>code：表示上一步获得的授权码，必选项。</li>
 <li>redirect_uri：表示重定向URI，必选项，且必须与A步骤中的该参数值保持一致。</li>
 <li>client_id：表示客户端ID，必选项。</li>
@@ -3674,7 +3698,7 @@ Pragma<span style="color:#f92672">:</span> <span style="color:#ae81ff">no-cache<
    parts as they pass through the user-agent.
 </code></pre><p>（A）客户端将用户导向认证服务器。</p>
 <p>（B）用户决定是否给于客户端授权。</p>
-<p>（C）假设用户给予授权，认证服务器将用户导向客户端指定的&quot;重定向URI&rdquo;，并在URI的Hash部分包含了访问令牌。</p>
+<p>（C）假设用户给予授权，认证服务器将用户导向客户端指定的&quot;重定向URI&quot;，并在URI的Hash部分包含了访问令牌。</p>
 <p>（D）浏览器向资源服务器发出请求，其中不包括上一步收到的Hash值。</p>
 <p>（E）资源服务器返回一个网页，其中包含的代码可以获取Hash值中的令牌。</p>
 <p>（F）浏览器执行上一步获得的脚本，提取出令牌。</p>
@@ -3683,7 +3707,7 @@ Pragma<span style="color:#f92672">:</span> <span style="color:#ae81ff">no-cache<
 <p>下面是上面这些步骤所需要的参数。</p>
 <p>A步骤中，客户端发出的HTTP请求，包含以下参数：</p>
 <ul>
-<li>response_type：表示授权类型，此处的值固定为&quot;token&rdquo;，必选项。</li>
+<li>response_type：表示授权类型，此处的值固定为&quot;token&quot;，必选项。</li>
 <li>client_id：表示客户端的ID，必选项。</li>
 <li>redirect_uri：表示重定向的URI，可选项。</li>
 <li>scope：表示权限范围，可选项。</li>
@@ -3740,7 +3764,7 @@ Pragma<span style="color:#f92672">:</span> <span style="color:#ae81ff">no-cache<
 <hr>
 <p>B步骤中，客户端发出的HTTP请求，包含以下参数：</p>
 <ul>
-<li>grant_type：表示授权类型，此处的值固定为&quot;password&rdquo;，必选项。</li>
+<li>grant_type：表示授权类型，此处的值固定为&quot;password&quot;，必选项。</li>
 <li>username：表示用户名，必选项。</li>
 <li>password：表示用户的密码，必选项。</li>
 <li>scope：表示权限范围，可选项。</li>
@@ -3788,7 +3812,7 @@ Pragma<span style="color:#f92672">:</span> <span style="color:#ae81ff">no-cache<
 <hr>
 <p>A步骤中，客户端发出的HTTP请求，包含以下参数：</p>
 <ul>
-<li>grant<em>type：表示授权类型，此处的值固定为&quot;client</em>credentials&rdquo;，必选项。</li>
+<li>grant<em>type：表示授权类型，此处的值固定为&quot;client</em>credentials&quot;，必选项。</li>
 <li>scope：表示权限范围，可选项。</li>
 </ul>
 <blockquote>
@@ -3823,7 +3847,7 @@ Pragma<span style="color:#f92672">:</span> <span style="color:#ae81ff">no-cache<
 <p>如果用户访问的时候，客户端的&quot;访问令牌&quot;已经过期，则需要使用&quot;更新令牌&quot;申请一个新的访问令牌。</p>
 <p>客户端发出更新令牌的HTTP请求，包含以下参数：</p>
 <ul>
-<li>grant<em>type：表示使用的授权模式，此处的值固定为&quot;refresh</em>token&rdquo;，必选项。</li>
+<li>grant<em>type：表示使用的授权模式，此处的值固定为&quot;refresh</em>token&quot;，必选项。</li>
 <li>refresh_token：表示早前收到的更新令牌，必选项。</li>
 <li>scope：表示申请的授权范围，不可以超出上一次申请的范围，如果省略该参数，则表示与上一次一致。</li>
 </ul>

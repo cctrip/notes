@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.72.0" />
+  <meta name="generator" content="Hugo 0.81.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="经典问题 #  1. 当输入google.com时，发生了什么？ #  1.1 URL解析 #  当输入的URL不合法时，浏览器会将输入的字符传给默认搜索引擎，
@@ -13,15 +13,17 @@ protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自�
 浏览器通过URL能知道以下信息：
 protocol: http host: google.com resource: / 1.2 HTST #  1、浏览器检查自身的HTST列表，确认是否包含该主机。 2、若HTST存在该主机，使用https代替http，否则使用http。 1.3 DNS解析 #  1、浏览器检查自身的DNS缓存 2、查找本地hosts文件 3、发起DNS解析查询 4、查询 本地|ISP DNS服务器 5、本地|ISP DNS服务器像高层服务器发起递归查询直到查到该域名的解析IP 1.4 TCP连接建立 #  1、client端发送SYN请求到server端，声明自己的ISN为aaa (CLOSED--&gt;SYN-SENT) 2、server端接收SYN包，声明自己的ISN为bbb，ACK信息为aaa&#43;1，返回给client端 (LISTEN--&gt;SYN-RECEIVED) 3、client端返回ACK为bbb&#43;1为server端 (SYN-SENT--&gt;ESTABLISHED) 4、数据交互 1.5 TLS连接建立 #  1.6 HTTP #   " />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/other/interview/classic/browser/" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/other/interview/classic/browser/" /><meta property="article:section" content="docs" />
+
+
 
 <title>Browser | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/notes/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
-<script defer src="/notes/en.search.min.b1864aecffe48cbef6dbd001a233bb0338581d1e76977514862a9bfc103714a4.js" integrity="sha256-sYZK7P/kjL7229ABojO7AzhYHR52l3UUhiqb/BA3FKQ="></script>
+<link rel="stylesheet" href="/notes/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css" integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3&#43;Gsag98vL3PZKw=">
+<script defer src="/notes/en.search.min.911273f723ce2edf5391b92f43d6e7e1cd773014a0b0845265a0f725857f052f.js" integrity="sha256-kRJz9yPOLt9TkbkvQ9bn4c13MBSgsIRSZaD3JYV/BS8="></script>
 
-<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<script defer src="/notes/sw.min.102e0b752b65c874dd63b7b7ef9f8391b698d86adbb048ed0e6ddf02a6093f83.js" integrity="sha256-EC4LdStlyHTdY7e375&#43;DkbaY2GrbsEjtDm3fAqYJP4M="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -910,7 +912,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/DataStructuresAndAlgorithms/README/" class="">R E a D M E</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/DataStructuresAndAlgorithms/README/" class="">Readme</a>
   
 
         </li>
@@ -923,7 +925,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/StringsAndText/README/" class="">R E a D M E</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/StringsAndText/README/" class="">Readme</a>
   
 
         </li>
@@ -1381,6 +1383,28 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ced38c1042d67188284fcbea5f351b4" class="toggle"  />
+    <label for="section-4ced38c1042d67188284fcbea5f351b4" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/architecture/explicit_arch/" class="">清晰架构</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
     
   </ul>
 
@@ -2612,7 +2636,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/" class="">About Ssh</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/" class="">About SSH</a>
   
 
         </li>
@@ -2925,7 +2949,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/CS50/" class="">C S50</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/CS50/" class="">Cs50</a>
   
 
         </li>
@@ -2951,7 +2975,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/thinkOS/" class="">Think O S</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/thinkOS/" class="">Think Os</a>
   
 
         </li>
@@ -3388,7 +3412,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  

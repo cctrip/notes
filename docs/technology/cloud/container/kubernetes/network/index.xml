@@ -4,11 +4,7 @@
     <title>Kubernetes 网络 on 学而不思则罔</title>
     <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/</link>
     <description>Recent content in Kubernetes 网络 on 学而不思则罔</description>
-    <generator>Hugo -- gohugo.io</generator>
-    
-	<atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <generator>Hugo -- gohugo.io</generator><atom:link href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Flannel</title>
       <link>https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/flannel/</link>

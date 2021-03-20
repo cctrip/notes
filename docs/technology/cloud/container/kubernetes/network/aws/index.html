@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta name="generator" content="Hugo 0.72.0" />
+  <meta name="generator" content="Hugo 0.81.0" />
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="AWS VPC CNI #  Goal #  K8S网络需求 #   Pod之间的通信不需要通过NAT转换 Node和Pod通信不需要通过NAT转换 Pod所看到的IP地址与其他人所看到的IP地址相同   K8S运行在AWS VPC上的目标 #   Pod联网必须支持与用户从EC2联网中获得的特性相当的高吞吐量和可用性，低延迟和最小抖动 可以使用跟EC2一样的网络安全组 网络操作必须简单安全。用户必须能够应用现有的AWS VPC网络和安全最佳实践，以通过AWS VPC构建Kubernetes集群 只需几秒钟即可设置Pod网络 管理员应能够将群集扩展到2000个节点   方案 #   为每个Node(ec2)创建多个弹性网络接口(ENIs)，并分配secondary IP 对于每个Pod，选择一个可用的secondary IP，将其分配给Pod，并实现以下功能：  在单个主机上进行Pod到Pod的通信 在不同主机上进行Pod到Pod的通信 允许在Pod和AWS服务进行通信 允许Pod和本地数据中心进行通信 允许Pod和Internet进行通信     在EC2-VPC里，每个实例可以创建多个ENI，每个ENI可以分配多个IP地址。 任何发往这些IP地址之一的数据包，EC2-VPC都会将该数据包传递到实例。
@@ -13,15 +13,17 @@ ENI是虚拟网络接口，您可以将其附加到VPC中的实例。 将ENI附�
 ENI是虚拟网络接口，您可以将其附加到VPC中的实例。 将ENI附加到实例后，将创建一个对应的接口。 主ENI IP地址会自动分配给该接口。 所有辅助地址均未分配，并且由主机所有者决定如何配置它们。
   架构 #  Pod To Pod #    Inside a Pod #  IP address" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/aws/" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/aws/" /><meta property="article:section" content="docs" />
+
+
 
 <title>AWS VPC CNI | 学而不思则罔</title>
 <link rel="manifest" href="/notes/manifest.json">
 <link rel="icon" href="/notes/favicon.png" type="image/x-icon">
-<link rel="stylesheet" href="/notes/book.min.6c7c6446dfdee7c8c933e9bbc6e80ee3ed6c913b2a59519f2092c3c6a9d63e55.css" integrity="sha256-bHxkRt/e58jJM&#43;m7xugO4&#43;1skTsqWVGfIJLDxqnWPlU=">
-<script defer src="/notes/en.search.min.b1864aecffe48cbef6dbd001a233bb0338581d1e76977514862a9bfc103714a4.js" integrity="sha256-sYZK7P/kjL7229ABojO7AzhYHR52l3UUhiqb/BA3FKQ="></script>
+<link rel="stylesheet" href="/notes/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css" integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3&#43;Gsag98vL3PZKw=">
+<script defer src="/notes/en.search.min.911273f723ce2edf5391b92f43d6e7e1cd773014a0b0845265a0f725857f052f.js" integrity="sha256-kRJz9yPOLt9TkbkvQ9bn4c13MBSgsIRSZaD3JYV/BS8="></script>
 
-<script defer src="/notes/sw.min.2ab779ae2b5d50aeddfdd9ec3d03b41a76a3dc7461eedf8a74bbc49ef33e61e8.js" integrity="sha256-Krd5ritdUK7d/dnsPQO0Gnaj3HRh7t&#43;KdLvEnvM&#43;Yeg="></script>
+<script defer src="/notes/sw.min.102e0b752b65c874dd63b7b7ef9f8391b698d86adbb048ed0e6ddf02a6093f83.js" integrity="sha256-EC4LdStlyHTdY7e375&#43;DkbaY2GrbsEjtDm3fAqYJP4M="></script>
 <!--
 Made with Book Theme
 https://github.com/alex-shpak/hugo-book
@@ -910,7 +912,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/DataStructuresAndAlgorithms/README/" class="">R E a D M E</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/DataStructuresAndAlgorithms/README/" class="">Readme</a>
   
 
         </li>
@@ -923,7 +925,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/StringsAndText/README/" class="">R E a D M E</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/StringsAndText/README/" class="">Readme</a>
   
 
         </li>
@@ -1381,6 +1383,28 @@ https://github.com/alex-shpak/hugo-book
 
           
   <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ced38c1042d67188284fcbea5f351b4" class="toggle"  />
+    <label for="section-4ced38c1042d67188284fcbea5f351b4" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/architecture/explicit_arch/" class="">清晰架构</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
     
   </ul>
 
@@ -2612,7 +2636,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/" class="">About Ssh</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/" class="">About SSH</a>
   
 
         </li>
@@ -2925,7 +2949,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/CS50/" class="">C S50</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/CS50/" class="">Cs50</a>
   
 
         </li>
@@ -2951,7 +2975,7 @@ https://github.com/alex-shpak/hugo-book
   
 
   
-    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/thinkOS/" class="">Think O S</a>
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/thinkOS/" class="">Think Os</a>
   
 
         </li>
@@ -3388,7 +3412,7 @@ https://github.com/alex-shpak/hugo-book
 
 
 
-  <script>(function(){var menu=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(event){localStorage.setItem("menu.scrollTop",menu.scrollTop);});menu.scrollTop=localStorage.getItem("menu.scrollTop");})();</script>
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
 
 
  
@@ -3537,7 +3561,7 @@ _gateway <span style="color:#f92672">(</span>169.254.1.1<span style="color:#f926
 default via 172.31.176.1 dev eth0
 169.254.169.254 dev eth0
 172.31.176.0/23 dev eth0 proto kernel scope link src 172.31.177.243
-172.31.176.184 dev enic614534eb15 scope link   <span style="color:#75715e"># &lt;----- Pod&#39;s IP</span> 
+172.31.176.184 dev enic614534eb15 scope link   <span style="color:#75715e"># &lt;----- Pod&#39;s IP </span>
 </code></pre></div></li>
 <li>
 <p>每个ENI都有自己的路由表，该路由表用于路由Pod的传出流量。</p>

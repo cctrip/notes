@@ -1,0 +1,3848 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta name="generator" content="Hugo 0.81.0" />
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="清晰架构 #   原文
+系统的基本构建块 #   user interface，运行用户界面 application core，用户界面要使用这个构建块达成目的 Infrastructure，将应用核心和诸如数据库、搜索引擎或第三方 API 这样的工具连接起来。   我们真正关心的应该是应用核心。这部分代码才是我们编写代码的目的，它们才是我们的应用。它们可能使用一些不同的用户界面(渐进式 Web 应用，移动应用、命令行、接口&hellip;)，但完成实际工作的代码是一模一样的，它们就在应用核心内部，它们不用关心是哪种用户界面触发了它们。
+你可以想像得到，典型的应用控制流开始于用户界面中的代码，经过应用核心到达基础设施代码，又返回应用核心，最后将响应传达给用户界面。
+  工具 #  在远离我们系统中最重要的代码-——应用核心-——的地方，还有一些应用会用到的工具，例如数据库引擎、搜索引擎、Web 服务器或者命令行控制台(虽然最后两种工具也是传达机制)。
+ 把命令行控制台和数据库引擎放在同一个“篮子”中感觉有点奇怪，尽管它们有着不用的用途，但它们实际都是应用使用的工具。关键的区别在于，命令行控制台和 Web 服务器告诉我们的应用它要做什么，而数据库引擎是由我们的应用来告诉它做什么。这是针锋相对的差别，强烈地暗示着我们应该如何构建连接这些工具和应用核心的代码。
+ 适配器 #  连接工具和应用核心的代码单元被称为适配器( 端口和适配器架构)。适配器有效地实现了让业务逻辑和特定工具之间可以相互通信的代码。
+告知我们的应用应该做什么的适配器被称为主适配器或主动适配器，而那些由我们的应用告知它该做什么的适配器被称为从适配器或者被动适配器。
+ 端口 #  而这些适配器并非是随意创建的。它们需要按照应用核心某个特定的入口的要求来创建，即端口。端口无外乎是一份工具如何使用应用核心或者如何被应用核心使用的说明书。这份说明书，即端口，在大多数语言里最简单的形式就是接口，但实际上也可能由多个接口和 DTO 组成。
+端口(接口)位于业务逻辑内部，而适配器位于其外部，这一点要特别注意。要让这种模式按照设想发挥作用，端口按照应用核心的需要来设计而不是简单地套用工具的 API，这一点再怎么强调都不为过。
+ 主适配器 #  主适配器或主动适配器包装端口并通过它告知应用核心应该做什么。它们将来自传达机制的信息转换成对应用核心的方法调用。
+ 换句话说，我们的主动适配器就是 Controller 或者控制台命令，它们需要的接口(端口)由其他类实现，这些类的对象通过构造方法注入到 Controller 或者控制台命令。
+再举一个更具体的例子，端口就是 Controller 需要的 Service 接口或者 Repository 接口。Service、Repository 或 Query 的具体实现被注入到 Controller 供 Controller 使用。">
+<meta name="theme-color" content="#FFFFFF"><meta property="og:title" content="清晰架构" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://cctrip.github.io/notes/docs/technology/architecture/explicit_arch/" />
+
+<title>清晰架构 | 学而不思则罔</title>
+<link rel="manifest" href="/notes/manifest.json">
+<link rel="icon" href="/notes/favicon.png" type="image/x-icon">
+<link rel="stylesheet" href="/notes/book.min.2bc2364a4a4b31f0ec1debecf0a8f90a840821f143dfe1ac6a0f7cbcbdcf64ac.css" integrity="sha256-K8I2SkpLMfDsHevs8Kj5CoQIIfFD3&#43;Gsag98vL3PZKw=">
+<script defer src="/notes/en.search.min.911273f723ce2edf5391b92f43d6e7e1cd773014a0b0845265a0f725857f052f.js" integrity="sha256-kRJz9yPOLt9TkbkvQ9bn4c13MBSgsIRSZaD3JYV/BS8="></script>
+
+<script defer src="/notes/sw.min.102e0b752b65c874dd63b7b7ef9f8391b698d86adbb048ed0e6ddf02a6093f83.js" integrity="sha256-EC4LdStlyHTdY7e375&#43;DkbaY2GrbsEjtDm3fAqYJP4M="></script>
+<link rel="alternate" type="application/rss+xml" href="https://cctrip.github.io/notes/docs/technology/architecture/explicit_arch/index.xml" title="学而不思则罔" />
+<!--
+Made with Book Theme
+https://github.com/alex-shpak/hugo-book
+-->
+
+  
+</head>
+
+<body dir="ltr">
+  <input type="checkbox" class="hidden toggle" id="menu-control" />
+  <input type="checkbox" class="hidden toggle" id="toc-control" />
+  <main class="container flex">
+    <aside class="book-menu">
+      <div class="book-menu-content">
+        
+  <nav>
+<h2 class="book-brand">
+  <a href="/notes"><img src="/notes/cc.jpg" alt="Logo" /><span>学而不思则罔</span>
+  </a>
+</h2>
+
+
+<div class="book-search">
+  <input type="text" id="book-search-input" placeholder="Search" aria-label="Search" maxlength="64" data-hotkeys="s/" />
+  <div class="book-search-spinner hidden"></div>
+  <ul id="book-search-results"></ul>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <ul>
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/" class="">技术相关</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e5418af659d04c9d3cf4bf2965ab2d3" class="toggle"  />
+    <label for="section-8e5418af659d04c9d3cf4bf2965ab2d3" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/system/" class="">系统</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-095a9a3f28b64b3e3edde3f9cb0bae7c" class="toggle"  />
+    <label for="section-095a9a3f28b64b3e3edde3f9cb0bae7c" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/system/basic/" class="">计算机基础</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/basic/constitute/" class="">计算机组成</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/basic/fs/" class="">文件系统</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/basic/os/" class="">操作系统</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6e00d810acf93c4b8d6d16ad5af3d467" class="toggle"  />
+    <label for="section-6e00d810acf93c4b8d6d16ad5af3d467" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/system/linux/" class="">Linux系统</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9485b162d5957e8fe264bd691d98a7f8" class="toggle"  />
+    <label for="section-9485b162d5957e8fe264bd691d98a7f8" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/system/linux/base/" class="">基础</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/linux/base/start/" class="">启动过程</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/linux/base/directory/" class="">目录结构</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a6e76f2efd55191148d528b704396535" class="toggle"  />
+    <label for="section-a6e76f2efd55191148d528b704396535" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/system/linux/guideBook/" class="">操作指南</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e79c3ffa62158d06dcccfe47bb84500" class="toggle"  />
+    <label for="section-8e79c3ffa62158d06dcccfe47bb84500" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/system/linux/kernel/" class="">内核</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/linux/kernel/opt/" class="">内核参数优化</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8021b0fc908ee069cb31c667d6a6a038" class="toggle"  />
+    <label for="section-8021b0fc908ee069cb31c667d6a6a038" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/system/linux/programming/" class="">系统编程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/linux/programming/io/" class="">IO</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6244ff2430c3f53f6c64b45e1af36e57" class="toggle"  />
+    <label for="section-6244ff2430c3f53f6c64b45e1af36e57" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/system/application/" class="">应用</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/application/ssh/" class="">SSH</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/application/nginx/" class="">Nginx</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/system/application/nginx/config/" class="">配置</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ba2535a4c1a4494573d7d513abe70bee" class="toggle"  />
+    <label for="section-ba2535a4c1a4494573d7d513abe70bee" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/network/" class="">网络</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c024ecc5817c361c0fb2a2e631b1943d" class="toggle"  />
+    <label for="section-c024ecc5817c361c0fb2a2e631b1943d" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/network/basic/" class="">网络基础</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b280a6cce74d8f0c6873fb04e766d06f" class="toggle"  />
+    <label for="section-b280a6cce74d8f0c6873fb04e766d06f" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/network/protocol/" class="">网络协议</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-538bcf6418109ed123ddd3c56d5dd8fd" class="toggle"  />
+    <label for="section-538bcf6418109ed123ddd3c56d5dd8fd" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/network/protocol/ip/" class="">IP</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-62b0925d4fdda4ab4ac85a8ad40c418c" class="toggle"  />
+    <label for="section-62b0925d4fdda4ab4ac85a8ad40c418c" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/network/protocol/tcp/" class="">TCP</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f55f1d4b4477c9eb6c14d1bbab9c108b" class="toggle"  />
+    <label for="section-f55f1d4b4477c9eb6c14d1bbab9c108b" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/network/protocol/http/" class="">HTTP</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/network/protocol/http/http2/" class="">HTTP/2</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/network/protocol/http/tls/" class="">SSL协议</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ddcfd871ea1c5e7ba2d024615f47eeac" class="toggle"  />
+    <label for="section-ddcfd871ea1c5e7ba2d024615f47eeac" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/network/protocol/dns/" class="">DNS</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cc80a3a9f30f8f8abd8ff1dbe262fd50" class="toggle"  />
+    <label for="section-cc80a3a9f30f8f8abd8ff1dbe262fd50" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/" class="">编程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7fa52018d148a1fd718994565d84603f" class="toggle"  />
+    <label for="section-7fa52018d148a1fd718994565d84603f" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/basic/" class="">编程基础</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9a383466fee0fa83d083ae9fa4fba2b2" class="toggle"  />
+    <label for="section-9a383466fee0fa83d083ae9fa4fba2b2" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/revision/" class="">版本控制</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ff6b68c997698b33b0191546c3210502" class="toggle"  />
+    <label for="section-ff6b68c997698b33b0191546c3210502" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/revision/git/" class="">Git</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/revision/git/install/" class="">Git安装</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/revision/git/operation/" class="">Git操作</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7668db8f1934f237bfefb5d84736943c" class="toggle"  />
+    <label for="section-7668db8f1934f237bfefb5d84736943c" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/language/" class="">编程语言</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5c336c918806ca2f3862584973a9c6b8" class="toggle"  />
+    <label for="section-5c336c918806ca2f3862584973a9c6b8" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/language/shell/" class="">Shell</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6a6c9fb8660d03b7e28269802ee5c544" class="toggle"  />
+    <label for="section-6a6c9fb8660d03b7e28269802ee5c544" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/language/golang/" class="">Golang</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/golang/concurrent/" class="">并发</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/golang/garbage/" class="">垃圾回收</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/golang/memory/" class="">内存模型</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/golang/framework/" class="">框架</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/golang/practical/" class="">实用GO</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cc0d9a157731e1c00cf2e88e08bb6b33" class="toggle"  />
+    <label for="section-cc0d9a157731e1c00cf2e88e08bb6b33" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/" class="">Python</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/DataStructuresAndAlgorithms/README/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/CookBook/StringsAndText/README/" class="">Readme</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/Framework/Django/django/" class="">Django</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/Framework/Flask/flask/" class="">Flask</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/language/python/Framework/Scrapy/scrapy/" class="">Scrapy</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5fdf4176fc580aedb882677bceb88cb3" class="toggle"  />
+    <label for="section-5fdf4176fc580aedb882677bceb88cb3" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/language/javascript/" class="">Javascript</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-15322c46c3815a6be1bc858ffb8095a8" class="toggle"  />
+    <label for="section-15322c46c3815a6be1bc858ffb8095a8" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/advanced/" class="">编程进阶</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b71481b9d44ac7f2edcb3d8a424e37e4" class="toggle"  />
+    <label for="section-b71481b9d44ac7f2edcb3d8a424e37e4" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/advanced/dataStructure/" class="">数据结构</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5bbd90b91d2f74de8746f8c53b2997e1" class="toggle"  />
+    <label for="section-5bbd90b91d2f74de8746f8c53b2997e1" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/advanced/algorithm/" class="">算法</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-3d3f875b477679eef8f39e0e50a854d7" class="toggle"  />
+    <label for="section-3d3f875b477679eef8f39e0e50a854d7" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/advanced/design/" class="">设计模式</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/advanced/design/factoryMethod/" class="">Factory Method</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/advanced/design/simpleFactory/" class="">Simple Factory</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c22fcfb6e471607871281be838ffecbb" class="toggle"  />
+    <label for="section-c22fcfb6e471607871281be838ffecbb" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/program/web/" class="">WEB编程</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/program/web/oauth/" class="">oauth</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-638ef155fe1cfafb371d14d4219f59f6" class="toggle"  />
+    <label for="section-638ef155fe1cfafb371d14d4219f59f6" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/database/" class="">数据库</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-057ecc9f8b6a4f81886e881af7424b06" class="toggle"  />
+    <label for="section-057ecc9f8b6a4f81886e881af7424b06" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/database/basic/" class="">数据库基础</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4435c1a7da6782cd93704980441c39e1" class="toggle"  />
+    <label for="section-4435c1a7da6782cd93704980441c39e1" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/database/sql/" class="">SQL</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-241765785530cd9e76bc1b939008f41b" class="toggle"  />
+    <label for="section-241765785530cd9e76bc1b939008f41b" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/database/sql/mysql/" class="">MySQL</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/database/sql/mysql/excute/" class="">MySQL执行过程</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/database/sql/mysql/cluster/" class="">Cluster</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/database/sql/mysql/install/" class="">Install</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-757d41b1294fde99afc265eda5ae8a07" class="toggle"  />
+    <label for="section-757d41b1294fde99afc265eda5ae8a07" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/database/sql/postgres/" class="">PostgreSQL</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c3d6a8ade23f8ca2cef2745cf875d21" class="toggle"  />
+    <label for="section-1c3d6a8ade23f8ca2cef2745cf875d21" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/database/nosql/" class="">NoSQL</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c7bd0a1ee821bd619d98d1c4d1e0e7c0" class="toggle"  />
+    <label for="section-c7bd0a1ee821bd619d98d1c4d1e0e7c0" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/database/nosql/redis/" class="">Redis</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/database/nosql/redis/cluster/" class="">Redis集群</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-165b2a5df12483a056d6d9d914f5849b" class="toggle" checked />
+    <label for="section-165b2a5df12483a056d6d9d914f5849b" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/architecture/" class="">架构</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4ced38c1042d67188284fcbea5f351b4" class="toggle" checked />
+    <label for="section-4ced38c1042d67188284fcbea5f351b4" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/architecture/explicit_arch/" class="active">清晰架构</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0f8b03a97aca1f5e1f90f9c1fffc4e5c" class="toggle"  />
+    <label for="section-0f8b03a97aca1f5e1f90f9c1fffc4e5c" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/" class="">云原生</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/infrastructure/" class="">不可变基础设施</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-abc42036991832703e2810bdc3e542f3" class="toggle"  />
+    <label for="section-abc42036991832703e2810bdc3e542f3" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/" class="">容器技术</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-b696414639292c6d3f21656631555844" class="toggle"  />
+    <label for="section-b696414639292c6d3f21656631555844" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/map/" class="">技能图谱</a>
+      <span>▾</span>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6b3a04bfa59d68f2657d4eebcbd599aa" class="toggle"  />
+    <label for="section-6b3a04bfa59d68f2657d4eebcbd599aa" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/docker/" class="">Docker</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/docker/arch/" class="">架构</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d6d73ba2c01e621f2713ac67636afc0a" class="toggle"  />
+    <label for="section-d6d73ba2c01e621f2713ac67636afc0a" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/" class="">Kubernetes</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f4a29d96f4137dd672663dd11943c596" class="toggle"  />
+    <label for="section-f4a29d96f4137dd672663dd11943c596" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/map/" class="">技能图谱</a>
+      <span>▾</span>
+    </label>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/arch/" class="">Kubernetes 架构</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ef082e481dd1c98ca5d1e4936663e4e2" class="toggle"  />
+    <label for="section-ef082e481dd1c98ca5d1e4936663e4e2" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/api/" class="">Kubernetes API</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/api/doc/" class="">API文档</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-415040f5bff88dd631d80942771185b9" class="toggle"  />
+    <label for="section-415040f5bff88dd631d80942771185b9" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/object/" class="">Kubernetes 对象</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a8eaa7accea5918d21bfd51b30da136d" class="toggle"  />
+    <label for="section-a8eaa7accea5918d21bfd51b30da136d" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/object/workload/" class="">作业管理</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/object/workload/pod/" class="">Pod</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8e8ed4e4324e6c977d4239973676aca1" class="toggle"  />
+    <label for="section-8e8ed4e4324e6c977d4239973676aca1" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/object/workload/controller/" class="">controller</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-a3a37d8853d2dd5a0238bea4e173aa21" class="toggle"  />
+    <label for="section-a3a37d8853d2dd5a0238bea4e173aa21" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/object/application/" class="">应用配置</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c676dab1a301f3fc4434697aa544c193" class="toggle"  />
+    <label for="section-c676dab1a301f3fc4434697aa544c193" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/object/extension/" class="">扩展与插件</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-79a60d2c99712ac4b1776d324c37fee0" class="toggle"  />
+    <label for="section-79a60d2c99712ac4b1776d324c37fee0" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/" class="">Kubernetes 网络</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/flannel/" class="">Flannel</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/service/" class="">Service通信</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/calico/" class="">Calico</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/cilium/" class="">Cilium</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/network/aws/" class="">AWS VPC CNI</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-50315a46fe4c8551fc56f7f68a642602" class="toggle"  />
+    <label for="section-50315a46fe4c8551fc56f7f68a642602" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/storage/" class="">Kubernetes 存储</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1d96b91f6c2518e2db5ee2a8ebf7fb52" class="toggle"  />
+    <label for="section-1d96b91f6c2518e2db5ee2a8ebf7fb52" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/security/" class="">Kubernetes 安全</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6f88cf06ff5dc24073f150c7ce776288" class="toggle"  />
+    <label for="section-6f88cf06ff5dc24073f150c7ce776288" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/operation/" class="">Kubernetes 操作</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/operation/install/" class="">Kubernetes 安装配置</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-d9df870661580c221d95f690a1791978" class="toggle"  />
+    <label for="section-d9df870661580c221d95f690a1791978" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/container/kubernetes/operation/use/" class="">Kubernetes 使用</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-7d9d4b5ab0c2927ef3f24134fb7ac6cf" class="toggle"  />
+    <label for="section-7d9d4b5ab0c2927ef3f24134fb7ac6cf" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/service_mesh/" class="">服务网格</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-eb1d8962150afaadecdb8baab9ccf39c" class="toggle"  />
+    <label for="section-eb1d8962150afaadecdb8baab9ccf39c" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/microservice/" class="">微服务</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-07246cd70471083a895a173bbcfd5ea5" class="toggle"  />
+    <label for="section-07246cd70471083a895a173bbcfd5ea5" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/api/" class="">声明式API</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-6a97b343b5b8d58b1f74538223b317e7" class="toggle"  />
+    <label for="section-6a97b343b5b8d58b1f74538223b317e7" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/devops/" class="">DevOps</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/devops/map/" class="">技能图谱</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-8b1eb3e3d04a14c4b1300e965f243716" class="toggle"  />
+    <label for="section-8b1eb3e3d04a14c4b1300e965f243716" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/devops/ansible/" class="">Ansible</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f10b333909c665112acca707493eafbf" class="toggle"  />
+    <label for="section-f10b333909c665112acca707493eafbf" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/devops/elk/" class="">ELK</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/devops/elk/elkinstall/" class="">Elkinstall</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-03052f4ff8587ea3a434d6b1161762fc" class="toggle"  />
+    <label for="section-03052f4ff8587ea3a434d6b1161762fc" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/cloud/devops/test/" class="">Test</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/devops/monitor/" class="">监控</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/cloud/devops/monitor/prometheus/" class="">Prometheus</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-efe5a0571f2b9e8cb6bcc9c83e3d79b4" class="toggle"  />
+    <label for="section-efe5a0571f2b9e8cb6bcc9c83e3d79b4" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/bigdata/" class="">大数据</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-be94f24a514348e5f95fe4663e555667" class="toggle"  />
+    <label for="section-be94f24a514348e5f95fe4663e555667" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/bigdata/basic/" class="">大数据基础</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-650ae26a35f7bb305bcc8e7d654b8ca7" class="toggle"  />
+    <label for="section-650ae26a35f7bb305bcc8e7d654b8ca7" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/bigdata/application/" class="">应用</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ef78d5b2403606dbcfa68e4eaedcf02b" class="toggle"  />
+    <label for="section-ef78d5b2403606dbcfa68e4eaedcf02b" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/bigdata/application/kafka/" class="">Kafka</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/bigdata/application/kafka/architecture/" class="">Architecture</a>
+  
+
+        </li>
+      
+    
+      
+    
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ac089890cc9946045b61e1d60eafe1da" class="toggle"  />
+    <label for="section-ac089890cc9946045b61e1d60eafe1da" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/" class="">Zookeeper</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/architecture/" class="">Architecture</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/deploy/" class="">Deploy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/bigdata/application/zookeeper/optimization/" class="">Optimization</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-26096e129201645afc7ee9bee3760a57" class="toggle"  />
+    <label for="section-26096e129201645afc7ee9bee3760a57" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/security/" class="">安全</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-da389fa0087e6996c8b6330a04e62190" class="toggle"  />
+    <label for="section-da389fa0087e6996c8b6330a04e62190" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/security/basic/" class="">安全基础</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1c0d6dd029e61c02effbdcf6cedfa522" class="toggle"  />
+    <label for="section-1c0d6dd029e61c02effbdcf6cedfa522" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/security/firewall/" class="">防火墙</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/security/firewall/netfilter/" class="">netfilter</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/security/firewall/firewalld/" class="">Firewalld</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/security/firewall/iptables/" class="">Iptables</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-ebc6c71979c7b439a15032fb156e3cdd" class="toggle"  />
+    <label for="section-ebc6c71979c7b439a15032fb156e3cdd" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/security/ids/" class="">入侵检测</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/security/ids/snort/" class="">Snort</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-52a8a21373b848971732b44466565dca" class="toggle"  />
+    <label for="section-52a8a21373b848971732b44466565dca" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/tool/" class="">工具</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4252afc124dfd5a6d3e8dcfb8e98002c" class="toggle"  />
+    <label for="section-4252afc124dfd5a6d3e8dcfb8e98002c" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/tool/script/" class="">Scripts</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/tool/tcp_copy/" class="">TcpCopy</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cea018565d0c2125b1c7c4a4d307b25d" class="toggle"  />
+    <label for="section-cea018565d0c2125b1c7c4a4d307b25d" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/" class="">其他</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-9997c739d56dc4cd33dbcb5d67737bd4" class="toggle"  />
+    <label for="section-9997c739d56dc4cd33dbcb5d67737bd4" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/myconfig/" class="">环境配置</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/myconfig/vim/vimconf/" class="">Vimconf</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-abb75ce0b8ccf7de396b51d8d7007466" class="toggle"  />
+    <label for="section-abb75ce0b8ccf7de396b51d8d7007466" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/solution/" class="">问题集锦</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/solution/aboutNtpdate/" class="">About Ntpdate</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/solution/aboutSsh/" class="">About SSH</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-1d57792b6649eb845b6966785303a887" class="toggle"  />
+    <label for="section-1d57792b6649eb845b6966785303a887" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/interview/" class="">面试相关</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/interview/introduction/" class="">Prepare</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/interview/work/" class="">工作总结</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-734464ee9a8cbe2fa2846bc62493c07c" class="toggle"  />
+    <label for="section-734464ee9a8cbe2fa2846bc62493c07c" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/interview/tech/" class="">技术知识点</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/interview/tech/technology/" class="">Technology</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/interview/other/" class="">非技术相关</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-524e3f6ae7dc9d104fff49bbf5fc5e3c" class="toggle"  />
+    <label for="section-524e3f6ae7dc9d104fff49bbf5fc5e3c" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/interview/classic/" class="">经典问题</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/interview/classic/browser/" class="">Browser</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-79402d87a22877d6ad930b087273dbc8" class="toggle"  />
+    <label for="section-79402d87a22877d6ad930b087273dbc8" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/interview/learn/" class="">面试学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/interview/target/" class="">针对性</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-41ed938d108201fb65f5469c312868bb" class="toggle"  />
+    <label for="section-41ed938d108201fb65f5469c312868bb" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/interview/history/" class="">总结</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/interview/history/interview/" class="">Interview</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/interview/100/" class="">100个问题</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/interview/request/" class="">目标</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-590b4ca936194c55883c3c2979586018" class="toggle"  />
+    <label for="section-590b4ca936194c55883c3c2979586018" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/" class="">读书笔记</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/system_performance/" class="">性能之巅</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/codecademy/" class="">Codecademy</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/CS50/" class="">Cs50</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/finacial/" class="">Finacial</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/other/book_notes/thinkOS/" class="">Think Os</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-c4881afbdd2fdf762521d173ffc6e481" class="toggle"  />
+    <label for="section-c4881afbdd2fdf762521d173ffc6e481" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/translate/" class="">技术文章翻译</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-45591e069b910bb164f7b2f2efdeb3c6" class="toggle"  />
+    <label for="section-45591e069b910bb164f7b2f2efdeb3c6" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/other/language/" class="">英语学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-f01ad4a1e188178e0cd71ca314a42305" class="toggle"  />
+    <label for="section-f01ad4a1e188178e0cd71ca314a42305" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/howto/" class="">How To</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/howto/lvs/" class="">LVS</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-22112aa88a7fa769179085cfcdab5b99" class="toggle"  />
+    <label for="section-22112aa88a7fa769179085cfcdab5b99" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/leetcode/" class="">LeetCode</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-cf67e90f643a0dc09b3865c807461eb2" class="toggle"  />
+    <label for="section-cf67e90f643a0dc09b3865c807461eb2" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/technology/leetcode/learn/" class="">学习</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/leetcode/learn/array/" class="">数组</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/leetcode/learn/linklist/" class="">链表</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/technology/leetcode/learn/bintree/" class="">二叉树</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li class="book-section-flat" >
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/other/" class="">非技术相关</a>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-4c96e4b44b4669de45412bfc8d62f298" class="toggle"  />
+    <label for="section-4c96e4b44b4669de45412bfc8d62f298" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/other/life/" class="">人生</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/other/life/reason/" class="">存在的意义</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/other/life/career/" class="">职业思考</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-609eee072f1fb9d9df6b0e08405a7e32" class="toggle"  />
+    <label for="section-609eee072f1fb9d9df6b0e08405a7e32" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/other/learn/" class="">方法论</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/other/learn/Method/" class="">学习方法</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-5d185107757653a9cb0f1548a864b10d" class="toggle"  />
+    <label for="section-5d185107757653a9cb0f1548a864b10d" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/other/read/" class="">阅读</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/other/read/%E5%AE%9E%E8%B7%B5%E8%AE%BA/" class="">实践论</a>
+  
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/other/read/%E7%9F%9B%E7%9B%BE%E8%AE%BA/" class="">矛盾论</a>
+  
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <input type="checkbox" id="section-0e58f1af156c9b215037ca7a6c434235" class="toggle"  />
+    <label for="section-0e58f1af156c9b215037ca7a6c434235" class="flex justify-between">
+      <a href="https://cctrip.github.io/notes/docs/other/financial/" class="">理财</a>
+      <span>▾</span>
+    </label>
+  
+
+          
+  <ul>
+    
+      
+        <li>
+          
+  
+  
+
+  
+    <a href="https://cctrip.github.io/notes/docs/other/financial/stock/" class="">股票</a>
+  
+
+          
+  <ul>
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+        </li>
+      
+    
+  </ul>
+
+
+
+
+
+
+
+
+
+
+
+  
+<ul>
+  
+  <li>
+    <a href="https://cctrip.github.io/" target="_blank" rel="noopener">
+        关于我
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://cctrip.github.io/posts" target="_blank" rel="noopener">
+        Blog
+      </a>
+  </li>
+  
+  <li>
+    <a href="https://github.com/cctrip/notes" target="_blank" rel="noopener">
+        Github
+      </a>
+  </li>
+  
+</ul>
+
+
+
+
+
+
+</nav>
+
+
+
+
+  <script>(function(){var a=document.querySelector("aside.book-menu nav");addEventListener("beforeunload",function(b){localStorage.setItem("menu.scrollTop",a.scrollTop)}),a.scrollTop=localStorage.getItem("menu.scrollTop")})()</script>
+
+
+ 
+      </div>
+    </aside>
+
+    <div class="book-page">
+      <header class="book-header">
+        
+  <div class="flex align-center justify-between">
+  <label for="menu-control">
+    <img src="/notes/svg/menu.svg" class="book-icon" alt="Menu" />
+  </label>
+
+  <strong>清晰架构</strong>
+
+  <label for="toc-control">
+    
+    <img src="/notes/svg/toc.svg" class="book-icon" alt="Table of Contents" />
+    
+  </label>
+</div>
+
+
+  
+  <aside class="hidden clearfix">
+    
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#清晰架构">清晰架构</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#系统的基本构建块">系统的基本构建块</a></li>
+            <li><a href="#工具">工具</a></li>
+            <li><a href="#适配器">适配器</a></li>
+            <li><a href="#端口">端口</a></li>
+            <li><a href="#主适配器">主适配器</a></li>
+            <li><a href="#从适配器">从适配器</a></li>
+            <li><a href="#控制反转">控制反转</a></li>
+            <li><a href="#组织应用核心的结构">组织应用核心的结构</a></li>
+            <li><a href="#领域层">领域层</a></li>
+            <li><a href="#组件">组件</a></li>
+            <li><a href="#控制流">控制流</a></li>
+          </ul>
+        </li>
+        <li><a href="#实现">实现</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+
+  </aside>
+  
+ 
+      </header>
+
+      
+      
+  <article class="markdown"><h1 id="清晰架构">
+  清晰架构
+  <a class="anchor" href="#%e6%b8%85%e6%99%b0%e6%9e%b6%e6%9e%84">#</a>
+</h1>
+<p>
+  <a href="https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/">原文</a></p>
+<h3 id="系统的基本构建块">
+  系统的基本构建块
+  <a class="anchor" href="#%e7%b3%bb%e7%bb%9f%e7%9a%84%e5%9f%ba%e6%9c%ac%e6%9e%84%e5%bb%ba%e5%9d%97">#</a>
+</h3>
+<ul>
+<li><strong>user interface</strong>，运行用户界面</li>
+<li><strong>application core</strong>，用户界面要使用这个构建块达成目的</li>
+<li><strong>Infrastructure</strong>，将应用核心和诸如数据库、搜索引擎或第三方 API 这样的工具连接起来。</li>
+</ul>
+<p>
+  <img src="base.png" alt="" /></p>
+<p>我们真正关心的应该是应用核心。这部分代码才是我们编写代码的目的，它们才是我们的应用。它们可能使用一些不同的用户界面(渐进式 Web 应用，移动应用、命令行、接口&hellip;)，但完成实际工作的代码是一模一样的，它们就在应用核心内部，它们不用关心是哪种用户界面触发了它们。</p>
+<p>你可以想像得到，典型的应用控制流开始于用户界面中的代码，经过应用核心到达基础设施代码，又返回应用核心，最后将响应传达给用户界面。</p>
+<p>
+  <img src="flow.png" alt="" /></p>
+<hr>
+<h3 id="工具">
+  工具
+  <a class="anchor" href="#%e5%b7%a5%e5%85%b7">#</a>
+</h3>
+<p>在远离我们系统中最重要的代码-——应用核心-——的地方，还有一些应用会用到的工具，例如数据库引擎、搜索引擎、Web 服务器或者命令行控制台(虽然最后两种工具也是传达机制)。</p>
+<p>
+  <img src="tool.png" alt="" /></p>
+<p>把命令行控制台和数据库引擎放在同一个“篮子”中感觉有点奇怪，尽管它们有着不用的用途，但它们实际都是应用使用的工具。关键的区别在于，命令行控制台和 Web 服务器<em><strong>告诉我们</strong></em><strong>的应用它要做什么</strong>，而数据库引擎是<strong>由我们的应用来告诉它做什么</strong>。这是针锋相对的差别，强烈地暗示着我们应该如何构建连接这些工具和应用核心的代码。</p>
+<hr>
+<h3 id="适配器">
+  适配器
+  <a class="anchor" href="#%e9%80%82%e9%85%8d%e5%99%a8">#</a>
+</h3>
+<p>连接工具和应用核心的代码单元被称为适配器(
+  <a href="https://www.jianshu.com/p/f39f4537857e">端口和适配器架构</a>)。适配器有效地实现了让业务逻辑和特定工具之间可以相互通信的代码。</p>
+<p><strong>告知我们</strong>的应用应该做什么的适配器被称为<strong>主适配器</strong>或<strong>主动适配器</strong>，而那些由我们的应用<strong>告知它</strong>该做什么的适配器被称为<strong>从适配器</strong>或者<strong>被动适配器</strong>。</p>
+<hr>
+<h3 id="端口">
+  端口
+  <a class="anchor" href="#%e7%ab%af%e5%8f%a3">#</a>
+</h3>
+<p>而这些适配器并非是随意创建的。它们需要按照应用核心某个特定的入口的要求来创建，即<strong>端口</strong>。端口无外乎是一份工具如何使用应用核心或者如何被应用核心使用的<strong>说明书</strong>。这份说明书，即端口，在大多数语言里最简单的形式就是接口，但实际上也可能由多个接口和 DTO 组成。</p>
+<p><strong>端口(接口)位于业务逻辑内部</strong>，而适配器位于其外部，这一点要特别注意。要让这种模式按照设想发挥作用，端口按照应用核心的需要来设计而不是简单地套用工具的 API，这一点再怎么强调都不为过。</p>
+<hr>
+<h3 id="主适配器">
+  主适配器
+  <a class="anchor" href="#%e4%b8%bb%e9%80%82%e9%85%8d%e5%99%a8">#</a>
+</h3>
+<p><strong>主适配器</strong>或<strong>主动适配器</strong><em><strong>包装</strong></em><strong>端口</strong>并通过它告知应用核心应该做什么。<strong>它们将来自传达机制的信息转换成对应用核心的方法调用</strong>。</p>
+<p>
+  <img src="primary_adapter.png" alt="" /></p>
+<p>换句话说，我们的主动适配器就是 Controller 或者控制台命令，它们需要的接口(端口)由其他类实现，这些类的对象通过构造方法注入到 Controller 或者控制台命令。</p>
+<p>再举一个更具体的例子，端口就是 Controller 需要的 Service 接口或者 Repository 接口。Service、Repository 或 Query 的具体实现被注入到 Controller 供 Controller 使用。</p>
+<p>此外，端口还可以是命令总线接口或者查询总线接口。这种情况下，命令总线或者查询总线的具体实现将被注入到 Controller 中， Controller 将创建命令或查询并传递给相应的总线。</p>
+<hr>
+<h3 id="从适配器">
+  从适配器
+  <a class="anchor" href="#%e4%bb%8e%e9%80%82%e9%85%8d%e5%99%a8">#</a>
+</h3>
+<p>和主动适配器包装端口不同，<strong>被动适配器</strong><em><strong>实现</strong></em>**一个端口(接口)**并被注入到需要这个端口的应用核心里。</p>
+<p>
+  <img src="slave_adapter.png" alt="" /></p>
+<p>举个例子，假设有一个需要存储数据的简单应用。我们创建了一个符合应用要求的持久化接口，这个接口有一个<em>保存</em>数据数组的方法和一个根据 ID 从表中<em>删除</em>一行的方法。接口创建好之后，无论何时应用需要保存或删除数据，都应该使用实现了这个持久化接口的对象，而这个对象是通过构造方法注入的。</p>
+<p>现在我们创建了一个专门针对 MySQL 实现了该接口的适配器。它拥有保存数组和删除表中一行数据的方法，然后在需要使用持久化接口的地方注入它。</p>
+<p>如果未来我们决定更换数据库供应商，比如换成 PostgreSQL 或者 MongoDB，我们只用创建一个专门针对 PostgreSQL 实现了该接口的适配器，在注入时用新适配器代替旧适配器。</p>
+<hr>
+<h3 id="控制反转">
+  控制反转
+  <a class="anchor" href="#%e6%8e%a7%e5%88%b6%e5%8f%8d%e8%bd%ac">#</a>
+</h3>
+<p>这种模式有一个特征值得留意，适配器依赖特定的工具和特定的端口(它需要提供接口的特定实现)。但业务逻辑只依赖按照它的需求设计的端口(接口)，它并不依赖特定的适配器或工具。</p>
+<p>
+  <img src="inversion.png" alt="" /></p>
+<p>这意味着依赖的方向是由外向内的，这就是<strong>架构层面的控制反转原则</strong>。</p>
+<p>再一次强调，<strong>端口按照应用核心的需要来设计而不是简单地套用工具的 API</strong>。</p>
+<hr>
+<h3 id="组织应用核心的结构">
+  组织应用核心的结构
+  <a class="anchor" href="#%e7%bb%84%e7%bb%87%e5%ba%94%e7%94%a8%e6%a0%b8%e5%bf%83%e7%9a%84%e7%bb%93%e6%9e%84">#</a>
+</h3>
+<p>在应用中，由一个或多个用户界面触发的应用核心中的过程就是use case。例如，在一个 CMS 系统中，我们可以提供普通用户使用的应用 UI、CMS 管理员使用的独立的 UI、命令行 UI 以及 Web API。这些 UI(应用)可以触发的用例可能是专门为它设计的，也可以是多个 UI 复用的。</p>
+<p>Use case定义在应用层中，这是 DDD 提供的第一个被
+  <a href="https://www.jianshu.com/p/d87d5389c92a">洋葱架构</a>使用的层。</p>
+<p>
+  <img src="application.png" alt="" /></p>
+<p>这个层包括了作为一等公民的应用服务(以及它们的接口)，也包括了
+  <a href="https://www.jianshu.com/p/f39f4537857e">端口与适配器架构</a>中的接口，例如 ORM 接口、搜索引擎接口、消息接口等等。如果我们使用了命令总线和/或查询总线，命令和查询分别对应的处理程序也属于这一层。</p>
+<p>应用服务和/或命令处理程序包含了展现一个用例，一个业务过程的逻辑。通常，它们的作用是：</p>
+<ol>
+<li>使用 Repostitory 查找一个或多个实体；</li>
+<li>让这些实体执行一些领域逻辑；</li>
+<li>再次使用 Repostitory 让这些实体持久化，有效地保存数据变化。</li>
+</ol>
+<p>命令处理程序有两种不同使用方式：</p>
+<ol>
+<li>它们可以包含执行用例的实际逻辑；</li>
+<li>它们可以仅仅作为我们应用中的连接片段，接收命令然后简单地触发应用服务中的逻辑。</li>
+</ol>
+<p>使用哪种方式是由上下文决定的，例如：</p>
+<ul>
+<li>我们已经有了合适的应用服务，现在要做的是添加命令总线？</li>
+<li>命令总线允许指定任意类/方法作为处理程序吗？还是说它们需要扩展已有的类或者实现已有的接口？</li>
+</ul>
+<p>应用层还包括<strong>应用事件</strong>的触发，这也代表着某些用例的产出。这些事件触发的逻辑是用例的副作用，比如发送邮件、通知第三方 PAI、发送推送通知，或是发起属于其他应用组件的另一个用例。</p>
+<hr>
+<h3 id="领域层">
+  领域层
+  <a class="anchor" href="#%e9%a2%86%e5%9f%9f%e5%b1%82">#</a>
+</h3>
+<p>继续向内一层就是领域层。这一层中的对象包含了数据和操作数据的逻辑，它们只和领域本身有关，独立于调用这些逻辑的业务过程。它们完全独立，对应用层完全无感知。</p>
+<p>
+  <img src="domain.png" alt="" /></p>
+<h4 id="领域服务">
+  领域服务
+  <a class="anchor" href="#%e9%a2%86%e5%9f%9f%e6%9c%8d%e5%8a%a1">#</a>
+</h4>
+<p>如前所述，应用服务的作用是：</p>
+<ol>
+<li>使用 Repostitory 查找一个或多个实体；</li>
+<li>让这些实体执行一些领域逻辑；</li>
+<li>再次使用 Repostitory 让这些实体持久化，有效地保存数据变化。</li>
+</ol>
+<p>然而，有时我们还会碰到某种领域逻辑，它涉及不同的实体。这些实体也许是同一个类型，也许不是，而且我们觉得这种领域逻辑并不属于这些实体，这种逻辑不是这些实体的直接责任。</p>
+<p>所以，我们的第一反应也许是把这些逻辑放到实体外的应用服务中。然而，这意味着这些领域逻辑就不能被其它的用例复用。领域逻辑应该放在应用层之外！</p>
+<p>解决方法是创建领域服务，它的作用是接收一组实体并对它们执行某种业务逻辑。领域服务属于领域层，因此它并不了解应用层中的类，比如应用服务或者 Repository[译注：Repository 属于应用服务层？？]。另一方面，它可以使用其他领域服务，当然还可以使用领域模型对象。</p>
+<h4 id="领域模型">
+  领域模型
+  <a class="anchor" href="#%e9%a2%86%e5%9f%9f%e6%a8%a1%e5%9e%8b">#</a>
+</h4>
+<p>在架构的正中心，是完全不依赖外部任何层次的领域模型。它包含了那些表示领域中某个概念的业务对象。这些对象的例子首先就是实体，还有值对象、枚举以及其它领域模型种用到的任何对象。</p>
+<p>领域事件也“活在”领域模型中。当一组特定的数据发生变化时就会触发这些事件，而这些事件会携带这些变化的信息。换句话说，当实体变化时，就会触发一个领域事件，它携带着发生变化的属性的新值。这些事件可以完美地应用于事件溯源。</p>
+<hr>
+<h3 id="组件">
+  组件
+  <a class="anchor" href="#%e7%bb%84%e4%bb%b6">#</a>
+</h3>
+<p>目前为止，我们都是使用层次来划分代码，但这是细粒度的代码隔离。根据 Robert C. Martin 在
+  <a href="https://8thlight.com/blog/uncle-bob/2011/09/30/Screaming-Architecture.html">尖叫架构</a>中表达的观点，按照子域和
+  <a href="http://ddd.fed.wiki.org/view/welcome-visitors/view/domain-driven-design/view/bounded-context">限界上下文</a>对代码进行划分这种粗粒度的代码隔离同样重要。这通常被叫做“<em>按特性分包</em>”或者“<em>按组件分包</em>”，和“<em>按层次分包</em>”相呼应。Simon Brown 的文章“
+  <a href="http://www.codingthearchitecture.com/2015/03/08/package_by_component_and_architecturally_aligned_testing.html">Package by component and architecturally-aligned testing</a>”很好地阐述了这种划分：</p>
+<p>我是“<em>按组件分包</em>”方式的坚定拥护者，在此我厚着脸皮将 Simon Brown <em>按组件分包</em>的示意图做了如下修改：</p>
+<p>
+  <img src="component.png" alt="" /></p>
+<p>这些代码块在前面描述的分层基础上再进行了“横切”，它们是应用的
+  <a href="https://herbertograca.com/2017/07/05/software-architecture-premises/">组件</a>(
+  <a href="https://www.jianshu.com/p/df295f92fb52">译</a>)。组件的例子包括<del>认证</del>、<del>授权</del>、账单、用户、评论或帐号，而它们总是都和领域相关。像认证和/或授权这样的限界上下文应该被看作外部工具，我们应该为它们创建适配器，把它们隐藏在某个端口之后。</p>
+<p>
+  <img src="component2.png" alt="" /></p>
+<h4 id="组件解耦">
+  组件解耦
+  <a class="anchor" href="#%e7%bb%84%e4%bb%b6%e8%a7%a3%e8%80%a6">#</a>
+</h4>
+<p>和细粒度的代码单元(类、接口、特质、混合等等)一样，粗粒度的代码单元(组件)也会从高内聚低耦合中受益。</p>
+<p>我们使用了依赖注入，<strong>通过将依赖注入类而不是在类内部初始化依赖</strong>；以及依赖倒置；<strong>让类依赖抽象(接口和/或抽象类)而不是具体类</strong>来解耦类。这意味着类不用知道它要使用的具体类的任何信息，不用引用所依赖的类的完全限定类名。</p>
+<p>以同样的方式完全解耦的组件意味着组件不会直接了解其它任何组件的信息。换句话说，它不会引用任何来自其它组件的细粒度的代码单元，甚至都不会引用接口！这意味着依赖注入和依赖倒置对组件解耦是不够用的，我们还需要一些架构层级的结构。我们需要事件、共享内核、最终一致性甚至发现服务！</p>
+<p>
+  <img src="component3.png" alt="" /></p>
+<h4 id="触发其他组件的逻辑">
+  触发其他组件的逻辑
+  <a class="anchor" href="#%e8%a7%a6%e5%8f%91%e5%85%b6%e4%bb%96%e7%bb%84%e4%bb%b6%e7%9a%84%e9%80%bb%e8%be%91">#</a>
+</h4>
+<p>当一个组件(组件 A)中有事情发生需要另一个组件(组件B)做些什么时，我们不能简单地从组件 A 直接调用组件 B 中的类/方法，因为这样 A 就和 B 耦合在一起了。</p>
+<p>但是我们可以让 A 使用事件派发器，派发一个领域事件，这个事件将会投递给任何监听它的组件，例如 B，然后 B 的事件监听器会触发期望的操作。这意味着组件 A 将依赖事件派发器，但和 B 解耦了。</p>
+<p>然而，如果事件本身“活在” A 中，这将意味着 B 知道了 A 的存在，就和 A 存在耦合。要去掉这个依赖，我们可以创建一个包含应用核心功能的库，由所有组件共享，这就是
+  <a href="http://ddd.fed.wiki.org/view/welcome-visitors/view/domain-driven-design/view/shared-kernel">共享内核</a>。这意味着两个组件都依赖共享内核，而它们之间却没有耦合。共享内核包含了应用事件和领域事件这样的功能，而且还包含规格对象，以及其它任何有理由共享的东西。记住共享内核的范围应该尽可能的小，因为它的任何变化都会影响所有应用组件。而且，如果我们的系统是语言异构的，比如使用不同语言编写的微服务生态，共享内核需要做到与语言无关的，这样它才能被所有组件理解，无论它们是用哪种语言编写的。例如，共享内核应该包含像 JSON 这样无关语言的事件描述(例如，名称、属性，也许还有方法，尽管它们对规格对象来说更有意义)而不是事件类，这样所有组件/微服务都可以解析它，还可以自动生成各自的具体实现。</p>
+<p>
+  <img src="concerntrc.png" alt="" /></p>
+<p>这种方法既适用于单体应用，也适用于像微服务生态系统这样的分布式应用。然而，这种方法只适用于事件异步投递的情况，在需要即时完成触发其它组件逻辑的上下文中并不适用！组件 A 将需要向组件 B 发起直接的 HTTP 调用。这种情况下，要解耦组件，我们需要一个发现服务，A 可以询问它得知请求应该发送到哪里才能触发期望的操作，又或是向发现服务发起请求并由发现服务将请求代理给相关服务并最终返回响应给请求方。这种方法会把组件和发现服务耦合在一起，但会让组件之间解耦。</p>
+<h4 id="从其他组件获取数据">
+  从其他组件获取数据
+  <a class="anchor" href="#%e4%bb%8e%e5%85%b6%e4%bb%96%e7%bb%84%e4%bb%b6%e8%8e%b7%e5%8f%96%e6%95%b0%e6%8d%ae">#</a>
+</h4>
+<p>我的看法是，组件不允许修改不“属于”它的数据，但可以查询和使用任何数据。</p>
+<p><strong>组件之间共享的存储数据</strong></p>
+<p>当一个组件需要使用属于其它组件的数据时，比如说账单组件需要使用属于账户组件的客户名字，账单组件会包含一个查询对象，可以在数据存储中查询该数据。简单的说就是账单组件知道任何数据集，但它只能通过查询只读地使用不“属于”它的数据。</p>
+<p><strong>按组件隔离数据的存储数据</strong></p>
+<p>这种情况下，这种模式同样有效，但数据存储层面的复杂度更高。</p>
+<p>组件拥有各自的数据存储意味着每个数据存储都包含：</p>
+<ul>
+<li>一组属于它的数据，并且只允许它自己修改这些数据，让它成为单一事实来源；</li>
+<li>一组其它组件数据的副本，它自己不能修改这些数据，但组件的功能需要这些数据，而且一旦数据在其所属的组件中发生了变化，这些副本需要更新。</li>
+</ul>
+<p>每个组件都会创建其所需的其它组件数据的本地副本，在必要时使用。当数据在其所属的组件中发生了变化，该组件将触发一个携带数据变更的领域事件。拥有这些数据副本的组件将监听这个领域事件并相应地更新它们的本地副本。</p>
+<hr>
+<h3 id="控制流">
+  控制流
+  <a class="anchor" href="#%e6%8e%a7%e5%88%b6%e6%b5%81">#</a>
+</h3>
+<p>如前所述，控制流显然从用户出发，进入应用核心，抵达基础设施工具，再返回应用核心并最终返回给用户。但这些类到底是是如何配合的？哪些类依赖哪些类？我们怎样把它们组合在一起？</p>
+<p>根据 Uncle Bob 在他关于整洁架构的文章中的说法，我来试着用 UML 图解释控制流&hellip;</p>
+<h4 id="没有命令查询总线">
+  没有命令/查询总线
+  <a class="anchor" href="#%e6%b2%a1%e6%9c%89%e5%91%bd%e4%bb%a4%e6%9f%a5%e8%af%a2%e6%80%bb%e7%ba%bf">#</a>
+</h4>
+<p>
+  <img src="flow2.png" alt="" /></p>
+<p>上图中我们使用了应用服务接口，尽管我们会质疑这并没有必要。因为应用服务是我们应用代码的一部分，而且我们不会想用另外一种实现来替换它，尽管我们可能会彻底地重构它。</p>
+<p>查询对象包含优化过的查询，简单地返回一些给用户看的原始数据就好。这些数据将放在 DTO 中返回，并注入到 ViewModel。ViewModel 中可能有一些 View 逻辑，它被用来填充 View。</p>
+<p>另一方面，应用服务还包含用例逻辑，不是浏览数据这么简单，我们需要在系统中做一些事情时触发这些逻辑。应用服务依赖 Repository 返回实体，这些实体中包含着需要触发的逻辑。它也可能依赖领域服务来整合多个实体来完成领域流程，但这种情况很少出现。</p>
+<p>展开用例之后，应用服务可能想通知整个系统，这个用例已经发生了。这种情况下，它还要依赖事件派发器来触发事件。</p>
+<p>很有意思的是我们在持久化引擎和资源库之上都放上了接口。尽管看起来有些多余，但它们服务于不用的目标：</p>
+<ul>
+<li>持久化接口是 ORM 之上的抽象层，这样我们可以切换使用的 ORM 而不用修改应用核心。</li>
+<li>资源库接口是持久化引擎自身的抽象。比方说我们想要从 MySQL 切换为 MongoDB。如果我们想继续使用同样的 ORM，持久化接口可以保持不变，甚至持久化适配器也可以保持不变。然而，两者的查询语言完全不同，所以，我们可以创建使用同样持久化机制的新资源库，可以实现相同的资源库接口，但使用 MongoDB 查询语言而不是 SQL 来构建查询。</li>
+</ul>
+<h4 id="有命令查询总线">
+  有命令/查询总线
+  <a class="anchor" href="#%e6%9c%89%e5%91%bd%e4%bb%a4%e6%9f%a5%e8%af%a2%e6%80%bb%e7%ba%bf">#</a>
+</h4>
+<p>如果我们的应用使用了命令/查询总线，UML 图基本没有变化，唯一的区别是控制器现在会依赖总线、命令或查询。它将实例化命令或查询，将它们传递给总线。总线会找到合适的处理程序接收并处理命令。</p>
+<p>在下图中，命令处理程序接下来将使用应用服务。然而，这不总是必须的，实际上大多数情况下，处理程序将包含用例的所有逻辑。只有在其它处理程序需要重用同样的逻辑时，我们才需要把处理程序中的逻辑提取出来放到单独的应用服务中。</p>
+<p>
+  <img src="flow3.png" alt="" /></p>
+<p>你可能注意到了，总线和命令查询，以及处理程序之间没有依赖。这是因为实际上它们之间应该互相无感知，才能提供足够的解耦。只有通过配置才能设置总线可以发现哪些命令，或者查询应该由哪个处理程序处理。</p>
+<p>如你所见，两种情况下，所有跨越应用核心边界的箭头——依赖——都指向内部。如前所述，这是端口和适配器架构、洋葱架构以及整洁架构的基本规则。</p>
+<p>
+  <img src="flow4.png" alt="" /></p>
+<hr>
+<p>一如既往，这些架构的目标是得到高内聚低耦合的代码库，这样变化才会简单、快速和安全。</p>
+<blockquote>
+<p>计划不名一文，但制订计划的过程至关重要。——艾森豪威尔</p>
+</blockquote>
+<p>这份信息图是一份概念地图。了解并理解所有这些概念将帮助我们规划出健康的架构和应用。</p>
+<p>不过：</p>
+<blockquote>
+<p>地图并非疆域。——阿尔弗雷德·柯日布斯基</p>
+</blockquote>
+<p>这只是一份指南！<strong>应用才是你的疆域，现实情况和具体用例才是运用这些知识的地方，它们才能勾勒出实际架构的轮廓！</strong></p>
+<p>**我们需要理解所有这些模式，但我们还时常需要思考和理解我们的应用需要什么，我们应该在追求解耦和内聚的道路上走多远。**这个决定可能受到许多因素的影响，包括项目的功能需求，也包括构建应用的时间期限，应用寿命，开发团队的体验等等因素。</p>
+<p>就到这里，这是我对一切的理解。这就是我脑海中对这一切的梳理。</p>
+<hr>
+<h2 id="实现">
+  实现
+  <a class="anchor" href="#%e5%ae%9e%e7%8e%b0">#</a>
+</h2>
+<p>
+  <a href="https://herbertograca.com/2018/07/07/more-than-concentric-layers/">原文1</a></p>
+<p>
+  <a href="https://herbertograca.com/2019/06/05/reflecting-architecture-and-domain-in-code/">原文2</a></p>
+<p>
+  <img src="practise.png" alt="" /></p>
+<pre><code>/src
+	/user_interface
+		/API
+			/Rest
+				&lt;component1&gt;
+			/GraphQl
+		/Console
+			&lt;component1&gt;
+			&lt;component2&gt;
+		/Website
+			/Admin
+				&lt;component1&gt;
+			/Consumer
+	
+	/core
+		/Component
+			/Blog
+				/Application
+				/Domain
+		/Shared_Kernel
+		/Port
+	/infrastructure
+		/commandBus
+    /EventBus
+    /Search
+    /Persistence
+</code></pre><hr>
+</article>
+ 
+      
+
+      <footer class="book-footer">
+        
+  <div class="flex flex-wrap justify-between">
+
+
+
+  <div><a class="flex align-center" href="https://github.com/cctrip/notes/commit/f8a6048ecff965c0ab0ee89a7a0f43c562f45d57" title='Last modified by 周灿铖 | March 20, 2021' target="_blank" rel="noopener">
+      <img src="/notes/svg/calendar.svg" class="book-icon" alt="Calendar" />
+      <span>March 20, 2021</span>
+    </a>
+  </div>
+
+
+
+  <div>
+    <a class="flex align-center" href="https://github.com/cctrip/notes/edit/master/content/docs/technology/architecture/explicit_arch/_index.md" target="_blank" rel="noopener">
+      <img src="/notes/svg/edit.svg" class="book-icon" alt="Edit" />
+      <span>Edit this page</span>
+    </a>
+  </div>
+
+</div>
+
+ 
+        
+      </footer>
+
+      
+  
+  <div class="book-comments">
+
+</div>
+  
+ 
+
+      <label for="menu-control" class="hidden book-menu-overlay"></label>
+    </div>
+
+    
+    <aside class="book-toc">
+      <div class="book-toc-content">
+        
+  
+<nav id="TableOfContents">
+  <ul>
+    <li><a href="#清晰架构">清晰架构</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#系统的基本构建块">系统的基本构建块</a></li>
+            <li><a href="#工具">工具</a></li>
+            <li><a href="#适配器">适配器</a></li>
+            <li><a href="#端口">端口</a></li>
+            <li><a href="#主适配器">主适配器</a></li>
+            <li><a href="#从适配器">从适配器</a></li>
+            <li><a href="#控制反转">控制反转</a></li>
+            <li><a href="#组织应用核心的结构">组织应用核心的结构</a></li>
+            <li><a href="#领域层">领域层</a></li>
+            <li><a href="#组件">组件</a></li>
+            <li><a href="#控制流">控制流</a></li>
+          </ul>
+        </li>
+        <li><a href="#实现">实现</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+
+ 
+      </div>
+    </aside>
+    
+  </main>
+
+  
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
