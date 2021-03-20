@@ -297,5 +297,3 @@ Use case定义在应用层中，这是 DDD 提供的第一个被[洋葱架构](h
     /Persistence
 ```
 
-***
-
